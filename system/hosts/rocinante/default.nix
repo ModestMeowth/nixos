@@ -12,7 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.disko.nixosModules.disko
     ./disks.nix
-    ] ++ (let p ../../../modules/system; in [
+    ] ++ (let p = ../../../modules/system; in [
       (p)
       (p + "/secureboot.nix")
       (p + "/gpu.nix")
