@@ -328,11 +328,11 @@
         "secrets": "secrets"
       },
       "locked": {
-        "lastModified": 1715980964,
-        "narHash": "sha256-iZt03KDVqChHPrj6CZUKt/N4DB5H2epDaiOwLcSFS0g=",
+        "lastModified": 1715982499,
+        "narHash": "sha256-5IIZ0S0URvUa+nWVvIcBNdTthQZOYuzIsTFxpWZ/awY=",
         "owner": "ModestMeowth",
         "repo": ".github",
-        "rev": "965654c32001c73842c9881c3bc32d5a09db8318",
+        "rev": "e13d3b94b1c5ee000c835f2cb201785bf78695da",
         "type": "github"
       },
       "original": {
@@ -517,7 +517,7 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-PmMIseHup8DqDwdpJxzQfjzz2Enp4RvzdacmPUmEWRU=",
+        "narHash": "sha256-VZv3aXv1kxDQItyOtTagZaXwOxPQHwm8IBEbgYMP2jI=",
         "type": "file",
         "url": "https://github.com/ModestMeowth/secrets"
       },
