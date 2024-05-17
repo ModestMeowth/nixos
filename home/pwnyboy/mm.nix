@@ -1,7 +1,7 @@
 {pkgs, ...}: {
-  imports = [
-    ../../modules
-    ../../modules/standalone.nix
+  imports = (let p = ../../modules/home; in [
+    (p)
+    (p+"/standalone.nix")
   ];
 
   home = {
