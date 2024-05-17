@@ -20,6 +20,7 @@
 
     shellAbbrs = {
       ssh = "mosh";
+      j = "just";
       g = "git";
       ga = "git add";
       clone = "git clone";

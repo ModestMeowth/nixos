@@ -17,7 +17,6 @@
 
     packages = with pkgs; [
       agenix
-      chezmoi
       just
       mosh
       ncdu
