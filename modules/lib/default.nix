@@ -30,7 +30,7 @@ in {
       };
       modules = [
         inputs.agenix.homeManagerModules.age
-        ../../home/${hostname}/${username}.nix
+        ../../home/${hostname}/${username}
       ];
       extraSpecialArgs = specialArgs;
     };
