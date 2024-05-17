@@ -17,7 +17,6 @@
         enable = true;
         extraArgs = "--keep-since 4d --keep 5";
       };
-      flake = /etc/nixos;
     };
 
     command-not-found.enable = false;
