@@ -1,5 +1,5 @@
 {
-  imports = (let p = ../../modules/home; in [
+  imports = (let p = ../../../modules/home; in [
     (p)
     (p+"/neovim/plugins/lsp/cmp.nix")
     (p+"/ssh.nix")
