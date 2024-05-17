@@ -17,7 +17,7 @@
         enable = true;
         extraArgs = "--keep-since 4d --keep 5";
       };
-      flake = "github:ModestMeowth/nixos";
+      flake = /etc/nixos;
     };
 
     command-not-found.enable = false;
