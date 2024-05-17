@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
+    inputs.secBoot.nixosModules.lanzaboote
   ];
 
   boot.loader.systemd-boot.enable = lib.mkForce false;

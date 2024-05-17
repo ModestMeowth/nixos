@@ -3,8 +3,8 @@
     (p)
     (p+"/gtk")
     (p+"/neovim/plugins/lsp")
-    (p+"/term/wezter")
-  ];
+    (p+"/term/wezterm")
+  ]);
 
   home = {
     username = "mm";
