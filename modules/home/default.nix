@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   ...
@@ -25,6 +24,8 @@
       nmap
       ripgrep
     ];
+
+    file."justfile".source = "${inputs.mm.outputs.dotfiles}/justfile-nixos";
   };
 
   programs = {
