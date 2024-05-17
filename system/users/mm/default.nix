@@ -3,6 +3,9 @@
   lib,
   ...
 }: {
+  imports = [
+    ./secrets.nix
+  ];
 
   programs.fish.enable = true;
 

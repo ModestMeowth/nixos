@@ -1,12 +1,12 @@
-{config, ...}: {
+{inputs, ...}: {
   age.secrets = {
     tofu = {
-      file = "${config.users.users.mm.home}/secrets/tofu.age";
+      file = "${inputs.mm.outputs.secrets}/tofu.age";
       mode = "600";
       owner = "mm";
     };
     minio = {
-      file = "${config.users.users.mm.home}/secrets/minio.age";
+      file = "${inputs.mm.outputs.secrets}/minio.age";
       mode = "600";
       owner = "mm";
     };
