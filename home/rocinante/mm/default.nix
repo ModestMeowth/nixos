@@ -4,6 +4,7 @@
     (p+"/gtk")
     (p+"/neovim/plugins/lsp")
     (p+"/term/wezterm")
+    (p+"/gaming/retroarch.nix")
   ]);
 
   home = {
