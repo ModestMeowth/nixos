@@ -5,10 +5,7 @@
   ];
 
   home = {
-    file."justfile".text = /*just*/ ''
-      default:
-        @just --list
-    '';
+    file."justfile".source = "${inputs.mm.outputs.dotfiles}/justfile-ubuntu";
     packages = with pkgs; [
       nh
     ];
