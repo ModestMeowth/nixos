@@ -16,7 +16,6 @@
         forge
         gsconnect
         no-overview
-        noannoyance-fork
         user-themes
       ]);
   };
