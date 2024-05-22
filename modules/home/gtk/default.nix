@@ -13,9 +13,11 @@
         dracula-icon-theme
       ]
       ++ (with gnomeExtensions; [
-        user-themes
-        gsconnect
         forge
+        gsconnect
+        no-overview
+        noannoyance-fork
+        user-themes
       ]);
   };
 
