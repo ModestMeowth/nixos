@@ -8,9 +8,10 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
         "forge@jmmaranan.com"
         "gsconnect@andyholms.github.io"
+        "no-overview@fthx"
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
     };
 
