@@ -13,6 +13,12 @@ in {
       inherit system;
       specialArgs = { inherit inputs pkgs system; };
       modules = [
+        {
+          _module.args.pkgs-unstable = import inputs.unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        }
         inputs.agenix.nixosModules.default
         inputs.nixDB.nixosModules.nix-index
         ../../system/hosts/${hostname}
@@ -29,6 +35,12 @@ in {
         system = "${system}";
       };
       modules = [
+        {
+          _module.args.pkgs-unstable = import inputs.unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        }
         inputs.agenix.homeManagerModules.age
         ../../home/${hostname}/${username}
       ];
