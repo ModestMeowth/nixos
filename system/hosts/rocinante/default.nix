@@ -13,6 +13,7 @@
     inputs.disko.nixosModules.disko
     ./disks.nix
     ./users.nix
+    ./cifs.nix
     ] ++ (let p = ../../../modules/system; in [
       (p)
       (p + "/secureboot.nix")

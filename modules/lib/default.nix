@@ -33,6 +33,7 @@ in {
       pkgs = import inputs.nixpkgs {
         overlays = builtins.attrValues overlays;
         system = "${system}";
+        config.allowUnfree = true;
       };
       modules = [
         {
