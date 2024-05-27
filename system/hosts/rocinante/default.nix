@@ -22,6 +22,8 @@
       (p + "/ssh.nix")
       (p + "/gnome.nix")
       (p + "/k3s")
+      (p + "/syncthing.nix")
+      (p + "/kali")
   ]);
 
   services = {

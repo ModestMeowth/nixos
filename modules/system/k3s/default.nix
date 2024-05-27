@@ -5,7 +5,7 @@
     role = "server";
   };
 
-  networkings.firewall = {
+  networking.firewall = {
     allowedTCPPorts = [
       6443
     ];
