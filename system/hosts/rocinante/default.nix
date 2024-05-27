@@ -21,6 +21,7 @@
       (p + "/pipewire.nix")
       (p + "/ssh.nix")
       (p + "/gnome.nix")
+      (p + "/k3s")
   ]);
 
   services = {
