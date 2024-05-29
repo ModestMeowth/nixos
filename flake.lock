@@ -89,11 +89,19 @@
     "dotfiles": {
       "flake": false,
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1716851156,
         "narHash": "sha256-kut0apY9TWnS5hkQbWKWjXdDBo0pVJU0AhgaelLyNis=",
         "owner": "ModestMeowth",
         "repo": "dotfiles",
         "rev": "d83817ea3fe8fe3b6ceb472ab52503b6e0987959",
+=======
+        "lastModified": 1716844731,
+        "narHash": "sha256-KrWlG21+mbb284JaxRqKGMhmhQIOuIBqAdCXz2zDJaQ=",
+        "owner": "ModestMeowth",
+        "repo": "dotfiles",
+        "rev": "f6d08a2e7e5e4258354a4522cc3d8d2103218220",
+>>>>>>> 3f78aaf (flake.lock: Update)
         "type": "github"
       },
       "original": {
@@ -327,11 +335,19 @@
         "keys": "keys"
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1716851173,
         "narHash": "sha256-vrdsxF03hgNmr1uL2FaJn+JeXCd0XJT3YHTuzk4iG0k=",
         "owner": "ModestMeowth",
         "repo": ".github",
         "rev": "591b85246bd08d8acf066e50dc87e36607b2d8c9",
+=======
+        "lastModified": 1716844745,
+        "narHash": "sha256-1zQWZnPvNsFWw+E+6fJzXb0842JvjlBy2SaaIdjKnVs=",
+        "owner": "ModestMeowth",
+        "repo": ".github",
+        "rev": "4d3ee0894a8ddffc54a88485643a8e905b4d5c28",
+>>>>>>> 3f78aaf (flake.lock: Update)
         "type": "github"
       },
       "original": {
