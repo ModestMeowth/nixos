@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, config, lib, ... }: {
   programs = {
     fish.shellInit = /*fish*/ ''
       if set -q TILIX_ID; or string match -q "vscode" $TERM_PROGRAM

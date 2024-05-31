@@ -1,5 +1,9 @@
-{ inputs, ... }: {
-  programs.wezterm.enable = true;
+{inputs, lib, ...}: {
+  programs = {
+    wezterm.enable = true;
+
+    zellij.enableFishIntegration = lib.mkForce false;
+  };
   xdg.configFile = {
     "wezterm/wezterm.lua".source = "${inputs.mm.outputs.dotfiles}/dot_config/wezterm/wezterm.lua";
     "wezterm/wayland_gnome.lua".source = "${inputs.mm.outputs.dotfiles}/dot_config/wezterm/wayland_gnome.lua";
