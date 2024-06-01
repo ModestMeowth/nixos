@@ -1,18 +1,15 @@
-{ inputs, config, lib, ... }: {
+{ inputs, ... }: {
   programs = {
     fish.shellInit = /*fish*/ ''
-      if set -q TILIX_ID; or string match -q "vscode" $TERM_PROGRAM
-        set ZELLIJ_AUTO_ATTACH false
-        set ZELLIJ_AUTO_EXIT false
-      else
-        set ZELLIJ_AUTO_ATTACH true
-        set ZELLIJ_AUTO_EXIT true
-      end
-    '';
+        if not string match -qi "vscode" $TERM_PROGRAM
+          set ZELLIJ_AUTO_ATTACH true
+          set ZELLIJ_AUTO_EXIT true
+        end
+      '';
 
     zellij = {
       enable = true;
-      enableFishIntegration = true;
+      enableFishIntegration = false;
     };
   };
 
