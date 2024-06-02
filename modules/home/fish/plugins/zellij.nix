@@ -9,7 +9,7 @@
 
     zellij = {
       enable = true;
-      enableFishIntegration = false;
+      enableFishIntegration = true;
     };
   };
 
