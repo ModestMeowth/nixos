@@ -14,6 +14,7 @@
     ./disks.nix
     ./users.nix
     ./cifs.nix
+    ./k3s.nix
     ] ++ (let p = ../../../modules/system; in [
       (p)
       (p + "/secureboot.nix")
