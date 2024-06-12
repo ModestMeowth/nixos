@@ -17,6 +17,9 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
+    kubenix.url = "github:hall/kubenix";
+    kubenix.inputs.nixpkgs.follows = "nixpkgs";
+
     nixDB.url = "github:nix-community/nix-index-database";
     nixDB.inputs.nixpkgs.follows = "nixpkgs";
 
