@@ -19,6 +19,7 @@ in {
             config.allowUnfree = true;
           };
         }
+        inputs.sops.nixosModules.sops
         inputs.agenix.nixosModules.default
         inputs.nixDB.nixosModules.nix-index
         ../../system/hosts/${hostname}

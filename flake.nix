@@ -3,7 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     unstable.url = "github:Nixos/nixpkgs/nixos-unstable";
 
-    flakeParts.url = "github:hercules-ci/flake-parts";
+    parts.url = "github:hercules-ci/flake-parts";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +13,9 @@
 
     wsl.url = "github:nix-community/NixOS-WSL";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
+
+    sops.url = "github:Mic92/sops-nix";
+    sops.inputs.nixpkgs.follows = "nixpkgs";
 
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -28,10 +31,10 @@
     mm.url = "github:ModestMeowth/.github";
   };
 
-  outputs = {flake-parts, ...} @ inputs: let
+  outputs = {...} @ inputs: let
     xLib = import ./modules/lib {inherit inputs;};
   in
-    inputs.flakeParts.lib.mkFlake {inherit inputs;} {
+    inputs.parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64" "x86_64-linux"];
 
       flake.nixosConfigurations = {
