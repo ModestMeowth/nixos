@@ -17,9 +17,6 @@
     sops.url = "github:Mic92/sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
 
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
-
     nixDB.url = "github:nix-community/nix-index-database";
     nixDB.inputs.nixpkgs.follows = "nixpkgs";
 

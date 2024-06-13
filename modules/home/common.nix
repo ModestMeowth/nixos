@@ -16,7 +16,6 @@
     stateVersion = "24.05";
 
     packages = with pkgs; [
-      agenix
       just
       mosh
       ncdu

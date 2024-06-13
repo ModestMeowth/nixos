@@ -15,9 +15,4 @@
       wezterm
     ];
   };
-  age = {
-    identityPaths = [
-      "/home/mm/.ssh/id_ed25519"
-    ];
-  };
 }

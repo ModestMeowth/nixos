@@ -4,9 +4,7 @@
   };
 in {
   nixosSystem = system: hostname: let
-    overlays = [
-      inputs.agenix.overlays.default
-    ];
+    overlays = [];
     pkgs = genPkgs system overlays;
   in
     inputs.nixpkgs.lib.nixosSystem {
@@ -20,19 +18,16 @@ in {
           };
         }
         inputs.sops.nixosModules.sops
-        inputs.agenix.nixosModules.default
         inputs.nixDB.nixosModules.nix-index
         ../../system/hosts/${hostname}
       ];
     };
 
   homeConfig = system: hostname: username: let
-    overlays.agenix = inputs.agenix.overlays.default;
-    specialArgs = inputs // { inherit system hostname overlays inputs; };
+    specialArgs = inputs // { inherit system hostname inputs; };
   in
     inputs.hm.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs {
-        overlays = builtins.attrValues overlays;
         system = "${system}";
         config.allowUnfree = true;
       };
@@ -43,7 +38,6 @@ in {
             config.allowUnfree = true;
           };
         }
-        inputs.agenix.homeManagerModules.age
         ../../home/${hostname}/${username}
       ];
       extraSpecialArgs = specialArgs;

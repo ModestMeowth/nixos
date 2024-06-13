@@ -1,7 +1,7 @@
 {
   imports = [../../../modules/system/cifs.nix];
 
-  age.secrets.smb-pwnyboy.file = /home/mm/.secrets/smb-pwnyboy.age;
+  sops.secrets."smb-pwnyboy".mode = "0400";
 
   fileSystems."/persist/share" = {
     fsType = "cifs";
@@ -15,7 +15,7 @@
       "file_mode=0640"
       "uid=1001"
       "gid=100"
-      "credentials=/run/agenix/smb-pwnyboy"
+      "credentials=/run/secrets/smb-pwnyboy"
     ];
   };
 }
