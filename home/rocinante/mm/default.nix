@@ -5,6 +5,7 @@
     (p+"/neovim/plugins/lsp")
     (p+"/term/wezterm")
     (p+"/gaming/retroarch.nix")
+    (p+"/k9s.nix")
   ]);
 
   home = {

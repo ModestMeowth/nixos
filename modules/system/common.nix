@@ -26,6 +26,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    age
     curl
     direnv
     git

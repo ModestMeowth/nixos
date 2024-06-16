@@ -114,5 +114,11 @@
       command = "wezterm start --cwd .";
       binding = "<Super><Shift>Return";
     };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      name = "BW Pass";
+      command = "/home/mm/.local/share/bw-copy";
+      binding = "<Super><Shift>B";
+    };
   };
 }

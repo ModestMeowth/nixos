@@ -62,4 +62,12 @@
       };
     };
   };
+
+  xdg.dataFile."bw-copy" = {
+    text = /*bash*/ ''
+      #!/usr/bin/env bash
+      (sops -d "$HOME/secrets/bitwarden" | wl-copy && sleep 10 && wl-copy -c) &
+    '';
+    executable = true;
+  };
 }
