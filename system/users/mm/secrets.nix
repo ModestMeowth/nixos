@@ -1,5 +1,4 @@
 {
   sops.secrets = {
-    cloudflare = {};
   };
 }
