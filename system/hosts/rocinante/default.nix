@@ -25,6 +25,7 @@
       (p + "/k3s")
       (p + "/syncthing.nix")
       (p + "/kali")
+      (p + "/cockpit.nix")
   ]);
 
   services = {
