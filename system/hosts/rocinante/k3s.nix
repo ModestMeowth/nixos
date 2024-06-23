@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ../../../modules/system/k3s
+  ];
+
   environment.systemPackages = with pkgs; [
     fluxcd
     kubernetes-helm

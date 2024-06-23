@@ -22,7 +22,6 @@
       (p + "/pipewire.nix")
       (p + "/ssh.nix")
       (p + "/gnome.nix")
-      (p + "/k3s")
       (p + "/syncthing.nix")
       (p + "/kali")
       (p + "/cockpit.nix")
