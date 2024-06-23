@@ -7,5 +7,9 @@
   services.k3s = {
     enable = true;
     role = "server";
+    extraFlags = toString [
+      "--flannel-backend=wireguard-native"
+      "--write-kubeconfig-mode=644"
+    ];
   };
 }
