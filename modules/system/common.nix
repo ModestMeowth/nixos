@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, pkgs-unstable, ...}: {
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "24.05";
@@ -50,7 +50,8 @@
     doas.enable = false;
   };
 
-  services = {
-    tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    package = pkgs-unstable.tailscale;
   };
 }
