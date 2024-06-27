@@ -25,6 +25,8 @@
     tmux.enable = true;
   };
 
+  documentation.man.generateCaches = true;
+
   environment.systemPackages = with pkgs; [
     age
     curl
