@@ -9,7 +9,7 @@
 
   hostConfig = {
     hw = {
-      chassis.type = "laptop";
+      chassis = "laptop";
       cpu = "amd";
       gpu = "amd";
 
