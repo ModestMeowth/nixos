@@ -1,38 +1,24 @@
 {
-  config,
   lib,
-  pkgs,
   ...
 }: {
   imports = [
-    ./amd.nix
-    ./intel.nix
-    ./nvidia.nix
-    ./vm.nix
+    ./amd
+    ./headless
+    ./intel
+    ./nvidia
+    ./vm
   ];
 
-  options.hostConfig = {
-    hw.gpu = lib.mkOption {
-      type = lib.types.enum [
-        "amd"
-        "intel"
-        "nvidia"
-        "vm"
-      ];
-    };
-
-    misc.video = lib.mkEnableOption "video";
-  };
-
-  config = {
-    hardware.opengl = {
-      enable = true;
-      driSupport = true;
-    };
-
-    environment.systemPackages = with pkgs; [
-      vulkan-tools
-      clinfo
+  options.hostConfig.hw.gpu = lib.mkOption {
+    type = lib.types.enum [
+      "amd"
+      "headless"
+      "intel"
+      "nvidia"
+      "vm"
     ];
   };
+
+  options.hostConfig.misc.video = lib.mkEnableOption "video";
 }

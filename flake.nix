@@ -33,13 +33,13 @@
 
       flake.nixosConfigurations = {
         rocinante = xLib.nixosSystem "x86_64-linux" "rocinante";
-        #        videodrome = xLib.nixosSystem "x86_64-linux" "videodrome";
+        videodrome = xLib.nixosSystem "x86_64-linux" "videodrome";
       };
 
       flake.homeConfigurations = {
       #        "mm@pwnyboy" = xLib.homeConfig "x86_64-linux" "pwnyboy" "mm";
         "mm@rocinante" = xLib.homeConfig "x86_64-linux" "rocinante" "mm";
-      #        "mm@videodrome" = xLib.homeConfig "x86_64-linux" "videodrome" "mm";
+        "mm@videodrome" = xLib.homeConfig "x86_64-linux" "videodrome" "mm";
       };
     };
 }

@@ -17,11 +17,18 @@
   };
 
   networking = {
-    nameserver = [
+    nameservers = [
       "100.100.100.100"
     ];
     search = [
       "cat-alkaline.ts.net"
     ];
+  };
+
+  hostConfig = {
+    hw.chassis = "wsl";
+    hw.gpu = "headless";
+    secrets.sops = true;
+    utils.tailscale.enable = true;
   };
 }

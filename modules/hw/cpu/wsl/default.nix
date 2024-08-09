@@ -25,7 +25,7 @@
       patchs =
         prev.patches
         ++ [
-          ../../../patches/systemd-wslfix.patch
+          ../../../../patches/systemd-wslfix.patch
         ];
     });
 
