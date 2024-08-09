@@ -3,14 +3,18 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./users.nix
-  ] ++ (let p = ../../../modules/system; in [
-    (p + "/wsl.nix")
-    (p + "/ssh.nix")
-  ]);
+  imports =
+    [
+      ./users.nix
+    ]
+    ++ (let
+      p = ../../../modules/system;
+    in [
+      (p + "/wsl.nix")
+      (p + "/ssh.nix")
+    ]);
 
-  wsl ={
+  wsl = {
     wslConf = {
       network = {
         hostname = "videodrome";

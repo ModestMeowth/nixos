@@ -8,15 +8,19 @@
 }: {
   networking.hostName = "rocinante";
 
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-    inputs.disko.nixosModules.disko
-    ./disks.nix
-    ./users.nix
-    ./cifs.nix
-    ./k3s.nix
-    ] ++ (let p = ../../../modules/system; in [
-      (p)
+  imports =
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
+      inputs.disko.nixosModules.disko
+      ./disks.nix
+      ./users.nix
+      ./cifs.nix
+      ./k8s.nix
+    ]
+    ++ (let
+      p = ../../../modules/system;
+    in [
+      p
       (p + "/secureboot.nix")
       (p + "/gpu.nix")
       (p + "/pipewire.nix")
@@ -25,7 +29,7 @@
       (p + "/syncthing.nix")
       (p + "/kali")
       (p + "/cockpit.nix")
-  ]);
+    ]);
 
   services = {
     fwupd.enable = true;

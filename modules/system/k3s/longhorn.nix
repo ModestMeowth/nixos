@@ -1,5 +1,9 @@
-{config, pkgs, ...}: {
-# See https://nixos.wiki/wiki/K3s#Longhorn for setup
+{
+  config,
+  pkgs,
+  ...
+}: {
+  # See https://nixos.wiki/wiki/K3s#Longhorn for setup
   environment.systemPackages = with pkgs; [
     nfs-utils
   ];

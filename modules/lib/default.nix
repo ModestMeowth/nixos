@@ -1,7 +1,9 @@
 {inputs, ...}: let
-  genPkgs = system: overlays: import inputs.nixpkgs {
+  inherit (inputs.nixpkgs) lib;
+  genPkgs = system: overlays:
+    import inputs.nixpkgs {
       inherit system overlays;
-  };
+    };
 in {
   nixosSystem = system: hostname: let
     overlays = [];
@@ -9,7 +11,7 @@ in {
   in
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs pkgs system; };
+      specialArgs = {inherit inputs pkgs system;};
       modules = [
         {
           _module.args.pkgs-unstable = import inputs.unstable {
@@ -19,12 +21,15 @@ in {
         }
         inputs.sops.nixosModules.sops
         inputs.nixDB.nixosModules.nix-index
-        ../../system/hosts/${hostname}
+        inputs.secBoot.nixosModules.lanzaboote
+        inputs.wsl.nixosModules.default
+        ../../modules
+        ../../hosts/${hostname}
       ];
     };
 
   homeConfig = system: hostname: username: let
-    specialArgs = inputs // { inherit system hostname inputs; };
+    specialArgs = inputs // {inherit system hostname inputs;};
   in
     inputs.hm.lib.homeManagerConfiguration {
       pkgs = import inputs.nixpkgs {
@@ -38,7 +43,8 @@ in {
             config.allowUnfree = true;
           };
         }
-        ../../home/${hostname}/${username}
+        ../../users/${username}/hm
+        ../../users/${username}/hm/hosts/${hostname}
       ];
       extraSpecialArgs = specialArgs;
     };
