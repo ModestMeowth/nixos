@@ -9,6 +9,7 @@
         "ls" = "eza --icons --sort=type";
         "ll" = "eza -l --icons --sort=type";
         "la" = "eza -lag --icons --sort=type";
+        "tree" = "eza --icons --tree";
       };
     };
   };
