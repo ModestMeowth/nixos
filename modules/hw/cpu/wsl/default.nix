@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkIf (config.hostConfig.hw.cpu == "wsl") {
@@ -19,15 +18,6 @@
       wslConf.interop.appendWindowsPath = true;
       startMenuLaunchers = true;
     };
-
-    # patch fixes https://github.com/microsoft/WSL/issues/8879
-    systemd.package = pkgs.systemd.overrideAttrs (final: prev: {
-      patchs =
-        prev.patches
-        ++ [
-          ../../../../patches/systemd-wslfix.patch
-        ];
-    });
 
     # fixes ssh over tailscale
     networking.interfaces.eth0.mtu = 1500;
