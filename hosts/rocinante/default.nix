@@ -22,7 +22,7 @@
     utils = {
       nm.enable = true;
       tailscale.enable = true;
-      fwupd = true;
+      fwupd.enable = true;
     };
 
     wm.gnome.enable = true;
