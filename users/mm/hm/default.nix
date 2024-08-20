@@ -13,7 +13,6 @@
 
     packages = with pkgs; [
       just
-      lsd
       mosh
       ncdu
       nmap
