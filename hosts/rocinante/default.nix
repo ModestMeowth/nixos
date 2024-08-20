@@ -22,10 +22,10 @@
     utils = {
       nm.enable = true;
       tailscale.enable = true;
+      fwupd = true;
     };
 
     wm.gnome.enable = true;
-
   };
 
   fileSystems."/persist/share" = {
