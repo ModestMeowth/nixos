@@ -13,7 +13,10 @@
 
   config = lib.mkIf config.hostConfig.hw.secureboot {
     boot = {
-      loader.systemd-boot.enable = lib.mkForce false;
+      loader.systemd-boot = {
+        enable = lib.mkForce false;
+        configurationLimit = 5;
+      };
 
       lanzaboote = {
         enable = true;
