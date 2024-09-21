@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./cluster
     ./hw
     ./misc
     ./programs
