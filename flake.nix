@@ -54,6 +54,7 @@
           hostname = "rocinante";
           extraModules = [
             inputs.secBoot.nixosModules.lanzaboote
+            ./modules/hw/secureboot
           ];
         };
 
@@ -61,7 +62,7 @@
           hostname = "videodrome";
           extraModules = [
             inputs.wsl.nixosModules.default
-            ./modules/cpu/wsl
+            ./modules/hw/cpu/wsl
           ];
         };
       };
