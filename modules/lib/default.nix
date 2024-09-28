@@ -1,51 +1,42 @@
-{inputs, ...}: let
-  inherit (inputs.nixpkgs) lib;
-  genPkgs = system: overlays:
-    import inputs.nixpkgs {
-      inherit system overlays;
-    };
+{inputs, genPkgs}: let
+  lib = inputs.nixpkgs.lib.extend (final: prev: { myLib = import ./lib { lib = final; }; });
 in {
-  nixosSystem = system: hostname: let
-    overlays = [];
-    pkgs = genPkgs system overlays;
-  in
-    inputs.nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = {inherit inputs pkgs system;};
-      modules = [
-        {
-          _module.args.pkgs-unstable = import inputs.unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        }
-        inputs.sops.nixosModules.sops
-        inputs.nixDB.nixosModules.nix-index
-        inputs.secBoot.nixosModules.lanzaboote
-        inputs.wsl.nixosModules.default
-        ../../modules
-        ../../hosts/${hostname}
-      ];
+  nixosSystem = {
+    hostname,
+    system ? "x86_64-linux",
+    nixpkgs ? inputs.nixpkgs,
+    myPkgs ? inputs.self.legacyPackages.${system},
+    baseModules ? [
+      inputs.sops.nixosModules.sops
+      inputs.nixDB.nixosModules.nix-index
+      ../../modules
+      ../../hosts/${hostname}
+    ],
+    extraModules ? [], }: inputs.nixpkgs.lib.nixosSystem {
+      inherit system lib;
+      specialArgs = {
+        inherit inputs myPkgs hostname;
+      };
+      pkgs = genPkgs system;
+      modules = baseModules ++ extraModules;
     };
 
-  homeConfig = system: hostname: username: let
-    specialArgs = inputs // {inherit system hostname inputs;};
-  in
-    inputs.hm.lib.homeManagerConfiguration {
-      pkgs = import inputs.nixpkgs {
-        system = "${system}";
-        config.allowUnfree = true;
-      };
-      modules = [
-        {
-          _module.args.pkgs-unstable = import inputs.unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        }
-        ../../users/${username}/hm
-        ../../users/${username}/hm/hosts/${hostname}
-      ];
-      extraSpecialArgs = specialArgs;
+  homeConfig = {
+    hostname,
+    username,
+    system ? "x86_64-linux",
+    nixpkgs ? inputs.nixpkgs,
+    myPkgs ? inputs.self.legacyPackages.${system}
+  }: inputs.hm.lib.homeManagerConfiguration {
+    inherit lib;
+    pkgs = genPkgs system;
+    extraSpecialArgs = {
+      inherit inputs myPkgs hostname;
     };
+    modules = [
+      inputs.sops.homeManagerModules.sops
+      ../../users/${username}/hm
+      ../../users/${username}/hm/hosts/${hostname}
+    ];
+  };
 }

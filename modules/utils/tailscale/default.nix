@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs-unstable,
+  pkgs,
   ...
 }: {
   options.hostConfig.utils.tailscale = {
@@ -11,7 +11,7 @@
   config = lib.mkIf config.hostConfig.utils.tailscale.enable {
     services.tailscale = {
       enable = true;
-      package = pkgs-unstable.tailscale;
+      package = pkgs.unstable.tailscale;
     };
   };
 }

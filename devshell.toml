@@ -1,0 +1,10 @@
+# https://numtide.github.io/devshell
+[[commands]]
+package = "pkgs.just"
+
+[devshell]
+packages = [
+    "pkgs.hydra-check",
+    "pkgs.nix-prefetch",
+    "pkgs.nvfetcher",
+]

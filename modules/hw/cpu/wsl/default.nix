@@ -4,14 +4,6 @@
   ...
 }: {
   config = lib.mkIf (config.hostConfig.hw.cpu == "wsl") {
-#    assertions = [
-#      {
-#        assertion = !config.hostConfig.hw.secureboot;
-#        message = ''
-#          Secureboot and WSL cannot both be enabled
-#        '';
-#      }
-#    ];
 
     wsl = {
       enable = true;

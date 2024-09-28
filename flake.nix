@@ -5,6 +5,9 @@
 
     parts.url = "github:hercules-ci/flake-parts";
 
+    devshell.url = "github:numtide/devshell";
+    devshell.inputs.nixpkgs.follows = "nixpkgs";
+
     secBoot.url = "github:nix-community/lanzaboote";
     secBoot.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -26,20 +29,48 @@
   };
 
   outputs = {...} @ inputs: let
-    xLib = import ./modules/lib {inherit inputs;};
+    genPkgs = system:
+      import inputs.nixpkgs {
+        inherit system;
+        overlays = builtins.attrValues (import ./overlays { inherit inputs; });
+        config.allowUnfree = true;
+      };
+    xLib = import ./modules/lib {inherit inputs genPkgs;};
   in
     inputs.parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64" "x86_64-linux"];
 
+      perSystem = { pkgs, system, ... }: {
+        _module.args.pkgs = genPkgs system;
+        formatter = pkgs.alejandra;
+        legacyPackages = import ./packages { inherit pkgs; };
+        devShells.default = pkgs.devshell.mkShell { imports = [
+          (pkgs.devshell.importTOML ./devshell.toml)
+        ];};
+      };
+
       flake.nixosConfigurations = {
-        rocinante = xLib.nixosSystem "x86_64-linux" "rocinante";
-        videodrome = xLib.nixosSystem "x86_64-linux" "videodrome";
+        rocinante = xLib.nixosSystem {
+          hostname = "rocinante";
+          extraModules = [
+            inputs.secBoot.nixosModules.lanzaboote
+          ];
+        };
+
+        videodrome = xLib.nixosSystem {
+          hostname = "videodrome";
+          extraModules = [
+            inputs.wsl.nixosModules.default
+            ./modules/cpu/wsl
+          ];
+        };
       };
 
       flake.homeConfigurations = {
-        "mm@pwnyboy" = xLib.homeConfig "x86_64-linux" "pwnyboy" "mm";
-        "mm@rocinante" = xLib.homeConfig "x86_64-linux" "rocinante" "mm";
-        "mm@videodrome" = xLib.homeConfig "x86_64-linux" "videodrome" "mm";
+        "mm@rocinante" = xLib.homeConfig {
+          username = "mm";
+          hostname = "rocinante";
+        };
       };
     };
 }

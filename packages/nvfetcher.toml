@@ -1,0 +1,11 @@
+[keys]
+fetch.url = "https://github.com/ModestMeowth.keys"
+src.manual = "latest"
+
+[yaml-companion-nvim]
+src.github = "someone-stole-my-name/yaml-companion.nvim"
+fetch.github = "someone-stole-my-name/yaml-companion.nvim"
+
+[abbreviation-tips]
+src.github = "gazorby/fish-abbreviation-tips"
+fetch.github = "gazorby/fish-abbreviation-tips"
