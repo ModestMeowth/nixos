@@ -72,6 +72,16 @@
           username = "mm";
           hostname = "rocinante";
         };
+
+        "mm@videodrome" = xLib.homeConfig {
+          username = "mm";
+          hostname = "videodrome";
+        };
+
+        "mm@pwnyboy" = xLib.homeConfig {
+          username = "mm";
+          hostname = "pwnyboy";
+        };
       };
     };
 }
