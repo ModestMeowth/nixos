@@ -7,6 +7,7 @@ usage:
     @echo
     @echo "  prefetch (see man nix-prefetch)"
 
+[no-cd]
 generate:
     nvfetcher
 

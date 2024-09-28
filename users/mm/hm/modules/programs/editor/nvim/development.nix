@@ -11,6 +11,7 @@
       treesitter = true;
       trouble = true;
       undotree = true;
+      yaml-companion = true;
     };
   };
 }

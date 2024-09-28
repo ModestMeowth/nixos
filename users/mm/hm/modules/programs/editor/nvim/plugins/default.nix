@@ -9,5 +9,6 @@
     ./treesitter.nix
     ./trouble.nix
     ./undotree.nix
+    ./yaml-companion.nix
   ];
 }

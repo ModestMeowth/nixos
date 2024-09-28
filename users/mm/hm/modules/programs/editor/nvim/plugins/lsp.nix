@@ -67,7 +67,6 @@
 
         -- LSP
         local lspconfig = require "lspconfig"
-        local telescope = require "telescope.builtin"
         local schemastore = require "schemastore"
 
         vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
@@ -87,7 +86,9 @@
             vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts("Show signature"))
             vim.keymap.set("n", "<leader>R", vim.lsp.buf.rename, opts("Rename symbol"))
             vim.keymap.set({"n", "v"}, "<leader>a", vim.lsp.buf.code_action, opts("Code action"))
-            vim.keymap.set("n", "<leader>r", telescope.lsp_references, opts("Open references picker"))
+            if tbuiltin then
+              vim.keymap.set("n", "<leader>r", tbuiltin.lsp_references, opts("Open references picker"))
+            end
             vim.keymap.set("n", "<C-f>", function()
               vim.lsp.buf.format({async = true})
             end, opts("Format buffer"))
@@ -131,17 +132,22 @@
             },
           },
         }
-        lspconfig.yamlls.setup {
-          settings = {
-            yaml = {
-              schemas = schemastore.yaml.schemas(),
-              schemaStore = {
-                enable = false,
-                url = "",
+
+        if yaml_companion == nil then
+          lspconfig.yamlls.setup {
+            settings = {
+              yaml = {
+                schemas = schemastore.yaml.schemas(),
+                schemaStore = {
+                  enable = false,
+                  url = "",
+                },
               },
             },
-          },
-        }
+          }
+        else
+          lspconfig.yamlls.setup(yaml_companion)
+        end
 
         lspconfig.bashls.setup {}
         lspconfig.dockerls.setup {}
