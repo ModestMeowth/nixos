@@ -65,11 +65,11 @@
         "zellij": "zellij"
       },
       "locked": {
-        "lastModified": 1727054170,
-        "narHash": "sha256-c9qCRK2Zrfe4U9ivXs6VB0EHrOeH7gJWjUJddBHRN3U=",
+        "lastModified": 1727659119,
+        "narHash": "sha256-CabVVzdS5hm3atie+Pu2Ap05A6wojvX2rsDSEW+yH4s=",
         "owner": "ModestMeowth",
         "repo": "dracula",
-        "rev": "83e43aac98d20507ecb7d3a0e9d9926ab20e8314",
+        "rev": "615541420f8c89c14782ed6866d2dd5021e9c133",
         "type": "github"
       },
       "original": {
@@ -194,11 +194,11 @@
     "k9s": {
       "flake": false,
       "locked": {
-        "lastModified": 1727020615,
-        "narHash": "sha256-9pkAqpCBoQPx/vmfGkfd/OnlpoRsHId7E5iIhbghkw8=",
+        "lastModified": 1727624582,
+        "narHash": "sha256-g5UD7HQt1XmuPRXPpNqDwoO3y0qUuFEV3DR16nXxhUQ=",
         "owner": "derailed",
         "repo": "k9s",
-        "rev": "2492402ba3311ab6618f58d692ad15518c54cac6",
+        "rev": "6e0e41670672d0aa524a3df859feb6f772381c07",
         "type": "github"
       },
       "original": {
@@ -245,11 +245,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727580512,
-        "narHash": "sha256-gEWoJ+027OwsNs6f1GkDPrCxBFr5Vky7vWKjHRJi60s=",
+        "lastModified": 1727658919,
+        "narHash": "sha256-YAePt2GldkkRJ08LvZNHcuS6shIVStj+K+1DZN3gbnM=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "a2ab1588541ae442bd3a682f8f6bbcbca2672f10",
+        "rev": "f9fdf8285690a351e8998f1e703ebdf9cdf51dee",
         "type": "github"
       },
       "original": {
