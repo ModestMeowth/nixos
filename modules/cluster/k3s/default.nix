@@ -4,6 +4,10 @@
   ...
 }: {
 
+  imports = [
+    ./longhorn.nix
+  ];
+
   options.hostConfig.cluster.k3s = lib.mkEnableOption "k3s";
 
   config = lib.mkIf config.hostConfig.cluster.k3s {
