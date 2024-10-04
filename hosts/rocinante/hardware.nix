@@ -52,6 +52,11 @@
       fsType = "zfs";
     };
 
+    "/var/lib/rancher/k3s/storage" = {
+      device = "zroot/persist/k8s";
+      fsType = "zfs";
+    };
+
     "/boot" = {
       device = "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B7785953DEF-part1";
       fsType = "vfat";

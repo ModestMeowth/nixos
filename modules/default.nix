@@ -9,6 +9,8 @@
 
   system.stateVersion = "24.05";
 
+  networking.nftables.enable = true;
+
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';

@@ -6,17 +6,20 @@
 
   imports = [
     ./longhorn.nix
+    ./rook.nix
   ];
 
   options.hostConfig.cluster.k3s = lib.mkEnableOption "k3s";
 
   config = lib.mkIf config.hostConfig.cluster.k3s {
     networking.firewall = {
+      trustedInterfaces = [ "cni+" ];
       allowedTCPPorts = [
         6443
       ];
 
       allowedUDPPorts = [
+        53
       ];
     };
 

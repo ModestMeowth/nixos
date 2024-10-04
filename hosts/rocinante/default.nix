@@ -28,7 +28,6 @@
     wm.gnome.enable = true;
 
     cluster.k3s = true;
-    cluster.k3s-longhorn = true;
   };
 
   fileSystems."/persist/share" = {

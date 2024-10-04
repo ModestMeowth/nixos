@@ -1,6 +1,6 @@
 # https://numtide.github.io/devshell
 [[commands]]
-package = "pkgs.just"
+package = "unstable.just"
 
 [devshell]
 packages = [

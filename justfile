@@ -1,5 +1,14 @@
 default: usage
 
+switch target='':
+    nh {{ target }} switch .
+
+build target='':
+    nh {{ target }} build .
+
+clean target='':
+    nh clean {{ target }}
+
 usage:
     @echo "  pkg PKG_NAME [channel]"
     @echo "    PKG_NAME (ex: tailscale)"
