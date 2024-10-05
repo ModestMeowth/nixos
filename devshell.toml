@@ -1,4 +1,6 @@
 # https://numtide.github.io/devshell
+motd = "Just $(just --list)"
+
 [[commands]]
 package = "unstable.just"
 
