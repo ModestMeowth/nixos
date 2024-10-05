@@ -2,6 +2,11 @@
 default:
     @{{ just_executable() }} --justfile {{ justfile() }} --list
 
+# pull from git and update flake
+update:
+    git pull
+    nix flake update --commit-lock-file
+
 # nh (os|home) switch .
 switch target='--help':
     @nh {{ target }} switch .
