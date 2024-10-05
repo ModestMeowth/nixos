@@ -4,7 +4,5 @@ package = "unstable.just"
 
 [devshell]
 packages = [
-    "pkgs.hydra-check",
-    "pkgs.nix-prefetch",
     "pkgs.nvfetcher",
 ]

@@ -1,27 +1,24 @@
-default: usage
+[private]
+default:
+    @{{ just_executable() }} --justfile {{ justfile() }} --list
 
-switch target='':
-    nh {{ target }} switch .
+# nh (os|home) switch .
+switch target='--help':
+    @nh {{ target }} switch .
 
-build target='':
-    nh {{ target }} build .
+# nh (os|home) build .
+build target='--help':
+    @nh {{ target }} build .
 
-clean target='':
-    nh clean {{ target }}
+# nh clean (all|profile|user)
+clean target='--help':
+    @nh clean {{ target }}
 
-usage:
-    @echo "  pkg PKG_NAME [channel]"
-    @echo "    PKG_NAME (ex: tailscale)"
-    @echo "    channel (ex: 24.05|unstable, default = 24.05)"
-    @echo
-    @echo "  prefetch (see man nix-prefetch)"
+# nh search PACKAGE --channel=nixos-(24.04|unstable)
+search package='--help' channel='24.05':
+    @nh search --channel nixos-{{ channel }} {{ package }}
 
+# generate packages with nvfetcher
 [no-cd]
 generate:
     nvfetcher
-
-pkg package nixpkgs='24.05':
-    hydra-check {{ package }} --channel={{ nixpkgs }}
-
-prefetch *ARGS:
-    nix-prefetch {{ ARGS }}
