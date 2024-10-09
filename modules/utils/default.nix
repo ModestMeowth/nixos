@@ -4,6 +4,7 @@
     ./networkmanager
     ./ssh
     ./sops
+    ./smart
     ./sudo
     ./tailscale
   ];

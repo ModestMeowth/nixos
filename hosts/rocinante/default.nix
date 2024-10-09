@@ -22,6 +22,7 @@
     utils = {
       nm.enable = true;
       tailscale.enable = true;
+      smart = true;
       fwupd.enable = true;
     };
 

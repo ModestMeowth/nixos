@@ -16,6 +16,7 @@
       trustedInterfaces = [ "cni+" ];
       allowedTCPPorts = [
         6443
+        10250
       ];
 
       allowedUDPPorts = [
