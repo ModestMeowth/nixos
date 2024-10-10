@@ -52,7 +52,7 @@
       fsType = "zfs";
     };
 
-    "/var/lib/rancher/k3s/storage" = {
+    "/persist/k8s" = {
       device = "zroot/persist/k8s";
       fsType = "zfs";
     };

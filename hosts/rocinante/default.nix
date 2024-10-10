@@ -1,35 +1,41 @@
-{
-  networking.hostName = "rocinante";
+{hostname, pkgs, ...}: {
+  networking.hostName = hostname;
 
   imports = [
     ./hardware.nix
     ./secrets.nix
-    ./users.nix
+    ../../users/mm
   ];
 
-  hostConfig = {
+  modules = {
     hw = {
-      chassis = "laptop";
       cpu = "amd";
-      gpu = "amd";
-
-      secureboot = true;
-      zfs = true;
+      gpu.amd.enable = true;
+      secureboot.enable = true;
+      zfs.enable = true;
     };
 
-    secrets.sops = true;
-
-    utils = {
-      nm.enable = true;
-      tailscale.enable = true;
-      smart = true;
-      fwupd.enable = true;
+    monitoring = {
+      node-exporter.enable = true;
+      smartd.enable = true;
     };
 
+    services = {
+      chrony.enable = true;
+      ssh.enable = true;
+      tailscale = {
+        enable = true;
+        package = pkgs.unstable.tailscale;
+      };
+    };
+
+    cluster.k3s.enable = true;
     wm.gnome.enable = true;
-
-    cluster.k3s = true;
   };
+
+  services.fwupd.enable = true;
+  networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   fileSystems."/persist/share" = {
     fsType = "cifs";

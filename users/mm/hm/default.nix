@@ -32,9 +32,8 @@
         batdiff
         prettybat
       ];
-      themes.dracula = {
-        src = "${inputs.dracula.outputs.sublime}";
-        file = "Dracula.tmTheme";
+      themes.Dracula = {
+        src = inputs.dracula.outputs.bat;
       };
     };
   };

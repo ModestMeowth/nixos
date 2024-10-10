@@ -17,15 +17,11 @@
     sops.url = "github:Mic92/sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixDB.url = "github:nix-community/nix-index-database";
-    nixDB.inputs.nixpkgs.follows = "nixpkgs";
-
     hm.url = "github:nix-community/home-manager";
     hm.inputs.nixpkgs.follows = "nixpkgs";
 
-    dracula.url = "github:ModestMeowth/dracula";
-
     mm.url = "github:ModestMeowth/.github";
+    dracula.url = "github:ModestMeowth/dracula";
   };
 
   outputs = {...} @ inputs: let
@@ -35,7 +31,7 @@
         overlays = builtins.attrValues (import ./overlays { inherit inputs; });
         config.allowUnfree = true;
       };
-    xLib = import ./modules/lib {inherit inputs genPkgs;};
+    xLib = import ./lib {inherit inputs genPkgs;};
   in
     inputs.parts.lib.mkFlake {inherit inputs;} {
       systems = ["aarch64" "x86_64-linux"];
@@ -52,18 +48,10 @@
       flake.nixosConfigurations = {
         rocinante = xLib.nixosSystem {
           hostname = "rocinante";
-          extraModules = [
-            inputs.secBoot.nixosModules.lanzaboote
-            ./modules/hw/secureboot
-          ];
         };
 
         videodrome = xLib.nixosSystem {
           hostname = "videodrome";
-          extraModules = [
-            inputs.wsl.nixosModules.default
-            ./modules/hw/cpu/wsl
-          ];
         };
       };
 
