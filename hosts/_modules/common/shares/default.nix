@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./pwnyboy-share.nix
+  ];
+}

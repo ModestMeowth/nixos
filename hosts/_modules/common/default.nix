@@ -3,5 +3,7 @@
     ./locale.nix
     ./nix.nix
     ./shells.nix
+
+    ./shares
   ];
 }
