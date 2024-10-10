@@ -1,5 +1,6 @@
-{
+{hostname, pkgs, ...}: {
   imports = [
+    ./hardware.nix
     ./secrets.nix
     ./users.nix
   ];
@@ -7,13 +8,11 @@
   wsl = {
     wslConf = {
       network = {
-        hostname = "videodrome";
+        hostname = hostname;
         generateHosts = false;
         generateResolvConf = false;
       };
-      user.default = "mm";
     };
-    defaultUser = "mm";
   };
 
   networking = {
@@ -25,10 +24,8 @@
     ];
   };
 
-  hostConfig = {
-    hw.chassis = "wsl";
-    hw.gpu = "headless";
-    secrets.sops = true;
-    utils.tailscale.enable = true;
+  modules.services.tailscale = {
+    enable = true;
+    package = pkgs.unstable.tailscale;
   };
 }
