@@ -6,7 +6,7 @@
   programs.gh.enable = true;
   home.packages = [ pkgs.commitizen ];
 
-  modules.shell.gnome = {
+  modules.wm.gnome = {
       enable = true;
 
       dracula.enable = true;

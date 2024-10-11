@@ -2,7 +2,7 @@
 
   cfg = config.modules.term.wezterm;
   dotfiles = inputs.mm.outputs.dotfiles;
-  theme = inputs.mm.outputs.theme.wezterm;
+  theme = inputs.dracula.outputs.wezterm;
 
 in {
   options.modules.term.wezterm.enable = mkEnableOption "wezterm";
