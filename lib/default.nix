@@ -10,8 +10,7 @@ in {
       sops.nixosModules.sops
       secBoot.nixosModules.lanzaboote
       wsl.nixosModules.default
-      ../hosts/_modules/common
-      ../hosts/_modules/nixos
+      ../hosts/_modules
       ../hosts/${hostname}
     ],
     extraModules ? [], }: inputs.nixpkgs.lib.nixosSystem {
