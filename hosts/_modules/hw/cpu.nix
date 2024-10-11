@@ -1,4 +1,4 @@
-{config, lib, ...}: with lib; let
+{config, lib, pkgs, ...}: with lib; let
 
   cfg = config.modules.hw.cpu;
 
@@ -20,7 +20,7 @@ in {
 
       hardware.cpu.amd.updateMicrocode = true;
       boot.kernelModules = ["kvm-amd"];
-      environment.systemPackages = ["pciutils"];
+      environment.systemPackages = [pkgs.pciutils];
 
     })
 
@@ -28,7 +28,7 @@ in {
 
       hardware.cpu.amd.updateMicrocode = true;
       boot.kernelModules = ["kvm-amd"];
-      environment.systemPackages = ["pciutils"];
+      environment.systemPackages = [pkgs.pciutils];
 
     })
 
