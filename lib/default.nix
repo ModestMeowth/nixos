@@ -1,6 +1,9 @@
 {inputs, genPkgs}: let
+
   lib = inputs.nixpkgs.lib.extend (final: prev: { myLib = import ./lib { lib = final; }; });
+
 in {
+
   nixosSystem = {
     hostname,
     system ? "x86_64-linux",
@@ -30,14 +33,18 @@ in {
     myPkgs ? inputs.self.legacyPackages.${system}
   }: inputs.hm.lib.homeManagerConfiguration {
     inherit lib;
+
     pkgs = genPkgs system;
+
     extraSpecialArgs = {
-      inherit inputs myPkgs hostname;
+      inherit inputs myPkgs hostname username;
     };
+
     modules = [
       inputs.sops.homeManagerModules.sops
-      ../users/${username}/hm
-      ../users/${username}/hm/hosts/${hostname}
+      ../home/_modules
+      ../home/${username}
     ];
   };
+
 }
