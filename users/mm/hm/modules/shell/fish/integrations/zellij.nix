@@ -19,7 +19,7 @@
     xdg.configFile = {
         "zellij/config.kdl".source = "${inputs.mm.outputs.dotfiles}/dot_config/zellij/config.kdl";
         "zellij/layouts/default.kdl".source = "${inputs.mm.outputs.dotfiles}/dot_config/zellij/layouts/default.kdl";
-        "zellij/themes/dracula.kdl".source = "${inputs.dracula.outputs.zellij}/dracula.kdl";
+        "zellij/themes/dracula.kdl".source = inputs.dracula.outputs.zellij;
     };
   };
 }

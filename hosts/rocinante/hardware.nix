@@ -6,34 +6,37 @@
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  boot = {
-    initrd.availableKernelModules = [
-      "nvme"
-      "xhci_pci"
-      "usb_storage"
-      "sd_mod"
-    ];
+  modules.hw.cpu ="amd";
+  modules.hw.gpu.amd.enable = true;
+  modules.hw.secureboot.enable = true;
+  modules.hw.zfs.enable = true;
 
-    kernelModules = [
-      "acpi_call"
-    ];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "usb_storage"
+    "sd_mod"
+  ];
 
-    extraModulePackages = with config.boot.kernelPackages; [
-      acpi_call
-    ];
+  boot.kernelModules = [
+    "acpi_call"
+  ];
 
-    kernelParams = [
-      "quiet"
-    ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    acpi_call
+  ];
 
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-      grub.enable = lib.mkForce false;
-      timeout = 3;
+  boot.kernelParams = [
+    "quiet"
+  ];
+
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
     };
+    grub.enable = lib.mkForce false;
+    timeout = 3;
   };
 
   fileSystems = {
@@ -52,7 +55,7 @@
       fsType = "zfs";
     };
 
-    "/var/lib/rancher/k3s/storage" = {
+    "/persist/k8s" = {
       device = "zroot/persist/k8s";
       fsType = "zfs";
     };

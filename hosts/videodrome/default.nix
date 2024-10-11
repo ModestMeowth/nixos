@@ -1,19 +1,14 @@
-{
+{hostname, pkgs, ...}: {
   imports = [
+    ./hardware.nix
     ./secrets.nix
     ./users.nix
   ];
 
-  wsl = {
-    wslConf = {
-      network = {
-        hostname = "videodrome";
-        generateHosts = false;
-        generateResolvConf = false;
-      };
-      user.default = "mm";
-    };
-    defaultUser = "mm";
+  wsl.wslConf.network = {
+    hostname = hostname;
+    generateHosts = false;
+    generateResolvConf = false;
   };
 
   networking = {
@@ -25,10 +20,14 @@
     ];
   };
 
-  hostConfig = {
-    hw.chassis = "wsl";
-    hw.gpu = "headless";
-    secrets.sops = true;
-    utils.tailscale.enable = true;
+  modules.services.tailscale = {
+    enable = true;
+    package = pkgs.unstable.tailscale;
+  };
+
+  modules.services.ssh.enable = true;
+
+  modules.shares.pwnyboy-share = {
+    enable = true;
   };
 }
