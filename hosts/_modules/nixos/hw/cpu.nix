@@ -15,11 +15,13 @@ in {
     (mkIf (cfg == "amd") {
       hardware.cpu.amd.updateMicrocode = true;
       boot.kernelModules = ["kvm-amd"];
+      environment.systemPackages = ["pciutils"];
     })
 
     (mkIf (cfg == "intel") {
       hardware.cpu.amd.updateMicrocode = true;
       boot.kernelModules = ["kvm-amd"];
+      environment.systemPackages = ["pciutils"];
     })
 
     (mkIf (cfg == "rpi") {

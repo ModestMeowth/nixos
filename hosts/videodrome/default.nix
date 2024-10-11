@@ -5,14 +5,10 @@
     ./users.nix
   ];
 
-  wsl = {
-    wslConf = {
-      network = {
-        hostname = hostname;
-        generateHosts = false;
-        generateResolvConf = false;
-      };
-    };
+  wsl.wslConf.network = {
+    hostname = hostname;
+    generateHosts = false;
+    generateResolvConf = false;
   };
 
   networking = {
@@ -27,5 +23,11 @@
   modules.services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
+  };
+
+  modules.services.ssh.enable = true;
+
+  modules.shares.pwnyboy-share = {
+    enable = true;
   };
 }
