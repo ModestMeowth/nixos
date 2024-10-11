@@ -1,5 +1,6 @@
 {config, lib, pkgs, ...}: let
   ifGroupsExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+  sourceData = pkgs.callPackage ../../packages/_sources/generated.nix {};
 in {
   users.users.mm = {
     isNormalUser = true;
@@ -17,5 +18,9 @@ in {
     ];
 
     initialHashedPassword = "$y$j9T$xgIkUu0jxDn.E27xw3HIP0$AxOebMJ322FjxN2ncCvz8g0HWhdn3Om.d9HyWyV35K0";
+
+    openssh.authorizedKeys.keyFiles = [
+      sourceData.keys.src
+    ];
   };
 }
