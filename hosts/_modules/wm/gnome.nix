@@ -24,7 +24,7 @@ in {
       gnome.gnome-tweaks
     ];
 
-    environmnet.gnome.excludePackages = with pkgs; [
+    environment.gnome.excludePackages = with pkgs; [
       gnome-tour
       gedit
       gnome.gnome-music
