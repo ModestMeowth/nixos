@@ -7,5 +7,5 @@
     pkgs.nh
   ];
 
-  home.file."justfile".source = mkForce "${inputs.mm.outpus.dotfiles}/justfile-ubuntu";
+  home.file."justfile".source = mkForce "${inputs.mm.outputs.dotfiles}/justfile-ubuntu";
 }
