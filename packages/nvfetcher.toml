@@ -7,5 +7,5 @@ src.github = "someone-stole-my-name/yaml-companion.nvim"
 fetch.github = "someone-stole-my-name/yaml-companion.nvim"
 
 [abbreviation-tips]
-src.github = "gazorby/fish-abbreviation-tips"
+src.github_tag = "gazorby/fish-abbreviation-tips"
 fetch.github = "gazorby/fish-abbreviation-tips"

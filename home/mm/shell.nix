@@ -1,4 +1,4 @@
-{inputs, pkgs, ...}: {
+{inputs, pkgs, myPkgs, ...}: {
   programs.fish.enable = true;
 
   programs.fish.plugins = with pkgs.fishPlugins; [
@@ -9,6 +9,10 @@
     {
       name = "fzf-fish";
       src = fzf-fish.src;
+    }
+    {
+      name = "abbreviation-tips";
+      src = myPkgs.fish-plugins.abbreviation-tips.src;
     }
   ];
 

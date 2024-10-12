@@ -7,7 +7,7 @@ in {
     modules.neovim.plugins.telescope.enable = true;
 
     programs.neovim = {
-      plugins = [ myPkgs.nvim-plugins.yaml-companion-nvim ];
+      plugins = [ myPkgs.neovim-plugins.yaml-companion-nvim ];
 
       extraLuaConfig = /* lua */ ''
         require "yaml-companion".setup {}
