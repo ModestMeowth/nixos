@@ -18,6 +18,8 @@ in {
       ];
 
       extraPackages = with pkgs; [
+        # 4.10 is broken in stable but not unstable
+        unstable.vscode-langservers-extracted
         alejandra
         clang-tools
         gopls
@@ -38,7 +40,6 @@ in {
         pyright
         typescript-language-server
         vim-language-server
-        vscode-langservers-extracted
       ]);
 
       extraLuaConfig = /* lua */ ''
