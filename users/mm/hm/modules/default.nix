@@ -1,7 +1,0 @@
-{
-  imports = [
-    ./config
-    ./shell
-    ./programs
-  ];
-}
