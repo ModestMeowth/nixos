@@ -5,7 +5,7 @@ keys:
   - &vdrm_mm_age age1vz6akhdt4hwfxe3d2n7er2nym7lttcg7uchafysajdtwa696zcyq6latjk
   - &pnby_mm_age age1tx6m00qdxu0kfgxwkw8nhltd3kr0jgysmm2eje67tdvhlq8fuc5sxgww8a
 creation_rules:
-  - path_regex: secrets.yaml
+  - path_regex: .*\.sops.ya?ml$
     key_groups:
       - pgp: []
         age:
