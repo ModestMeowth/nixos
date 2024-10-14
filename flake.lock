@@ -65,11 +65,11 @@
         "zellij": "zellij"
       },
       "locked": {
-        "lastModified": 1728782477,
-        "narHash": "sha256-JaeioIn71LGUYHsL5vLyl/0syVAkX1l4PxGxDY1SOXY=",
+        "lastModified": 1728868694,
+        "narHash": "sha256-FUuu1q2OednG5oiOwVPRwM5sP4BTwYv6p54OtdzV9Bk=",
         "owner": "ModestMeowth",
         "repo": "dracula",
-        "rev": "8a7d0be8071ababb828979a20f3b8b9eccc93c23",
+        "rev": "aa482268a1172b9ea0cda7281853cb71bc2f409d",
         "type": "github"
       },
       "original": {
@@ -194,11 +194,11 @@
     "k9s": {
       "flake": false,
       "locked": {
-        "lastModified": 1728747098,
-        "narHash": "sha256-nSlL6Ayg5BTz5vidZ5H+uWrliSugD4E6f59oXw5WgM8=",
+        "lastModified": 1728828412,
+        "narHash": "sha256-4L8/gVmFzWxF6zHza/J2JJDTTfGmbMIJLI0746Bwtt0=",
         "owner": "derailed",
         "repo": "k9s",
-        "rev": "6fc151bda25ee0bc9bf1d55e7704263ebcbb1c47",
+        "rev": "8a16b57c09c46dc4be2c9f02ac02da10043610e3",
         "type": "github"
       },
       "original": {
