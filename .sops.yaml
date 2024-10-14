@@ -3,6 +3,7 @@ keys:
   - &vdrm_host_age age1f5hmq63suekp3tcy8886x406nw79z8hc3l6sj3kk4s3reuhg8d0s2jf4tu
   - &roci_mm_age age10ryp28wwrrqs322fh60shu6d9ytluchvg59pcv2nuvc2cyxwtvws67hzhd
   - &vdrm_mm_age age1vz6akhdt4hwfxe3d2n7er2nym7lttcg7uchafysajdtwa696zcyq6latjk
+  - &pnby_mm_age age1tx6m00qdxu0kfgxwkw8nhltd3kr0jgysmm2eje67tdvhlq8fuc5sxgww8a
 creation_rules:
   - path_regex: secrets.yaml
     key_groups:
@@ -12,3 +13,4 @@ creation_rules:
           - *vdrm_host_age
           - *roci_mm_age
           - *vdrm_mm_age
+          - *pnby_mm_age
