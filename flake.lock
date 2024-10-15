@@ -65,11 +65,11 @@
         "zellij": "zellij"
       },
       "locked": {
-        "lastModified": 1728868694,
-        "narHash": "sha256-FUuu1q2OednG5oiOwVPRwM5sP4BTwYv6p54OtdzV9Bk=",
+        "lastModified": 1728955039,
+        "narHash": "sha256-cOnbeK5f8VoXqF3OxevMkWKoSQb2YTUzXXKnPFvOGQI=",
         "owner": "ModestMeowth",
         "repo": "dracula",
-        "rev": "aa482268a1172b9ea0cda7281853cb71bc2f409d",
+        "rev": "d5f7591b8a8c862181c3724a383b903c677d20e1",
         "type": "github"
       },
       "original": {
@@ -194,11 +194,11 @@
     "k9s": {
       "flake": false,
       "locked": {
-        "lastModified": 1728828412,
-        "narHash": "sha256-4L8/gVmFzWxF6zHza/J2JJDTTfGmbMIJLI0746Bwtt0=",
+        "lastModified": 1728919040,
+        "narHash": "sha256-N6n1R2AZJlVI002KtvHcvp9QnlWZlTE8GIXT53QPCPk=",
         "owner": "derailed",
         "repo": "k9s",
-        "rev": "8a16b57c09c46dc4be2c9f02ac02da10043610e3",
+        "rev": "f139a5700d78c806eb7274bcd9155be44d0d5b62",
         "type": "github"
       },
       "original": {
@@ -377,11 +377,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1728833717,
-        "narHash": "sha256-GkS9SnKRb/PrdcqptLPNxweDdf3Zx2Lk5szEt07P4mE=",
+        "lastModified": 1728931061,
+        "narHash": "sha256-VTb2wsZ19j4RLdxSifQTMxojchaqLXe7wuBXRIPRpnw=",
         "owner": "nix-community",
         "repo": "lanzaboote",
-        "rev": "6634ab618862f1d041c286567a58c554e6136068",
+        "rev": "a71d589ce0bce98ac8f7cbaf7d88b0badfbb6dd0",
         "type": "github"
       },
       "original": {
