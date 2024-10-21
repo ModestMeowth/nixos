@@ -31,7 +31,7 @@
         system:
         import inputs.nixpkgs {
           inherit system;
-          overlays = builtins.attrValues (import ./overlays { inherit inputs; });
+          overlays = builtins.attrValues (import ./overlays.nix { inherit inputs; });
           config.allowUnfree = true;
         };
       xLib = import ./lib { inherit inputs genPkgs; };
