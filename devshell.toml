@@ -1,6 +1,10 @@
 # https://numtide.github.io/devshell
 motd = "Just $(just --list)"
 
+[[env]]
+name = "DIRENV_WARN_TIMEOUT"
+value = 0
+
 [[commands]]
 package = "unstable.just"
 

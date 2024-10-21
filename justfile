@@ -4,7 +4,7 @@ default:
 
 # run formatter
 format:
-    nix fmt
+    treefmt
 
 # pull from git and update flake
 update:
