@@ -1,8 +1,7 @@
-{
-  inputs,
-  pkgs,
-  myPkgs,
-  ...
+{ inputs
+, pkgs
+, myPkgs
+, ...
 }:
 {
   programs.fish.enable = true;

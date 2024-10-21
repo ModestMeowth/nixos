@@ -5,14 +5,8 @@
 
     parts.url = "github:hercules-ci/flake-parts";
 
-    hooks.url = "github:cachix/git-hooks.nix";
-    hooks.inputs.nixpkgs.follows = "nixpkgs";
-
     devshell.url = "github:numtide/devshell";
     devshell.inputs.nixpkgs.follows = "nixpkgs";
-
-    treefmt.url = "github:numtide/treefmt-nix";
-    treefmt.inputs.nixpkgs.follows = "nixpkgs";
 
     secBoot.url = "github:nix-community/lanzaboote";
     secBoot.inputs.nixpkgs.follows = "nixpkgs";
@@ -47,31 +41,12 @@
 
       imports = [
         inputs.devshell.flakeModule
-        inputs.hooks.flakeModule
-        inputs.treefmt.flakeModule
       ];
 
       perSystem =
         { pkgs, system, ... }:
         {
           _module.args.pkgs = genPkgs system;
-
-          treefmt.config.projectRootFile = "flake.nix";
-          treefmt.config.settings.global.excludes = [ "*.sops.*" ];
-          treefmt.config.programs = {
-            nixfmt.enable = true;
-            taplo.enable = true;
-            yamlfmt.enable = true;
-          };
-
-          pre-commit.settings.hooks = {
-            treefmt.enable = true;
-            pre-commit-hook-ensure-sops = {
-              enable = true;
-              files = "^\w+\.sops\.";
-            };
-          };
-
           legacyPackages = import ./packages { inherit pkgs; };
           devShells.default = pkgs.devshell.mkShell {
             imports = [ (pkgs.devshell.importTOML ./devshell.toml) ];
@@ -80,7 +55,6 @@
 
       flake.nixosConfigurations = {
         rocinante = xLib.nixosSystem { hostname = "rocinante"; };
-
         videodrome = xLib.nixosSystem { hostname = "videodrome"; };
       };
 

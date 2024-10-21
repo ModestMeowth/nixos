@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib;
 let
@@ -40,13 +39,9 @@ in
 
     })
 
-    (mkIf (cfg == "rpi") {
+    (mkIf (cfg == "rpi") { })
 
-    })
-
-    (mkIf (cfg == "vm") {
-
-    })
+    (mkIf (cfg == "vm") { })
 
     (mkIf (cfg == "wsl") {
 

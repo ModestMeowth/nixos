@@ -7,19 +7,19 @@ in
 {
 
   nixosSystem =
-    {
-      hostname,
-      system ? "x86_64-linux",
-      nixpkgs ? inputs.nixpkgs,
-      myPkgs ? inputs.self.legacyPackages.${system},
-      baseModules ? with inputs; [
+    { hostname
+    , system ? "x86_64-linux"
+    , nixpkgs ? inputs.nixpkgs
+    , myPkgs ? inputs.self.legacyPackages.${system}
+    , baseModules ? with inputs; [
         sops.nixosModules.sops
         secBoot.nixosModules.lanzaboote
         wsl.nixosModules.default
         ../hosts/_modules
         ../hosts/${hostname}
-      ],
-      extraModules ? [ ],
+      ]
+    , extraModules ? [ ]
+    ,
     }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system lib;
@@ -31,12 +31,12 @@ in
     };
 
   homeConfig =
-    {
-      hostname,
-      username,
-      system ? "x86_64-linux",
-      nixpkgs ? inputs.nixpkgs,
-      myPkgs ? inputs.self.legacyPackages.${system},
+    { hostname
+    , username
+    , system ? "x86_64-linux"
+    , nixpkgs ? inputs.nixpkgs
+    , myPkgs ? inputs.self.legacyPackages.${system}
+    ,
     }:
     inputs.hm.lib.homeManagerConfiguration {
       inherit lib;

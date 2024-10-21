@@ -5,4 +5,12 @@ motd = "Just $(just --list)"
 package = "unstable.just"
 
 [devshell]
-packages = ["pkgs.nvfetcher"]
+packages = [
+  "pkgs.nvfetcher",
+  "pkgs.treefmt",
+  "pkgs.nixpkgs-fmt",
+  "pkgs.taplo",
+  "pkgs.yamlfmt",
+  "pkgs.pre-commit",
+  "pkgs.pre-commit-hook-ensure-sops",
+]
