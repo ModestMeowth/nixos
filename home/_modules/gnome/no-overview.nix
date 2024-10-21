@@ -1,6 +1,14 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
   cfg = config.modules.wm.gnome.no-overview;
-in {
+in
+{
   options.modules.wm.gnome.no-overview.enable = mkEnableOption "gnome-no-overview";
 
   config = mkIf cfg.enable {

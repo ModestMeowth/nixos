@@ -1,8 +1,16 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
 
   cfg = config.modules.wm.gnome;
 
-in {
+in
+{
   options.modules.wm.gnome = {
     enable = lib.mkEnableOption "gnome";
   };
@@ -18,7 +26,7 @@ in {
       desktopManager.gnome.enable = true;
     };
 
-    environment. systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       wl-clipboard
       gnome.gnome-remote-desktop
       gnome.gnome-tweaks

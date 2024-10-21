@@ -1,4 +1,5 @@
-{inputs, pkgs, ...}: {
+{ inputs, pkgs, ... }:
+{
   programs.bat = {
     enable = true;
     themes.Dracula.src = inputs.dracula.outputs.bat;

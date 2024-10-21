@@ -1,8 +1,16 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
 
   cfg = config.modules.hw.cpu;
 
-in {
+in
+{
 
   options.modules.hw.cpu = mkOption {
     type = lib.types.enum [
@@ -19,16 +27,16 @@ in {
     (mkIf (cfg == "amd") {
 
       hardware.cpu.amd.updateMicrocode = true;
-      boot.kernelModules = ["kvm-amd"];
-      environment.systemPackages = [pkgs.pciutils];
+      boot.kernelModules = [ "kvm-amd" ];
+      environment.systemPackages = [ pkgs.pciutils ];
 
     })
 
     (mkIf (cfg == "intel") {
 
       hardware.cpu.amd.updateMicrocode = true;
-      boot.kernelModules = ["kvm-amd"];
-      environment.systemPackages = [pkgs.pciutils];
+      boot.kernelModules = [ "kvm-amd" ];
+      environment.systemPackages = [ pkgs.pciutils ];
 
     })
 
@@ -52,11 +60,14 @@ in {
 
       security.sudo.extraRules = [
         {
-          groups = ["wheel"];
+          groups = [ "wheel" ];
           commands = [
             {
               command = "/run/current-system/sw/bin/ip link set dev eth0 mtu 1500";
-              options = ["SETENV" "NOPASSWD"];
+              options = [
+                "SETENV"
+                "NOPASSWD"
+              ];
             }
           ];
         }

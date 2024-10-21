@@ -1,12 +1,20 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
 
   cfg = config.modules.services.tailscale;
 
-in {
+in
+{
   options.modules.services.tailscale = {
     enable = mkEnableOption "tailscale";
 
-    package = mkPackageOption pkgs "tailscale" {};
+    package = mkPackageOption pkgs "tailscale" { };
 
     authKey = mkOption {
       type = types.nullOr types.path;
@@ -27,13 +35,9 @@ in {
 
       authKeyFile = cfg.authKey;
 
-      extraSetFlags = mkIf cfg.ssh [
-        "--ssh"
-      ];
+      extraSetFlags = mkIf cfg.ssh [ "--ssh" ];
 
-      extraUpFlags = mkIf cfg.ssh [
-        "--ssh"
-      ];
+      extraUpFlags = mkIf cfg.ssh [ "--ssh" ];
 
       inherit (cfg) package;
     };

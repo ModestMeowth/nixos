@@ -1,8 +1,16 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
 
   cfg = config.modules.shares.pwnyboy-share;
 
-in {
+in
+{
 
   options.modules.shares.pwnyboy-share = {
     enable = mkEnableOption "pwnyboy-share";

@@ -1,3 +1,1 @@
-{
-  sops.secrets = {};
-}
+{ sops.secrets = { }; }

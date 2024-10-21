@@ -1,4 +1,11 @@
-{hostname, inputs, pkgs, username, ...}: {
+{
+  hostname,
+  inputs,
+  pkgs,
+  username,
+  ...
+}:
+{
   imports = [
     ./hosts/${hostname}.nix
     ./shell.nix

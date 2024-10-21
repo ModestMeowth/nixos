@@ -1,4 +1,5 @@
-{inputs, pkgs, ...}: {
+{ inputs, pkgs, ... }:
+{
   programs.firefox.enable = true;
   modules.neovim.profile = "development";
   modules.term.wezterm.enable = true;
@@ -7,13 +8,13 @@
   home.packages = [ pkgs.commitizen ];
 
   modules.wm.gnome = {
-      enable = true;
+    enable = true;
 
-      dracula.enable = true;
-      forge.enable = true;
-      gsconnect.enable = true;
-      no-overview.enable = true;
-      user-themes.enable = true;
+    dracula.enable = true;
+    forge.enable = true;
+    gsconnect.enable = true;
+    no-overview.enable = true;
+    user-themes.enable = true;
   };
 
   xdg.configFile."k9s/skins/dracula.yaml".source = inputs.dracula.k9s;

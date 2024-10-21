@@ -1,11 +1,13 @@
-{lib, config, ...}: let
+{ lib, config, ... }:
+let
   cfg = config.modules.hw.zfs;
-in {
+in
+{
   options.modules.hw.zfs = {
     enable = lib.mkEnableOption "zfs";
     mountPoolsAtBoot = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
     };
   };
 
@@ -14,7 +16,7 @@ in {
     # ZFSBootMenu
     networking.hostId = "00bab10c";
 
-    boot.supportedFilesystems = ["zfs"];
+    boot.supportedFilesystems = [ "zfs" ];
     boot.zfs = {
       forceImportRoot = false;
       extraPools = cfg.mountPoolsAtBoot;

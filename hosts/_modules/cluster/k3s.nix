@@ -1,22 +1,33 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
 
   cfg = config.modules.cluster.k3s;
 
-in {
+in
+{
 
   options.modules.cluster.k3s = {
     enable = mkEnableOption "k3s";
 
-    package = mkPackageOption pkgs "k3s" {};
+    package = mkPackageOption pkgs "k3s" { };
 
     role = mkOption {
-      type = types.enum [ "agent" "server" ];
+      type = types.enum [
+        "agent"
+        "server"
+      ];
       default = "server";
     };
 
     extraFlags = mkOption {
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
       description = "Extra flags to pass to k3s";
     };
 
@@ -25,8 +36,8 @@ in {
   config = mkIf cfg.enable {
 
     # rook-ceph
-    boot.kernelModules = ["rdb"];
-    boot.supportedFilesystems = ["nfs"];
+    boot.kernelModules = [ "rdb" ];
+    boot.supportedFilesystems = [ "nfs" ];
 
     services.rpcbind.enable = true;
 
@@ -37,11 +48,14 @@ in {
       inherit (cfg) package role;
     };
 
-    services.k3s.extraFlags = toString([
-      "--disable=local-storage"
-      "--disable=traefik"
-      "--disable=metrics-server"
-    ] ++ cfg.extraFlags);
+    services.k3s.extraFlags = toString (
+      [
+        "--disable=local-storage"
+        "--disable=traefik"
+        "--disable=metrics-server"
+      ]
+      ++ cfg.extraFlags
+    );
 
   };
 }

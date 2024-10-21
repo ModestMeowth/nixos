@@ -1,22 +1,27 @@
-{inputs, genPkgs}: let
+{ inputs, genPkgs }:
+let
 
   lib = inputs.nixpkgs.lib.extend (final: prev: { myLib = import ./lib { lib = final; }; });
 
-in {
+in
+{
 
-  nixosSystem = {
-    hostname,
-    system ? "x86_64-linux",
-    nixpkgs ? inputs.nixpkgs,
-    myPkgs ? inputs.self.legacyPackages.${system},
-    baseModules ? with inputs; [
-      sops.nixosModules.sops
-      secBoot.nixosModules.lanzaboote
-      wsl.nixosModules.default
-      ../hosts/_modules
-      ../hosts/${hostname}
-    ],
-    extraModules ? [], }: inputs.nixpkgs.lib.nixosSystem {
+  nixosSystem =
+    {
+      hostname,
+      system ? "x86_64-linux",
+      nixpkgs ? inputs.nixpkgs,
+      myPkgs ? inputs.self.legacyPackages.${system},
+      baseModules ? with inputs; [
+        sops.nixosModules.sops
+        secBoot.nixosModules.lanzaboote
+        wsl.nixosModules.default
+        ../hosts/_modules
+        ../hosts/${hostname}
+      ],
+      extraModules ? [ ],
+    }:
+    inputs.nixpkgs.lib.nixosSystem {
       inherit system lib;
       specialArgs = {
         inherit inputs myPkgs hostname;
@@ -25,26 +30,33 @@ in {
       modules = baseModules ++ extraModules;
     };
 
-  homeConfig = {
-    hostname,
-    username,
-    system ? "x86_64-linux",
-    nixpkgs ? inputs.nixpkgs,
-    myPkgs ? inputs.self.legacyPackages.${system}
-  }: inputs.hm.lib.homeManagerConfiguration {
-    inherit lib;
+  homeConfig =
+    {
+      hostname,
+      username,
+      system ? "x86_64-linux",
+      nixpkgs ? inputs.nixpkgs,
+      myPkgs ? inputs.self.legacyPackages.${system},
+    }:
+    inputs.hm.lib.homeManagerConfiguration {
+      inherit lib;
 
-    pkgs = genPkgs system;
+      pkgs = genPkgs system;
 
-    extraSpecialArgs = {
-      inherit inputs myPkgs hostname username;
+      extraSpecialArgs = {
+        inherit
+          inputs
+          myPkgs
+          hostname
+          username
+          ;
+      };
+
+      modules = [
+        inputs.sops.homeManagerModules.sops
+        ../home/_modules
+        ../home/${username}
+      ];
     };
-
-    modules = [
-      inputs.sops.homeManagerModules.sops
-      ../home/_modules
-      ../home/${username}
-    ];
-  };
 
 }

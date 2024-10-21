@@ -1,4 +1,5 @@
-{hostname, pkgs, ...}: {
+{ hostname, pkgs, ... }:
+{
   imports = [
     ./hardware.nix
     ./secrets.nix
@@ -12,12 +13,8 @@
   };
 
   networking = {
-    nameservers = [
-      "100.100.100.100"
-    ];
-    search = [
-      "cat-alkaline.ts.net"
-    ];
+    nameservers = [ "100.100.100.100" ];
+    search = [ "cat-alkaline.ts.net" ];
   };
 
   modules.services.tailscale = {

@@ -1,4 +1,11 @@
-{inputs, lib, pkgs, ...}: with lib; {
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+{
   programs.neovim.enable = true;
   programs.gh.enable = true;
 

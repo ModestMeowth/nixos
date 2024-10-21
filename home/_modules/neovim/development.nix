@@ -1,6 +1,9 @@
-{config, lib, ...}: with lib; let
+{ config, lib, ... }:
+with lib;
+let
   cfg = config.modules.neovim;
-in {
+in
+{
   config = mkIf (cfg.profile == "development") {
     programs.neovim.enable = true;
     modules.neovim.plugins = {

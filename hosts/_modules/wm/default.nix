@@ -1,9 +1,15 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
   cfg = config.modules.wm;
-in {
-  imports = [
-    ./gnome.nix
-  ];
+in
+{
+  imports = [ ./gnome.nix ];
 
   config = mkIf (cfg.gnome.enable) {
     fonts.packages = with pkgs; [

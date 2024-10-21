@@ -1,13 +1,22 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
   cfg = config.modules.neovim.plugins.fidget;
-in {
+in
+{
   options.modules.neovim.plugins.fidget.enable = mkEnableOption "fidget-nvim";
 
   config = mkIf cfg.enable {
     programs.neovim = {
       plugins = [ pkgs.vimPlugins.fidget-nvim ];
 
-      extraLuaConfig = /* lua */ ''
+      extraLuaConfig = # lua
+        ''
           -- Fidget
           require "fidget".setup {}
         '';

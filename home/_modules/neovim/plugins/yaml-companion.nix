@@ -1,6 +1,14 @@
-{config, lib, myPkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  myPkgs,
+  ...
+}:
+with lib;
+let
   cfg = config.modules.neovim.plugins.yaml-companion;
-in {
+in
+{
   options.modules.neovim.plugins.yaml-companion.enable = mkEnableOption "yaml-companion-nvim";
 
   config = lib.mkIf cfg.enable {
@@ -9,10 +17,11 @@ in {
     programs.neovim = {
       plugins = [ myPkgs.neovim-plugins.yaml-companion-nvim ];
 
-      extraLuaConfig = /* lua */ ''
-        require "yaml-companion".setup {}
-        require "telescope".load_extension("yaml_schema")
-      '';
+      extraLuaConfig = # lua
+        ''
+          require "yaml-companion".setup {}
+          require "telescope".load_extension("yaml_schema")
+        '';
     };
   };
 }

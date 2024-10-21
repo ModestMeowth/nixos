@@ -1,6 +1,14 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
   cfg = config.modules.gaming.retroarch;
-in {
+in
+{
   options.modules.gaming.retroarch.enable = mkEnableOption "retroarch";
 
   config = mkIf cfg.enable {

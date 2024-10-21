@@ -1,6 +1,14 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
   cfg = config.modules.wm.gnome.gsconnect;
-in {
+in
+{
   options.modules.wm.gnome.gsconnect.enable = mkEnableOption "gnome-gsconnect";
 
   config = mkIf cfg.enable {

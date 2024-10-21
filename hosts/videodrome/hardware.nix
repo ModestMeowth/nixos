@@ -1,3 +1,1 @@
-{
-  modules.hw.cpu = "wsl";
-}
+{ modules.hw.cpu = "wsl"; }

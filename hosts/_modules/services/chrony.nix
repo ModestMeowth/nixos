@@ -1,8 +1,11 @@
-{config, lib, ...}: with lib; let
+{ config, lib, ... }:
+with lib;
+let
 
   cfg = config.modules.services.chrony;
 
-in {
+in
+{
   options.modules.services.chrony.enable = lib.mkEnableOption "chrony";
 
   config = mkIf cfg.enable {

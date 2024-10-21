@@ -1,6 +1,14 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
   cfg = config.modules.wm.gnome.dracula;
-in {
+in
+{
   options.modules.wm.gnome.dracula.enable = mkEnableOption "gnome-dracula";
 
   config = mkIf cfg.enable {

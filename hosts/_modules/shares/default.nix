@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./pwnyboy-share.nix
-  ];
-}
+{ imports = [ ./pwnyboy-share.nix ]; }

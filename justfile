@@ -2,6 +2,10 @@
 default:
     @{{ just_executable() }} --justfile {{ justfile() }} --list
 
+# run formatter
+format:
+    nix fmt
+
 # pull from git and update flake
 update:
     git pull

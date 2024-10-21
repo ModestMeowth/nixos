@@ -1,6 +1,14 @@
-{config, lib, pkgs, ...}: with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+let
   cfg = config.modules.wm.gnome.forge;
-in {
+in
+{
   options.modules.wm.gnome.forge.enable = mkEnableOption "gnome-forge";
 
   config = mkIf cfg.enable {

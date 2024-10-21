@@ -1,8 +1,11 @@
-{config, lib, ...}: with lib; let
+{ config, lib, ... }:
+with lib;
+let
 
   cfg = config.modules.hw.wifi;
 
-in {
+in
+{
 
   options.modules.hw.wifi = {
 

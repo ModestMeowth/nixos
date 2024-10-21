@@ -1,9 +1,16 @@
-{config, lib, pkgs, ...}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
 
   cfg = config.modules.monitoring.smartd;
   cfgExp = config.modules.monitoring.smartctl-exporter;
 
-in {
+in
+{
 
   options.modules.monitoring.smartd.enable = lib.mkEnableOption "smartd";
 

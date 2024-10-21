@@ -1,4 +1,10 @@
-{inputs, pkgs, myPkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  myPkgs,
+  ...
+}:
+{
   programs.fish.enable = true;
 
   programs.fish.plugins = with pkgs.fishPlugins; [
@@ -16,17 +22,18 @@
     }
   ];
 
-  programs.fish.interactiveShellInit = /* fish */ ''
-    set -g fish_greeting
-    set fzf_preview_dir_cmd eza --always --color=always
-    set -x FZF_DEFAULT_OPTS --color="fg:#f8f8f2,bg:#282a36,hl:#bd93f9,fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9,info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#ffb86c,header:#6272a4" --cycle --layout-reverse --border --height=90% --preview-window=wrap --marker="*"
-    fish_vi_key_bindings
+  programs.fish.interactiveShellInit = # fish
+    ''
+      set -g fish_greeting
+      set fzf_preview_dir_cmd eza --always --color=always
+      set -x FZF_DEFAULT_OPTS --color="fg:#f8f8f2,bg:#282a36,hl:#bd93f9,fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9,info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#ffb86c,header:#6272a4" --cycle --layout-reverse --border --height=90% --preview-window=wrap --marker="*"
+      fish_vi_key_bindings
 
-    if not string match -qi "vscode" $TERM_PROGRAM
-      set ZELLIJ_AUTO_ATTACH true
-      set ZELLIJ_AUTO_EXIT true
-    end
-  '';
+      if not string match -qi "vscode" $TERM_PROGRAM
+        set ZELLIJ_AUTO_ATTACH true
+        set ZELLIJ_AUTO_EXIT true
+      end
+    '';
 
   programs.fish.shellAbbrs = {
     ssh = "mosh";
@@ -58,7 +65,10 @@
   programs.fd = {
     enable = true;
     hidden = true;
-    ignores = [ ".git/*" "*.bak" ];
+    ignores = [
+      ".git/*"
+      "*.bak"
+    ];
   };
 
   programs.starship = {
@@ -66,7 +76,6 @@
     enableTransience = true;
   };
   xdg.configFile."starship.toml".source = "${inputs.mm.outputs.dotfiles}/dot_config/starship.toml.tmpl";
-
 
   programs.zellij = {
     enable = true;

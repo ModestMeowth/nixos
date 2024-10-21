@@ -1,8 +1,10 @@
-{config, lib, ...}: let
+{ config, lib, ... }:
+let
 
   cfg = config.modules.monitoring.node-exporter;
 
-in {
+in
+{
   options.modules.monitoring.node-exporter = {
     enable = lib.mkEnableOption "node-exporter";
 
