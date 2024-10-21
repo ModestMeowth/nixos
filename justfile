@@ -6,6 +6,10 @@ default:
 format:
     treefmt
 
+# run pre-commit check
+check *ARGS:
+    pre-commit run {{ ARGS }}
+
 # pull from git and update flake
 update:
     git pull

@@ -11,3 +11,6 @@ indent_size=2
 
 [Makefile]
 indent_style=tab
+
+[{J,.J,j,.j}ustfile]
+indent_style=2

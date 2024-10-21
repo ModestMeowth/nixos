@@ -1,5 +1,4 @@
 # https://numtide.github.io/devshell
-motd = "Just $(just --list)"
 
 [[env]]
 name = "DIRENV_WARN_TIMEOUT"

@@ -11,12 +11,16 @@
       indent_size = 4;
     };
 
-    settings."*.{yaml,nix}" = {
+    settings."*.{nix,toml,yaml}" = {
       indent_size = 2;
     };
 
     settings."Makefile" = {
       indent_style = "tab";
+    };
+
+    settings."{J,.J,j,.j}ustfile" = {
+      indent_size = 2;
     };
   };
 }
