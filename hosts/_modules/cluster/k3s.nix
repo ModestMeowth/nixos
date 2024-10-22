@@ -52,6 +52,7 @@ in
         "--disable=local-storage"
         "--disable=traefik"
         "--disable=metrics-server"
+        "--disable=coredns"
       ]
       ++ cfg.extraFlags
     );
