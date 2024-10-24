@@ -6,6 +6,7 @@
     ./gnome
     ./neovim
     ./retroarch.nix
+    ./shell
     ./wezterm.nix
   ];
 }
