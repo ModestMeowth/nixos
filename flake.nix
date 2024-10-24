@@ -17,7 +17,7 @@
     sops.url = "github:Mic92/sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
 
-    hm.url = "github:nix-community/home-manager";
+    hm.url = "github:nix-community/home-manager/release-24.05";
     hm.inputs.nixpkgs.follows = "nixpkgs";
 
     mm.url = "github:ModestMeowth/.github";
