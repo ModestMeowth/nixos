@@ -1,10 +1,6 @@
 {
-  modules.shell.fish = {
-    enable = true;
-    plugins = {
-      fzf.enable = true;
-      starship.enable = true;
-      zellij.enable = true;
-    };
-  };
+  programs.fish.enable = true;
+  programs.bash.enable = true;
+
+  modules.shell.zellij.enable = true;
 }

@@ -1,3 +1,5 @@
+alias fmt := format
+
 [private]
 default:
     @{{ just_executable() }} --justfile {{ justfile() }} --list
