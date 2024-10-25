@@ -35,22 +35,6 @@
         "type": "github"
       }
     },
-    "dotfiles": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717213743,
-        "narHash": "sha256-ZO9fmzEMclNtxc2becL/8HUOKjWhDazQu6M8rP5Tm3s=",
-        "owner": "ModestMeowth",
-        "repo": "dotfiles",
-        "rev": "19d59972746a046fcde2f54670c3412ec2130862",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ModestMeowth",
-        "repo": "dotfiles",
-        "type": "github"
-      }
-    },
     "dracula": {
       "inputs": {
         "k9s": "k9s",
@@ -202,24 +186,6 @@
         "type": "github"
       }
     },
-    "mm": {
-      "inputs": {
-        "dotfiles": "dotfiles"
-      },
-      "locked": {
-        "lastModified": 1728696335,
-        "narHash": "sha256-a3k75xnH6GXKf1WW8EOqMthbMNLCvmvqvBirH7r/ZdE=",
-        "owner": "ModestMeowth",
-        "repo": ".github",
-        "rev": "04a68c8f6466711ebf3daaa621f99c90a25f6dab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ModestMeowth",
-        "repo": ".github",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1729691686,
@@ -330,7 +296,6 @@
         "devshell": "devshell",
         "dracula": "dracula",
         "hm": "hm",
-        "mm": "mm",
         "nixpkgs": "nixpkgs",
         "parts": "parts",
         "secBoot": "secBoot",

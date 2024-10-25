@@ -20,7 +20,6 @@
     hm.url = "github:nix-community/home-manager/release-24.05";
     hm.inputs.nixpkgs.follows = "nixpkgs";
 
-    mm.url = "github:ModestMeowth/.github";
     dracula.url = "github:ModestMeowth/dracula";
   };
 

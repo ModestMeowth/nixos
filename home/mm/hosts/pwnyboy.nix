@@ -13,5 +13,18 @@ with lib;
     pkgs.nh
   ];
 
-  home.file."justfile".source = mkForce "${inputs.mm.outputs.dotfiles}/justfile-ubuntu";
+  home.file."justfile".text = mkForce # just
+    ''
+      @default:
+        just --choose --justfile {{ justfile() }}
+
+      system-update:
+        sudo nala update
+        sudo nala upgrade
+
+      home-update:
+        nh home switch "github:ModestMeowth/nixos" -- --refresh
+
+      update: system-update home-update
+    '';
 }

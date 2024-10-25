@@ -1,10 +1,4 @@
-{ hostname
-, inputs
-, pkgs
-, username
-, ...
-}:
-{
+{ hostname, pkgs, username, ... }: {
   imports = [
     ./hosts/${hostname}.nix
     ./shell.nix
@@ -24,7 +18,19 @@
     ripgrep
   ];
 
-  home.file."justfile".source = "${inputs.mm.outputs.dotfiles}/justfile-nixos";
+  home.file."justfile".text = # just
+    ''
+      default:
+        @just --choose --justfile "{{ justfile() }}"
+
+      system-update:
+        nh os switch "github:ModestMeowth/nixos" -- --refresh
+
+      home-update:
+        nh home switch "github:ModestMeowth/nixos" -- --refresh
+
+      update: system-update home-update
+    '';
 
   systemd.user.startServices = "sd-switch";
 }
