@@ -20,8 +20,6 @@
     package = pkgs.unstable.tailscale;
   };
 
-  modules.cluster.k3s.enable = true;
-
   modules.wm.gnome.enable = true;
 
   services.fwupd.enable = true;

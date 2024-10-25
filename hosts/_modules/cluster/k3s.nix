@@ -49,10 +49,11 @@ in
 
     services.k3s.extraFlags = toString (
       [
-        "--disable=local-storage"
-        "--disable=traefik"
-        "--disable=metrics-server"
-        "--disable=coredns"
+        "--disable local-storage"
+        "--disable traefik"
+        "--disable metrics-server"
+        "--flannel-backend=none"
+        "--disable-network-policy"
       ]
       ++ cfg.extraFlags
     );
