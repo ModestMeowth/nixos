@@ -16,6 +16,7 @@ check *ARGS:
 update:
     git pull
     nix flake update --commit-lock-file
+    nvfetcher -o packages/_sources -c packages/nvfetcher.toml
 
 # nh (os|home) switch .
 switch target='--help':
