@@ -7,7 +7,6 @@ repos:
         language: system
         entry: treefmt
         types: [text]
-        exclude: packages/_sources
       - id: ensure-sops
         name: ensure sops
         language: system
