@@ -85,7 +85,7 @@ in
             if config.enable_wayland and os.getenv("WAYLAND_DISPLAY") then
               success,stdout,_ = gsettings("text-scaling-factor")
               if success then
-                config.font_szie = (config.font_size or 11.0) * tonumber(stdout)
+                config.font_size = (config.font_size or 11.0) * tonumber(stdout)
               end
             end
           end
