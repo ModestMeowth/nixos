@@ -1,4 +1,7 @@
-{ inputs, pkgs, ... }:
+{ pkgs, myPkgs, ... }:
+let
+  k9s-theme = myPkgs.dracula.zellij.theme;
+in
 {
   programs.firefox.enable = true;
   modules.neovim.profile = "development";
@@ -17,7 +20,7 @@
     user-themes.enable = true;
   };
 
-  xdg.configFile."k9s/skins/dracula.yaml".source = inputs.dracula.k9s;
+  xdg.configFile."k9s/skins/dracula.yaml".text = k9s-theme;
   programs.k9s = {
     enable = true;
     settings.k9s.skin = "dracula";

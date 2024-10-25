@@ -35,27 +35,6 @@
         "type": "github"
       }
     },
-    "dracula": {
-      "inputs": {
-        "k9s": "k9s",
-        "sublime": "sublime",
-        "wezterm": "wezterm",
-        "zellij": "zellij"
-      },
-      "locked": {
-        "lastModified": 1729214207,
-        "narHash": "sha256-t7qflYFihLVI7BvRA2FUl9z9GOmAptqeRrm/EFBaMcw=",
-        "owner": "ModestMeowth",
-        "repo": "dracula",
-        "rev": "6f81f3ce0830d55ef021f98b8516a5185daff22a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ModestMeowth",
-        "repo": "dracula",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -170,22 +149,6 @@
         "type": "github"
       }
     },
-    "k9s": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1729184097,
-        "narHash": "sha256-QEY2rCtXsbZnLqsx0c17kD+s7afMncvpGTYJbJZDeZw=",
-        "owner": "derailed",
-        "repo": "k9s",
-        "rev": "be1ec87840325d13f4fb74a35b2e3e4d33048aa6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "derailed",
-        "repo": "k9s",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1729691686,
@@ -294,7 +257,6 @@
     "root": {
       "inputs": {
         "devshell": "devshell",
-        "dracula": "dracula",
         "hm": "hm",
         "nixpkgs": "nixpkgs",
         "parts": "parts",
@@ -371,22 +333,6 @@
         "type": "github"
       }
     },
-    "sublime": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1693403648,
-        "narHash": "sha256-8mCovVSrBjtFi5q+XQdqAaqOt3Q+Fo29eIDwECOViro=",
-        "owner": "dracula",
-        "repo": "sublime",
-        "rev": "456d3289827964a6cb503a3b0a6448f4326f291b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dracula",
-        "repo": "sublime",
-        "type": "github"
-      }
-    },
     "systems": {
       "locked": {
         "lastModified": 1681028828,
@@ -418,22 +364,6 @@
         "type": "github"
       }
     },
-    "wezterm": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1675662320,
-        "narHash": "sha256-sEoXqIAqedezT7cA0HhPsIfu1bWWxJS5+cd7nwK/Aps=",
-        "owner": "dracula",
-        "repo": "wezterm",
-        "rev": "0db525a46b5242ee15fd4a52f887e172fbde8e51",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dracula",
-        "repo": "wezterm",
-        "type": "github"
-      }
-    },
     "wsl": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -453,22 +383,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "NixOS-WSL",
-        "type": "github"
-      }
-    },
-    "zellij": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1672085892,
-        "narHash": "sha256-Sqj9EhDhr5Kv9x9GwfPUvNOQocGzbVScVSGnR0/yf7Q=",
-        "owner": "dracula",
-        "repo": "zellij",
-        "rev": "948a6dcae1d82b58ba725b464a96e6a1bc1c11cf",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dracula",
-        "repo": "zellij",
         "type": "github"
       }
     }

@@ -1,6 +1,6 @@
-{ config, lib, inputs, ... }: with lib; let
+{ config, lib, myPkgs, ... }: with lib; let
   cfg = config.modules.term.wezterm;
-  theme = inputs.dracula.outputs.wezterm;
+  theme = myPkgs.dracula.wezterm.theme;
 in
 {
   options.modules.term.wezterm.enable = mkEnableOption "wezterm";
@@ -99,7 +99,7 @@ in
           return {}
         '';
 
-      "wezterm/colors/dracula.toml".source = theme;
+      "wezterm/colors/dracula.toml".text = theme;
     };
   };
 }

@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
-  keys = pkgs.callPackage ./keys/default.nix { };
-  fish-plugins = pkgs.fishPlugins.callPackage ./fish-plugins/default.nix { };
-  neovim-plugins = pkgs.callPackage ./neovim-plugins/default.nix { };
+  dracula = pkgs.callPackage ./dracula.nix { };
+  fish-plugins = pkgs.fishPlugins.callPackage ./fish-plugins.nix { };
+  keys = pkgs.callPackage ./keys.nix { };
+  neovim-plugins = pkgs.callPackage ./neovim-plugins.nix { };
 }

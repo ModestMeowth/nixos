@@ -9,3 +9,23 @@ fetch.github = "someone-stole-my-name/yaml-companion.nvim"
 [abbreviation-tips]
 src.github_tag = "gazorby/fish-abbreviation-tips"
 fetch.github = "gazorby/fish-abbreviation-tips"
+
+[dracula-k9s]
+src.github = "derailed/k9s"
+fetch.github = "derailed/k9s"
+extract = ["skins/dracula.yaml"]
+
+[dracula-sublime]
+src.github_tag = "dracula/sublime"
+fetch.github = "dracula/sublime"
+extract = ["Dracula.tmTheme"]
+
+[dracula-wezterm]
+src.git = "https://github.com/dracula/wezterm"
+fetch.github = "dracula/wezterm"
+extract = ["dracula.toml"]
+
+[dracula-zellij]
+src.git = "https://github.com/dracula/zellij"
+fetch.github = "dracula/zellij"
+extract = ["dracula.kdl"]

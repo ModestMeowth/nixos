@@ -19,8 +19,6 @@
 
     hm.url = "github:nix-community/home-manager/release-24.05";
     hm.inputs.nixpkgs.follows = "nixpkgs";
-
-    dracula.url = "github:ModestMeowth/dracula";
   };
 
   outputs =

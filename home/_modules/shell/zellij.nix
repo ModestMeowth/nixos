@@ -1,9 +1,9 @@
-{ config, lib, inputs, ... }: with lib; let
+{ config, lib, myPkgs, ... }: with lib; let
   cfg = config.modules.shell.zellij;
   cfgBash = config.programs.bash;
   cfgFish = config.programs.fish;
   cfgZellij = config.programs.zellij;
-  theme = inputs.dracula.outputs.zellij;
+  theme = myPkgs.dracula.zellij.theme;
 in
 {
   options.modules.shell.zellij.enable = mkEnableOption "shell-zellij";
@@ -46,7 +46,7 @@ in
             }
           }
         '';
-      "zellij/themes/dracula.kdl".source = theme;
+      "zellij/themes/dracula.kdl".text = theme;
     };
 
     programs.zellij.enableBashIntegration = (cfg.enable && cfgBash.enable);
