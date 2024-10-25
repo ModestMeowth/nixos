@@ -1,4 +1,8 @@
+alias u := update
+alias gp := git-pull
+alias fu := flake-update
 alias fmt := format
+alias gen := generate
 
 [private]
 default:
@@ -12,11 +16,12 @@ format:
 check *ARGS:
     pre-commit run {{ ARGS }}
 
-# pull from git and update flake
-update:
-    git pull
+# pull from git and update flake and sources
+update: git-pull flake-update generate
+
+# update flake
+flake-update:
     nix flake update --commit-lock-file
-    nvfetcher -o packages/_sources -c packages/nvfetcher.toml
 
 # nh (os|home) switch .
 switch target='--help':
@@ -34,7 +39,9 @@ clean target='--help':
 search package='--help' channel='24.05':
     @nh search --channel nixos-{{ channel }} {{ package }}
 
+git-pull:
+  git pull --rebase
+
 # generate packages with nvfetcher
-[no-cd]
 generate:
-    nvfetcher
+    nvfetcher -o packages/_sources -c packages/nvfetcher.toml --commit-changes
