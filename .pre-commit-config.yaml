@@ -5,7 +5,7 @@ repos:
       - id: treefmt
         name: format
         language: system
-        entry: treefmt
+        entry: treefmt --fail-on-change
         types: [text]
       - id: ensure-sops
         name: ensure sops

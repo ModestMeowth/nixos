@@ -10,7 +10,7 @@ package = "unstable.just"
 [devshell]
 packages = [
   "pkgs.nvfetcher",
-  "pkgs.treefmt",
+  "unstable.treefmt",
   "pkgs.nixpkgs-fmt",
   "pkgs.taplo",
   "pkgs.yamlfmt",
