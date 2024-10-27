@@ -18,6 +18,7 @@
   modules.services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
+    authKey = /run/secrets/tskey;
   };
 
   modules.wm.gnome.enable = true;
@@ -31,4 +32,5 @@
     enable = true;
     mountpoint = "/persist/share";
   };
+
 }

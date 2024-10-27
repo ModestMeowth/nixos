@@ -122,6 +122,8 @@ in
           command = "wezterm start --cwd .";
           binding = "<Super><Shift>Return";
         };
+
+        "org/gtk/gtk4/settings/file-chooser".show-hidden = true;
       };
   };
 }
