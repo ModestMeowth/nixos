@@ -11,6 +11,12 @@ in
 
   config = mkIf cfg.enable {
 
+    programs.ssh.extraConfig =
+      ''
+        Host *
+          SendEnv TMUX ZELLIJ
+      '';
+
     services.openssh = {
       enable = true;
 
