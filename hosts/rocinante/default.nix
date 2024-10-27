@@ -1,11 +1,11 @@
-{ hostname, pkgs, ... }:
-{
+{ hostname, pkgs, ... }: {
   networking.hostName = hostname;
 
   imports = [
+    ./filesystems.nix
     ./hardware.nix
     ./secrets.nix
-    ../../users/mm
+    ./users.nix
   ];
 
   modules.monitoring.node-exporter.enable = true;

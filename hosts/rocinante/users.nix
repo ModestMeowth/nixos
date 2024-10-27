@@ -1,1 +1,3 @@
-{ imports = [ ../../users/mm ]; }
+{
+  imports = [ ../../users/mm ];
+}
