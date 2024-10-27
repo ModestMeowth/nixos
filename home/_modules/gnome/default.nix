@@ -17,7 +17,7 @@ in
   config = mkIf cfg.enable {
     dconf.settings =
       let
-        inherit (hm.gvariant) mkTuple;
+        inherit (hm.gvariant) mkTuple mkUint32;
       in
       {
         "org/gnome/shell".disable-user-extensions = false;
@@ -121,6 +121,14 @@ in
           name = "open-terminal";
           command = "wezterm start --cwd .";
           binding = "<Super><Shift>Return";
+        };
+
+        "org/gnome/settings-daemon/plugins/color" = {
+          night-light-enabled = true;
+          night-light-schedule-automatic = false;
+          night-light-schedule-from = 0.0;
+          night-light-schedule-to = 0.0;
+          night-light-temperature = mkUint32 3800;
         };
 
         "org/gtk/gtk4/settings/file-chooser".show-hidden = true;
