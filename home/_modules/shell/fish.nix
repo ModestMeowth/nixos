@@ -42,7 +42,7 @@ in
 
       # eza
       ls = "eza --icons --sort=type";
-      ll = "eza lg --icons --sort=type";
+      ll = "eza -lg --icons --sort=type";
       la = "eza -lag --icons --sort=type";
       tree = "eza --icons --tree";
 
