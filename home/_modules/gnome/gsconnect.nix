@@ -13,6 +13,6 @@ in
   config = mkIf cfg.enable {
     home.packages = [ pkgs.gnomeExtensions.gsconnect ];
 
-    dconf.settings."org/gnome/shell".enabled-extensions = [ "gsconnect@andyholms.github.io" ];
+    dconf.settings."org/gnome/shell".enabled-extensions = [ "gsconnect@andyholmes.github.io" ];
   };
 }

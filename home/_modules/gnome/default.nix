@@ -61,6 +61,8 @@ in
         };
 
         "org/gnome/desktop/wm/keybindings" = {
+          switch-input-source = [];
+          switch-input-source-backward = [];
           panel-run-dialog = [ "<Super>space" ];
           close = [ "<Shift><Super>q" ];
           toggle-fullscreen = [ ];
