@@ -27,5 +27,20 @@
       device = "zroot/persist/home/root";
       fsType = "zfs";
     };
+
+    "/persist/vm/disk" = {
+      device = "zroot/persist/vm/disk";
+      fsType = "zfs";
+    };
+
+    "/persist/vm/iso" = {
+      device = "zroot/persist/vm/iso";
+      fsType = "zfs";
+    };
+
+    "/persist/vm/nvram" = {
+      device = "zroot/persist/vm/nvram";
+      fsType = "zfs";
+    };
   };
 }

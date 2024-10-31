@@ -1,1 +1,6 @@
-{ imports = [ ./k3s.nix ]; }
+{
+  imports = [
+    ./k3s.nix
+    ./libvirt.nix
+  ];
+}

@@ -1,10 +1,8 @@
 # One CLI to format the code tree - https://github.com/numtide/treefmt
-[settings.global]
-excludes = ['^\w+\.sops\.', 'packages/_sources/**']
-
 [formatter.nix]
 command = "nixpkgs-fmt"
 includes = ["*.nix"]
+excludes = ['^\w+\.sops\.']
 
 [formatter.taplo]
 command = "taplo"
@@ -14,3 +12,4 @@ options = ["format"]
 [formatter.yaml]
 command = "yamlfmt"
 includes = ["*.yaml", "*.yaml"]
+excludes = ['^\w+\.sops\.']

@@ -19,6 +19,9 @@
 
     hm.url = "github:nix-community/home-manager/release-24.05";
     hm.inputs.nixpkgs.follows = "nixpkgs";
+
+    virt.url = "github:AshleyYakeley/NixVirt/nixpkgs-24.05";
+    virt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -51,7 +54,10 @@
         };
 
       flake.nixosConfigurations = {
-        rocinante = xLib.nixosSystem { hostname = "rocinante"; };
+        rocinante = xLib.nixosSystem {
+          hostname = "rocinante";
+          extraModules = [ inputs.virt.nixosModules.default ];
+        };
         videodrome = xLib.nixosSystem { hostname = "videodrome"; };
       };
 

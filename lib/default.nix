@@ -1,11 +1,8 @@
 { inputs, genPkgs }:
 let
-
   lib = inputs.nixpkgs.lib.extend (final: prev: { myLib = import ./lib { lib = final; }; });
-
 in
 {
-
   nixosSystem =
     { hostname
     , system ? "x86_64-linux"

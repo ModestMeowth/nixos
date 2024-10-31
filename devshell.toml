@@ -1,9 +1,5 @@
 # https://numtide.github.io/devshell
 
-[[env]]
-name = "DIRENV_WARN_TIMEOUT"
-value = 0
-
 [[commands]]
 package = "unstable.just"
 

@@ -6,7 +6,10 @@
     ./hardware.nix
     ./secrets.nix
     ./users.nix
+    ./vms
   ];
+
+  modules.virt.enable = true;
 
   modules.monitoring.node-exporter.enable = true;
   modules.monitoring.smartd.enable = true;

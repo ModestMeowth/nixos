@@ -263,6 +263,7 @@
         "secBoot": "secBoot",
         "sops": "sops",
         "unstable": "unstable",
+        "virt": "virt",
         "wsl": "wsl"
       }
     },
@@ -361,6 +362,27 @@
         "owner": "Nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "virt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1727598301,
+        "narHash": "sha256-+Bb8o7yWWUy1thwBCod+ygSug/wwFKo0GJ7BJ8L48nE=",
+        "owner": "AshleyYakeley",
+        "repo": "NixVirt",
+        "rev": "1d5c17c1f3a03f5d7e4dacc1025db350190f8f6c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AshleyYakeley",
+        "ref": "nixpkgs-24.05",
+        "repo": "NixVirt",
         "type": "github"
       }
     },

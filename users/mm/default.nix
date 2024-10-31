@@ -22,6 +22,7 @@ in
       ++ ifGroupsExist [
         "network"
         "networkmanager"
+        "libvirtd"
         "samba-users"
       ];
 

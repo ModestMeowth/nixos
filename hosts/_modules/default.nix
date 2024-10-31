@@ -38,7 +38,6 @@ with lib;
   time.timeZone = mkDefault "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  programs.direnv.enable = true;
   programs.fish.enable = true;
   programs.git.enable = true;
   programs.tmux.enable = true;

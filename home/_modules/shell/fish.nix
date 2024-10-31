@@ -27,6 +27,7 @@ in
       ''
         set -g fish_greeting
         fish_vi_key_bindings
+        set -e DIRENV_CONFIG
       '';
 
     shellAbbrs = {
