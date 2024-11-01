@@ -1,15 +1,7 @@
 {inputs, ...}: let
   virt = inputs.virt;
-in {
-  imports = [
-    ./talos-ctrl-0.nix
-    ./talos-ctrl-1.nix
-    ./talos-ctrl-2.nix
-    ./talos-worker-0.nix
-    ./talos-worker-1.nix
-    ./talos-worker-2.nix
-  ];
 
+in {
   networking.firewall.trustedInterfaces= ["virbr0"];
 
   virtualisation.libvirt.connections."qemu:///system" = {
