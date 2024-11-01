@@ -12,6 +12,7 @@ in
         sops.nixosModules.sops
         secBoot.nixosModules.lanzaboote
         wsl.nixosModules.default
+        virt.nixosModules.default
         ../hosts/_modules
         ../hosts/${hostname}
       ]

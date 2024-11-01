@@ -56,7 +56,6 @@
       flake.nixosConfigurations = {
         rocinante = xLib.nixosSystem {
           hostname = "rocinante";
-          extraModules = [ inputs.virt.nixosModules.default ];
         };
         videodrome = xLib.nixosSystem { hostname = "videodrome"; };
       };
