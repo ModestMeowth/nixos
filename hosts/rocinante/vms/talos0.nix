@@ -7,8 +7,6 @@ in {
         name = "talos0";
         uuid = "5667324a-1b6a-407f-b5ae-2e76280b16a0";
         title = "Talos0";
-        memory.count = 2;
-        memory.unit = "GiB";
         storage_vol.pool = "Disks";
         storage_vol.volume = "talos0.qcow2";
         install_vol = /persist/vm/iso/Talos-1.8.2.iso;
