@@ -16,7 +16,7 @@ in {
     in base // {
       vcpu.count = 2;
       devices = base.devices // {
-        interface.mac.address = "52:54:00:43:c9:c5";
+        interfaces.mac.address = "52:54:00:43:c9:c5";
       };
     });
   }];
