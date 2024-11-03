@@ -6,7 +6,8 @@
     ./hardware.nix
     ./secrets.nix
     ./users.nix
-  ] ++ builtins.map (n: toString ./vms + "/${n}") (builtins.attrNames (builtins.readDir ./vms));
+    ./vms
+  ];
 
   modules.virt.enable = true;
 

@@ -24,8 +24,7 @@
     virt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    { ... }@inputs:
+  outputs = { ... }@inputs:
     let
       genPkgs =
         system:
@@ -43,9 +42,7 @@
         inputs.devshell.flakeModule
       ];
 
-      perSystem =
-        { pkgs, system, ... }:
-        {
+      perSystem = {system, inputs', self', pkgs, ...}: {
           _module.args.pkgs = genPkgs system;
           legacyPackages = import ./packages { inherit pkgs; };
           devShells.default = pkgs.devshell.mkShell {
