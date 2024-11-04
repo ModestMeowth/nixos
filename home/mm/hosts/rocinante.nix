@@ -6,6 +6,7 @@ in
   programs.firefox.enable = true;
   modules.neovim.profile = "development";
   modules.term.wezterm.enable = true;
+  modules.virt-man.enable = true;
 
   programs.gh.enable = true;
   home.packages = [ pkgs.commitizen ];
