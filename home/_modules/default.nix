@@ -1,6 +1,5 @@
 {
   imports = [
-    ./bat.nix
     ./editorconfig.nix
     ./git.nix
     ./gnome

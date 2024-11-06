@@ -49,7 +49,7 @@ in
           vim.opt.smartindent = true
           vim.opt.termguicolors = true
           vim.opt.cursorline = true
-          vim.opt.colorcolumn = "80"
+          vim.opt.colorcolumn = "120"
 
           vim.keymap.set("n", "Q", "<nop>", {})
 
