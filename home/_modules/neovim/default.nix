@@ -35,6 +35,7 @@ in
           vim.opt.swapfile = false
           vim.opt.backup = false
           vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
+          vim.opt.undofile = true
           vim.opt.conceallevel = 0
           vim.opt.ignorecase = true
           vim.opt.smartcase = true
@@ -49,7 +50,7 @@ in
           vim.opt.smartindent = true
           vim.opt.termguicolors = true
           vim.opt.cursorline = true
-          vim.opt.colorcolumn = "120"
+          vim.opt.colorcolumn = "100"
 
           vim.keymap.set("n", "Q", "<nop>", {})
 
