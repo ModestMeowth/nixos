@@ -5,7 +5,7 @@ in
   options.modules.gaming.retroarch.enable = mkEnableOption "retroarch";
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs.unstable; [
+    home.packages = with pkgs; [
       (retroarch.override {
         cores = with libretro; [
           desmume

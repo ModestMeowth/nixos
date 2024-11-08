@@ -20,6 +20,7 @@ in
         "users"
       ]
       ++ ifGroupsExist [
+        "gamemode"
         "network"
         "networkmanager"
         "libvirtd"

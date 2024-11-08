@@ -34,21 +34,11 @@ in
     }
 
     (mkIf cfg.amd.enable {
-
-      boot.initrd.kernelModules = [ "amdgpu" ];
-
+      hardware.amdgpu = {
+        initrd.enable = true;
+        amdvlk.enable = true;
+      };
       services.xserver.videoDrivers = [ "amdgpu" ];
-
-      hardware.opengl.extraPackages =
-        with pkgs;
-        [ amdvlk ]
-        ++ (with rocmPackages; [
-          clr
-          rocm-runtime
-        ]);
-
-      environment.variables.AMD_VULKAN_ICD = "RADV";
-
     })
 
     (mkIf cfg.intel.enable {
