@@ -10,6 +10,7 @@ in
         cores = with libretro; [
           desmume
           fceumm
+          flycast
           mgba
           parallel-n64
           pcsx-rearmed
