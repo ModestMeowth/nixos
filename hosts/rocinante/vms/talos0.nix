@@ -17,5 +17,6 @@ in {
         interfaces.mac.address = "52:54:00:1b:13:05";
       };
     });
+    active = true;
   }];
 }
