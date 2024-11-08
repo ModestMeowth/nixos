@@ -43,4 +43,10 @@
       fsType = "zfs";
     };
   };
+
+  services.sanoid = {
+    datasets."zroot/persist/home/mm" = {
+      useTemplate = ["default"];
+    };
+  };
 }

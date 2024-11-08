@@ -26,5 +26,18 @@ in
       autoScrub.enable = true;
       trim.enable = true;
     };
+
+    services.sanoid = {
+      enable = true;
+      templates.default = {
+        autoprune = true;
+        autosnap = true;
+
+        hourly = 36;
+        daily = 30;
+        monthly = 3;
+      };
+    };
+
   };
 }

@@ -5,9 +5,6 @@
 
     parts.url = "github:hercules-ci/flake-parts";
 
-    devshell.url = "github:numtide/devshell";
-    devshell.inputs.nixpkgs.follows = "nixpkgs";
-
     secBoot.url = "github:nix-community/lanzaboote";
     secBoot.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -30,24 +27,23 @@
         system:
         import inputs.nixpkgs {
           inherit system;
-          overlays = builtins.attrValues (import ./overlays.nix { inherit inputs; });
-          config.allowUnfree = true;
+          overlays = [
+            (final: _: {
+              unstable = import inputs.unstable {
+                inherit (final) system;
+                overlays = [];
+              };
+            })
+          ];
         };
       xLib = import ./lib { inherit inputs genPkgs; };
     in
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = inputs.nixpkgs.lib.systems.flakeExposed;
 
-      imports = [
-        inputs.devshell.flakeModule
-      ];
-
       perSystem = {system, inputs', self', pkgs, ...}: {
           _module.args.pkgs = genPkgs system;
           legacyPackages = import ./packages { inherit pkgs; };
-          devShells.default = pkgs.devshell.mkShell {
-            imports = [ (pkgs.devshell.importTOML ./devshell.toml) ];
-          };
         };
 
       flake.nixosConfigurations = {

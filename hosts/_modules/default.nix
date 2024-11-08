@@ -18,8 +18,13 @@ with lib;
   system.stateVersion = "24.05";
 
   nix.registry = {
-    stable.flake = inputs.nixpkgs;
+    nixpkgs.flake = inputs.nixpkgs;
     unstable.flake = inputs.unstable;
+    devshell.to = {
+      owner = "numtide";
+      repo = "devshell";
+      type = "github";
+    };
   };
 
   nix.settings.experimental-features = [
