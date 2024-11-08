@@ -27,10 +27,12 @@
         system:
         import inputs.nixpkgs {
           inherit system;
+          config.allowUnfree = true;
           overlays = [
             (final: _: {
               unstable = import inputs.unstable {
                 inherit (final) system;
+                config.allowUnfree = true;
                 overlays = [];
               };
             })
