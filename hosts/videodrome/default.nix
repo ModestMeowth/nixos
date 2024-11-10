@@ -1,4 +1,4 @@
-{ hostname, pkgs, ... }:
+{ hostname, lib, pkgs, ... }:
 {
   imports = [
     ./hardware.nix
@@ -30,6 +30,12 @@
   };
 
   hardware.opengl = {
-    setLdLibraryPath = true;
+#    setLdLibraryPath = true;
+  };
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = [pkgs.unstable.linuxPackages.nvidia_x11];
+    package = pkgs.unstable.nix-ld;
   };
 }
