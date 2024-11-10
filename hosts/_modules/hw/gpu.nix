@@ -24,12 +24,15 @@ in
       hardware.opengl = {
         enable = true;
         driSupport = true;
-      };
 
-      environment.systemPackages = with pkgs; [
-        vulkan-tools
-        clinfo
-      ];
+        extraPackages = with pkgs; [
+          mesa.drivers
+          vaapiVdpau
+          libvdpau-va-gl
+          vulkan-tools
+          clinfo
+        ];
+      };
 
     }
 
@@ -51,8 +54,6 @@ in
         intel-compute-runtime
         intel-media-driver
         vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
       ];
 
       environment.variables.VDPAU_DRIVER = "va_gl";
@@ -68,8 +69,6 @@ in
 
       hardware = {
         opengl.extraPackages = with pkgs; [
-          vaapiVdpau
-          libvdpau-va-gl
         ];
 
         nvidia = {

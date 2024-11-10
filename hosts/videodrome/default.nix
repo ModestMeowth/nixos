@@ -10,6 +10,7 @@
     hostname = hostname;
     generateHosts = false;
     generateResolvConf = false;
+    useWindowsDriver = true;
   };
 
   networking = {
@@ -26,5 +27,9 @@
 
   modules.shares.pwnyboy-share = {
     enable = true;
+  };
+
+  hardware.opengl = {
+    setLdLibraryPath = true;
   };
 }
