@@ -14,15 +14,15 @@
   };
   dracula-k9s = {
     pname = "dracula-k9s";
-    version = "v0.32.5";
+    version = "v0.32.6";
     src = fetchFromGitHub {
       owner = "derailed";
       repo = "k9s";
-      rev = "v0.32.5";
+      rev = "v0.32.6";
       fetchSubmodules = false;
-      sha256 = "sha256-H0PimkPXs2/iirOpN82az3Bge71k1RZOhMtr0UmGOy8=";
+      sha256 = "sha256-jJHlFrnyvGZ0/ykmZRbSAFwzvN0j2dqddLEQoiv3oys=";
     };
-    "skins/dracula.yaml" = builtins.readFile ./dracula-k9s-v0.32.5/skins/dracula.yaml;
+    "skins/dracula.yaml" = builtins.readFile ./dracula-k9s-v0.32.6/skins/dracula.yaml;
   };
   dracula-sublime = {
     pname = "dracula-sublime";
