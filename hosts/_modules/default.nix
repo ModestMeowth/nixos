@@ -51,6 +51,7 @@ with lib;
   environment.systemPackages = with pkgs; [
     age
     sops
+    nvfetcher
   ];
 
   sops = {

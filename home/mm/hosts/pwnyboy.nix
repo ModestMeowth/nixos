@@ -8,9 +8,10 @@ with lib;
   programs.neovim.enable = true;
   programs.gh.enable = true;
 
-  home.packages = [
-    pkgs.commitizen
-    pkgs.nh
+  home.packages = with pkgs; [
+    commitizen
+    nh
+    nvfetcher
   ];
 
   home.file."justfile".text = mkForce # just
