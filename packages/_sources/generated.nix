@@ -14,15 +14,15 @@
   };
   dracula-k9s = {
     pname = "dracula-k9s";
-    version = "v0.32.6";
+    version = "v0.32.7";
     src = fetchFromGitHub {
       owner = "derailed";
       repo = "k9s";
-      rev = "v0.32.6";
+      rev = "v0.32.7";
       fetchSubmodules = false;
-      sha256 = "sha256-jJHlFrnyvGZ0/ykmZRbSAFwzvN0j2dqddLEQoiv3oys=";
+      sha256 = "sha256-0S6FomP1WVqYl5nP0FcaElgghMcZmE0V8iLhghERF6A=";
     };
-    "skins/dracula.yaml" = builtins.readFile ./dracula-k9s-v0.32.6/skins/dracula.yaml;
+    "skins/dracula.yaml" = builtins.readFile ./dracula-k9s-v0.32.7/skins/dracula.yaml;
   };
   dracula-sublime = {
     pname = "dracula-sublime";
@@ -67,7 +67,7 @@
     version = "latest";
     src = fetchurl {
       url = "https://github.com/ModestMeowth.keys";
-      sha256 = "sha256-H/8yvUAy74moEn0OuLfPOOmaBIRMu0lLwgLmMMr6wug=";
+      sha256 = "sha256-2y3t5kiYqO09UitlBxXCnqcyo5fHONdTUakzLw9o840=";
     };
   };
   yaml-companion-nvim = {

@@ -23,7 +23,7 @@
         "cargoLocks": null,
         "date": null,
         "extract": {
-            "skins/dracula.yaml": "./dracula-k9s-v0.32.6/skins/dracula.yaml"
+            "skins/dracula.yaml": "./dracula-k9s-v0.32.7/skins/dracula.yaml"
         },
         "name": "dracula-k9s",
         "passthru": null,
@@ -35,11 +35,11 @@
             "name": null,
             "owner": "derailed",
             "repo": "k9s",
-            "rev": "v0.32.6",
-            "sha256": "sha256-jJHlFrnyvGZ0/ykmZRbSAFwzvN0j2dqddLEQoiv3oys=",
+            "rev": "v0.32.7",
+            "sha256": "sha256-0S6FomP1WVqYl5nP0FcaElgghMcZmE0V8iLhghERF6A=",
             "type": "github"
         },
-        "version": "v0.32.6"
+        "version": "v0.32.7"
     },
     "dracula-sublime": {
         "cargoLocks": null,
@@ -116,7 +116,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-H/8yvUAy74moEn0OuLfPOOmaBIRMu0lLwgLmMMr6wug=",
+            "sha256": "sha256-2y3t5kiYqO09UitlBxXCnqcyo5fHONdTUakzLw9o840=",
             "type": "url",
             "url": "https://github.com/ModestMeowth.keys"
         },
