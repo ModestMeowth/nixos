@@ -33,7 +33,7 @@
               unstable = import inputs.unstable {
                 inherit (final) system;
                 config.allowUnfree = true;
-                overlays = [];
+                overlays = [ ];
               };
             })
           ];
@@ -43,10 +43,10 @@
     inputs.parts.lib.mkFlake { inherit inputs; } {
       systems = inputs.nixpkgs.lib.systems.flakeExposed;
 
-      perSystem = {system, inputs', self', pkgs, ...}: {
-          _module.args.pkgs = genPkgs system;
-          legacyPackages = import ./packages { inherit pkgs; };
-        };
+      perSystem = { system, inputs', self', pkgs, ... }: {
+        _module.args.pkgs = genPkgs system;
+        legacyPackages = import ./packages { inherit pkgs; };
+      };
 
       flake.nixosConfigurations = {
         rocinante = xLib.nixosSystem {

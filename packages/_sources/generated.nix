@@ -67,7 +67,7 @@
     version = "latest";
     src = fetchurl {
       url = "https://github.com/ModestMeowth.keys";
-      sha256 = "sha256-2y3t5kiYqO09UitlBxXCnqcyo5fHONdTUakzLw9o840=";
+      sha256 = "sha256-H/8yvUAy74moEn0OuLfPOOmaBIRMu0lLwgLmMMr6wug=";
     };
   };
   yaml-companion-nvim = {
