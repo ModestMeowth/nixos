@@ -23,7 +23,7 @@
         "cargoLocks": null,
         "date": null,
         "extract": {
-            "skins/dracula.yaml": "./dracula-k9s-v0.32.7/skins/dracula.yaml"
+            "skins/dracula.yaml": "./dracula-k9s-v0.32.5/skins/dracula.yaml"
         },
         "name": "dracula-k9s",
         "passthru": null,
@@ -35,11 +35,11 @@
             "name": null,
             "owner": "derailed",
             "repo": "k9s",
-            "rev": "v0.32.7",
-            "sha256": "sha256-0S6FomP1WVqYl5nP0FcaElgghMcZmE0V8iLhghERF6A=",
+            "rev": "v0.32.5",
+            "sha256": "sha256-H0PimkPXs2/iirOpN82az3Bge71k1RZOhMtr0UmGOy8=",
             "type": "github"
         },
-        "version": "v0.32.7"
+        "version": "v0.32.5"
     },
     "dracula-sublime": {
         "cargoLocks": null,

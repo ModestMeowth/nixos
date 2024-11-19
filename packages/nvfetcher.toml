@@ -11,8 +11,8 @@ src.github_tag = "gazorby/fish-abbreviation-tips"
 fetch.github = "gazorby/fish-abbreviation-tips"
 
 [dracula-k9s]
-src.github = "derailed/k9s"
 fetch.github = "derailed/k9s"
+src.manual = "v0.32.5"
 extract = ["skins/dracula.yaml"]
 
 [dracula-sublime]
