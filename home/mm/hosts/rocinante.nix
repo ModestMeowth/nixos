@@ -24,6 +24,7 @@ in
   xdg.configFile."k9s/skins/dracula.yaml".text = k9s-theme;
   programs.k9s = {
     enable = true;
+    package = pkgs.unstable.k9s;
     settings.k9s.skin = "dracula";
   };
 
