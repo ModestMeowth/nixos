@@ -1,5 +1,5 @@
 [global]
-excludes = ["*.sops.*", "packages/_sources/**"]
+excludes = ["*.sops.*", "packages/_sources/*"]
 
 [formatter.nix]
 command = "nixpkgs-fmt"
