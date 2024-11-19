@@ -20,9 +20,19 @@ with lib;
   nix.registry = {
     nixpkgs.flake = inputs.nixpkgs;
     unstable.flake = inputs.unstable;
+    flake-parts.to = {
+      owner = "hercules-ci";
+      repo = "flake-parts";
+      type = "github";
+    };
     devshell.to = {
       owner = "numtide";
       repo = "devshell";
+      type = "github";
+    };
+    sops-nix.to = {
+      owner = "Mic92";
+      repo = "sops-nix";
       type = "github";
     };
   };

@@ -1,9 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    unstable.url = "github:Nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs";
+    unstable.url = "unstable";
 
-    parts.url = "github:hercules-ci/flake-parts";
+    parts.url = "flake-parts";
 
     secBoot.url = "github:nix-community/lanzaboote";
     secBoot.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +11,7 @@
     wsl.url = "github:nix-community/NixOS-WSL";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops.url = "github:Mic92/sops-nix";
+    sops.url = "sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
 
     hm.url = "github:nix-community/home-manager/release-24.05";

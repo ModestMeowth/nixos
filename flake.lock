@@ -133,16 +133,13 @@
       "locked": {
         "lastModified": 1731797254,
         "narHash": "sha256-df3dJApLPhd11AlueuoN0Q4fHo/hagP75LlM5K1sz9g=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
+        "path": "/nix/store/ly4s3hw35dd1c2vsd694y2715pc1d2c1-source",
         "rev": "e8c38b73aeb218e27163376a2d617e61a2ad9b59",
-        "type": "github"
+        "type": "path"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "type": "indirect"
       }
     },
     "nixpkgs-lib": {
@@ -186,9 +183,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
+        "id": "flake-parts",
+        "type": "indirect"
       }
     },
     "pre-commit-hooks-nix": {
@@ -291,9 +287,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "type": "github"
+        "id": "sops-nix",
+        "type": "indirect"
       }
     },
     "systems": {
@@ -315,16 +310,13 @@
       "locked": {
         "lastModified": 1731676054,
         "narHash": "sha256-OZiZ3m8SCMfh3B6bfGC/Bm4x3qc1m2SVEAlkV6iY7Yg=",
-        "owner": "Nixos",
-        "repo": "nixpkgs",
+        "path": "/nix/store/hfz1qqd0z8amlgn8qwich1dvkmldik36-source",
         "rev": "5e4fbfb6b3de1aa2872b76d49fafc942626e2add",
-        "type": "github"
+        "type": "path"
       },
       "original": {
-        "owner": "Nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "unstable",
+        "type": "indirect"
       }
     },
     "virt": {
