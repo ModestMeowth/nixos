@@ -1,21 +1,19 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs";
-    unstable.url = "unstable";
-
+    nixpkgs.url = "nixpkgs/nixos-24.05";
+    unstable.url = "nixpkgs/nixos-unstable";
     parts.url = "flake-parts";
+    sops.url = "sops-nix";
+    sops.inputs.nixpkgs.follows = "nixpkgs";
+
+    hm.url = "home-manager/release-24.05";
+    hm.inputs.nixpkgs.follows = "nixpkgs";
 
     secBoot.url = "github:nix-community/lanzaboote";
     secBoot.inputs.nixpkgs.follows = "nixpkgs";
 
     wsl.url = "github:nix-community/NixOS-WSL";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
-
-    sops.url = "sops-nix";
-    sops.inputs.nixpkgs.follows = "nixpkgs";
-
-    hm.url = "github:nix-community/home-manager/release-24.05";
-    hm.inputs.nixpkgs.follows = "nixpkgs";
 
     virt.url = "github:AshleyYakeley/NixVirt/nixpkgs-24.05";
     virt.inputs.nixpkgs.follows = "nixpkgs";
