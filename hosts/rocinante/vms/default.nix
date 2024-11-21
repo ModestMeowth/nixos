@@ -1,7 +1,8 @@
 { inputs, ... }:
 let
   virt = inputs.virt;
-
+  cidr = "192.168.1";
+  mac = "52:54:00";
 in
 {
   imports = [
@@ -11,16 +12,16 @@ in
   ];
 
   networking.firewall.trustedInterfaces = [ "virbr0" ];
+  networking.hosts = {
+    "${cidr}.2" = ["talos0"];
+    "${cidr}.3" = ["talos1"];
+    "${cidr}.4" = ["talos2"];
+  };
 
   virtualisation.libvirt.connections."qemu:///system" = {
     networks = [
       {
-        definition =
-          let
-            cidr = "192.168.1";
-            mac = "52:54:00";
-          in
-          virt.lib.network.writeXML {
+        definition = virt.lib.network.writeXML {
             name = "default";
             uuid = "83c1e2a9-65ae-4b5f-8e33-9dfca84c0a95";
 
