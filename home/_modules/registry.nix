@@ -1,7 +1,9 @@
 {
   nix.registry = {
-    owner = "numtide";
-    repo = "devshell";
-    type = "github";
+    devshell.to = {
+      owner = "numtide";
+      repo = "devshell";
+      type = "github";
+    };
   };
 }
