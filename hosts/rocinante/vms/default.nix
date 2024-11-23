@@ -6,16 +6,16 @@ let
 in
 {
   imports = [
-    ./talos0.nix
     ./talos1.nix
     ./talos2.nix
+    ./talos3.nix
   ];
 
   networking.firewall.trustedInterfaces = [ "virbr0" ];
   networking.hosts = {
-    "${cidr}.2" = ["talos0"];
-    "${cidr}.3" = ["talos1"];
-    "${cidr}.4" = ["talos2"];
+    "${cidr}.101" = ["talos1"];
+    "${cidr}.102" = ["talos2"];
+    "${cidr}.103" = ["talos3"];
   };
 
   virtualisation.libvirt.connections."qemu:///system" = {
@@ -39,18 +39,18 @@ in
 
             ip.dhcp.host = [
               {
-                name = "talos0";
-                ip = "${cidr}.2";
+                name = "talos1";
+                ip = "${cidr}.101";
                 mac = "${mac}:1b:13:05";
               }
               {
-                name = "talos1";
-                ip = "${cidr}.3";
+                name = "talos2";
+                ip = "${cidr}.102";
                 mac = "${mac}:4a:a2:73";
               }
               {
-                name = "talos2";
-                ip = "${cidr}.4";
+                name = "talos3";
+                ip = "${cidr}.103";
                 mac = "${mac}:43:c9:c5";
               }
             ];
