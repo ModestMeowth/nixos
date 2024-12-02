@@ -28,7 +28,7 @@ in
         with pkgs;
         [
           # 4.10 is broken in stable but not unstable
-          unstable.vscode-langservers-extracted
+          vscode-langservers-extracted
           alejandra
           clang-tools
           gopls
@@ -170,7 +170,7 @@ in
           lspconfig.pyright.setup {}
           lspconfig.gopls.setup {}
           lspconfig.rust_analyzer.setup {}
-          lspconfig.tsserver.setup {}
+          lspconfig.ts_ls.setup {}
           lspconfig.clangd.setup {}
           lspconfig.zls.setup {}
 
