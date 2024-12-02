@@ -1,4 +1,4 @@
-{ hostname, pkgs, ... }: {
+{config, hostname, pkgs, ... }: {
   networking.hostName = hostname;
 
   imports = [
@@ -21,7 +21,7 @@
   modules.services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
-    authKey = /run/secrets/tskey;
+    authKey = config.sops.secrets."tskey".path;
   };
 
   modules.wm.gnome.enable = true;

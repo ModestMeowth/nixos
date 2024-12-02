@@ -1,10 +1,4 @@
-{ inputs
-, lib
-, pkgs
-, ...
-}:
-with lib;
-{
+{lib, pkgs, ...}: with lib; {
   imports = [
     ./hw
     ./cluster
@@ -15,7 +9,7 @@ with lib;
   ];
 
   documentation.nixos.enable = false;
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -33,10 +27,17 @@ with lib;
   time.timeZone = mkDefault "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  networking.firewall.enable = true;
+  networking.nftables.enable = true;
+
   programs.fish.enable = true;
   programs.git.enable = true;
   programs.tmux.enable = true;
-  programs.vim.defaultEditor = true;
+
+  programs.vim = {
+    defaultEditor = true;
+    enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     age

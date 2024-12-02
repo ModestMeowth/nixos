@@ -1,12 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.05";
+    nixpkgs.url = "nixpkgs/nixos-24.11";
     unstable.url = "nixpkgs/nixos-unstable";
     parts.url = "flake-parts";
     sops.url = "sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
 
-    hm.url = "home-manager/release-24.05";
+    hm.url = "home-manager/release-24.11";
     hm.inputs.nixpkgs.follows = "nixpkgs";
 
     secBoot.url = "github:nix-community/lanzaboote";

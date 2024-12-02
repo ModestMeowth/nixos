@@ -1,7 +1,7 @@
-{ inputs, ... }:
+{inputs, ...}:
 let
   virt = inputs.virt;
-  cidr = "192.168.1";
+  cidr = "192.168.100";
   mac = "52:54:00";
 in
 {
@@ -11,14 +11,8 @@ in
     ./talos3.nix
   ];
 
-  networking.firewall.trustedInterfaces = [ "virbr0" ];
-  networking.hosts = {
-    "${cidr}.101" = ["talos1"];
-    "${cidr}.102" = ["talos2"];
-    "${cidr}.103" = ["talos3"];
-  };
-
   virtualisation.libvirt.connections."qemu:///system" = {
+
     networks = [
       {
         definition = virt.lib.network.writeXML {
@@ -26,9 +20,6 @@ in
             uuid = "83c1e2a9-65ae-4b5f-8e33-9dfca84c0a95";
 
             forward.mode = "nat";
-            forward.nat.port.start = 1024;
-            forward.nat.port.end = 65535;
-
             bridge.name = "virbr0";
 
             ip.address = "${cidr}.1";

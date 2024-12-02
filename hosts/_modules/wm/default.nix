@@ -18,7 +18,6 @@ in
 
     security.rtkit.enable = true;
 
-    sound.enable = mkDefault false;
     services.pipewire.enable = true;
   };
 }

@@ -1,13 +1,5 @@
-{ config
-, lib
-, pkgs
-, ...
-}:
-with lib;
-let
-
+{config, lib, pkgs, ...}: with lib; let
   cfg = config.modules.wm.gnome;
-
 in
 {
   options.modules.wm.gnome = {
@@ -27,20 +19,20 @@ in
 
     environment.systemPackages = with pkgs; [
       wl-clipboard
-      gnome.gnome-remote-desktop
-      gnome.gnome-tweaks
+      gnome-remote-desktop
+      gnome-tweaks
     ];
 
     environment.gnome.excludePackages = with pkgs; [
       gnome-tour
       gedit
-      gnome.gnome-music
-      gnome.epiphany
-      gnome.geary
-      gnome.totem
-      gnome.iagno
-      gnome.hitori
-      gnome.atomix
+      gnome-music
+      epiphany
+      geary
+      totem
+      iagno
+      hitori
+      atomix
     ];
   };
 }

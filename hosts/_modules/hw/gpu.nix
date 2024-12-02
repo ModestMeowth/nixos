@@ -21,9 +21,8 @@ in
 
     {
       # Defaults
-      hardware.opengl = {
+      hardware.graphics = {
         enable = true;
-        driSupport = true;
 
         extraPackages = with pkgs; [
           mesa.drivers
@@ -50,7 +49,7 @@ in
 
       services.xserver.videoDrivers = [ "modesetting" ];
 
-      hardware.opengl.extraPackages = with pkgs; [
+      hardware.graphics.extraPackages = with pkgs; [
         intel-compute-runtime
         intel-media-driver
         vaapiIntel
@@ -68,7 +67,7 @@ in
       services.xserver.videoDrivers = [ "nvidia" ];
 
       hardware = {
-        opengl.extraPackages = with pkgs; [
+        graphics.extraPackages = with pkgs; [
         ];
 
         nvidia = {
