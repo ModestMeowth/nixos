@@ -18,6 +18,7 @@ in
           wayland_gnome.apply_to_config(config)
 
           config.color_scheme = "Dracula (Official)"
+          config.front_end = "WebGpu"
 
           config.font_size = 11.0
           config.font = wt.font {
