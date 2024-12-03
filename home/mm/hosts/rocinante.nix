@@ -3,7 +3,9 @@ let
   k9s-theme = myPkgs.dracula.zellij.theme;
 in
 {
+  programs.chromium.enable = true;
   programs.firefox.enable = true;
+
   modules.neovim.profile = "development";
   modules.term.wezterm.enable = true;
   modules.virt-man.enable = true;

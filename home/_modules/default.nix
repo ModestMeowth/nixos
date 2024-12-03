@@ -1,6 +1,8 @@
 {
   imports = [
+    ./chromium.nix
     ./editorconfig.nix
+    ./firefox.nix
     ./git.nix
     ./gnome
     ./neovim
