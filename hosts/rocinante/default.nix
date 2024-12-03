@@ -27,6 +27,7 @@
   modules.wm.gnome.enable = true;
 
   services.fwupd.enable = true;
+  programs.gamemode.enable = true;
 
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
