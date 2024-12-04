@@ -27,8 +27,8 @@
   time.timeZone = mkDefault "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  networking.firewall.enable = true;
-  networking.nftables.enable = true;
+#  networking.firewall.enable = true;
+#  networking.nftables.enable = true;
 
   programs.fish.enable = true;
   programs.git.enable = true;
