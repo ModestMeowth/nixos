@@ -1,15 +1,14 @@
-{inputs, ...}: let
+{inputs, lib, ...}: let
   virt = inputs.virt;
   cidr = "192.168.100";
   mac = "52:54:00";
 in
 {
-  networking.firewall = {
-    trustedInterfaces = ["virbr+"];
+  # libvirt does not play well with nftables
+  networking.nftables.enable = lib.mkForce false;
 
-    extraForwardRules = ''
-      iifname virbr+ accept
-    '';
+  networking.firewall = {
+    trustedInterfaces = ["virbr0"];
   };
 
   virtualisation.libvirt.connections."qemu:///system" = {
