@@ -1,6 +1,6 @@
 {inputs, lib, ...}: let
   virt = inputs.virt;
-  cidr = "192.168.100";
+  cidr = "10.1.1";
   mac = "52:54:00";
 in
 {
@@ -25,23 +25,23 @@ in
             ip.address = "${cidr}.1";
             ip.prefix = 24;
 
-            ip.dhcp.range.start = "${cidr}.101";
+            ip.dhcp.range.start = "${cidr}.20";
             ip.dhcp.range.end = "${cidr}.254";
 
             ip.dhcp.host = [
               {
                 name = "talos1";
-                ip = "${cidr}.101";
+                ip = "${cidr}.11";
                 mac = "${mac}:1b:13:05";
               }
               {
                 name = "talos2";
-                ip = "${cidr}.102";
+                ip = "${cidr}.12";
                 mac = "${mac}:4a:a2:73";
               }
               {
                 name = "talos3";
-                ip = "${cidr}.103";
+                ip = "${cidr}.13";
                 mac = "${mac}:43:c9:c5";
               }
             ];
