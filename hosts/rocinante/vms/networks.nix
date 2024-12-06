@@ -11,6 +11,8 @@ in
     trustedInterfaces = ["virbr0"];
   };
 
+  networking.hosts."10.1.1.10" = ["cluster.lan"];
+
   virtualisation.libvirt.connections."qemu:///system" = {
 
     networks = [
