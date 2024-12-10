@@ -35,7 +35,7 @@
                 overlays = [ ];
               };
             })
-            inputs.nur.overlay
+            inputs.nur.overlays.default
           ];
         };
       xLib = import ./lib { inherit inputs genPkgs; };
