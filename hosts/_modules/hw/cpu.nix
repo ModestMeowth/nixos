@@ -53,6 +53,9 @@ in
 
       networking.interfaces.eth0.mtu = 1500;
 
+      # Windows has it's own firewall
+      networking.firewall.enable = mkForce false;
+
       security.sudo.extraRules = [
         {
           groups = [ "wheel" ];
