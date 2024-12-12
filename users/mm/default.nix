@@ -1,4 +1,4 @@
-{config, lib, pkgs, myPkgs, ...}: let
+{config, lib, pkgs, ...}: let
   ifGroupsExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
@@ -23,6 +23,6 @@ in
 
     initialHashedPassword = "$y$j9T$xgIkUu0jxDn.E27xw3HIP0$AxOebMJ322FjxN2ncCvz8g0HWhdn3Om.d9HyWyV35K0";
 
-    openssh.authorizedKeys.keyFiles = [ myPkgs.keys.src ];
+    openssh.authorizedKeys.keyFiles = [ pkgs.keys.src ];
   };
 }

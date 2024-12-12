@@ -1,9 +1,9 @@
-{ config, lib, myPkgs, ... }: with lib; let
+{config, lib, pkgs, ...}: with lib; let
   cfg = config.modules.shell.zellij;
   cfgBash = config.programs.bash;
   cfgFish = config.programs.fish;
   cfgZellij = config.programs.zellij;
-  theme = myPkgs.dracula.zellij.theme;
+  theme = pkgs.dracula.zellij.theme;
 in
 {
   options.modules.shell.zellij.enable = mkEnableOption "shell-zellij";

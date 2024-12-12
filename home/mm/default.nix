@@ -1,5 +1,6 @@
-{ hostname, pkgs, username, ... }: {
+{ hostname, pkgs, ... }: {
   imports = [
+    ../_modules
     ./hosts/${hostname}.nix
     ./shell.nix
   ];
@@ -7,8 +8,8 @@
   programs.home-manager.enable = true;
   home.stateVersion = "24.11";
 
-  home.username = username;
-  home.homeDirectory = "/home/${username}";
+  home.username = "mm";
+  home.homeDirectory = "/home/mm";
 
   home.packages = with pkgs; [
     just

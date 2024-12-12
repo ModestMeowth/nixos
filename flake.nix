@@ -27,16 +27,7 @@
         import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          overlays = [
-            (final: _: {
-              unstable = import inputs.unstable {
-                inherit (final) system;
-                config.allowUnfree = true;
-                overlays = [ ];
-              };
-            })
-            inputs.nur.overlays.default
-          ];
+            overlays = builtins.attrValues (import ./overlays.nix {inherit inputs;});
         };
       xLib = import ./lib { inherit inputs genPkgs; };
     in
@@ -49,27 +40,9 @@
       };
 
       flake.nixosConfigurations = {
-        rocinante = xLib.nixosSystem {
-          hostname = "rocinante";
-        };
-        videodrome = xLib.nixosSystem { hostname = "videodrome"; };
-      };
-
-      flake.homeConfigurations = {
-        "mm@rocinante" = xLib.homeConfig {
-          username = "mm";
-          hostname = "rocinante";
-        };
-
-        "mm@videodrome" = xLib.homeConfig {
-          username = "mm";
-          hostname = "videodrome";
-        };
-
-        "mm@pwnyboy" = xLib.homeConfig {
-          username = "mm";
-          hostname = "pwnyboy";
-        };
+        pwnyboy = xLib.nixosSystem "x86_64-linux" "pwnyboy";
+        rocinante = xLib.nixosSystem "x86_64-linux" "rocinante";
+        videodrome = xLib.nixosSystem "x84_64-linux" "videodrome";
       };
     };
 }

@@ -1,6 +1,6 @@
-{ pkgs, myPkgs, ... }:
+{pkgs, ...}:
 let
-  theme = myPkgs.dracula.sublime.theme;
+  theme = pkgs.dracula.sublime.theme;
 in
 {
   programs.bat = {

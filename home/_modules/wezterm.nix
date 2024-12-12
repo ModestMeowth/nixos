@@ -1,6 +1,6 @@
-{ config, lib, myPkgs, ... }: with lib; let
+{config, lib, pkgs, ...}: with lib; let
   cfg = config.modules.term.wezterm;
-  theme = myPkgs.dracula.wezterm.theme;
+  theme = pkgs.dracula.wezterm.theme;
 in
 {
   options.modules.term.wezterm.enable = mkEnableOption "wezterm";

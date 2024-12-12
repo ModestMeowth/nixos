@@ -1,4 +1,4 @@
-{ config, lib, pkgs, myPkgs, ... }: with lib; let
+{config, lib, pkgs, ...}: with lib; let
   cfgFish = config.programs.fish;
   cfgFzf = config.programs.fzf;
 in
@@ -12,7 +12,7 @@ in
         }
         {
           name = "abbreviation-tips";
-          src = myPkgs.fish-plugins.abbreviation-tips.src;
+          src = pkgs.fish-plugins.abbreviation-tips.src;
         }
       ])
       (mkIf cfgFzf.enable [

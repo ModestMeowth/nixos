@@ -1,5 +1,5 @@
-{config, hostname, pkgs, ... }: {
-  networking.hostName = hostname;
+{config, pkgs, ... }: {
+  networking.hostName = "rocinante";
 
   imports = [
     ./filesystems.nix

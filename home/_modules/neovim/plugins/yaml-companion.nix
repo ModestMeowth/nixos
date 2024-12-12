@@ -1,10 +1,4 @@
-{ config
-, lib
-, myPkgs
-, ...
-}:
-with lib;
-let
+{config, lib, pkgs, ...}: with lib; let
   cfg = config.modules.neovim.plugins.yaml-companion;
 in
 {
@@ -14,7 +8,7 @@ in
     modules.neovim.plugins.telescope.enable = true;
 
     programs.neovim = {
-      plugins = [ myPkgs.neovim-plugins.yaml-companion-nvim ];
+      plugins = [pkgs.neovim-plugins.yaml-companion-nvim];
 
       extraLuaConfig = # lua
         ''
