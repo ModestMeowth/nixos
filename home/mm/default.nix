@@ -24,13 +24,8 @@
       default:
         @just --choose --justfile "{{ justfile() }}"
 
-      system-update:
+      update:
         nh os switch "github:ModestMeowth/nixos" -- --refresh
-
-      home-update:
-        nh home switch "github:ModestMeowth/nixos" -- --refresh
-
-      update: system-update home-update
     '';
 
   systemd.user.startServices = "sd-switch";
