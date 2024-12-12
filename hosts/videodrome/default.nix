@@ -18,7 +18,7 @@
     search = [ "cat-alkaline.ts.net" ];
   };
 
-  modules.services.tailscale = {
+  services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
   };

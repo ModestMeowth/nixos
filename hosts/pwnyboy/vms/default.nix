@@ -1,0 +1,3 @@
+{
+  modules.virt.enable = true;
+}

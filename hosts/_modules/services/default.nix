@@ -1,7 +1,7 @@
 {
   imports = [
     ./chrony.nix
+    ./samba.nix
     ./ssh.nix
-    ./tailscale.nix
   ];
 }

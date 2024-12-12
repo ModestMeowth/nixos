@@ -18,10 +18,10 @@
 
   modules.services.ssh.enable = true;
 
-  modules.services.tailscale = {
+  services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
-    authKey = config.sops.secrets."tskey".path;
+    authKeyFile = config.sops.secrets."tskey".path;
   };
 
   modules.wm.gnome.enable = true;
