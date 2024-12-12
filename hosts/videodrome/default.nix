@@ -1,4 +1,4 @@
-{ hostname, pkgs, ... }:
+{pkgs, ...}:
 {
   imports = [
     ./hardware.nix
@@ -7,7 +7,7 @@
   ];
 
   wsl.wslConf.network = {
-    hostname = hostname;
+    hostname = "videodrome";
     generateHosts = false;
     generateResolvConf = false;
     useWindowsDriver = true;

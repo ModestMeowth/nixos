@@ -42,7 +42,7 @@
       flake.nixosConfigurations = {
         pwnyboy = xLib.nixosSystem "x86_64-linux" "pwnyboy";
         rocinante = xLib.nixosSystem "x86_64-linux" "rocinante";
-        videodrome = xLib.nixosSystem "x84_64-linux" "videodrome";
+        videodrome = xLib.nixosSystem "x86_64-linux" "videodrome";
       };
     };
 }
