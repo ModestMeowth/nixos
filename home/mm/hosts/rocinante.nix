@@ -7,6 +7,8 @@ in
   programs.firefox.enable = true;
 
   modules.neovim.profile = "development";
+  programs.vscode.enable = true;
+
   modules.term.wezterm.enable = true;
   modules.virt-man.enable = true;
 

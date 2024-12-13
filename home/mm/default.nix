@@ -29,5 +29,4 @@
     '';
 
   systemd.user.startServices = "sd-switch";
-  modules.vscode-remote-fix.enable = true;
 }
