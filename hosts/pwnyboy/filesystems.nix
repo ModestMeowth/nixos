@@ -1,12 +1,11 @@
-{ hostname, ... }:
 let
-  root = "zroot/${hostname}";
+  root = "zroot/pwnyboy";
   persist = "zroot/persist";
 in
 {
   fileSystems."/" = {
     device = "${root}/root";
-    type = "zfs";
+    fsType = "zfs";
   };
 
   fileSystems."/boot" = {
