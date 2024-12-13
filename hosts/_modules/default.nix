@@ -1,7 +1,6 @@
 { lib, pkgs, ... }: with lib; {
   imports = [
     ./hw
-    ./cluster
     ./libvirt.nix
     ./services
     ./shares
