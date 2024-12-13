@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}: with lib; let
+{ config, lib, pkgs, ... }: with lib; let
   cfg = config.modules.shell.zellij;
   cfgBash = config.programs.bash;
   cfgFish = config.programs.fish;

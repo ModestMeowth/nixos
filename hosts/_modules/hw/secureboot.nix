@@ -1,13 +1,5 @@
-{ config
-, lib
-, pkgs
-, ...
-}:
-with lib;
-let
-
+{ config, lib, pkgs, ... }: with lib; let
   cfg = config.modules.hw.secureboot;
-
 in
 {
   options.modules.hw.secureboot.enable = mkEnableOption "secureboot";

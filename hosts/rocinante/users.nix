@@ -1,5 +1,5 @@
 {
-  imports = [../../users/mm];
+  imports = [ ../../users/mm ];
 
   fileSystems."home/mm" = {
     device = "zroot/persist/home/mm";

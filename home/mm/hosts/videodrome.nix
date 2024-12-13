@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   modules.neovim.profile = "development";
   programs.gh.enable = true;
-  home.packages = [ pkgs.commitizen ];
 
   systemd.user.services.vscode-remote-workaround = {
     Unit = {
@@ -10,7 +8,7 @@
     };
 
     Install = {
-      WantedBy = ["default.target"];
+      WantedBy = [ "default.target" ];
     };
 
     Service = {

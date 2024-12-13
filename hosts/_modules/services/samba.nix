@@ -1,6 +1,7 @@
-{config, lib, ...}: with lib; let
+{ config, lib, ... }: with lib; let
   cfg = config.modules.services.samba;
-in {
+in
+{
   options.modules.services.samba.enable = mkEnableOption "samba";
 
   config.services.samba = mkIf cfg.enable {

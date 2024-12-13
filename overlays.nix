@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   nur = inputs.nur.overlays.default;
 
   additions = final: _: import ./packages {

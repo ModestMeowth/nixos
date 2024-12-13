@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 let
   k9s-theme = pkgs.dracula.k9s.theme;
 in
@@ -11,7 +11,6 @@ in
   modules.virt-man.enable = true;
 
   programs.gh.enable = true;
-  home.packages = [ pkgs.commitizen ];
 
   modules.wm.gnome = {
     enable = true;

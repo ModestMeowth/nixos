@@ -1,4 +1,5 @@
-{inputs, ...}: let
+{ inputs, ... }:
+let
   virt = inputs.virt;
   storagePath = "/persist/vm";
 in

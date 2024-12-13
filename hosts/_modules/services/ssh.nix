@@ -1,17 +1,11 @@
-{ config, lib, ... }:
-with lib;
-let
-
+{ config, lib, ... }: with lib; let
   cfg = config.modules.services.ssh;
-
 in
 {
-
   options.modules.services.ssh.enable = mkEnableOption "ssh";
 
   config = mkIf cfg.enable {
-
-    programs.ssh.extraConfig =
+    programs.ssh.extraConfig = # sshconfig
       ''
         Host *
           SendEnv TMUX ZELLIJ
@@ -24,9 +18,10 @@ in
       settings.KbdInteractiveAuthentication = false;
       settings.PermitRootLogin = "no";
 
-      extraConfig = ''
-        AcceptEnv ZELLIJ TMUX
-      '';
+      extraConfig = # sshdconfig
+        ''
+          AcceptEnv ZELLIJ TMUX
+        '';
     };
   };
 }

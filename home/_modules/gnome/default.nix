@@ -1,6 +1,4 @@
-{ config, lib, ... }:
-with lib;
-let
+{ config, lib, ... }: with lib; let
   cfg = config.modules.wm.gnome;
 in
 {
@@ -10,7 +8,7 @@ in
     ./gsconnect.nix
     ./no-overview.nix
     ./user-themes.nix
- ];
+  ];
 
   options.modules.wm.gnome.enable = mkEnableOption "gnome";
 
@@ -41,13 +39,13 @@ in
             (mkTuple [
               "xkb"
               "us"
-           ])
-         ];
+            ])
+          ];
           xkb-options = [
             "terminate:ctrl_alt_bksp"
             "lv3:ralt_switch"
             "compose:ralt"
-         ];
+          ];
         };
 
         "org/gnome/desktop/interface" = {
@@ -61,66 +59,66 @@ in
         };
 
         "org/gnome/desktop/wm/keybindings" = {
-          switch-input-source = [];
-          switch-input-source-backward = [];
-          panel-run-dialog = ["<Super>space"];
-          close = ["<Shift><Super>q"];
-          toggle-fullscreen = [];
-          minimize = ["<Super>h"];
-          maximize = [];
-          unmaximize = [];
-          toggle-maximized = ["<Super>f"];
-          begin-move = [];
-          begin-resize = [];
-          toggle-tiled-left = [];
-          toggle-tiled-right = [];
-          move-to-monitor-down = [];
-          move-to-monitor-left = [];
-          move-to-monitor-right = [];
-          move-to-monitor-up = [];
-          move-to-workspace-left = [];
-          move-to-workspace-right = [];
-          move-to-workspace-last = [];
-          move-to-workspace-1 = ["<Shift><Super>1"];
-          move-to-workspace-2 = ["<Shift><Super>2"];
-          move-to-workspace-3 = ["<Shift><Super>3"];
-          move-to-workspace-4 = ["<Shift><Super>4"];
-          switch-to-workspace-last = [];
-          switch-to-workspace-left = [];
-          switch-to-workspace-right = [];
-          switch-to-workspace-1 = ["<Super>1"];
-          switch-to-workspace-2 = ["<Super>2"];
-          switch-to-workspace-3 = ["<Super>3"];
-          switch-to-workspace-4 = ["<Super>4"];
-          cycle-windows = [];
-          cycle-windows-backward = [];
-          cycle-group = [];
-          cycle-group-backward = [];
-          switch-group = [];
-          switch-group-backward = [];
+          switch-input-source = [ ];
+          switch-input-source-backward = [ ];
+          panel-run-dialog = [ "<Super>space" ];
+          close = [ "<Shift><Super>q" ];
+          toggle-fullscreen = [ ];
+          minimize = [ "<Super>h" ];
+          maximize = [ ];
+          unmaximize = [ ];
+          toggle-maximized = [ "<Super>f" ];
+          begin-move = [ ];
+          begin-resize = [ ];
+          toggle-tiled-left = [ ];
+          toggle-tiled-right = [ ];
+          move-to-monitor-down = [ ];
+          move-to-monitor-left = [ ];
+          move-to-monitor-right = [ ];
+          move-to-monitor-up = [ ];
+          move-to-workspace-left = [ ];
+          move-to-workspace-right = [ ];
+          move-to-workspace-last = [ ];
+          move-to-workspace-1 = [ "<Shift><Super>1" ];
+          move-to-workspace-2 = [ "<Shift><Super>2" ];
+          move-to-workspace-3 = [ "<Shift><Super>3" ];
+          move-to-workspace-4 = [ "<Shift><Super>4" ];
+          switch-to-workspace-last = [ ];
+          switch-to-workspace-left = [ ];
+          switch-to-workspace-right = [ ];
+          switch-to-workspace-1 = [ "<Super>1" ];
+          switch-to-workspace-2 = [ "<Super>2" ];
+          switch-to-workspace-3 = [ "<Super>3" ];
+          switch-to-workspace-4 = [ "<Super>4" ];
+          cycle-windows = [ ];
+          cycle-windows-backward = [ ];
+          cycle-group = [ ];
+          cycle-group-backward = [ ];
+          switch-group = [ ];
+          switch-group-backward = [ ];
         };
 
         "org/gnome/shell/keybindings" = {
-          show-screen-recording-ui = ["<Super>Print"];
-          focus-active-notificataion = [];
-          toggle-quick-settings = [];
-          switch-to-application-1 = [];
-          switch-to-application-2 = [];
-          switch-to-application-3 = [];
-          switch-to-application-4 = [];
+          show-screen-recording-ui = [ "<Super>Print" ];
+          focus-active-notificataion = [ ];
+          toggle-quick-settings = [ ];
+          switch-to-application-1 = [ ];
+          switch-to-application-2 = [ ];
+          switch-to-application-3 = [ ];
+          switch-to-application-4 = [ ];
         };
 
         "org/gnome/settings-daemon/plugins/media-keys" = {
-          help = [];
-          screenreader = [];
-          magnifier = [];
-          magnifier-zoom-in = [];
-          magnifier-zoom-out = [];
-          screensaver = ["<Control><Alt>Delete"];
+          help = [ ];
+          screenreader = [ ];
+          magnifier = [ ];
+          magnifier-zoom-in = [ ];
+          magnifier-zoom-out = [ ];
+          screensaver = [ "<Control><Alt>Delete" ];
         };
 
         "org/gnome/mutter/wayland/keybindings" = {
-          restore-shortcuts = [];
+          restore-shortcuts = [ ];
         };
 
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {

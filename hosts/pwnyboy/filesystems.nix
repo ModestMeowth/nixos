@@ -1,7 +1,9 @@
-{hostname, ...}: let
+{ hostname, ... }:
+let
   root = "zroot/${hostname}";
   persist = "zroot/persist";
-in {
+in
+{
   fileSystems."/" = {
     device = "${root}/root";
     type = "zfs";
@@ -17,5 +19,5 @@ in {
     fsType = "zfs";
   };
 
-  services.sanoid.datasets."${persist}".useTemplate = ["default"];
+  services.sanoid.datasets."${persist}".useTemplate = [ "default" ];
 }

@@ -1,4 +1,4 @@
-{config, pkgs, ... }: {
+{ config, pkgs, ... }: {
   networking.hostName = "rocinante";
 
   imports = [
@@ -9,14 +9,9 @@
     ./vms
   ];
 
-  modules.virt.enable = true;
-
-  modules.monitoring.node-exporter.enable = true;
-  modules.monitoring.smartd.enable = true;
-
   modules.services.chrony.enable = true;
-
   modules.services.ssh.enable = true;
+  services.fwupd.enable = true;
 
   services.tailscale = {
     enable = true;
@@ -24,17 +19,24 @@
     authKeyFile = config.sops.secrets."tskey".path;
   };
 
-  modules.wm.gnome.enable = true;
-
-  services.fwupd.enable = true;
-  programs.gamemode.enable = true;
+  modules.virt.enable = true;
 
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
+
+  services.smartd.enable = true;
+  environment.systemPackages = [ pkgs.smartmontools ];
+  services.prometheus.exporters = {
+    node.enable = true;
+    smartctl.enable = true;
+  };
+
+
+  modules.wm.gnome.enable = true;
+  programs.gamemode.enable = true;
 
   modules.shares.pwnyboy-share = {
     enable = true;
     mountpoint = "/persist/share";
   };
-
 }

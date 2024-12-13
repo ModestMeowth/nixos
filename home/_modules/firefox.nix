@@ -1,6 +1,7 @@
-{config, lib, pkgs, ...}: with lib; let
+{ config, lib, pkgs, ... }: with lib; let
   cfg = config.programs.firefox;
-in{
+in
+{
   config.programs.firefox = mkIf cfg.enable {
     package = pkgs.unstable.firefox;
     profiles.default = {

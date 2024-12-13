@@ -1,4 +1,4 @@
-{config, pkgs, ...}: {
+{ config, pkgs, ... }: {
   modules.services.ssh.enable = true;
   modules.services.chrony.enable = true;
 
@@ -9,6 +9,10 @@
     authKeyFile = config.sops.secrets."tskey".path;
   };
 
-  modules.monitoring.node-exporter.enable = true;
-  modules.monitoring.smartd.enable = true;
+  services.prometheus.exporters = {
+    node.enable = true;
+    smartctl.enable = true;
+  };
+
+  environment.systemPackages = [ pkgs.smartmontools ];
 }

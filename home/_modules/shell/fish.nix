@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}: with lib; let
+{ config, lib, pkgs, ... }: with lib; let
   cfgFish = config.programs.fish;
   cfgFzf = config.programs.fzf;
 in

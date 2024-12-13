@@ -22,7 +22,7 @@
           home-manager = {
             useUserPackages = true;
             useGlobalPkgs = true;
-            sharedModules = [inputs.sops.homeManagerModules.sops];
+            sharedModules = [ inputs.sops.homeManagerModules.sops ];
             extraSpecialArgs = {
               inherit inputs hostname system;
             };

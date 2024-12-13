@@ -1,10 +1,4 @@
-{ config
-, lib
-, pkgs
-, ...
-}:
-with lib;
-let
+{ config, lib, pkgs, ... }: with lib; let
   cfg = config.modules.neovim.plugins.dracula;
 in
 {

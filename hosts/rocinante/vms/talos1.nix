@@ -1,4 +1,5 @@
-stuff@{inputs, pkgs, ...}: let
+stuff@{ inputs, pkgs, ... }:
+let
   virt = inputs.virt;
   template = ../../../templates/nixvirt/talos.nix;
 in

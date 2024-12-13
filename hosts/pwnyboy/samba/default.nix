@@ -1,3 +1,3 @@
 {
-  imports = [./share.nix];
+  imports = [ ./share.nix ];
 }

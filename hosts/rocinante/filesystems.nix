@@ -1,7 +1,8 @@
 let
   root = "zroot/rocinante";
   persist = "zroot/persist";
-in {
+in
+{
   fileSystems."/" = {
     device = "${root}/root";
     fsType = "zfs";

@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 let
   theme = pkgs.dracula.sublime.theme;
 in

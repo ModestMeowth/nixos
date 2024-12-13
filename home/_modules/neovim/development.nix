@@ -1,6 +1,4 @@
-{ config, lib, ... }:
-with lib;
-let
+{ config, lib, ... }: with lib; let
   cfg = config.modules.neovim;
 in
 {

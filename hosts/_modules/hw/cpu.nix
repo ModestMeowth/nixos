@@ -1,16 +1,7 @@
-{ config
-, lib
-, pkgs
-, ...
-}:
-with lib;
-let
-
+{ config, lib, pkgs, ... }: with lib; let
   cfg = config.modules.hw.cpu;
-
 in
 {
-
   options.modules.hw.cpu = mkOption {
     type = lib.types.enum [
       "amd"
@@ -24,19 +15,15 @@ in
   config = mkMerge [
 
     (mkIf (cfg == "amd") {
-
       hardware.cpu.amd.updateMicrocode = true;
       boot.kernelModules = [ "kvm-amd" ];
       environment.systemPackages = [ pkgs.pciutils ];
-
     })
 
     (mkIf (cfg == "intel") {
-
       hardware.cpu.amd.updateMicrocode = true;
       boot.kernelModules = [ "kvm-amd" ];
       environment.systemPackages = [ pkgs.pciutils ];
-
     })
 
     (mkIf (cfg == "rpi") { })
@@ -44,7 +31,6 @@ in
     (mkIf (cfg == "vm") { })
 
     (mkIf (cfg == "wsl") {
-
       wsl = {
         enable = true;
         wslConf.interop.appendWindowsPath = true;
@@ -70,9 +56,7 @@ in
           ];
         }
       ];
-
     })
 
   ];
-
 }

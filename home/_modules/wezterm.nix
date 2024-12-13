@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}: with lib; let
+{ config, lib, pkgs, ... }: with lib; let
   cfg = config.modules.term.wezterm;
   theme = pkgs.dracula.wezterm.theme;
 in
