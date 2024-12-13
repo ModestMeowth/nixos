@@ -53,10 +53,8 @@ in
     programs.bash = mkIf (cfg.enable && cfgBash.enable) {
       initExtra = mkOrder 100 # bash
         ''
-          if [ "$TERM_PROGRAM" == "vscode" ]; then
-            export ZELLIJ_AUTO_ATTACH=true
-            export ZELLIJ_AUTO_EXIT=true
-          fi
+          export ZELLIJ_AUTO_EXIT=true
+          [[ "$TERM_PROGRAM" != "vscode" ]] && export ZELLIJ_AUTO_ATTACH=true
         '';
     };
 
@@ -64,9 +62,9 @@ in
     programs.fish = mkIf (cfg.enable && cfgFish.enable) {
       interactiveShellInit = mkOrder 100 # fish
         ''
-          if not string match -qi "vscode" $TERM_PROGRM
+          set ZELLIJ_AUTO_EXIT true
+          if not string match -qi "vscode" $TERM_PROGRAM
             set ZELLIJ_AUTO_ATTACH true
-            set ZELLIJ_AUTO_EXIT true
           end
         '';
     };
