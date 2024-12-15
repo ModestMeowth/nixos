@@ -16,7 +16,7 @@
     wsl.url = "github:nix-community/NixOS-WSL";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
 
-    virt.url = "github:AshleyYakeley/NixVirt/nixpkgs-24.05";
+    virt.url = "github:AshleyYakeley/NixVirt";
     virt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
