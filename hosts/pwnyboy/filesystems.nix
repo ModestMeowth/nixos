@@ -6,6 +6,7 @@ in
   fileSystems."/" = {
     device = "${root}/root";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/boot" = {
@@ -16,6 +17,7 @@ in
   fileSystems."/nix" = {
     device = "${root}/nix";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   services.sanoid.datasets."${persist}".useTemplate = [ "default" ];
