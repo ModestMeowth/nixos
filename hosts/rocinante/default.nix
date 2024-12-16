@@ -6,7 +6,7 @@
     ./hardware.nix
     ./secrets.nix
     ./users.nix
-    ./vms
+#    ./vms
   ];
 
   modules.services.chrony.enable = true;
@@ -39,4 +39,8 @@
     enable = true;
     mountpoint = "/persist/share";
   };
+
+  boot.initrd.verbose = false;
+  boot.consoleLogLevel = 0;
+  boot.plymouth.enable = true;
 }

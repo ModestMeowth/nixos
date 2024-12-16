@@ -1,5 +1,6 @@
 { lib, pkgs, ... }: with lib; {
   imports = [
+    ./console.nix
     ./hw
     ./libvirt.nix
     ./services

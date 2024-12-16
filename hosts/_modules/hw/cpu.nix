@@ -21,14 +21,14 @@ in
     })
 
     (mkIf (cfg == "intel") {
-      hardware.cpu.amd.updateMicrocode = true;
+      hardware.cpu.intel.updateMicrocode = true;
       boot.kernelModules = [ "kvm-amd" ];
       environment.systemPackages = [ pkgs.pciutils ];
     })
 
-    (mkIf (cfg == "rpi") { })
+    (mkIf (cfg == "rpi") {})
 
-    (mkIf (cfg == "vm") { })
+    (mkIf (cfg == "vm") {})
 
     (mkIf (cfg == "wsl") {
       wsl = {

@@ -24,6 +24,9 @@
       default:
         @just --choose --justfile "{{ justfile() }}"
 
+      clean:
+        nh clean all
+
       update:
         nh os switch "github:ModestMeowth/nixos" -- --refresh
     '';
