@@ -7,4 +7,6 @@
     ./talos2.nix
     ./talos3.nix
   ];
+
+  modules.virt.enable = true;
 }

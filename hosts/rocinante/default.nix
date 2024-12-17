@@ -19,8 +19,6 @@
     authKeyFile = config.sops.secrets."tskey".path;
   };
 
-  modules.virt.enable = true;
-
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
