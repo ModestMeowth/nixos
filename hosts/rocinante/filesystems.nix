@@ -20,6 +20,11 @@ in
     options = ["zfsutil"];
   };
 
+  modules.shares.pwnyboy-share = {
+    enable = true;
+    mountpoint = "/persist/share";
+  };
+
   services.sanoid = {
     datasets."${persist}/home/mm" = {
       useTemplate = [ "default" ];
