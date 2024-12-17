@@ -9,9 +9,6 @@
     authKeyFile = config.sops.secrets."tskey".path;
   };
 
-  networking.networkmanager.enable = true;
-  systemd.services.NetworkManager-wait-online.enable = false;
-
   services.smartd.enable = true;
   environment.systemPackages = [ pkgs.smartmontools ];
   services.prometheus.exporters = {
