@@ -1,15 +1,12 @@
 { config, lib, pkgs, ... }: with lib; let
-  cfg = config.modules.shell.zellij;
+  cfg = config.programs.zellij;
   cfgBash = config.programs.bash;
   cfgFish = config.programs.fish;
-  cfgZellij = config.programs.zellij;
   theme = pkgs.dracula.zellij.theme;
 in
 {
-  options.modules.shell.zellij.enable = mkEnableOption "shell-zellij";
-
   config = {
-    xdg.configFile = mkIf cfgZellij.enable {
+    xdg.configFile = mkIf cfg.enable {
       "zellij/config.kdl".text = # kdl
         ''
           default_mode "normal"

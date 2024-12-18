@@ -1,9 +1,11 @@
 { lib, config, ... }:
 let
-  cfg = config.boot.supportedFilesystems;
+  cfg = config.wsl;
 in
 {
-  config = lib.mkIf cfg.zfs {
+  config = lib.mkIf (!cfg.enable) {
+    boot.supportedFilesystems.zfs = true;
+
     # ZFSBootMenu
     networking.hostId = "00bab10c";
 

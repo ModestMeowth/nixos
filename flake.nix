@@ -1,9 +1,10 @@
 {
   inputs = {
+    parts.url = "flake-parts";
     nixpkgs.url = "nixpkgs/nixos-24.11";
     unstable.url = "nixpkgs/nixos-unstable";
-    parts.url = "flake-parts";
     nur.url = "nur";
+
     sops.url = "sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
 

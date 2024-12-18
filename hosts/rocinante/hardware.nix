@@ -3,7 +3,6 @@
 
   boot.lanzaboote.enable = true;
   hardware.cpu.amd.updateMicrocode = true;
-  boot.supportedFilesystems.zfs = true;
 
   boot.initrd.availableKernelModules = [
     "nvme"

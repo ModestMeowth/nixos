@@ -3,7 +3,6 @@
 
   boot.lanzaboote.enable = false;
   hardware.cpu.intel.updateMicrocode = true;
-  boot.supportedFilesystems.zfs = true;
   boot.initrd.kernelModules = ["xe"];
 
   boot.kernelModules = [];
