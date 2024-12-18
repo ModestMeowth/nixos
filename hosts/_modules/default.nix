@@ -6,7 +6,10 @@
     ./services
     ./shares
     ./wm
+    ./wifi-profiles.nix
   ];
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 
   documentation.nixos.enable = false;
   system.stateVersion = "24.11";

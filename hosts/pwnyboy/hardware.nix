@@ -1,24 +1,22 @@
-{config, lib, modulesPath, ...}: {
+{config, modulesPath, pkgs, ...}: {
   imports = [("${modulesPath}/installer/scan/not-detected.nix")];
 
-  modules.hw.cpu = "intel";
-  modules.hw.gpu.intel.enable = true;
-  modules.hw.zfs.enable = true;
+  boot.lanzaboote.enable = false;
+  hardware.cpu.intel.updateMicrocode = true;
+  boot.supportedFilesystems.zfs = true;
+  boot.initrd.kernelModules = ["xe"];
 
-#  modules.hw.secureboot.enable = true;
+  boot.kernelModules = [];
+  boot.extraModulePackages = with config.boot.kernelPackages; [];
 
-  boot.initrd.availableKernelModules = ["nvme"];
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-vaapi-driver
+    intel-ocl
+    intel-media-driver
+    intel-compute-runtime
+    vpl-gpu-rt
+  ];
 
-  boot.kernelModules = ["acpi_call"];
-
-  boot.extraModulePackages = with config.boot.kernelPackages; [acpi_call];
-
-  boot.kernelParams = ["quiet"];
-
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot";
-    grub.enable = lib.mkForce false;
-    timeout = 3;
-  };
+  environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 }

@@ -8,5 +8,5 @@
     ./talos3.nix
   ];
 
-  modules.virt.enable = true;
+  virtualisation.libvirtd.enable = true;
 }

@@ -1,20 +1,16 @@
-{ config, lib, pkgs, ... }: with lib; let
-  cfg = config.modules.hw.secureboot;
+{config, lib, pkgs, ...}: with lib; let
+  cfg = config.boot.lanzaboote;
 in
 {
-  options.modules.hw.secureboot.enable = mkEnableOption "secureboot";
+  boot.loader = {
+    grub.enable = mkForce false;
+    efi.canTouchEfiVariables = true;
+    efi.efiSysMountPoint = "/boot";
 
-  config = mkIf cfg.enable {
-    boot.loader.systemd-boot = {
-      enable = mkForce false;
-      configurationLimit = 5;
-    };
-
-    boot.lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
-
-    environment.systemPackages = [ pkgs.sbctl ];
+    systemd-boot.enable = mkForce (!cfg.enable);
+    systemd-boot.configurationLimit = 5;
   };
+
+  boot.lanzaboote.pkiBundle = mkIf cfg.enable "/etc/secureboot";
+  environment.systemPackages = [pkgs.sbctl];
 }

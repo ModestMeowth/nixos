@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
-  modules.services.chrony.enable = true;
-  modules.services.ssh.enable = true;
+  services.chrony.enable = true;
+  services.openssh.enable = true;
   services.fwupd.enable = true;
 
   services.tailscale = {
@@ -16,6 +16,8 @@
     smartctl.enable = true;
   };
 
-  modules.wm.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+
   programs.gamemode.enable = true;
 }

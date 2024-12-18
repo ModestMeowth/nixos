@@ -1,11 +1,6 @@
-{config, lib, ...}: with lib; let
-  cfg = config.modules.virt;
+{config, ...}: let
+  cfg = config.virtualisation.libvirt;
 in
 {
-  options.modules.virt.enable = mkEnableOption "virt";
-
-  config.virtualisation.libvirt = mkIf cfg.enable {
-    enable = true;
-    swtpm.enable = true;
-  };
+  config.virtualisation.libvirt.swtpm.enable = cfg.enable;
 }

@@ -1,10 +1,9 @@
-{config, lib, modulesPath, ... }: {
+{config, modulesPath, pkgs, ...}: {
   imports = [("${modulesPath}/installer/scan/not-detected.nix")];
 
-  modules.hw.cpu = "amd";
-  modules.hw.gpu.amd.enable = true;
-  modules.hw.secureboot.enable = true;
-  modules.hw.zfs.enable = true;
+  boot.lanzaboote.enable = true;
+  hardware.cpu.amd.updateMicrocode = true;
+  boot.supportedFilesystems.zfs = true;
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -16,17 +15,19 @@
   boot.kernelModules = ["acpi_call"];
   boot.extraModulePackages = with config.boot.kernelPackages; [acpi_call];
 
-  boot.kernelParams = ["quiet"];
-
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    efi.efiSysMountPoint = "/boot";
-    grub.enable = lib.mkForce false;
-    timeout = 3;
-  };
-
   # Plymouth
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
   boot.plymouth.enable = true;
+  boot.kernelParams = ["quiet"];
+
+  hardware.graphics.enable = true;
+
+  hardware.amdgpu = {
+    initrd.enable = true;
+    amdvlk.enable = true;
+    opencl.enable = true;
+  };
+
+  services.xserver.videoDrivers = ["amdgpu"];
 }

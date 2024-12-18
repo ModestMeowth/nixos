@@ -1,9 +1,7 @@
 { config, lib, ... }: with lib; let
-  cfg = config.modules.services.ssh;
+  cfg = config.services.openssh;
 in
 {
-  options.modules.services.ssh.enable = mkEnableOption "ssh";
-
   config = mkIf cfg.enable {
     programs.ssh.extraConfig = # sshconfig
       ''
@@ -12,8 +10,6 @@ in
       '';
 
     services.openssh = {
-      enable = true;
-
       settings.PasswordAuthentication = false;
       settings.KbdInteractiveAuthentication = false;
       settings.PermitRootLogin = "no";

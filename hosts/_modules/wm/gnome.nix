@@ -1,20 +1,17 @@
 { config, lib, pkgs, ... }: with lib; let
-  cfg = config.modules.wm.gnome;
+  cfg = config.services.xserver.desktopManager.gnome;
 in
 {
-  options.modules.wm.gnome = {
-    enable = lib.mkEnableOption "gnome";
-  };
-
   config = lib.mkIf cfg.enable {
+
+    fonts.packages = with pkgs; [
+      nerdfonts
+      unifont
+    ];
 
     services.xserver = {
       enable = true;
-
       displayManager.gdm.enable = true;
-      displayManager.gdm.wayland = true;
-
-      desktopManager.gnome.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
@@ -34,5 +31,8 @@ in
       hitori
       atomix
     ];
+
+    security.rtkit.enable = true;
+    services.pipewire.enable = true;
   };
 }

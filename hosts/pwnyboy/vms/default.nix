@@ -1,3 +1,3 @@
 {
-  modules.virt.enable = true;
+  virtualisation.libvirt.enable = true;
 }

@@ -1,25 +1,14 @@
 { lib, config, ... }:
 let
-  cfg = config.modules.hw.zfs;
+  cfg = config.boot.supportedFilesystems;
 in
 {
-  options.modules.hw.zfs = {
-    enable = lib.mkEnableOption "zfs";
-    mountPoolsAtBoot = lib.mkOption {
-      type = lib.types.listOf lib.types.str;
-      default = [ ];
-    };
-  };
-
-  config = lib.mkIf cfg.enable {
-
+  config = lib.mkIf cfg.zfs {
     # ZFSBootMenu
     networking.hostId = "00bab10c";
 
-    boot.supportedFilesystems = [ "zfs" ];
     boot.zfs = {
       forceImportRoot = false;
-      extraPools = cfg.mountPoolsAtBoot;
     };
 
     services.zfs = {
@@ -38,6 +27,5 @@ in
         monthly = 3;
       };
     };
-
   };
 }

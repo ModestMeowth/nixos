@@ -1,10 +1,11 @@
-{ config, pkgs, ... }: {
+{config, pkgs, ...}: {
   imports = [
     ./hardware.nix
     ./secrets.nix
     ./users.nix
   ];
 
+  wsl.enable = true;
   wsl.wslConf.network = {
     hostname = "videodrome";
     generateHosts = false;

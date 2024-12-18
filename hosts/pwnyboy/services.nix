@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
-  modules.services.ssh.enable = true;
-  modules.services.chrony.enable = true;
+  services.openssh.enable = true;
+  services.chrony.enable = true;
 
   services.fwupd.enable = true;
   services.tailscale = {
