@@ -7,9 +7,6 @@ in
     package = (pkgs.unstable.chromium.override {
       commandLineArgs = [
         "--enable-features=Vulkan"
-        "--flag-switches-begin"
-        "--enable-unsafe-webgpu"
-        "--flag-switches-end"
       ];
       enableWideVine = true;
     });
