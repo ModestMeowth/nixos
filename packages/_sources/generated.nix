@@ -81,4 +81,17 @@
       sha256 = "sha256-9c+9oxrCNFMlAsRaamsimYbrYYXHpR4APljYMsjlrzY=";
     };
   };
+  zfs-inplace-rebalancing = {
+    pname = "zfs-inplace-rebalancing";
+    version = "bd8d447150419337bc49f0872038cb0da59c4203";
+    src = fetchFromGitHub {
+      owner = "markusressel";
+      repo = "zfs-inplace-rebalancing";
+      rev = "bd8d447150419337bc49f0872038cb0da59c4203";
+      fetchSubmodules = false;
+      sha256 = "sha256-8mAeUBjBnMpBsGMWYYtLQb1060J7+mK0LVdHbiO1apQ=";
+    };
+    "zfs-inplace-rebalancing.sh" = builtins.readFile ./zfs-inplace-rebalancing-bd8d447150419337bc49f0872038cb0da59c4203/zfs-inplace-rebalancing.sh;
+    date = "2024-12-17";
+  };
 }
