@@ -5,7 +5,7 @@ let
 in
 {
   programs.fish = lib.mkIf cfgFish.enable {
-    plugins = with pkgs.fishPlugins; mkMerge [
+    plugins = with pkgs.fishPlugins; lib.mkMerge [
       ([
         {
           name = "puffer";
