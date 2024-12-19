@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }: with lib; let
+{ config, lib, pkgs, ... }:
+let
   cfg = config.programs.chromium;
 in
 {
-  config.programs.chromium = mkIf cfg.enable {
+  config.programs.chromium = lib.mkIf cfg.enable {
     package = (pkgs.unstable.chromium.override {
       commandLineArgs = [
         "--enable-features=Vulkan"

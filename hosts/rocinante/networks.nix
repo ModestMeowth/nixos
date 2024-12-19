@@ -1,6 +1,7 @@
 let
   wifiInterface = "wlp2s0";
-in {
+in
+{
   systemd.services.NetworkManager-wait-online.enable = false;
   networking.networkmanager = {
     enable = true;

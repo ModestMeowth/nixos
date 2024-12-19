@@ -1,9 +1,10 @@
-{ config, lib, pkgs, ... }: with lib; let
+{ config, lib, pkgs, ... }:
+let
   cfgFish = config.programs.fish;
   cfgFzf = config.programs.fzf;
 in
 {
-  programs.fish = mkIf cfgFish.enable {
+  programs.fish = lib.mkIf cfgFish.enable {
     plugins = with pkgs.fishPlugins; mkMerge [
       ([
         {
@@ -23,7 +24,7 @@ in
       ])
     ];
 
-    interactiveShellInit = mkBefore # fish
+    interactiveShellInit = lib.mkBefore # fish
       ''
         set -g fish_greeting
         fish_vi_key_bindings

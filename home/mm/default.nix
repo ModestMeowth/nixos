@@ -19,6 +19,9 @@
     ripgrep
   ];
 
+  programs.neovim.enable = true;
+  programs.gh.enable = true;
+
   home.file."justfile".text = # just
     ''
       default:

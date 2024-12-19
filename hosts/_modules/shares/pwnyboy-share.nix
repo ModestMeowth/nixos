@@ -1,17 +1,18 @@
-{ config, lib, pkgs, ... }: with lib; let
-  cfg = config.modules.shares.pwnyboy-share;
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.shares.pwnyboy-share;
 in
 {
-  options.modules.shares.pwnyboy-share = {
-    enable = mkEnableOption "pwnyboy-share";
+  options.shares.pwnyboy-share = {
+    enable = lib.mkEnableOption "pwnyboy-share";
 
-    mountpoint = mkOption {
-      type = types.path;
+    mountpoint = lib.mkOption {
+      type = lib.types.path;
       default = "/share";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     sops.secrets."smb-pwnyboy".mode = "0400";
     environment.systemPackages = [ pkgs.cifs-utils ];
     fileSystems."${cfg.mountpoint}" = {

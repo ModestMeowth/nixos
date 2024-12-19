@@ -1,7 +1,9 @@
-{config, lib,...}: with lib; let
+{ config, lib, ... }:
+let
   cfg = config.wsl;
-in {
-  console.colors = mkIf (!cfg.enable) [
+in
+{
+  console.colors = lib.mkIf (!cfg.enable) [
     "21222c" # black
     "ff5555" # red
     "50fa7b" # green

@@ -1,4 +1,5 @@
-{config, ...}: let
+{ config, ... }:
+let
   cfg = config.virtualisation.libvirt;
 in
 {

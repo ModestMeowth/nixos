@@ -6,7 +6,7 @@ in
   fileSystems."/" = {
     device = "${root}/root";
     fsType = "zfs";
-    options = ["zfsutil"];
+    options = [ "zfsutil" ];
   };
 
   fileSystems."/boot" = {
@@ -17,10 +17,10 @@ in
   fileSystems."/nix" = {
     device = "${root}/nix";
     fsType = "zfs";
-    options = ["zfsutil"];
+    options = [ "zfsutil" ];
   };
 
-  modules.shares.pwnyboy-share = {
+  shares.pwnyboy-share = {
     enable = true;
     mountpoint = "/persist/share";
   };

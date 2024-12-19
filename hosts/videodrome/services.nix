@@ -1,4 +1,4 @@
-{config, pkgs, ...}: {
+{ config, pkgs, ... }: {
   services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
@@ -8,5 +8,5 @@
   services.openssh.enable = true;
   services.prometheus.exporters.node.enable = true;
 
-  modules.shares.pwnyboy-share.enable = true;
+  shares.pwnyboy-share.enable = true;
 }

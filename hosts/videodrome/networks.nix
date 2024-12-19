@@ -17,11 +17,11 @@
   # Allow NOPASSWD to set MTU if it drifts
   security.sudo.extraRules = [
     {
-      groups = ["wheel"];
+      groups = [ "wheel" ];
       commands = [
         {
           command = "/run/current-system/sw/bin/ip link set dev eth0 mtu 1500";
-          options = ["SETENV" "NOPASSWD"];
+          options = [ "SETENV" "NOPASSWD" ];
         }
       ];
     }

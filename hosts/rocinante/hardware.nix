@@ -1,5 +1,5 @@
-{config, modulesPath, pkgs, ...}: {
-  imports = [("${modulesPath}/installer/scan/not-detected.nix")];
+{ config, modulesPath, pkgs, ... }: {
+  imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
   boot.lanzaboote.enable = true;
   hardware.cpu.amd.updateMicrocode = true;
@@ -11,14 +11,14 @@
     "sd_mod"
   ];
 
-  boot.kernelModules = ["acpi_call"];
-  boot.extraModulePackages = with config.boot.kernelPackages; [acpi_call];
+  boot.kernelModules = [ "acpi_call" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
   # Plymouth
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
   boot.plymouth.enable = true;
-  boot.kernelParams = ["quiet"];
+  boot.kernelParams = [ "quiet" ];
 
   hardware.graphics.enable = true;
 
@@ -28,5 +28,5 @@
     opencl.enable = true;
   };
 
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = [ "amdgpu" ];
 }

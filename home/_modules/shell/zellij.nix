@@ -1,4 +1,5 @@
-{ config, lib, pkgs, ... }: with lib; let
+{ config, lib, pkgs, ... }:
+let
   cfg = config.programs.zellij;
   cfgBash = config.programs.bash;
   cfgFish = config.programs.fish;
@@ -6,7 +7,7 @@
 in
 {
   config = {
-    xdg.configFile = mkIf cfg.enable {
+    xdg.configFile = lib.mkIf cfg.enable {
       "zellij/config.kdl".text = # kdl
         ''
           default_mode "normal"
@@ -47,8 +48,8 @@ in
     };
 
     programs.zellij.enableBashIntegration = (cfg.enable && cfgBash.enable);
-    programs.bash = mkIf (cfg.enable && cfgBash.enable) {
-      initExtra = mkOrder 100 # bash
+    programs.bash = lib.mkIf (cfg.enable && cfgBash.enable) {
+      initExtra = lib.mkOrder 100 # bash
         ''
           export ZELLIJ_AUTO_EXIT=true
           [[ "$TERM_PROGRAM" != "vscode" ]] && export ZELLIJ_AUTO_ATTACH=true
@@ -56,8 +57,8 @@ in
     };
 
     programs.zellij.enableFishIntegration = (cfg.enable && cfgFish.enable);
-    programs.fish = mkIf (cfg.enable && cfgFish.enable) {
-      interactiveShellInit = mkOrder 100 # fish
+    programs.fish = lib.mkIf (cfg.enable && cfgFish.enable) {
+      interactiveShellInit = lib.mkOrder 100 # fish
         ''
           set ZELLIJ_AUTO_EXIT true
           if not string match -qi "vscode" $TERM_PROGRAM

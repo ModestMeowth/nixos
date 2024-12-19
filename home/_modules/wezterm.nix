@@ -1,15 +1,12 @@
-{ config, lib, pkgs, ... }: with lib; let
-  cfg = config.modules.term.wezterm;
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.programs.wezterm;
   theme = pkgs.dracula.wezterm.theme;
 in
 {
-  options.modules.term.wezterm.enable = mkEnableOption "wezterm";
-
-  config = mkIf cfg.enable {
-    programs.wezterm.enable = true;
-
+  config = lib.mkIf cfg.enable {
     xdg.configFile = {
-      "wezterm/wezterm.lua".text = mkForce # lua
+      "wezterm/wezterm.lua".text = lib.mkForce # lua
         ''
           local wt = require "wezterm"
           local config = {}

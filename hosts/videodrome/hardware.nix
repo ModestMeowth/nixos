@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   wsl.enable = true;
   wsl.wslConf.interop.appendWindowsPath = true;
   wsl.startMenuLaunchers = true;

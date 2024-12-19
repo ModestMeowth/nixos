@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}: with lib; {
+{ config, lib, pkgs, ... }: {
   imports = [
     ./console.nix
     ./libvirt.nix
@@ -10,7 +10,7 @@
     ./zfs.nix
   ];
 
-  boot.kernelPackages = mkIf (!config.wsl.enable) (pkgs.linuxKernel.packages.linux_6_12);
+  boot.kernelPackages = lib.mkIf (!config.wsl.enable) (pkgs.linuxKernel.packages.linux_6_12);
 
   documentation.nixos.enable = false;
   system.stateVersion = "24.11";
@@ -20,7 +20,7 @@
     "flakes"
   ];
 
-  nix.settings.log-lines = mkDefault 25;
+  nix.settings.log-lines = lib.mkDefault 25;
 
   programs.nh = {
     enable = true;
@@ -28,7 +28,7 @@
     clean.extraArgs = "--keep-since 4d --keep 5";
   };
 
-  time.timeZone = mkDefault "America/Chicago";
+  time.timeZone = lib.mkDefault "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
   networking.firewall.enable = true;

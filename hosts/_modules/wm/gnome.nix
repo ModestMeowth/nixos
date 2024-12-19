@@ -1,9 +1,9 @@
-{ config, lib, pkgs, ... }: with lib; let
+{ config, lib, pkgs, ... }:
+let
   cfg = config.services.xserver.desktopManager.gnome;
 in
 {
   config = lib.mkIf cfg.enable {
-
     fonts.packages = with pkgs; [
       nerdfonts
       unifont

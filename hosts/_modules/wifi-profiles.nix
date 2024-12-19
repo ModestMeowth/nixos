@@ -1,7 +1,9 @@
-{config, lib, ...}: with lib; let
+{ config, lib, ... }:
+let
   cfg = config.networking.networkmanager;
-in {
-  config.networking.networkmanager.ensureProfiles.profiles = mkIf cfg.enable {
+in
+{
+  config.networking.networkmanager.ensureProfiles.profiles = lib.mkIf cfg.enable {
     "Ponyboy Bounce House" = {
       connection.id = "Ponyboy Bounce House";
       connection.uuid = "0b2350c1-22f0-46d0-819b-0e4eb20d9cca";

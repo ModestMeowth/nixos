@@ -1,10 +1,11 @@
-{ config, lib, pkgs, ... }: with lib; let
-  cfg = config.modules.gaming.retroarch;
+{ config, lib, pkgs, ... }:
+let
+  cfg = config.gaming.retroarch;
 in
 {
-  options.modules.gaming.retroarch.enable = mkEnableOption "retroarch";
+  options.gaming.retroarch.enable = lib.mkEnableOption "retroarch";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       (retroarch.override {
         cores = with libretro; [

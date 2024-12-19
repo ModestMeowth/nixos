@@ -1,11 +1,12 @@
-{ config, lib, ... }: with lib; let
+{ config, lib, ... }:
+let
   cfg = config.programs.starship;
 in
 {
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.starship.enableTransience = true;
     programs.starship.settings = {
-      format = concatStrings [
+      format = lib.concatStrings [
         "$username"
         "$os"
         "$hostname"
