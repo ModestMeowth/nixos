@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ config, lib, pkgs, ... }:
 let
   cfg = config.wsl;
 in
@@ -29,5 +29,7 @@ in
         monthly = 3;
       };
     };
+
+    environment.systemPackages = [pkgs.zfs-rebalance];
   };
 }
