@@ -5,23 +5,19 @@ let
 in
 {
   programs.fish = lib.mkIf cfgFish.enable {
-    plugins = with pkgs.fishPlugins; lib.mkMerge [
-      ([
-        {
-          name = "puffer";
-          src = puffer.src;
-        }
-        {
-          name = "abbreviation-tips";
-          src = pkgs.fish-plugins.abbreviation-tips.src;
-        }
-      ])
-      (mkIf cfgFzf.enable [
-        {
-          name = "fzf-fish";
-          src = fzf-fish.src;
-        }
-      ])
+    plugins = with pkgs.fishPlugins; [
+      {
+        name = "puffer";
+        src = puffer.src;
+      }
+      {
+        name = "abbreviation-tips";
+        src = pkgs.fish-plugins.abbreviation-tips.src;
+      }
+      {
+        name = "fzf-fish";
+        src = fzf-fish.src;
+      }
     ];
 
     interactiveShellInit = lib.mkBefore # fish

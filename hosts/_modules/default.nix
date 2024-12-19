@@ -10,8 +10,6 @@
     ./zfs.nix
   ];
 
-  boot.kernelPackages = lib.mkIf (!config.wsl.enable) (pkgs.linuxKernel.packages.linux_6_12);
-
   documentation.nixos.enable = false;
   system.stateVersion = "24.11";
 
