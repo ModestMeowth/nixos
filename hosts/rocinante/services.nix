@@ -1,12 +1,13 @@
 { config, pkgs, ... }: {
   services.chrony.enable = true;
-  services.openssh.enable = true;
+#  services.openssh.enable = true;
   services.fwupd.enable = true;
 
   services.tailscale = {
     enable = true;
     package = pkgs.unstable.tailscale;
     authKeyFile = config.sops.secrets."tskey".path;
+    extraSetFlags = ["--ssh"];
   };
 
   services.smartd.enable = true;

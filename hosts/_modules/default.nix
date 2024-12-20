@@ -51,6 +51,8 @@
     defaultSopsFile = ../../global.sops.yaml;
     age.generateKey = true;
     age.keyFile = "/var/lib/sops-nix/key.txt";
+    age.sshKeyPaths = lib.mkDefault ["/persist/etc/sops/agekey"];
+    gnupg.sshKeyPaths = lib.mkDefault ["/persist/etc/sops/gpgkey"];
   };
 
   security.pam.loginLimits = [
