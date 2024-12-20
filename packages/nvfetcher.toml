@@ -1,7 +1,3 @@
-[keys]
-fetch.url = "https://github.com/ModestMeowth.keys"
-src.manual = "latest"
-
 [zfs-inplace-rebalancing]
 fetch.github = "markusressel/zfs-inplace-rebalancing"
 src.git = "https://github.com/markusressel/zfs-inplace-rebalancing"

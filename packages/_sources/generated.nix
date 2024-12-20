@@ -62,14 +62,6 @@
     "dracula.kdl" = builtins.readFile ./dracula-zellij-948a6dcae1d82b58ba725b464a96e6a1bc1c11cf/dracula.kdl;
     date = "2022-12-26";
   };
-  keys = {
-    pname = "keys";
-    version = "latest";
-    src = fetchurl {
-      url = "https://github.com/ModestMeowth.keys";
-      sha256 = "sha256-H/8yvUAy74moEn0OuLfPOOmaBIRMu0lLwgLmMMr6wug=";
-    };
-  };
   yaml-companion-nvim = {
     pname = "yaml-companion-nvim";
     version = "0.1.3";

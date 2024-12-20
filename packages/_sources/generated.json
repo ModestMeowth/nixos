@@ -107,21 +107,6 @@
         },
         "version": "948a6dcae1d82b58ba725b464a96e6a1bc1c11cf"
     },
-    "keys": {
-        "cargoLocks": null,
-        "date": null,
-        "extract": null,
-        "name": "keys",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "name": null,
-            "sha256": "sha256-H/8yvUAy74moEn0OuLfPOOmaBIRMu0lLwgLmMMr6wug=",
-            "type": "url",
-            "url": "https://github.com/ModestMeowth.keys"
-        },
-        "version": "latest"
-    },
     "yaml-companion-nvim": {
         "cargoLocks": null,
         "date": null,
