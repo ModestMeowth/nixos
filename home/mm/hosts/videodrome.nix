@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  home.programs = [pkgs.xdg-utils];
+  home.packages = [pkgs.xdg-utils];
 }

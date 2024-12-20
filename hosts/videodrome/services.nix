@@ -3,9 +3,9 @@
     enable = true;
     package = pkgs.unstable.tailscale;
     #    authKeyFile = config.sops.secrets."tskey".path;
+    extraSetFlags = ["--ssh"];
   };
 
-  services.openssh.enable = true;
   services.prometheus.exporters.node.enable = true;
 
   shares.pwnyboy-share.enable = true;

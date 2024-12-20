@@ -1,10 +1,12 @@
-{
+{lib, ...}: {
   wsl.wslConf.network = {
     hostname = "videodrome";
     generateHosts = false;
     generateResolvConf = false;
     useWindowsDriver = true;
   };
+
+  networking.nftables.enable = lib.mkForce false;
 
   networking = {
     nameservers = [ "100.100.100.100" ];
