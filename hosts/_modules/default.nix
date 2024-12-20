@@ -36,6 +36,11 @@
   programs.git.enable = true;
   programs.tmux.enable = true;
 
+  programs.ssh.extraConfig = #sshconf
+    ''
+      SendEnv TMUX ZELLIJ
+    '';
+
   programs.vim = {
     defaultEditor = true;
     enable = true;
