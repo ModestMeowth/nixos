@@ -13,6 +13,7 @@
 
     secBoot.url = "github:nix-community/lanzaboote";
     secBoot.inputs.nixpkgs.follows = "nixpkgs";
+    secBoot.inputs.pre-commit-hooks-nix.follows = "";
 
     wsl.url = "github:nix-community/NixOS-WSL";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
