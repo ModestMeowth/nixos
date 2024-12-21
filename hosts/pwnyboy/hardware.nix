@@ -1,12 +1,11 @@
-{ config, modulesPath, pkgs, ... }: {
+{ modulesPath, pkgs, ... }: {
   imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
   boot.lanzaboote.enable = false;
   hardware.cpu.intel.updateMicrocode = true;
-  boot.initrd.kernelModules = [ "xe" ];
+  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
 
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ ];
+  boot.kernelModules = ["kvm-intel"];
 
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [
