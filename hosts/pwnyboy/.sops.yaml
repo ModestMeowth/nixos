@@ -1,0 +1,10 @@
+keys:
+  - &pnby_host_age age15fhvwthgd5f6spcvr5st3lknm3xqlfdyj2s3xnld8c947w78s9nsl0q8zv
+  - &pnby_mm_age age1qex5ky044eyqrsymkg6ynfvpy96wxjdldvdmlmy35e5mt2v5zczqla98ed
+creation_rules:
+  - path_regex: .*\.sops.ya?ml$
+    key_groups:
+      - pgp: []
+        age:
+          - *pnby_host_age
+          - *pnby_mm_age
