@@ -1,6 +1,5 @@
 { config, pkgs, ... }: {
   services.chrony.enable = true;
-#  services.openssh.enable = true;
   services.fwupd.enable = true;
 
   services.tailscale = {

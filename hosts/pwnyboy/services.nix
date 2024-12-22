@@ -1,5 +1,4 @@
 { config, pkgs, ... }: {
-  services.openssh.enable = true;
   services.chrony.enable = true;
 
   services.fwupd.enable = true;
@@ -7,6 +6,7 @@
     enable = true;
     package = pkgs.unstable.tailscale;
     authKeyFile = config.sops.secrets."tskey".path;
+    extraSetFlags = ["--ssh"];
   };
 
   services.prometheus.exporters = {
