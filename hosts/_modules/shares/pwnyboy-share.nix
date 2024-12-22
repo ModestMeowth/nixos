@@ -1,14 +1,14 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.shares.pwnyboy-share;
+  cfg = config.shares.pwnyboy-media;
 in
 {
-  options.shares.pwnyboy-share = {
-    enable = lib.mkEnableOption "pwnyboy-share";
+  options.shares.pwnyboy-media = {
+    enable = lib.mkEnableOption "pwnyboy-media";
 
     mountpoint = lib.mkOption {
       type = lib.types.path;
-      default = "/share";
+      default = "/media";
     };
   };
 
@@ -17,7 +17,7 @@ in
     environment.systemPackages = [ pkgs.cifs-utils ];
     fileSystems."${cfg.mountpoint}" = {
       fsType = "cifs";
-      device = "//pwnyboy/share";
+      device = "//pwnyboy/media";
       options = [
         "noauto"
         "x-systemd.automount"

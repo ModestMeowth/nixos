@@ -9,6 +9,6 @@
     "create mask" = "0644";
     "directory mask" = "0755";
     "force user" = "mm";
-    "force group" = "mm";
+    "force group" = "users";
   };
 }

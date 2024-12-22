@@ -24,9 +24,9 @@ in
     ];
   };
 
-  shares.pwnyboy-share = {
+  shares.pwnyboy-media = {
     enable = true;
-    mountpoint = "/persist/share";
+    mountpoint = "/persist/media";
   };
 
   services.sanoid = {

@@ -50,7 +50,7 @@
     age
     sops
     nvfetcher
-    psmic
+    psmisc
     lsof
   ];
 
