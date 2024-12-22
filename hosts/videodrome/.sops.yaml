@@ -1,0 +1,10 @@
+keys:
+  - &vdrm_host_age age1f5hmq63suekp3tcy8886x406nw79z8hc3l6sj3kk4s3reuhg8d0s2jf4tu
+  - &vdrm_mm_age age1vz6akhdt4hwfxe3d2n7er2nym7lttcg7uchafysajdtwa696zcyq6latjk
+creation_rules:
+  - path_regex: .*\.sops.ya?ml$
+    key_groups:
+      - pgp: []
+        age:
+          - *vdrm_host_age
+          - *vdrm_mm_age
