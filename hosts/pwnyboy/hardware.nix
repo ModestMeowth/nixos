@@ -2,7 +2,11 @@
   imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
   boot.lanzaboote.enable = true;
-  systemd.services.systemd-random-seed.enable = lib.mkForce false; # random-seed prevents boot on this particular nvme...
+
+  # random-seed prevents boot on this particular nvme...
+  systemd.services."systemd-boot-random-seed".enable = lib.mkForce false;
+  systemd.services."systemd-random-seed".enable = lib.mkForce false;
+
   hardware.cpu.intel.updateMicrocode = true;
 
   boot.initrd.availableKernelModules = [
