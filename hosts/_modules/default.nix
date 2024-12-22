@@ -50,6 +50,8 @@
     age
     sops
     nvfetcher
+    psmic
+    lsof
   ];
 
   sops = {

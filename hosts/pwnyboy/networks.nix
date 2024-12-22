@@ -7,4 +7,6 @@
   networking.interfaces."bond0" = {
     macAddress = "a8:b8:e0:05:a6:02";
   };
+
+  networking.firewall.trustedInterfaces = ["tailscale+"];
 }
