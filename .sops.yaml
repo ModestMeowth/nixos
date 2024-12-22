@@ -10,8 +10,9 @@ creation_rules:
     key_groups:
       - pgp: []
         age:
+          - *pnby_host_age
           - *roci_host_age
           - *vdrm_host_age
+          - *pnby_mm_age
           - *roci_mm_age
           - *vdrm_mm_age
-          - *pnby_mm_age
