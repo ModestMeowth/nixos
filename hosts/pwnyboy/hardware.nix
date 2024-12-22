@@ -1,7 +1,7 @@
 { modulesPath, pkgs, ... }: {
   imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
-  boot.lanzaboote.enable = false;
+  boot.lanzaboote.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
 
   boot.initrd.availableKernelModules = [

@@ -18,6 +18,10 @@ in
   fileSystems."/boot" = {
     device = "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B7785953DEF-part1";
     fsType = "vfat";
+    options = [
+      "dmask=0077"
+      "fmask=0177"
+    ];
   };
 
   shares.pwnyboy-share = {
