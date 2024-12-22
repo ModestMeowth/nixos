@@ -22,17 +22,5 @@
   programs.neovim.enable = true;
   programs.gh.enable = true;
 
-  home.file."justfile".text = # just
-    ''
-      default:
-        @just --choose --justfile "{{ justfile() }}"
-
-      clean:
-        nh clean all
-
-      update:
-        nh os switch "github:ModestMeowth/nixos" -- --refresh
-    '';
-
   systemd.user.startServices = "sd-switch";
 }
