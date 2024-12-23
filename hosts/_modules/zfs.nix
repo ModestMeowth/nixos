@@ -15,6 +15,8 @@ in
 
     services.zfs = {
       autoScrub.enable = true;
+      autoScrub.interval = "Sun, 2-5:00:00";
+      autoScrub.randomizedDelaySec = "15m";
       trim.enable = true;
     };
 

@@ -15,6 +15,11 @@ in
     options = [ "zfsutil" ];
   };
 
+  boot.zfs.extraPools = [
+    "docker"
+    "persist"
+  ];
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-id/nvme-INTEL_SSDPEDMW400G4_CVCQ5252008B400AGN-part1";
     fsType = "vfat";

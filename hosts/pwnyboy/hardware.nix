@@ -1,5 +1,8 @@
 { lib, modulesPath, pkgs, ... }: {
-  imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
+  imports = [
+    ("${modulesPath}/installer/scan/not-detected.nix")
+    ./i915-sriov.nix
+  ];
 
   boot.lanzaboote.enable = true;
 
@@ -18,7 +21,16 @@
     "sd_mod"
   ];
 
-  boot.kernelModules = ["kvm-intel"];
+  boot.kernelModules = [
+    "kvm-intel"
+    "vfio_virqfd"
+    "vfio_pci"
+  ];
+
+  boot.kernelParams = [
+    "intel_iommu=on"
+    "iommu=pt"
+  ];
 
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = with pkgs; [

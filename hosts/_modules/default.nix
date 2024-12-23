@@ -51,6 +51,7 @@
     sops
     nvfetcher
     psmisc
+    pciutils
     lsof
   ];
 
