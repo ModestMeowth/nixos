@@ -7,4 +7,6 @@
     spice_tls = 1
     spice_listen = "0.0.0.0"
   '';
+
+  networking.hosts."192.168.0.101" = ["cluster.home"];
 }

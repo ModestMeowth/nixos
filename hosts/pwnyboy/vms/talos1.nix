@@ -22,7 +22,7 @@ in {
           source.address.domain = 0;
           source.address.bus = 0;
           source.address.slot = 2;
-          source.address.function = 0;
+          source.address.function = 1;
           address.type = "pci";
           address.domain = 0;
           address.bus = 4;
