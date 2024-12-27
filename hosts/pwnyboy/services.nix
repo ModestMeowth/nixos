@@ -1,17 +1,20 @@
 { config, pkgs, ... }: {
-  services.chrony.enable = true;
+  services = {
+    chrony.enable = true;
 
-  services.fwupd.enable = true;
-  services.tailscale = {
-    enable = true;
-    package = pkgs.unstable.tailscale;
-    authKeyFile = config.sops.secrets."tskey".path;
-    extraSetFlags = ["--ssh"];
-  };
+    tailscale.enable = true;
+    tailscale.package = pkgs.unstable.tailscale;
+    tailscale.authKeyFile = config.sops.secrets."tskey".path;
+    tailscale.extraSetFlags = ["--ssh"];
 
-  services.prometheus.exporters = {
-    node.enable = true;
-    smartctl.enable = true;
+    prometheus.exporters = {
+      node.enable = true;
+      smartctl.enable = true;
+    };
+
+    fwupd.enable = true;
+    nix-serve.enable = true;
+    nix-serve.secretKeyFile = config.sops.secrets."cache-priv-key".path;
   };
 
   environment.systemPackages = [ pkgs.smartmontools ];

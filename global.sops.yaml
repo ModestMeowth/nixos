@@ -61,8 +61,8 @@ sops:
             cHFqRE91UkU4OG9wRlpGUDFJZ1ZydjAKs4zw+kCL1dR9LAFSI3z0arPechVxHife
             dCa5nP4X5zw1SMPwxGw7/NxzWCsR3sGwwOgh3Pa4u2eeR5T9qfDHgA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-12-22T01:51:10Z"
-    mac: ENC[AES256_GCM,data:X6/1mWwaw5DiVGQd2ATR3T63GOV9MXIX3w9AVrW2T/dnA3dWaDAVs5keC5PNU1xGsBSzw/cxY0SEafam10B4vn5bV47pa5Nt/U/0Qd+DavFp01dFlEz6p3PhiZOQZufGeZx6P6pmNunUZ04zys74cu5N4VLqwwbWUaWcFRS7oc8=,iv:cQbvbzFCJZXLKei9URsUouQB+HyHlA0BuobHNjGGPM0=,tag:2GkZdLpcuRSrht6OVd+iVw==,type:str]
+    lastmodified: "2024-12-27T21:42:13Z"
+    mac: ENC[AES256_GCM,data:8h+Gb6s2co6I6lJY9AgAZr9i++UKFjB6aqkqF5Wd9A2qsq5tlyE7gGYtTDwJByhQPisieDXtZYUYJtRZ3HOeGG1d4QhCHeqwoSTjd0R9l0CQwTvqemgpMCQYFH5NfnGNDnSYia0PUPcVLx4UpA5vuwqwjIx3tMfbZ7NzYRzEmE0=,iv:OAbF3QpXmmEuGo/bCW8wcSLJdWiS89ibnfSASn8MJ+s=,tag:G4MGJaRinhdwDZvoZxsZTg==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.9.2

@@ -13,12 +13,21 @@
   documentation.nixos.enable = false;
   system.stateVersion = "24.11";
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.channel.enable = false;
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
-  nix.settings.log-lines = lib.mkDefault 25;
+    substituters = [
+      "pwnyboy.cat-alkaline.ts.net:5000"
+    ];
+
+    trusted-public-keys = [
+      "pwnyboy.cat-alkaline.ts.net:H5DR+YdP5Pt0OUYG1C1y7d+bFNEePQtjR3XvqUekCgs="
+    ];
+  };
 
   programs.nh = {
     enable = true;
