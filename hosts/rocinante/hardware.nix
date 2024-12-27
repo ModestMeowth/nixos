@@ -1,6 +1,8 @@
 { config, modulesPath, pkgs, ... }: {
   imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.lanzaboote.enable = true;
   hardware.cpu.amd.updateMicrocode = true;
 
