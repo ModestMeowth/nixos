@@ -21,7 +21,7 @@
     ];
 
     substituters = [
-      "pwnyboy.cat-alkaline.ts.net:5000"
+      "https://pwnyboy.cat-alkaline.ts.net:5000"
     ];
 
     trusted-public-keys = [
