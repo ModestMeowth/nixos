@@ -21,11 +21,11 @@
     ];
 
     substituters = [
-      "https://pwnyboy.cat-alkaline.ts.net:5000"
+      "https://cache.pwnyboy.com"
     ];
 
     trusted-public-keys = [
-      "pwnyboy.cat-alkaline.ts.net:H5DR+YdP5Pt0OUYG1C1y7d+bFNEePQtjR3XvqUekCgs="
+      "cache.pwnyboy.com:Zd6uTAb9+U/LmABAy72pnOypPQBWEYFZm4GeMkja+eE="
     ];
   };
 

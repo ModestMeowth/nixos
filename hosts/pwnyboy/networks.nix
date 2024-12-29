@@ -1,4 +1,4 @@
-let
+{lib, ...}: let
   bridge = "bridge0";
   cidr = "192.168.0";
   prefix = 24;
@@ -25,5 +25,21 @@ in {
     "1.1.1.1"
   ];
 
-  networking.firewall.trustedInterfaces = ["tailscale+"];
+  networking.firewall = {
+    trustedInterfaces = [
+      "tailscale0"
+      "docker0"
+    ];
+
+    allowedTCPPorts = [
+      80 443 # HTTP
+      53 853 # DNS over TCP
+      22000 # Syncthing
+    ];
+
+    allowedUDPPorts = [
+      53 # DNS
+      22000 21027 # Syncthing
+    ];
+  };
 }

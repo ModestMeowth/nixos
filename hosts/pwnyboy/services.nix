@@ -18,5 +18,10 @@
     nix-serve.secretKeyFile = config.sops.secrets."cache-priv-key".path;
   };
 
-  environment.systemPackages = [ pkgs.smartmontools ];
+  environment.systemPackages = with pkgs; [
+    smartmontools
+    docker-compose
+  ];
+
+  virtualisation.docker.enable = true;
 }

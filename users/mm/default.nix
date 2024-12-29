@@ -15,6 +15,7 @@ in
         "users"
       ]
       ++ ifGroupsExist [
+        "docker"
         "gamemode"
         "network"
         "networkmanager"
