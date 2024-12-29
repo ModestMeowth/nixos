@@ -16,6 +16,7 @@
 
     nix-serve.enable = true;
     nix-serve.secretKeyFile = config.sops.secrets."cache-priv-key".path;
+    nix-serve.openFirewall = true;
   };
 
   environment.systemPackages = with pkgs; [

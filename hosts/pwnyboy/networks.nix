@@ -34,6 +34,7 @@ in {
     allowedTCPPorts = [
       80 443 # HTTP
       53 853 # DNS over TCP
+      8123 # HomeAssistant
       22000 # Syncthing
     ];
 
