@@ -1,3 +1,6 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.xdg-utils];
+  home.packages = with pkgs; [
+    virt-manager
+    xdg-utils
+  ];
 }

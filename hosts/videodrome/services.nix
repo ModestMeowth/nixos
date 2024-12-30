@@ -7,4 +7,6 @@
   };
 
   services.prometheus.exporters.node.enable = true;
+
+  programs.dconf.enable = true;
 }
