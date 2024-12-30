@@ -8,11 +8,11 @@ in
 
   networking = {
     hostName = "rocinante";
-    networkmanager = {
-      enable = true;
 
-      ensureProfiles."Ponyboy Bounce House".connection.interface-name = wifiInterface;
-      ensureProfiles."Hyrule".connection.interface-name = wifiInterface;
+    networkmanager.enable = true;
+    networkmanager.ensureProfiles.profiles = {
+      "Ponyboy Bounce House".connection.interface-name = wifiInterface;
+      "Hyrule".connection.interface-name = wifiInterface;
     };
   };
 }
