@@ -3,7 +3,7 @@
     secrets."tskey" = {
       mode = "0440";
       group = "wheel";
-      opsFile = ./secrets.sops.yaml;
+      sopsFile = ./secrets.sops.yaml;
     };
 
     secrets."cache-priv-key" = {
