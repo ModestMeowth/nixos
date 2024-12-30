@@ -25,7 +25,7 @@
     ];
 
     trusted-public-keys = [
-      "cache.pwnyboy.com:Zd6uTAb9+U/LmABAy72pnOypPQBWEYFZm4GeMkja+eE="
+       "https://cache.pwnyboy.com:hoTaHPttKEg3JggxA5rvlcx569zNhUsl8XTc5t7Xhj4="
     ];
   };
 
