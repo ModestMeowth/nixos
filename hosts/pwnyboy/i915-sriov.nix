@@ -1,7 +1,7 @@
 {config, lib, pkgs, ...}: let
   deviceBDF = "0000:00:02.0";
 
-  customKernel = pkgs.linux_6_6.override {
+  customKernel = pkgs.linux_latest.override {
     structuredExtraConfig = with lib.kernel; {
       DRM_I915_PXP = yes;
       INTEL_MEI_PXP = module;
@@ -10,7 +10,7 @@
 
   i915SRIOVModule = customKernelPackages.callPackage({stdenv, kernel}: stdenv.mkDerivation {
     pname = "i915-sriov-dkms";
-    version = "2024.12.22";
+    version = "2024.12.30";
 
     src = pkgs.fetchFromGitHub {
       owner = "strongtz";
