@@ -16,7 +16,7 @@
       owner = "strongtz";
       repo = "i915-sriov-dkms";
       rev = "master";
-      sha256 = "sha256-O+7ZehoVOYYdCTboF9XGBR9G6I72987AdbbF1JkrsBc=";
+      sha256 = "sha256-FjNtEP8aewQeYyDgs+N0ZyI3OwgGfsFs2XB5KWGDvOY=";
     };
 
     nativeBuildInputs = kernel.moduleBuildDependencies ++ [pkgs.xz];
