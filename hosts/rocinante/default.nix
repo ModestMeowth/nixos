@@ -1,6 +1,4 @@
 {
-  networking.hostName = "rocinante";
-
   imports = [
     ./filesystems.nix
     ./hardware.nix

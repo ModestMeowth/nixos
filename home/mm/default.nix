@@ -5,34 +5,37 @@
     ./shell.nix
   ];
 
-  programs.home-manager.enable = true;
-  home.stateVersion = "24.11";
+  home = {
+    stateVersion = "24.11";
 
-  home.username = "mm";
-  home.homeDirectory = "/home/mm";
+    username = "mm";
+    homeDirectory = "/home/mm";
+    file."justfile".text = # just
+      ''
+        default:
+          @just --choose --justfile "{{justfile()}}"
 
-  home.packages = with pkgs; [
-    just
-    mosh
-    ncdu
-    nmap
-    ripgrep
-  ];
+        clean:
+          nh clean all
 
-  programs.neovim.enable = true;
-  programs.gh.enable = true;
+        update:
+          nh os switch "github:ModestMeowth/nixos" -- --refresh
+      '';
 
-  home.file."justfile".text = # just
-    ''
-      default:
-        @just --choose --justfile "{{justfile()}}"
+    packages = with pkgs; [
+      just
+      mosh
+      ncdu
+      nmap
+      ripgrep
+    ];
+  };
 
-      clean:
-        nh clean all
-
-      update:
-        nh os switch "github:ModestMeowth/nixos" -- --refresh
-    '';
+  programs = {
+    home-manager.enable = true;
+    neovim.enable = true;
+    gh.enable = true;
+  };
 
   systemd.user.startServices = "sd-switch";
 }

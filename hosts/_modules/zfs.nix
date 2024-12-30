@@ -4,31 +4,28 @@ let
 in
 {
   config = lib.mkIf (!cfg.enable) {
-    boot.supportedFilesystems.zfs = true;
+    boot = {
+      supportedFilesystems.zfs = true;
+      zfs.forceImportRoot = false;
+    };
 
     # ZFSBootMenu
     networking.hostId = "00bab10c";
 
-    boot.zfs = {
-      forceImportRoot = false;
-    };
+    services = {
+      zfs.autoScrub.enable = true;
+      zfs.autoScrub.interval = "Sun, 2-5:00:00";
+      zfs.autoScrub.randomizedDelaySec = "15m";
+      zfs.trim.enable = true;
 
-    services.zfs = {
-      autoScrub.enable = true;
-      autoScrub.interval = "Sun, 2-5:00:00";
-      autoScrub.randomizedDelaySec = "15m";
-      trim.enable = true;
-    };
+      sanoid.enable = true;
+      sanoid.templates = {
+        default.autoprune = true;
+        default.autosnap = true;
 
-    services.sanoid = {
-      enable = true;
-      templates.default = {
-        autoprune = true;
-        autosnap = true;
-
-        hourly = 36;
-        daily = 30;
-        monthly = 3;
+        default.hourly = 36;
+        default.daily = 30;
+        default.monthly = 3;
       };
     };
 

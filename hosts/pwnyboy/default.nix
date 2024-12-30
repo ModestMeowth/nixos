@@ -1,6 +1,4 @@
 {
-  networking.hostName = "pwnyboy";
-
   imports = [
     ./filesystems.nix
     ./hardware.nix

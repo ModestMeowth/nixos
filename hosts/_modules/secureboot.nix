@@ -6,10 +6,10 @@ in
 {
   config = lib.mkIf (!cfg.enable) {
     boot.loader = {
-      grub.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot";
 
+      grub.enable = lib.mkDefault false;
       systemd-boot.enable = lib.mkForce (!cfgSecureBoot.enable);
       systemd-boot.configurationLimit = 5;
     };

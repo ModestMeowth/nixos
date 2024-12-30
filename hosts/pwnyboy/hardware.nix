@@ -4,42 +4,49 @@
     ./i915-sriov.nix
   ];
 
-  boot.lanzaboote.enable = true;
+  boot = {
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "nvme"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+    ];
 
-  # random-seed prevents boot on this particular nvme...
-  systemd.services."systemd-boot-random-seed".enable = lib.mkForce false;
-  systemd.services."systemd-random-seed".enable = lib.mkForce false;
+    kernelModules = [
+      "kvm-intel"
+      "vfio_virqfd"
+      "vfio_pci"
+    ];
 
-  hardware.cpu.intel.updateMicrocode = true;
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+    ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    "nvme"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
-  ];
+    lanzaboote.enable = true;
+  };
 
-  boot.kernelModules = [
-    "kvm-intel"
-    "vfio_virqfd"
-    "vfio_pci"
-  ];
+  hardware = {
+    cpu.intel.updateMicrocode = true;
 
-  boot.kernelParams = [
-    "intel_iommu=on"
-    "iommu=pt"
-  ];
-
-  hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-vaapi-driver
-    intel-ocl
-    intel-media-driver
-    intel-compute-runtime
-    vpl-gpu-rt
-  ];
+    graphics.enable = true;
+    graphics.extraPackages = with pkgs; [
+      intel-vaapi-driver
+      intel-ocl
+      intel-media-driver
+      intel-compute-runtime
+      vpl-gpu-rt
+    ];
+  };
 
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
+
+  # random-seed prevents boot on this particular nvme...
+  systemd = {
+    services."systemd-boot-random-seed".enable = lib.mkForce false;
+    services."systemd-random-seed".enable = lib.mkForce false;
+  };
+
 }

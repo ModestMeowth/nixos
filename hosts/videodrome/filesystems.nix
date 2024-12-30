@@ -1,3 +1,5 @@
 {
-  shares.pwnyboy-media.enable = true;
+  shares = {
+    pwnyboy-media.enable = true;
+  };
 }

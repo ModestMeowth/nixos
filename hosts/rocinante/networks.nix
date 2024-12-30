@@ -2,11 +2,17 @@ let
   wifiInterface = "wlp2s0";
 in
 {
-  systemd.services.NetworkManager-wait-online.enable = false;
-  networking.networkmanager = {
-    enable = true;
+  systemd = {
+    services.NetworkManager-wait-online.enable = false;
+  };
 
-    ensureProfiles."Ponyboy Bounce House".connection.interface-name = wifiInterface;
-    ensureProfiles."Hyrule".connection.interface-name = wifiInterface;
+  networking = {
+    hostName = "rocinante";
+    networkmanager = {
+      enable = true;
+
+      ensureProfiles."Ponyboy Bounce House".connection.interface-name = wifiInterface;
+      ensureProfiles."Hyrule".connection.interface-name = wifiInterface;
+    };
   };
 }

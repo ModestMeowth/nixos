@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./networks.nix
     ./storage.nix
@@ -9,5 +9,4 @@
   ];
 
   virtualisation.libvirt.enable = true;
-  environment.systemPackages = [pkgs.libguestfs];
 }

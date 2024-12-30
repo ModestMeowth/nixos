@@ -13,26 +13,26 @@
   documentation.nixos.enable = false;
   system.stateVersion = "24.11";
 
-  nix.channel.enable = false;
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+  nix = {
+    channel.enable = false;
+    settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
-    substituters = [
+    settings.substituters = [
       "https://cache.pwnyboy.com"
     ];
 
-    trusted-public-keys = [
+    settings.trusted-public-keys = [
        "cache.pwnyboy.com:hoTaHPttKEg3JggxA5rvlcx569zNhUsl8XTc5t7Xhj4="
     ];
   };
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 5";
+  programs = {
+    nh.enable = true;
+    nh.clean.enable = true;
+    nh.clean.extraArgs = "--keep-since 4d --keep 5";
   };
 
   time.timeZone = lib.mkDefault "America/Chicago";
@@ -48,18 +48,18 @@
     }];
   };
 
-  programs.fish.enable = true;
-  programs.git.enable = true;
-  programs.tmux.enable = true;
+  programs = {
+    fish.enable = true;
+    git.enable = true;
+    tmux.enable = true;
 
-  programs.ssh.extraConfig = #sshconf
-    ''
-      SendEnv TMUX ZELLIJ
-    '';
+    ssh.extraConfig = #sshconf
+      ''
+        SendEnv TMUX ZELLIJ
+      '';
 
-  programs.vim = {
-    defaultEditor = true;
-    enable = true;
+    vim.defaultEditor = true;
+    vim.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -79,23 +79,23 @@
     gnupg.sshKeyPaths = lib.mkDefault ["/persist/etc/sops/gpgkey"];
   };
 
-  security.pam.loginLimits = [
-    {
-      domain = "@wheel";
-      item = "nofile";
-      type = "soft";
-      value = "5424288";
-    }
-    {
-      domain = "@wheel";
-      item = "nofile";
-      type = "hard";
-      value = "1048576";
-    }
-  ];
+  security = {
+    pam.loginLimits = [
+      {
+        domain = "@wheel";
+        item = "nofile";
+        type = "soft";
+        value = "5424288";
+      }
+      {
+        domain = "@wheel";
+        item = "nofile";
+        type = "hard";
+        value = "1048576";
+      }
+    ];
 
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = true;
+    sudo.enable = true;
+    sudo.wheelNeedsPassword = true;
   };
 }
