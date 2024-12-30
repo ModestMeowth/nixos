@@ -38,8 +38,15 @@
   time.timeZone = lib.mkDefault "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  networking.firewall.enable = true;
-  networking.nftables.enable = true;
+  networking = {
+    nftables.enable = lib.mkDefault true;
+    firewall.enable = lib.mkDefault true;
+    firewall.allowedUDPPortRanges = [{
+      # Mosh
+      from = 60000;
+      to = 61000;
+    }];
+  };
 
   programs.fish.enable = true;
   programs.git.enable = true;
