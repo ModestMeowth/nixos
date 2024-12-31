@@ -1,3 +1,3 @@
 {
-  imports = [ ./pwnyboy-share.nix ];
+  imports = [ ./pwnyboy-media.nix ];
 }

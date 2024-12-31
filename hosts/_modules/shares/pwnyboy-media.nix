@@ -14,7 +14,9 @@ in
 
   config = lib.mkIf cfg.enable {
     sops.secrets."smb-pwnyboy".mode = "0400";
+
     environment.systemPackages = [ pkgs.cifs-utils ];
+
     fileSystems."${cfg.mountpoint}" = {
       fsType = "cifs";
       device = "//pwnyboy/media";
