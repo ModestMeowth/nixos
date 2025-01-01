@@ -1,20 +1,23 @@
 { config, modulesPath, pkgs, ... }: {
   imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.lanzaboote.enable = true;
-  hardware.cpu.amd.updateMicrocode = true;
+    lanzaboote.enable = true;
 
-  boot.initrd.availableKernelModules = [
-    "nvme"
-    "xhci_pci"
-    "usb_storage"
-    "sd_mod"
-  ];
+    initrd.availableKernelModules = [
+      "nvme"
+      "xhci_pci"
+      "usb_storage"
+      "sd_mod"
+    ];
 
-  boot.kernelModules = [ "acpi_call" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
+    kernelModules = [ "acpi_call" ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      acpi_call
+    ];
+  };
 
   # Plymouth
   boot.initrd.verbose = false;
@@ -22,13 +25,19 @@
   boot.plymouth.enable = true;
   boot.kernelParams = [ "quiet" ];
 
-  hardware.graphics.enable = true;
+  hardware = {
+    cpu.amd.updateMicrocode = true;
 
-  hardware.amdgpu = {
-    initrd.enable = true;
-    amdvlk.enable = true;
-    opencl.enable = true;
+    graphics.enable = true;
+    graphics.enable32Bit = true;
+
+    amdgpu.initrd.enable = true;
+    amdgpu.amdvlk.enable = true;
+    amdgpu.amdvlk.support32Bit.enable = true;
+    amdgpu.opencl.enable = true;
   };
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services = {
+    xserver.videoDrivers = [ "amdgpu" ];
+  };
 }

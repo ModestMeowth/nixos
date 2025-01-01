@@ -20,11 +20,12 @@
     xserver.displayManager.gdm.wayland = true;
   };
 
-  programs = {
-    gamemode.enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
     smartmontools
   ];
+
+  gaming = {
+    retroarch.enable = true;
+    steam.enable = true;
+  };
 }

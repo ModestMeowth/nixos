@@ -23,6 +23,4 @@ in
   services = {
     syncthing.enable = true;
   };
-
-  gaming.retroarch.enable = true;
 }

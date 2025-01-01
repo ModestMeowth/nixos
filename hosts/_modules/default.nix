@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./console.nix
+    ./gaming
     ./libvirt.nix
     ./secureboot.nix
     ./services
