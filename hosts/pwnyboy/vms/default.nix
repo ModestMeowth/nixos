@@ -1,5 +1,7 @@
 {
   imports = [
+    ./i915-sriov.nix
+
     ./networks.nix
     ./storage.nix
 

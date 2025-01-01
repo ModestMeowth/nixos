@@ -1,7 +1,6 @@
 { lib, modulesPath, pkgs, ... }: {
   imports = [
     ("${modulesPath}/installer/scan/not-detected.nix")
-    ./i915-sriov.nix
   ];
 
   boot = {
