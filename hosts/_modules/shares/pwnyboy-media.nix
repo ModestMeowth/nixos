@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.shares.pwnyboy-media;
+  ip = "100.94.146.30";
 in
 {
   options.shares.pwnyboy-media = {
@@ -21,9 +22,13 @@ in
       fsType = "cifs";
       device = "//pwnyboy/media";
       options = [
-        "noauto"
         "x-systemd.automount"
-        "x-system.mount-timeout=5s"
+        "noauto"
+        "x-systemd-idle-timeout=60s"
+        "x-systemd.device-timeout=5s"
+        "x-systemd.mount-timeout=5s"
+        "x-systemd.requires=sys-subsystem-net-devices-tailscale0.device"
+        "x-systemd.after=tailscaled.service"
         "dir_mode=0750"
         "file_mode=0640"
         "uid=1001"

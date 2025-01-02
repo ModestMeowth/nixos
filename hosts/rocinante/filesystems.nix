@@ -16,6 +16,13 @@ in
       options = [ "zfsutil" ];
     };
 
+    "/persist/etc" = {
+      device = "${persist}/etc";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+      neededForBoot = true;
+    };
+
     "/boot" = {
       device = "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B7785953DEF-part1";
       fsType = "vfat";
