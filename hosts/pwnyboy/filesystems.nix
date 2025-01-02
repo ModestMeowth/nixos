@@ -15,6 +15,13 @@ in {
       options = [ "zfsutil" ];
     };
 
+    "/persist/etc" = {
+      device = "${persist}/etc";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+      neededForBoot = true;
+    };
+
     "/boot" = {
       device = "/dev/disk/by-id/nvme-INTEL_SSDPEDMW400G4_CVCQ5252008B400AGN-part1";
       fsType = "vfat";
