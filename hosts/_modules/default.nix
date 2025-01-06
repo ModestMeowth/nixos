@@ -22,8 +22,9 @@
       "flakes"
     ];
 
-    settings.substituters = [
+    settings.substituters = lib.mkDefault [
       "https://cache.pwnyboy.com"
+      "https://cache.nixos.org"
     ];
 
     settings.trusted-public-keys = [
