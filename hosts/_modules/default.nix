@@ -69,6 +69,7 @@
     nvfetcher
     psmisc
     pciutils
+    usbutils
     lsof
   ];
 
