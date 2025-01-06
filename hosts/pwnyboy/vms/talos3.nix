@@ -1,11 +1,13 @@
-stuff@{inputs, pkgs, ...}: let
+stuff@{ inputs, pkgs, ... }:
+let
   virt = inputs.virt;
   template = ../../../templates/nixvirt/talos-sb.nix;
-in {
+in
+{
   virtualisation.libvirt.connections."qemu:///system".domains = [
     {
       active = true;
-      definition = virt.lib.domain.writeXML(import template stuff {
+      definition = virt.lib.domain.writeXML (import template stuff {
         name = "talos3";
         uuid = "96be0a11-6364-45a7-b36d-8584889f8cfb";
         title = "Talos3";

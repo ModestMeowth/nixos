@@ -1,7 +1,9 @@
-{inputs, ...}: let
+{ inputs, ... }:
+let
   virt = inputs.virt;
   storagePath = "/persist/vm";
-in {
+in
+{
   virtualisation.libvirt.connections."qemu:///system" = {
     pools = [
       {

@@ -6,7 +6,7 @@
   };
 
   programs = {
-  # Nvidia
+    # Nvidia
     nix-ld = {
       enable = true;
       libraries = [ pkgs.unstable.linuxPackages.nvidia_x11 ];

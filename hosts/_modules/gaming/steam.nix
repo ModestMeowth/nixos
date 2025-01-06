@@ -1,6 +1,8 @@
-{config, lib, pkgs, ...}: let
+{ config, lib, pkgs, ... }:
+let
   cfg = config.gaming.steam;
-in {
+in
+{
   options.gaming.steam.enable = lib.mkEnableOption "steam";
 
   config.programs.steam = lib.mkIf cfg.enable {

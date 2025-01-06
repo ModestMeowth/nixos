@@ -1,7 +1,8 @@
 let
   root = "zroot/pwnyboy";
   persist = "zroot/persist";
-in {
+in
+{
   fileSystems = {
     "/" = {
       device = "${root}/root";

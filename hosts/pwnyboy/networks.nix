@@ -2,7 +2,8 @@ let
   bridge = "bridge0";
   cidr = "192.168.0";
   prefix = 24;
-in {
+in
+{
   networking = {
     hostName = "pwnyboy";
     bridges."${bridge}".interfaces = [ "enp3s0" ];
@@ -34,15 +35,19 @@ in {
       ];
 
       allowedTCPPorts = [
-        80 443 # HTTP
-        53 853 # DNS over TCP
+        80
+        443 # HTTP
+        53
+        853 # DNS over TCP
         8123 # HomeAssistant
         22000 # Syncthing
+        9090 # Prometheus
       ];
 
       allowedUDPPorts = [
         53 # DNS
-        22000 21027 # Syncthing
+        22000
+        21027 # Syncthing
       ];
     };
   };

@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   wsl.wslConf.network = {
     hostname = "videodrome";
     generateHosts = false;

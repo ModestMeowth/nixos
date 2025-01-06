@@ -3,6 +3,7 @@
     ./console.nix
     ./gaming
     ./libvirt.nix
+    ./monitoring.nix
     ./secureboot.nix
     ./services
     ./shares
@@ -17,16 +18,16 @@
   nix = {
     channel.enable = false;
     settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      "nix-command"
+      "flakes"
+    ];
 
     settings.substituters = [
       "https://cache.pwnyboy.com"
     ];
 
     settings.trusted-public-keys = [
-       "cache.pwnyboy.com:hoTaHPttKEg3JggxA5rvlcx569zNhUsl8XTc5t7Xhj4="
+      "cache.pwnyboy.com:hoTaHPttKEg3JggxA5rvlcx569zNhUsl8XTc5t7Xhj4="
     ];
   };
 
@@ -77,8 +78,8 @@
     defaultSopsFile = ../../global.sops.yaml;
     age.generateKey = true;
     age.keyFile = "/var/lib/sops-nix/key.txt";
-    age.sshKeyPaths = lib.mkDefault ["/persist/etc/sops/agekey"];
-    gnupg.sshKeyPaths = lib.mkDefault ["/persist/etc/sops/gpgkey"];
+    age.sshKeyPaths = lib.mkDefault [ "/persist/etc/sops/agekey" ];
+    gnupg.sshKeyPaths = lib.mkDefault [ "/persist/etc/sops/gpgkey" ];
   };
 
   security = {

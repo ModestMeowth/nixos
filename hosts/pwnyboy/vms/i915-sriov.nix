@@ -1,4 +1,5 @@
-{config, lib, pkgs, ...}: let
+{ config, lib, pkgs, ... }:
+let
   deviceBDF = "0000:00:02.0";
 
   customKernel = pkgs.linux_latest.override {
@@ -8,46 +9,49 @@
     };
   };
 
-  i915SRIOVModule = customKernelPackages.callPackage({stdenv, kernel}: stdenv.mkDerivation {
-    pname = "i915-sriov-dkms";
-    version = "2024.12.30";
+  i915SRIOVModule = customKernelPackages.callPackage
+    ({ stdenv, kernel }: stdenv.mkDerivation {
+      pname = "i915-sriov-dkms";
+      version = "2024.12.30";
 
-    src = pkgs.fetchFromGitHub {
-      owner = "strongtz";
-      repo = "i915-sriov-dkms";
-      rev = "master";
-      sha256 = "sha256-FjNtEP8aewQeYyDgs+N0ZyI3OwgGfsFs2XB5KWGDvOY=";
-    };
+      src = pkgs.fetchFromGitHub {
+        owner = "strongtz";
+        repo = "i915-sriov-dkms";
+        rev = "master";
+        sha256 = "sha256-FjNtEP8aewQeYyDgs+N0ZyI3OwgGfsFs2XB5KWGDvOY=";
+      };
 
-    nativeBuildInputs = kernel.moduleBuildDependencies ++ [pkgs.xz];
+      nativeBuildInputs = kernel.moduleBuildDependencies ++ [ pkgs.xz ];
 
-    makeFlags = [
-      "KERNELRELEASE=${kernel.modDirVersion}"
-      "KERNEL_DIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
-    ];
+      makeFlags = [
+        "KERNELRELEASE=${kernel.modDirVersion}"
+        "KERNEL_DIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+      ];
 
-    buildPhase = ''
-      make -C ${kernel.dev}/lib/modules/${kernel.modDirVersion}/build \
-      M=$(pwd) \
-      KERNELRELEASE=${kernel.modDirVersion}
-    '';
+      buildPhase = ''
+        make -C ${kernel.dev}/lib/modules/${kernel.modDirVersion}/build \
+        M=$(pwd) \
+        KERNELRELEASE=${kernel.modDirVersion}
+      '';
 
-    installPhase = ''
-      mkdir -p $out/lib/modules/${kernel.modDirVersion}/extra
-      ${pkgs.xz}/bin/xz -z -f i915.ko
-      cp i915.ko.xz $out/lib/modules/${kernel.modDirVersion}/extra/i915-sriov.ko.xz
-    '';
+      installPhase = ''
+        mkdir -p $out/lib/modules/${kernel.modDirVersion}/extra
+        ${pkgs.xz}/bin/xz -z -f i915.ko
+        cp i915.ko.xz $out/lib/modules/${kernel.modDirVersion}/extra/i915-sriov.ko.xz
+      '';
 
-    meta = with lib; {
-      description = "Custom module for i915 SR-IOV support";
-      homepage = "https://github.com/strongtz/i915-sriov-dkms";
-      license = licenses.gpl2Only;
-      platforms = platforms.linux;
-    };
-  }) {};
+      meta = with lib; {
+        description = "Custom module for i915 SR-IOV support";
+        homepage = "https://github.com/strongtz/i915-sriov-dkms";
+        license = licenses.gpl2Only;
+        platforms = platforms.linux;
+      };
+    })
+    { };
 
   customKernelPackages = pkgs.linuxPackagesFor customKernel;
-in {
+in
+{
   boot.kernelPackages = customKernelPackages;
   boot.extraModulePackages = [ i915SRIOVModule ];
 
@@ -68,7 +72,7 @@ in {
 
   systemd.services."enable-SR-IOV" = {
     description = "SRIOV Graphics enablement";
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
     path = [ pkgs.pciutils ];
 
     serviceConfig = {
