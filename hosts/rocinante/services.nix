@@ -25,7 +25,7 @@
   ];
 
   gaming = {
-    retroarch.enable = true;
+    emulation.enable = true;
     steam.enable = true;
   };
 }

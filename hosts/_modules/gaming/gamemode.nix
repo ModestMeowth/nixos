@@ -1,5 +1,5 @@
 {config, lib, pkgs, ...}: let
-  cfgRetroarch = config.gaming.retroarch.enable;
+  cfgRetroarch = config.gaming.emulation.enable;
   cfgSteam = config.gaming.steam.enable;
   cfgWine = config.gaming.wine.enable;
 in {

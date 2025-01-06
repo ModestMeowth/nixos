@@ -1,7 +1,7 @@
 {
   imports = [
     ./gamemode.nix
-    ./retroarch.nix
+    ./emulation.nix
     ./steam.nix
     ./wine.nix
   ];

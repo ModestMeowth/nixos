@@ -1,13 +1,14 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.gaming.retroarch;
+  cfg = config.gaming.emulation;
 in
 {
-  options.gaming.retroarch.enable = lib.mkEnableOption "retroarch";
+  options.gaming.emulation.enable = lib.mkEnableOption "retroarch";
 
   config.environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
     (retroarch.override {
       cores = with libretro; [
+        bsnes
         desmume
         dolphin
         fceumm
@@ -15,11 +16,11 @@ in
         mgba
         parallel-n64
         pcsx-rearmed
-        pcsx2
-        snes9x
       ];
     })
     retroarch-assets
     retroarch-joypad-autoconfig
+    pcsx2
+    dolphin-emu
   ]);
 }
