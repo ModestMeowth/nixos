@@ -16,15 +16,15 @@ in
       (pkgs.writeText "nut-rules" #yaml
         ''
           groups:
-            - name: NUT_exporter
+            - name: NUT ROUTER/PWNYBOY
               rules:
-              - alert: NUTUPSOffline
-                expr: network_ups_tools_status{flag!="OFF"} > 0
+              - alert: UPS Down
+                expr: network_ups_tools_status{flag!="OB"} > 0
                 for: 0m
                 labels:
                   severity: warning
                 annotations:
-                  summary: UPS AC input outage (instance {{ $labels.instance }})
+                  summary: UPS on battery (instance {{ $labels.instance }})
                   description: UPS now running on battery (since {{$value | humanizeDuration}})\n VALUE = {{ $value }}\n LABELS = {{ $labels }}
         '')
     ];

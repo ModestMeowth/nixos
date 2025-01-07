@@ -22,9 +22,9 @@ in
       (pkgs.writeText "router_node-rules" # yaml
         ''
           groups:
-            - name: Router_Node_exporter
+            - name: Node ROUTER
               rules:
-                - alert: WANDown
+                - alert: WAN Down
                   expr: node_pfsense_interface_up{name="wan"} != 1
                   for: 1m
                   labels:

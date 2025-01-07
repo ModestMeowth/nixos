@@ -3,7 +3,6 @@
     ./console.nix
     ./gaming
     ./libvirt.nix
-    ./monitoring.nix
     ./secureboot.nix
     ./services
     ./shares
@@ -67,12 +66,11 @@
 
   environment.systemPackages = with pkgs; [
     age
-    sops
+    lsof
     nvfetcher
     psmisc
-    pciutils
+    sops
     usbutils
-    lsof
   ];
 
   sops = {

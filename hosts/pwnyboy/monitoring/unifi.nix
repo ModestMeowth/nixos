@@ -37,7 +37,7 @@ in
         (pkgs.writeText "unifi-rules" # yaml
           ''
             groups:
-              - name: unpoller
+              - name: Unifi
           '')
       ];
     };
