@@ -2,12 +2,18 @@
   cfg = config.wsl;
 in {
   services.prometheus.exporters = {
-    node.enable = true;
-    node.enabledCollectors = [
-      "systemd"
-    ];
+    node = {
+      enable = true;
+      enabledCollectors = [
+        "systemd"
+      ];
+      openFirewall = true;
+    };
 
-    smartctl.enable = (!cfg.enable);
+    smartctl = lib.mkIf (!cfg.enable) {
+      enable = true;
+      openFirewall = true;
+    };
   };
 
   services.smartd.enable = (!cfg.enable);
