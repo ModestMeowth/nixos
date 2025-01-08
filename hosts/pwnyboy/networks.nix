@@ -41,7 +41,6 @@ in
         853 # DNS over TCP
         8123 # HomeAssistant
         22000 # Syncthing
-        9090 # Prometheus
       ];
 
       allowedUDPPorts = [
