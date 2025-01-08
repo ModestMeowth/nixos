@@ -1,10 +1,11 @@
-{ inputs, ... }:
+{ config, lib, inputs, ... }:
 let
+  cfg = config.virtualisation.libvirtd;
   virt = inputs.virt;
   storagePath = "/persist/vm";
 in
 {
-  virtualisation.libvirt.connections."qemu:///system" = {
+  virtualisation.libvirt.connections."qemu:///system" = lib.mkIf cfg.enable {
     pools = [
       {
         active = true;

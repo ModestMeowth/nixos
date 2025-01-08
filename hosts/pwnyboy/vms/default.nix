@@ -1,5 +1,5 @@
 {
-  imports = [
+    imports = [
     #    ./i915-sriov.nix
 
     ./networks.nix
@@ -9,6 +9,4 @@
     #    ./talos2.nix
     #    ./talos3.nix
   ];
-
-  virtualisation.libvirt.enable = true;
 }

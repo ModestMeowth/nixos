@@ -1,10 +1,10 @@
-stuff@{ inputs, pkgs, ... }:
-let
+stuff@{ config, lib, inputs, pkgs, ... }: let
+  cfg = config.virtualisation.libvirtd;
   virt = inputs.virt;
   template = ../../../templates/nixvirt/talos-sb.nix;
 in
 {
-  virtualisation.libvirt.connections."qemu:///system".domains = [
+  virtualisation.libvirt.connections."qemu:///system".domains = lib.mkIf cfg.enable [
     {
       active = true;
       definition = virt.lib.domain.writeXML (import template stuff {
