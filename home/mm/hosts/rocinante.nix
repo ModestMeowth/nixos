@@ -7,7 +7,6 @@ in
 
   programs = {
     chromium.enable = true;
-    firefox.enable = true;
 
     wezterm.enable = true;
     k9s.enable = true;
