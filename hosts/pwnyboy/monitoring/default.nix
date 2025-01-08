@@ -13,7 +13,12 @@ in
 
   options.monitoring.enable = lib.mkEnableOption "monitoring";
 
-  config.services.prometheus = lib.mkIf cfg.enable {
-    enable = true;
+  config = lib.mkIf cfg.enable {
+    services = {
+      prometheus.enable = true;
+      prometheus.webExternalUrl = "https://metrics.pwnyboy.com";
+    };
+
+    networking.firewall.allowedTCPPorts = [ config.services.prometheus.port ];
   };
 }
