@@ -11,7 +11,7 @@ in
       grub.enable = lib.mkForce false;
 
       systemd-boot = lib.mkIf cfg.enable {
-        enable = lib.mkForce true;
+        enable = lib.mkForce (!cfg.enable);
         configurationLimit = 5;
       };
     };
