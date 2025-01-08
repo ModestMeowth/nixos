@@ -71,6 +71,7 @@
     psmisc
     sops
     usbutils
+    (lib.mkIf (!config.wsl.enable) sbctl)
   ];
 
   sops = {
@@ -100,4 +101,6 @@
     sudo.enable = true;
     sudo.wheelNeedsPassword = true;
   };
+
+  boot.loader.systemd-boot.enable = lib.mkDefault (!config.wsl.enable);
 }

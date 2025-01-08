@@ -1,20 +1,21 @@
 { config, lib, pkgs, ... }:
 let
-  cfg = config.wsl;
-  cfgSecureBoot = config.boot.lanzaboote;
+  cfg = config.boot.lanzaboote;
 in
 {
-  config = lib.mkIf (!cfg.enable) {
-    boot.loader = {
+  boot = lib.mkIf (!config.wsl.enable) {
+    loader = {
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot";
 
-      grub.enable = lib.mkDefault false;
-      systemd-boot.enable = lib.mkForce (!cfgSecureBoot.enable);
-      systemd-boot.configurationLimit = 5;
+      grub.enable = lib.mkForce false;
+
+      systemd-boot = lib.mkIf cfg.enable {
+        enable = lib.mkForce true;
+        configurationLimit = 5;
+      };
     };
 
-    boot.lanzaboote.pkiBundle = lib.mkIf cfgSecureBoot.enable "/etc/secureboot";
-    environment.systemPackages = [ pkgs.sbctl ];
+    lanzaboote.pkiBundle = lib.mkIf cfg.enable "/etc/secureboot";
   };
 }

@@ -1,4 +1,5 @@
-stuff@{ config, lib, inputs, pkgs, ... }: let
+stuff@{ config, lib, inputs, pkgs, ... }:
+let
   cfg = config.virtualisation.libvirtd;
   virt = inputs.virt;
   template = ../../../templates/nixvirt/talos-sb.nix;

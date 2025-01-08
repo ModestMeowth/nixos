@@ -1,6 +1,8 @@
-{config, lib, pkgs, ...}: let
+{ config, lib, pkgs, ... }:
+let
   cfg = config.wsl;
-in {
+in
+{
   services.prometheus.exporters = {
     node = {
       enable = true;
