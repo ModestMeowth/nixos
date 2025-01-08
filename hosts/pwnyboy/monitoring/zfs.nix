@@ -8,7 +8,14 @@ in
     scrapeConfigs = [
       {
         job_name = "zfs";
-        static_configs = [{ targets = [ ":9134" ]; }];
+        static_configs = [
+          {
+            targets = [
+              "pwnyboy.cat-alkaline.ts.net:9134"
+              "rocinante.cat-alkaline.ts.net:9134"
+            ];
+          }
+        ];
       }
     ];
 

@@ -4,12 +4,11 @@ let
 in
 {
   imports = [
-    ./node
-    ./smartctl
-    ./zfs
-
+    ./node.nix
     ./nut.nix
+    ./smartctl.nix
     ./unifi.nix
+    ./zfs.nix
   ];
 
   options.monitoring.enable = lib.mkEnableOption "monitoring";

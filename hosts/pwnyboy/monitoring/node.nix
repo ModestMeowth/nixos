@@ -6,7 +6,15 @@ in
   services.prometheus = lib.mkIf cfg.enable {
     scrapeConfigs = [{
       job_name = "node";
-      static_configs = [{ targets = [ ":9100" ]; }];
+      static_configs = [
+        {
+          targets = [
+            "pwnyboy.cat-alkaline.ts.net:9100"
+            "rocinante.cat-alkaline.ts.net:9100"
+            "192.168.0.1:9100"
+          ];
+        }
+      ];
     }];
 
     ruleFiles = [

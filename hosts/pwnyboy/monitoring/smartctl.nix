@@ -7,7 +7,14 @@ in
     scrapeConfigs = [
       {
         job_name = "smartctl";
-        static_configs = [{ targets = [ ":9633" ]; }];
+        static_configs = [
+          {
+            targets = [
+              "pwnyboy.cat-alkaline.ts.net:9633"
+              "rocinante.cat-alkaline.ts.net:9633"
+            ];
+          }
+        ];
       }
     ];
 
