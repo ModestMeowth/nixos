@@ -15,7 +15,7 @@ in
         flycast
         mgba
         parallel-n64
-        pcsx-rearmed
+        swanstation
       ];
     })
     retroarch-assets
