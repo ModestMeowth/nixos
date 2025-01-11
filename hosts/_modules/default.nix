@@ -11,7 +11,12 @@
     ./zfs.nix
   ];
 
-  documentation.nixos.enable = false;
+  documentation = {
+    nixos.enable = false;
+
+    man.generateCaches = true;
+  };
+
   system.stateVersion = "24.11";
 
   nix = {
@@ -31,12 +36,6 @@
     ];
   };
 
-  programs = {
-    nh.enable = true;
-    nh.clean.enable = true;
-    nh.clean.extraArgs = "--keep-since 4d --keep 5";
-  };
-
   time.timeZone = lib.mkDefault "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -51,6 +50,10 @@
   };
 
   programs = {
+    nh.enable = true;
+    nh.clean.enable = true;
+    nh.clean.extraArgs = "--keep-since 4d --keep 5";
+
     fish.enable = true;
     git.enable = true;
     tmux.enable = true;
@@ -66,6 +69,7 @@
 
   environment.systemPackages = with pkgs; [
     age
+    home-manager
     lsof
     nvfetcher
     psmisc

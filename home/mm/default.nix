@@ -35,6 +35,8 @@
     home-manager.enable = true;
     neovim.enable = true;
     gh.enable = true;
+
+    man.generateCaches = true;
   };
 
   systemd.user.startServices = "sd-switch";
