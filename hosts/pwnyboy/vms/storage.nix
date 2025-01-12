@@ -1,6 +1,6 @@
 { config, lib, inputs, ... }:
 let
-  cfg = config.virtualisation.libvirtd;
+  cfg = config.virtualisation.libvirt;
   virt = inputs.virt;
   storagePath = "/persist/vm";
 in

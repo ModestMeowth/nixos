@@ -38,5 +38,8 @@
     docker-compose
   ];
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    libvirt.enable = true;
+  };
 }
