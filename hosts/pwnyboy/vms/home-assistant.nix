@@ -24,6 +24,7 @@ in {
           address.type = "usb";
           address.bus = 0;
           address.port = 1;
+          address.device = 3;
         };
       });
     }
