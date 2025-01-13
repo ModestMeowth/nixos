@@ -21,9 +21,6 @@ in {
           managed = true;
           source.vendor.id = 4292; # 0x10c4
           source.product.id = 60000; # ea60
-          source.address.bus = 1;
-          source.address.device = 3;
-          alias.name = "hostdev0"
           address.type = "usb";
           address.bus = 0;
           address.port = 1;
