@@ -1,15 +1,10 @@
 { config, lib, pkgs, ... }:
 let
-  cfgFish = config.programs.fish;
-  cfgFzf = config.programs.fzf;
+  cfg = config.programs.fish;
 in
 {
-  programs.fish = lib.mkIf cfgFish.enable {
+  programs.fish = lib.mkIf cfg.enable {
     plugins = with pkgs.fishPlugins; [
-      {
-        name = "puffer";
-        src = puffer.src;
-      }
       {
         name = "abbreviation-tips";
         src = pkgs.fish-plugins.abbreviation-tips.src;
@@ -17,6 +12,14 @@ in
       {
         name = "fzf-fish";
         src = fzf-fish.src;
+      }
+      {
+        name = "puffer";
+        src = puffer.src;
+      }
+      {
+        name = "bass";
+        src = bass.src;
       }
     ];
 
