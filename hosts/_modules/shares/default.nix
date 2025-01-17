@@ -1,3 +1,6 @@
 {
-  imports = [ ./pwnyboy-media.nix ];
+  imports = [
+    ./ha-config.nix
+    ./pwnyboy-media.nix
+  ];
 }
