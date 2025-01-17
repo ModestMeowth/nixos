@@ -38,6 +38,7 @@ in
       enable = true;
       mountpoint = "/persist/media";
     };
+    ha-config.enable = true;
   };
 
   services.sanoid = {

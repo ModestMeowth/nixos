@@ -39,4 +39,8 @@ in
   ];
 
   services.sanoid.datasets."${persist}".useTemplate = [ "default" ];
+
+  shares = {
+    ha-config.enable = true;
+  };
 }
