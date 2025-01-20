@@ -24,6 +24,7 @@
         };
       };
       core.editor = "nvim";
+      help.autocorrect = "prompt";
       init.defaultBranch = "main";
     };
   };
