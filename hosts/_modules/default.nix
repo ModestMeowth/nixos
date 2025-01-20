@@ -54,6 +54,10 @@
     nh.clean.enable = true;
     nh.clean.extraArgs = "--keep-since 4d --keep 5";
 
+    nix-index.enable = true;
+    nix-index.package = pkgs.unstable.nix-index;
+    command-not-found.enable = false;
+
     fish.enable = true;
     git.enable = true;
     tmux.enable = true;
@@ -69,6 +73,7 @@
 
   environment.systemPackages = with pkgs; [
     age
+    comma
     home-manager
     lsof
     nvfetcher
