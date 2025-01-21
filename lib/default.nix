@@ -12,6 +12,7 @@
         }
         secBoot.nixosModules.lanzaboote
         sops.nixosModules.sops
+        nixdb.nixosModules.nix-index
         wsl.nixosModules.default
         virt.nixosModules.default
         ../hosts/_modules

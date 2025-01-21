@@ -54,6 +54,7 @@
     nh.clean.enable = true;
     nh.clean.extraArgs = "--keep-since 4d --keep 5";
 
+    nix-index-database.comma.enable = true;
     nix-index.enable = true;
     nix-index.package = pkgs.unstable.nix-index;
     command-not-found.enable = false;
@@ -73,7 +74,6 @@
 
   environment.systemPackages = with pkgs; [
     age
-    comma
     home-manager
     lsof
     nvfetcher

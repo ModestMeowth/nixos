@@ -5,6 +5,9 @@
     unstable.url = "nixpkgs/nixos-unstable";
     nur.url = "nur";
 
+    nixdb.url = "github:nix-community/nix-index-database";
+    nixdb.inputs.nixpkgs.follows = "unstable";
+
     sops.url = "sops-nix";
     sops.inputs.nixpkgs.follows = "nixpkgs";
 
