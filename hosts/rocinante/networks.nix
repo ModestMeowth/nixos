@@ -2,10 +2,6 @@ let
   wifiInterface = "wlp2s0";
 in
 {
-  systemd = {
-    services.NetworkManager-wait-online.enable = false;
-  };
-
   services = {
     resolved.enable = true;
     resolved.dnssec = "true";

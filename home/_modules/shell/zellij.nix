@@ -10,6 +10,8 @@ in
     xdg.configFile = lib.mkIf cfg.enable {
       "zellij/config.kdl".text = # kdl
         ''
+          // fixes keybinds in ghostty
+          support_kitty_keyboard_protocol false
           default_mode "normal"
 
           plugins {
