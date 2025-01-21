@@ -1,4 +1,4 @@
-{
+{lib, ...}: {
   imports = [
     ./bat.nix
     ./fish.nix
@@ -14,7 +14,7 @@
       config.global.warn_timeout = "0s";
     };
     eza.enable = true;
-    zoxide.enable = true;
+    zoxide.enable = lib.mkDefault true;
 
     fzf.enable = true;
     fd = {

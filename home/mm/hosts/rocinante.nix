@@ -5,10 +5,11 @@ in
 {
   xdg.configFile."k9s/skins/dracula.yaml".text = k9s-theme;
 
+  dconf.settings."org/gnome/desktop/applications/terminal".exec = "ghostty";
+
   programs = {
     chromium.enable = true;
-
-    wezterm.enable = true;
+    ghostty.enable = true;
     k9s.enable = true;
     k9s.settings.k9s.skin = "dracula";
   };

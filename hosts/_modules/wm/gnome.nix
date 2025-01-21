@@ -12,6 +12,12 @@ in
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;
+
+      excludePackages = with pkgs; [
+        xterm
+      ];
+
+      desktopManager.xterm.enable = false;
     };
 
     environment.systemPackages = with pkgs; [

@@ -1,9 +1,5 @@
-{ config, lib, pkgs, ... }:
-let
-  cfg = config.programs.firefox;
-in
-{
-  config.programs.firefox = lib.mkIf cfg.enable {
+{lib, pkgs, ... }: {
+  config.programs.firefox = lib.mkDefault {
     package = pkgs.unstable.firefox;
     profiles.default = {
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [

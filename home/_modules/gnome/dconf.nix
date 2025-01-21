@@ -7,6 +7,8 @@ in
   dconf.settings = lib.mkIf cfg.enable {
     "org/gnome/shell".disable-user-extensions = false;
 
+    "org/gnome/desktop/applications/terminal".exec = lib.mkDefault "kgx";
+
     "org/gnome/desktop/background" = {
       primary-color = "#023c88";
       secondary-color = "#5789ca";
@@ -110,7 +112,7 @@ in
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "open-terminal";
-      command = "wezterm start --cwd .";
+      command = "xdg-terminal";
       binding = "<Super><Shift>Return";
     };
 
