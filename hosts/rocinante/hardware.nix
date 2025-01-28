@@ -2,7 +2,7 @@
   imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_12; # zfs does not support 6.13 as of 2025-01-27
 
     lanzaboote.enable = true;
 
