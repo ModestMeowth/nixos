@@ -65,7 +65,7 @@
 
     ssh.extraConfig = #sshconf
       ''
-        SendEnv TMUX ZELLIJ
+        SendEnv TMUX ZELLIJ TERM_PROGRAM
       '';
 
     vim.defaultEditor = true;
