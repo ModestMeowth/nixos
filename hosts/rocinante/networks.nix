@@ -15,6 +15,11 @@ in
   networking = {
     hostName = "rocinante";
 
+    search = [
+      "cat-alkaline.ts.net"
+      "pwnyboy.com"
+    ];
+
     networkmanager.enable = true;
     networkmanager.dns = "systemd-resolved";
     networkmanager.ensureProfiles.profiles = {
