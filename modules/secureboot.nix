@@ -3,7 +3,7 @@ let
   cfg = config.boot.lanzaboote;
 in
 {
-  boot = lib.mkIf (!config.wsl.enable) {
+  boot = {
     loader = {
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot";

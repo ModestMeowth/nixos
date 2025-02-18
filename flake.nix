@@ -1,53 +1,82 @@
 {
   inputs = {
-    parts.url = "flake-parts";
     nixpkgs.url = "nixpkgs/nixos-24.11";
     unstable.url = "nixpkgs/nixos-unstable";
-    nur.url = "nur";
 
     nixdb.url = "github:nix-community/nix-index-database";
     nixdb.inputs.nixpkgs.follows = "unstable";
 
-    sops.url = "sops-nix";
-    sops.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.url = "sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    hm.url = "home-manager/release-24.11";
-    hm.inputs.nixpkgs.follows = "nixpkgs";
-
-    secBoot.url = "github:nix-community/lanzaboote";
-    secBoot.inputs.nixpkgs.follows = "nixpkgs";
-    secBoot.inputs.pre-commit-hooks-nix.follows = "";
+    lanzaboote.url = "github:nix-community/lanzaboote";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote.inputs.pre-commit-hooks-nix.follows = "";
 
     wsl.url = "github:nix-community/NixOS-WSL";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
 
-    virt.url = "github:AshleyYakeley/NixVirt";
-    virt.inputs.nixpkgs.follows = "nixpkgs";
+    nix-virt.url = "github:AshleyYakeley/NixVirt";
+    nix-virt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { ... }@inputs:
+  outputs = { nixpkgs, ... }@inputs:
     let
-      genPkgs =
-        system:
-        import inputs.nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          overlays = builtins.attrValues (import ./overlays.nix { inherit inputs; });
+      mkHost =
+        { hostname
+        , system ? "x86_64-linux"
+        , additionalModules ? [ ]
+        }:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = [
+              (final: _: {
+                unstable = import inputs.unstable {
+                  inherit (final) system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+          };
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          modules = with inputs; [
+            sops-nix.nixosModules.sops
+            nixdb.nixosModules.nix-index
+            ./modules
+            ./hosts/${hostname}
+          ] ++ additionalModules;
         };
-      xLib = import ./lib { inherit inputs genPkgs; };
     in
-    inputs.parts.lib.mkFlake { inherit inputs; } {
-      systems = inputs.nixpkgs.lib.systems.flakeExposed;
-
-      perSystem = { system, inputs', self', pkgs, ... }: {
-        _module.args.pkgs = genPkgs system;
-        legacyPackages = import ./packages { inherit pkgs; };
+    {
+      nixosConfigurations."rocinante" = mkHost {
+        hostname = "rocinante";
+        additionalModules = with inputs; [
+          ./modules/zfs.nix
+          lanzaboote.nixosModules.lanzaboote
+          ./modules/secureboot.nix
+        ];
       };
 
-      flake.nixosConfigurations = {
-        pwnyboy = xLib.nixosSystem "x86_64-linux" "pwnyboy";
-        rocinante = xLib.nixosSystem "x86_64-linux" "rocinante";
-        videodrome = xLib.nixosSystem "x86_64-linux" "videodrome";
+      nixosConfigurations."pwnyboy" = mkHost {
+        hostname = "pwnyboy";
+        additionalModules = with inputs; [
+          ./modules/zfs.nix
+          lanzaboote.nixosModules.lanzaboote
+          ./modules/secureboot.nix
+          nix-virt.nixosModules.default
+          ./modules/libvirt.nix
+        ];
+      };
+
+      nixosConfigurations."videodrome" = mkHost {
+        hostname = "videodrome";
+        additionalModules = with inputs; [
+          wsl.nixosModules.default
+        ];
       };
     };
 }

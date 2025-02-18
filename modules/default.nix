@@ -2,13 +2,11 @@
   imports = [
     ./console.nix
     ./gaming
-    ./libvirt.nix
-    ./secureboot.nix
+    ./monitoring
     ./services
     ./shares
     ./wm
     ./wifi-profiles.nix
-    ./zfs.nix
   ];
 
   documentation = {
@@ -80,11 +78,11 @@
     psmisc
     sops
     usbutils
-    (lib.mkIf (!config.wsl.enable) sbctl)
+    sbctl # Need for setting up secureboot, before enabling lanzaboote
   ];
 
   sops = {
-    defaultSopsFile = ../../global.sops.yaml;
+    defaultSopsFile = ../global.sops.yaml;
     age.generateKey = true;
     age.keyFile = "/var/lib/sops-nix/key.txt";
     age.sshKeyPaths = lib.mkDefault [ "/persist/etc/sops/agekey" ];

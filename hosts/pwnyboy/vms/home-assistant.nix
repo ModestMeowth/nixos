@@ -1,14 +1,15 @@
-stuff @ {
-  config,
-  lib,
-  inputs,
-  pkgs,
-  ...
-}: let
+stuff @ { config
+, lib
+, inputs
+, pkgs
+, ...
+}:
+let
   cfg = config.virtualisation.libvirt;
-  virt = inputs.virt;
+  virt = inputs.nix-virt;
   template = ../../../templates/nixvirt/home-assistant.nix;
-in {
+in
+{
   virtualisation.libvirt.connections."qemu:///system".domains = lib.mkIf cfg.enable [
     {
       active = true;

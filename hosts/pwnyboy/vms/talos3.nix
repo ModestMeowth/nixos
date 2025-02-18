@@ -1,7 +1,7 @@
 stuff@{ config, lib, inputs, pkgs, ... }:
 let
   cfg = config.virtualisation.libvirt;
-  virt = inputs.virt;
+  virt = inputs.nix-virt;
   template = ../../../templates/nixvirt/talos-sb.nix;
 in
 {
