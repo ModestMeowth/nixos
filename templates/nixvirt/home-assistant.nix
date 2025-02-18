@@ -15,7 +15,7 @@
    , ...
    }:
 let
-  base = inputs.virt.lib.domain.templates.linux {
+  base = inputs.nix-virt.lib.domain.templates.linux {
     virtio_video = true;
     install_vol = null;
     inherit name uuid memory storage_vol virtio_drive;

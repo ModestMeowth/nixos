@@ -1,9 +1,5 @@
-{ config, lib, ... }:
-let
-  cfg = config.virtualisation.libvirt;
-in
 {
-  config = lib.mkIf cfg.enable {
+  config = {
     virtualisation.libvirtd.extraConfig = ''
       listen_tcp = 1
       listen_addr = "0.0.0.0"

@@ -1,19 +1,12 @@
-stuff @ { config
-, lib
-, inputs
-, pkgs
-, ...
-}:
+stuff@{ inputs, pkgs, ... }:
 let
-  cfg = config.virtualisation.libvirt;
-  virt = inputs.nix-virt;
   template = ../../../templates/nixvirt/home-assistant.nix;
 in
 {
-  virtualisation.libvirt.connections."qemu:///system".domains = lib.mkIf cfg.enable [
+  virtualisation.libvirt.connections."qemu:///system".domains = [
     {
       active = true;
-      definition = virt.lib.domain.writeXML (import template stuff {
+      definition = inputs.nix-virt.lib.domain.writeXML (import template stuff {
         name = "home-assistant";
         uuid = "88cd91e8-0153-4873-8a3a-033f513e6817";
         title = "HomeAssistant";

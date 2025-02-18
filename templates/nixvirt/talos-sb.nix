@@ -1,7 +1,5 @@
-{ inputs
-, pkgs
-, ...
-}: { name
+{ inputs, pkgs, ... }:
+  { name
    , uuid
    , memory ? {
        count = 4;
@@ -15,7 +13,7 @@
    , ...
    }:
 let
-  base = inputs.virt.lib.domain.templates.linux {
+  base = inputs.nix-virt.lib.domain.templates.linux {
     virtio_video = true;
     install_vol = {
       pool = "ISO";

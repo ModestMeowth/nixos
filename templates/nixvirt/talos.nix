@@ -8,7 +8,7 @@
                        , ...
                        }:
 let
-  base = inputs.virt.lib.domain.templates.linux {
+  base = inputs.nix-virt.lib.domain.templates.linux {
     virtio_video = true;
     install_vol = /persist/vm/iso/Talos-1.9.0.iso;
     inherit name uuid memory storage_vol virtio_drive;

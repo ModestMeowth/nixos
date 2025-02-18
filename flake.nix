@@ -20,7 +20,7 @@
     nix-virt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, ... }@inputs:
+  outputs = inputs:
     let
       mkHost =
         { hostname
@@ -28,7 +28,7 @@
         , additionalModules ? [ ]
         }:
         let
-          pkgs = import nixpkgs {
+          pkgs = import inputs.nixpkgs {
             inherit system;
             config.allowUnfree = true;
             overlays = [
@@ -41,8 +41,9 @@
             ];
           };
         in
-        nixpkgs.lib.nixosSystem {
+        inputs.nixpkgs.lib.nixosSystem {
           inherit pkgs;
+          specialArgs = { inherit inputs; };
           modules = with inputs; [
             sops-nix.nixosModules.sops
             nixdb.nixosModules.nix-index
