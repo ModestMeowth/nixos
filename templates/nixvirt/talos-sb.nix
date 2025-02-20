@@ -1,17 +1,17 @@
 { inputs, pkgs, ... }:
-  { name
-   , uuid
-   , memory ? {
-       count = 4;
-       unit = "GiB";
-     }
-   , storage_vol ? null
-   , nvram_path ? null
-   , mac_address ? null
-   , virtio_drive ? true
-   , hostdev ? null
-   , ...
-   }:
+{ name
+, uuid
+, memory ? {
+    count = 4;
+    unit = "GiB";
+  }
+, storage_vol ? null
+, nvram_path ? null
+, mac_address ? null
+, virtio_drive ? true
+, hostdev ? null
+, ...
+}:
 let
   base = inputs.nix-virt.lib.domain.templates.linux {
     virtio_video = true;
