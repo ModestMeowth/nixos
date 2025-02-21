@@ -8,8 +8,7 @@ in
     hostName = "pwnyboy";
     bridges."${bridge}".interfaces = [ "enp3s0" ];
 
-    interfaces."enp3s0".useDHCP = false;
-    interfaces."enp4s0".useDHCP = false;
+    useDHCP = false;
 
     interfaces."${bridge}".ipv4.addresses = [
       {
