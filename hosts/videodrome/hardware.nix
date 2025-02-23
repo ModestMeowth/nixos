@@ -2,7 +2,6 @@
   wsl = {
     enable = true;
     wslConf.interop.appendWindowsPath = true;
-    startMenuLaunchers = true;
   };
 
   programs = {

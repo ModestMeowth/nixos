@@ -25,6 +25,7 @@
       mkHost =
         { hostname
         , system ? "x86_64-linux"
+        , additionalConfig ? { } # nixpkgs.config options
         , additionalModules ? [ ]
         }:
         let
@@ -35,7 +36,9 @@
               (final: _: {
                 unstable = import inputs.unstable {
                   inherit (final) system;
-                  config.allowUnfree = true;
+                  config = {
+                    allowUnfree = true;
+                  } // additionalConfig;
                 };
               })
             ];
@@ -55,6 +58,9 @@
     {
       nixosConfigurations."rocinante" = mkHost {
         hostname = "rocinante";
+        additionalConfig = {
+          rocmSupport = true;
+        };
         additionalModules = with inputs; [
           ./modules/zfs.nix
           lanzaboote.nixosModules.lanzaboote
@@ -75,6 +81,9 @@
 
       nixosConfigurations."videodrome" = mkHost {
         hostname = "videodrome";
+        additionalConfig = {
+          cudaSupport = true;
+        };
         additionalModules = with inputs; [
           wsl.nixosModules.default
         ];
