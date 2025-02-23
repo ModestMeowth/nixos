@@ -13,6 +13,10 @@
       "security" = "user";
       "guest account" = "nobody";
       "map to guest" = "bad user";
+
+      "mangled names" = "no";
+      "vfs objects" = "catia";
+      "catia:mappings" = "0x3a:0x5f";
     };
 
     samba-wsdd.enable = true;
