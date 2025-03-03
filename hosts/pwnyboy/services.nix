@@ -2,10 +2,15 @@
   services = {
     chrony.enable = true;
 
-    tailscale.enable = true;
-    tailscale.package = pkgs.unstable.tailscale;
-    tailscale.authKeyFile = config.sops.secrets."tskey".path;
-    tailscale.extraSetFlags = [ "--ssh" ];
+    tailscale = {
+      enable = true;
+      package = pkgs.unstable.tailscale;
+      authKeyFile = config.sops.secrets."tskey".path;
+      extraSetFlags = [
+        "--ssh"
+        "--webclient"
+      ];
+    };
 
     fwupd.enable = true;
 

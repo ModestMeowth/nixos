@@ -7,7 +7,10 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraSetFlags = [ "--ssh" ];
+      extraSetFlags = [
+        "--ssh"
+        "--webclient"
+      ];
     };
 
     smartd.enable = true;
