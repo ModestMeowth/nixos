@@ -1,8 +1,11 @@
 default:
   just --choose --justfile "{{justfile()}}"
 
-build:
+build: git-pull
   nh os build .
 
-switch:
+switch: git-pull
   nh os switch .
+
+git-pull:
+  git pull
