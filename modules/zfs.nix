@@ -1,4 +1,4 @@
-{
+{config, pkgs, ...}: {
   imports = [
     ./monitoring/smart.nix
   ];
@@ -13,8 +13,8 @@
 
   services = {
     zfs.autoScrub.enable = true;
-    zfs.autoScrub.interval = "Sun, 2-5:00:00";
-    zfs.autoScrub.randomizedDelaySec = "15m";
+    zfs.autoScrub.interval = "Sun, 2:00:00";
+    zfs.autoScrub.randomizedDelaySec = "3h";
     zfs.trim.enable = true;
 
     prometheus.exporters.zfs.enable = true;
@@ -29,4 +29,10 @@
       default.monthly = 3;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    (writeShellScriptBin "sanoid" ''
+      ${config.systemd.services.sanoid.serviceConfig.ExecStart} $@
+    '')
+  ];
 }
