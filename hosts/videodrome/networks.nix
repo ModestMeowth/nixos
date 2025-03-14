@@ -3,7 +3,6 @@
     hostname = "videodrome";
     generateHosts = false;
     generateResolvConf = false;
-    useWindowsDriver = true;
   };
 
   networking.nftables.enable = lib.mkForce false;
