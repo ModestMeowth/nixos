@@ -38,7 +38,11 @@ in
     "persist"
   ];
 
-  services.sanoid.datasets."${persist}".useTemplate = [ "default" ];
+  services.sanoid.datasets = {
+    "${persist}".useTemplate = [ "default" ];
+    "persist/backups".useTemplate = [ "default" ];
+    "persist/cloud".useTemplate = [ "default" ];
+  };
 
   shares = {
     ha-config.enable = true;
