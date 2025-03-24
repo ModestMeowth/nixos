@@ -12,6 +12,7 @@
   networking.hostId = "00bab10c";
 
   services = {
+    lvm.enable = false;
     zfs.autoScrub.enable = true;
     zfs.autoScrub.interval = "Sun, 2:00:00";
     zfs.autoScrub.randomizedDelaySec = "3h";
