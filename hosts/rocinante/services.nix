@@ -30,5 +30,6 @@
   gaming = {
     emulation.enable = true;
     steam.enable = true;
+    wine.enable = true;
   };
 }
