@@ -7,6 +7,7 @@
       extraSetFlags = [
         "--ssh"
         "--webclient"
+        "--accept-routes"
       ];
     };
 
