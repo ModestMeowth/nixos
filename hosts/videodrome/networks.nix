@@ -8,7 +8,10 @@
   networking.nftables.enable = lib.mkForce false;
 
   networking = {
-    nameservers = [ "1.1.1.1" ];
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
     search = [
       "cat-alkaline.ts.net"
       "home.arpa"
