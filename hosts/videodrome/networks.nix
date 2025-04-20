@@ -8,8 +8,11 @@
   networking.nftables.enable = lib.mkForce false;
 
   networking = {
-    nameservers = [ "100.100.100.100" ];
-    search = [ "cat-alkaline.ts.net" ];
+    nameservers = [ "1.1.1.1" ];
+    search = [
+      "cat-alkaline.ts.net"
+      "home.arpa"
+    ];
 
     # Tailscale breaks ssh without MTU 1500
     interfaces.eth0.mtu = 1500;

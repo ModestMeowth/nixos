@@ -17,7 +17,7 @@ in
 
     search = [
       "cat-alkaline.ts.net"
-      "pwnyboy.com"
+      "home.arpa"
     ];
 
     networkmanager.enable = true;
