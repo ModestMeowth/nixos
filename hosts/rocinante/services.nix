@@ -26,11 +26,10 @@
 
   environment.systemPackages = with pkgs; [
     smartmontools
+    samba
   ];
 
   gaming = {
     emulation.enable = true;
-    steam.enable = true;
-    wine.enable = true;
   };
 }
