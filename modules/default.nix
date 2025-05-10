@@ -77,6 +77,7 @@
     age
     home-manager
     lsof
+    mosh
     nvfetcher
     psmisc
     sops
