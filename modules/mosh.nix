@@ -6,7 +6,7 @@
     '';
   });
 in {
-  enviromnent.sytstemPackages = [
+  environment.systemPackages = [
     mosh
   ];
 }
