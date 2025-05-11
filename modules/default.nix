@@ -3,6 +3,7 @@
     ./console.nix
     ./gaming
     ./monitoring
+    ./mosh.nix
     ./services
     ./shares
     ./wm
@@ -77,7 +78,6 @@
     age
     home-manager
     lsof
-    mosh
     nvfetcher
     psmisc
     sops
