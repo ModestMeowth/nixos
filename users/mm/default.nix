@@ -7,7 +7,7 @@ in
     isNormalUser = true;
     uid = lib.mkForce 1001;
     description = "Modest Meowth";
-    shell = pkgs.unstable.nushell;
+    shell = lib.mkDefault pkgs.fish;
     extraGroups =
       [
         "wheel"
