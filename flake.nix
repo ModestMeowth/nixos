@@ -65,6 +65,9 @@
           ./modules/zfs.nix
           lanzaboote.nixosModules.lanzaboote
           ./modules/secureboot.nix
+          {
+            users.users.mm.shell = lib.mkForce pkgs.unstable.nushell;
+          }
         ];
       };
 
