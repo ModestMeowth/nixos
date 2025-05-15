@@ -4,7 +4,7 @@
   ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_12; # zfs does not support 6.13 as of 2025-01-27
+    kernelPackages = pkgs.linuxPackages_6_12;
     initrd.availableKernelModules = [
       "xhci_pci"
       "ahci"
@@ -45,10 +45,15 @@
 
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
-  # random-seed prevents boot on this particular nvme...
   systemd = {
+    # Random-seed prevents boot on this particular NVME...
     services."systemd-boot-random-seed".enable = lib.mkForce false;
     services."systemd-random-seed".enable = lib.mkForce false;
-  };
 
+    # Nixvirt starts before ttyUSB0 is ready
+    services."nixvirt" = {
+      requires = [ "dev-ttyUSB0.device" ];
+      after = [ "dev-ttyUSB0.device" ];
+    };
+  };
 }
