@@ -5,7 +5,11 @@ in
 {
   config = lib.mkIf cfg.enable {
     fonts.packages = with pkgs; [
-      nerdfonts
+      nerd-fonts.droid-sans-mono
+      nerd-fonts.noto
+      nerd-fonts.ubuntu
+      nerd-fonts.ubuntu-sans
+      nerd-fonts.ubuntu-mono
       unifont
     ];
 

@@ -6,18 +6,16 @@ in
   options.gaming.emulation.enable = lib.mkEnableOption "retroarch";
 
   config.environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-    (retroarch.override {
-      cores = with libretro; [
-        bsnes
-        desmume
-        dolphin
-        fceumm
-        flycast
-        mgba
-        parallel-n64
-        swanstation
-      ];
-    })
+    (retroarch.withCores ( cores: with cores; [
+      bsnes
+      desmume
+      dolphin
+      fceumm
+      flycast
+      mgba
+      parallel-n64
+      swanstation
+    ]))
     retroarch-assets
     retroarch-joypad-autoconfig
     pcsx2
