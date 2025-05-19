@@ -20,6 +20,11 @@ in
       "home.arpa"
     ];
 
+    firewall.trustedInterfaces = [
+      "tailscale0"
+      "docker0"
+    ];
+
     networkmanager.enable = true;
     networkmanager.dns = "systemd-resolved";
     networkmanager.ensureProfiles.profiles = {
