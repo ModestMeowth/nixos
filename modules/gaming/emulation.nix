@@ -6,7 +6,7 @@ in
   options.gaming.emulation.enable = lib.mkEnableOption "retroarch";
 
   config.environment.systemPackages = lib.mkIf cfg.enable (with pkgs; [
-    (retroarch.withCores ( cores: with cores; [
+    (retroarch.withCores (cores: with cores; [
       bsnes
       desmume
       dolphin

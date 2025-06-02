@@ -31,6 +31,7 @@
 
   gaming = {
     emulation.enable = true;
+    steam.enable = true;
   };
 
   virtualisation.docker.enable = true;
