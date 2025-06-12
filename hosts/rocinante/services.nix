@@ -31,6 +31,7 @@
 
   gaming = {
     emulation.enable = true;
+    ffxiv.enable = true;
     steam.enable = true;
   };
 
