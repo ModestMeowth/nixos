@@ -12,6 +12,7 @@ in
       [
         "wheel"
         "users"
+        "input"
       ]
       ++ ifGroupsExist [
         "docker"

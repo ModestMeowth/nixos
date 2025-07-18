@@ -1,9 +1,5 @@
-{ config, lib, ... }:
-let
-  cfg = config.services.samba;
-in
 {
-  config.services.samba = lib.mkIf cfg.enable {
+  config.services.samba = {
     openFirewall = true;
 
     settings.global = {

@@ -1,12 +1,13 @@
 { config, lib, pkgs, ... }: {
   imports = [
+    ./nix.nix
+
     ./console.nix
     ./gaming
     ./monitoring
     ./mosh.nix
     ./services
     ./shares
-    ./wm
     ./wifi-profiles.nix
   ];
 
@@ -17,23 +18,6 @@
   };
 
   system.stateVersion = "25.05";
-
-  nix = {
-    channel.enable = false;
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-
-    settings.substituters = lib.mkDefault [
-      "https://cache.pwnyboy.com"
-      "https://cache.nixos.org"
-    ];
-
-    settings.trusted-public-keys = [
-      "cache.pwnyboy.com:hoTaHPttKEg3JggxA5rvlcx569zNhUsl8XTc5t7Xhj4="
-    ];
-  };
 
   time.timeZone = lib.mkDefault "America/Chicago";
   i18n = {

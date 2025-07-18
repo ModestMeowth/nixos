@@ -20,8 +20,11 @@
       smartctl.enable = true;
     };
 
-    xserver.desktopManager.gnome.enable = true;
-    xserver.displayManager.gdm.wayland = true;
+    fprintd = {
+      enable = true;
+      tod.enable = true;
+      tod.driver = pkgs.libfprint-2-tod1-elan;
+    };
   };
 
   environment.systemPackages = with pkgs; [

@@ -65,6 +65,8 @@
           ./modules/zfs.nix
           lanzaboote.nixosModules.lanzaboote
           ./modules/secureboot.nix
+          ./modules/wm/tuigreet.nix
+          ./modules/wm/hyprland.nix
         ];
       };
 
