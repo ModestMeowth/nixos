@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
     ./audio.nix
     ./fonts.nix
@@ -10,8 +10,12 @@
     xwayland.enable = true;
   };
 
+  xdg.portal.enable = lib.mkForce false;
+
   environment.systemPackages = with pkgs; [
+    hyprsunset
     kitty
+    libnotify
     wl-clipboard
   ];
 }
