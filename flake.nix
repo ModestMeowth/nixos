@@ -18,6 +18,9 @@
 
     nix-virt.url = "github:AshleyYakeley/NixVirt";
     nix-virt.inputs.nixpkgs.follows = "nixpkgs";
+
+    stylix.url = "github:nix-community/stylix/release-25.05";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:
@@ -50,6 +53,7 @@
           modules = with inputs; [
             sops-nix.nixosModules.sops
             nixdb.nixosModules.nix-index
+            stylix.nixosModules.stylix
             ./modules
             ./hosts/${hostname}
           ] ++ additionalModules;
@@ -64,6 +68,7 @@
         additionalModules = with inputs; [
           ./modules/zfs.nix
           lanzaboote.nixosModules.lanzaboote
+          ./modules/console.nix
           ./modules/secureboot.nix
           ./modules/wm/tuigreet.nix
           ./modules/wm/hyprland.nix
@@ -75,6 +80,7 @@
         additionalModules = with inputs; [
           ./modules/zfs.nix
           lanzaboote.nixosModules.lanzaboote
+          ./modules/console.nix
           ./modules/secureboot.nix
           nix-virt.nixosModules.default
           ./modules/libvirt.nix

@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }: {
   imports = [
     ./nix.nix
+    ./style.nix
 
-    ./console.nix
     ./gaming
     ./monitoring
     ./mosh.nix
