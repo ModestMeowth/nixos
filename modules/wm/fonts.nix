@@ -13,6 +13,7 @@
     caskaydia-mono
     droid-sans-mono
     noto
+    symbols-only
     ubuntu
     ubuntu-sans
     ubuntu-mono
