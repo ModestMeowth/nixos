@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.monitoring;
-in
-{
+let cfg = config.monitoring;
+in {
   services.prometheus = lib.mkIf cfg.enable {
     exporters.nut.enable = true;
 
@@ -13,7 +11,7 @@ in
     }];
 
     ruleFiles = [
-      (pkgs.writeText "nut-rules" #yaml
+      (pkgs.writeText "nut-rules" # yaml
         ''
           groups:
             - name: NUT ROUTER/PWNYBOY

@@ -1,0 +1,25 @@
+anchor=top-right
+border-size=2
+default-timeout=5000
+height=110
+icon-location=left
+max-icon-size=32
+padding=10
+text-alignment=center
+width=420
+
+font=0xProto Nerd Font Propo
+background-color=#282a36
+text-color=#f8f8f2
+
+[mode=do-not-disturb]
+invisible=true
+
+[urgency=low]
+border-color=#bd93f9
+
+[urgency=normal]
+border-color=#50fa7b
+
+[urgency=high]
+border-color=#ff5555

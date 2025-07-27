@@ -1,0 +1,8 @@
+allow-missing-formatter = true
+tree-root-file = "flake.nix"
+
+[formatter.stylua]
+command = "stylua"
+excludes = []
+includes = ["*.lua"]
+options = []

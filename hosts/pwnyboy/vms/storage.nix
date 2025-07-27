@@ -2,8 +2,7 @@
 let
   virt = inputs.nix-virt;
   storagePath = "/persist/vm";
-in
-{
+in {
   virtualisation.libvirt.connections."qemu:///system" = {
     pools = [
       {

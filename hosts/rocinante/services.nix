@@ -7,11 +7,7 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraSetFlags = [
-        "--ssh"
-        "--webclient"
-        "--accept-routes"
-      ];
+      extraSetFlags = [ "--ssh" "--webclient" "--accept-routes" ];
     };
 
     smartd.enable = true;
@@ -27,10 +23,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    smartmontools
-    samba
-  ];
+  environment.systemPackages = with pkgs; [ smartmontools samba ];
 
   gaming = {
     emulation.enable = true;

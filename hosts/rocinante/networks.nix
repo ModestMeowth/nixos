@@ -1,7 +1,5 @@
-let
-  wifiInterface = "wlp2s0";
-in
-{
+let wifiInterface = "wlp2s0";
+in {
   services = {
     resolved.enable = true;
     resolved.dnssec = "true";
@@ -15,15 +13,9 @@ in
   networking = {
     hostName = "rocinante";
 
-    search = [
-      "cat-alkaline.ts.net"
-      "home.arpa"
-    ];
+    search = [ "cat-alkaline.ts.net" "home.arpa" ];
 
-    firewall.trustedInterfaces = [
-      "tailscale0"
-      "docker0"
-    ];
+    firewall.trustedInterfaces = [ "tailscale0" "docker0" ];
 
     networkmanager.enable = true;
     networkmanager.dns = "systemd-resolved";

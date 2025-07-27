@@ -1,0 +1,5 @@
+font-family = 0xProto Nerd Font Mono
+font-size = 10
+keybind = clear
+theme = Dracula
+shell-integration = detect

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if pgrep -x hypridle >/dev/null; then
+    pkill -x hypridle
+    send-notification low "" "Screen-lock disabled"
+else
+    uwsm app -- hypridle >/dev/null 2>&1 &
+    send-notification low "" "Screen-lock enabled"
+fi

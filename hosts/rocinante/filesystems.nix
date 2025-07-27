@@ -1,8 +1,7 @@
 let
   root = "zroot/rocinante";
   persist = "zroot/persist";
-in
-{
+in {
   fileSystems = {
     "/" = {
       device = "${root}/root";
@@ -24,12 +23,10 @@ in
     };
 
     "/boot" = {
-      device = "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B7785953DEF-part1";
+      device =
+        "/dev/disk/by-id/nvme-KINGSTON_SNV2S1000G_50026B7785953DEF-part1";
       fsType = "vfat";
-      options = [
-        "dmask=0077"
-        "fmask=0177"
-      ];
+      options = [ "dmask=0077" "fmask=0177" ];
     };
   };
 
@@ -42,8 +39,6 @@ in
   };
 
   services.sanoid = {
-    datasets."${persist}/home/mm" = {
-      useTemplate = [ "default" ];
-    };
+    datasets."${persist}/home/mm" = { useTemplate = [ "default" ]; };
   };
 }

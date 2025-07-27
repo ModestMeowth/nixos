@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+toggle_dnd() {
+    makoctl mode -t do-not-disturb >/dev/null
+}
+
+if [ "$(makoctl mode | grep 'do-not-disturb')" == "do-not-disturb" ]; then
+    toggle_dnd && send-notification low "" "Enabled notifications"
+else
+    send-notification low "" "Silenced notifications" & sleep 1 && toggle_dnd
+fi

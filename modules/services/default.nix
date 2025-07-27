@@ -1,6 +1,1 @@
-{
-  imports = [
-    ./chrony.nix
-    ./samba.nix
-  ];
-}
+{ imports = [ ./chrony.nix ./samba.nix ]; }

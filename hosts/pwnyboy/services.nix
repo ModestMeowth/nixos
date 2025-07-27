@@ -6,11 +6,7 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraSetFlags = [
-        "--ssh"
-        "--webclient"
-        "--accept-routes"
-      ];
+      extraSetFlags = [ "--ssh" "--webclient" "--accept-routes" ];
     };
 
     fwupd.enable = true;
@@ -33,19 +29,16 @@
     ups."apc" = {
       driver = "usbhid-ups";
       port = "auto";
-      directives = [
-        "vendorid = 051d"
-        "productid = 0002"
-      ];
+      directives = [ "vendorid = 051d" "productid = 0002" ];
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    docker-compose
-  ];
+  environment.systemPackages = with pkgs; [ docker-compose ];
 
   virtualisation = {
     docker.enable = true;
     libvirt.enable = true;
   };
+
+  virtualisation.libvirt.swtpm.enable = true;
 }

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+show_power_menu() {
+    local menu_options, selection
+
+    menu_options="\u200B Lock
+\u200C󰤄 Suspend
+\u200C❌ Logout
+\u200D Relaunch
+\u2060󰜉 Restart
+\u2063󰐥 Shutdown"
+    selection=$(echo -e "$menu_options" | wofi \
+      --show dmenu \
+      --prompt "Power Options" \
+      --width 150 \
+      --height 195 \
+      -O alphabetical)
+
+    case "$selection" in
+        *Lock*) loginctl lock-session ;;
+        *Suspend*) uwsm stop ;;
+        *Logout*) hyprctl dispatch exit ;;
+        *Restart*) systemctl reboot ;;
+        *Shutdown*) systemctl poweroff ;;
+    esac
+}
+
+show_power_menu

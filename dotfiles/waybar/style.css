@@ -1,0 +1,57 @@
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-family: "Serif";
+    font-size: 14px;
+}
+
+window#waybar {
+    opacity: 0.9;
+    background-color: #282a36;
+    color: #f8f8f2;
+    border-bottom: 2px solid #363447;
+}
+
+#workspaces {
+    margin-left: 7px;
+}
+
+#workspace button {
+    all: initial;
+    padding: 2px 6px;
+    margin-right: 3px;
+    background: #363447;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background-image: linear-gradient(0deg, #44475a, #282a36);
+}
+
+#workspaces button:active {
+    background-image: linear-gradient(0deg, #bd93f9, #282a36);
+}
+
+#workspaces button.urgent {
+    background-image: linear-gradient(0deg, #ff5555, #282a36);
+}
+
+#battery,
+#bluetooth,
+#clock,
+#network,
+#tray,
+#wireplumber {
+    min-width: 16px;
+    margin-right: 18px;
+}
+
+tooltip {
+    padding: 2px;
+}
+
+tooltip label {
+    padding: 2px;
+}

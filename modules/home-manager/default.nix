@@ -1,0 +1,28 @@
+{ config, ... }:
+let
+  mkSymlink = path:
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${path}";
+in {
+  imports = [
+    ./browser.nix
+    ./editor.nix
+  ];
+
+  home.username = "mm";
+  home.homeDirectory = "/home/mm";
+  home.stateVersion = "25.05";
+
+  programs = {
+    home-manager.enable = true;
+  };
+
+  home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
+  home.file = { ".local/bin".source = mkSymlink "bin"; };
+
+  xdg.configFile = {
+    "git".source = mkSymlink "git";
+    "fish".source = mkSymlink "fish";
+    "nvim".source = mkSymlink "nvim";
+    "starship.toml".source = mkSymlink "starship/starship.toml";
+  };
+}

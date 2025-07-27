@@ -3,10 +3,9 @@ let
   cfg = config.virtualisation.libvirt;
   virt = inputs.nix-virt;
   template = ../../../templates/nixvirt/talos-sb.nix;
-in
-{
-  virtualisation.libvirt.connections."qemu:///system".domains = lib.mkIf cfg.enable [
-    {
+in {
+  virtualisation.libvirt.connections."qemu:///system".domains =
+    lib.mkIf cfg.enable [{
       active = true;
       definition = virt.lib.domain.writeXML (import template stuff {
         name = "talos2";
@@ -17,6 +16,5 @@ in
         nvram_path = "/persist/vm/nvram/talos2.fd";
         mac_address = "52:54:00:4a:a2:73";
       });
-    }
-  ];
+    }];
 }

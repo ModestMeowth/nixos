@@ -1,24 +1,12 @@
 { lib, modulesPath, pkgs, ... }: {
-  imports = [
-    ("${modulesPath}/installer/scan/not-detected.nix")
-  ];
+  imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
   boot = {
     kernelPackages = pkgs.linuxPackages_6_14;
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "ahci"
-      "nvme"
-      "usbhid"
-      "usb_storage"
-      "sd_mod"
-    ];
+    initrd.availableKernelModules =
+      [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
 
-    kernelModules = [
-      "kvm-intel"
-      "vfio_virqfd"
-      "vfio_pci"
-    ];
+    kernelModules = [ "kvm-intel" "vfio_virqfd" "vfio_pci" ];
 
     kernelParams = [
       "intel_iommu=on"

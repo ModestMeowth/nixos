@@ -1,8 +1,7 @@
 let
   root = "zroot/pwnyboy";
   persist = "zroot/persist";
-in
-{
+in {
   fileSystems = {
     "/" = {
       device = "${root}/root";
@@ -24,19 +23,14 @@ in
     };
 
     "/boot" = {
-      device = "/dev/disk/by-id/nvme-INTEL_SSDPEDMW400G4_CVCQ5252008B400AGN-part1";
+      device =
+        "/dev/disk/by-id/nvme-INTEL_SSDPEDMW400G4_CVCQ5252008B400AGN-part1";
       fsType = "vfat";
-      options = [
-        "dmask=0077"
-        "fmask=0177"
-      ];
+      options = [ "dmask=0077" "fmask=0177" ];
     };
   };
 
-  boot.zfs.extraPools = [
-    "docker"
-    "persist"
-  ];
+  boot.zfs.extraPools = [ "docker" "persist" ];
 
   services.sanoid.datasets = {
     "${persist}".useTemplate = [ "default" ];
@@ -44,7 +38,5 @@ in
     "persist/cloud".useTemplate = [ "default" ];
   };
 
-  shares = {
-    ha-config.enable = true;
-  };
+  shares = { ha-config.enable = true; };
 }

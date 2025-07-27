@@ -2,36 +2,27 @@ let
   bridge = "bridge0";
   cidr = "192.168.0";
   prefix = 24;
-in
-{
+in {
   networking = {
     hostName = "pwnyboy";
     bridges."${bridge}".interfaces = [ "enp3s0" ];
 
     useDHCP = false;
 
-    interfaces."${bridge}".ipv4.addresses = [
-      {
-        address = "${cidr}.30";
-        prefixLength = prefix;
-      }
-    ];
+    interfaces."${bridge}".ipv4.addresses = [{
+      address = "${cidr}.30";
+      prefixLength = prefix;
+    }];
 
     defaultGateway = {
       address = "${cidr}.1";
       interface = "${bridge}";
     };
 
-    nameservers = [
-      "${cidr}.1"
-      "1.1.1.1"
-    ];
+    nameservers = [ "${cidr}.1" "1.1.1.1" ];
 
     firewall = {
-      trustedInterfaces = [
-        "tailscale0"
-        "docker0"
-      ];
+      trustedInterfaces = [ "tailscale0" "docker0" ];
 
       allowedTCPPorts = [
         80

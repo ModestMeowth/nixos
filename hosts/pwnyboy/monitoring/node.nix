@@ -1,20 +1,16 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.monitoring;
-in
-{
+let cfg = config.monitoring;
+in {
   services.prometheus = lib.mkIf cfg.enable {
     scrapeConfigs = [{
       job_name = "node";
-      static_configs = [
-        {
-          targets = [
-            "pwnyboy.cat-alkaline.ts.net:9100"
-            "rocinante.cat-alkaline.ts.net:9100"
-            "192.168.0.1:9100"
-          ];
-        }
-      ];
+      static_configs = [{
+        targets = [
+          "pwnyboy.cat-alkaline.ts.net:9100"
+          "rocinante.cat-alkaline.ts.net:9100"
+          "192.168.0.1:9100"
+        ];
+      }];
     }];
 
     ruleFiles = [
@@ -39,8 +35,7 @@ in
                   annotations:
                     summary: Host high CPU load (instance {{ $labels.instance }})
                     description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-        ''
-      )
+        '')
     ];
   };
 }

@@ -6,17 +6,11 @@
 
     lanzaboote.enable = true;
 
-    initrd.availableKernelModules = [
-      "nvme"
-      "xhci_pci"
-      "usb_storage"
-      "sd_mod"
-    ];
+    initrd.availableKernelModules =
+      [ "nvme" "xhci_pci" "usb_storage" "sd_mod" ];
 
     kernelModules = [ "acpi_call" ];
-    extraModulePackages = with config.boot.kernelPackages; [
-      acpi_call
-    ];
+    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   };
 
   # Plymouth
@@ -38,7 +32,5 @@
     amdgpu.opencl.enable = true;
   };
 
-  services = {
-    xserver.videoDrivers = [ "amdgpu" ];
-  };
+  services = { xserver.videoDrivers = [ "amdgpu" ]; };
 }

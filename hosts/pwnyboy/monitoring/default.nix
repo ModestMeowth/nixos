@@ -1,15 +1,7 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.monitoring;
-in
-{
-  imports = [
-    ./node.nix
-    ./nut.nix
-    ./smartctl.nix
-    ./unifi.nix
-    ./zfs.nix
-  ];
+let cfg = config.monitoring;
+in {
+  imports = [ ./node.nix ./nut.nix ./smartctl.nix ./unifi.nix ./zfs.nix ];
 
   options.monitoring.enable = lib.mkEnableOption "monitoring";
 
