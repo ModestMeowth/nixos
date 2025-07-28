@@ -16,7 +16,7 @@
     nix-serve.openFirewall = true;
   };
 
-  monitoring.enable = true;
+  # monitoring.enable = true;
 
   power.ups = {
     enable = true;

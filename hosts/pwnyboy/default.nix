@@ -2,7 +2,7 @@
   imports = [
     ./filesystems.nix
     ./hardware.nix
-    ./monitoring
+    # ./monitoring
     ./networks.nix
     ./samba
     ./secrets.nix

@@ -82,12 +82,22 @@
       nixosConfigurations."pwnyboy" = mkHost {
         hostname = "pwnyboy";
         additionalModules = with inputs; [
-          ./modules/zfs.nix
           lanzaboote.nixosModules.lanzaboote
-          ./modules/console.nix
-          ./modules/secureboot.nix
+          ./modules/shared/physical
           nix-virt.nixosModules.default
-          ./modules/libvirt.nix
+          hm.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.mm = {
+              imports = [
+                ./modules/home-manager
+                ./modules/home-manager/hosts/pwnyboy
+              ];
+            };
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.backupFileExtension = "backup";
+          }
         ];
       };
 
