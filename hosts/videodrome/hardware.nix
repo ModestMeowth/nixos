@@ -1,9 +1,7 @@
 {
   programs = {
     # Nvidia
-    nix-ld = {
-      enable = true;
-    };
+    nix-ld = { enable = true; };
   };
 
   # Nvidia

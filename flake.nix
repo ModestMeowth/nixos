@@ -25,36 +25,26 @@
 
   outputs = inputs:
     let
-      mkHost = { hostname, system ? "x86_64-linux"
-        , additionalConfig ? { } # nixpkgs.config options
-        , additionalModules ? [ ] }:
-        let
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = with inputs; [
-              nur.overlays.default
-              (final: _: {
+      mkPkgs = { system ? "x86_64-linux", additionalConfig ? { } }:
+        import inputs.nixpkgs {
+          inherit system;
+          config = { allowUnfree = true; } // additionalConfig;
+          overlays = with inputs; [
+            nur.overlays.default
+            (
+              final: _: {
                 unstable = import inputs.unstable {
                   inherit (final) system;
-                  overlays = with inputs; [ nixdb.overlays.nix-index ];
                   config = { allowUnfree = true; } // additionalConfig;
+                  overlays = with inputs; [ nixdb.overlays.nix-index ];
                 };
-              })
-            ];
-          };
-        in inputs.nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          specialArgs = { inherit inputs; };
-          modules = with inputs;
-            [
-              sops-nix.nixosModules.sops
-              ./modules/shared
-              ./modules/cli-tui
-              ./hosts/${hostname}
-            ] ++ additionalModules;
+              }
+            )
+          ];
         };
-    in {
+
+      customLib = import ./lib { inherit inputs mkPkgs; };
+    in with customLib; {
       nixosConfigurations."rocinante" = mkHost {
         hostname = "rocinante";
         additionalConfig = { rocmSupport = true; };
@@ -63,19 +53,6 @@
           ./modules/shared/physical
           ./modules/desktop
           ./modules/gaming
-          hm.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mm = {
-              imports = [
-                ./modules/home-manager/hosts/rocinante
-                ./modules/home-manager
-              ];
-            };
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.backupFileExtension = "backup";
-          }
         ];
       };
 
@@ -85,19 +62,6 @@
           lanzaboote.nixosModules.lanzaboote
           ./modules/shared/physical
           nix-virt.nixosModules.default
-          hm.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mm = {
-              imports = [
-                ./modules/home-manager
-                ./modules/home-manager/hosts/pwnyboy
-              ];
-            };
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.backupFileExtension = "backup";
-          }
         ];
       };
 
@@ -107,20 +71,13 @@
         additionalModules = with inputs; [
           wsl.nixosModules.default
           ./modules/shared/virtual/wsl.nix
-          hm.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mm = {
-              imports = [
-                ./modules/home-manager
-                ./modules/home-manager/hosts/videodrome
-              ];
-            };
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.backupFileExtension = "backup";
-          }
         ];
       };
+
+    homeConfigurations = {
+      "mm@rocinante" = mkHome { hostname = "rocinante"; };
+      "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
+      "mm@videodrome" = mkHome { hostname = "videdrome"; };
     };
+  };
 }
