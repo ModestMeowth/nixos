@@ -51,11 +51,9 @@ status is-interactive; and begin
         abbr --add -- rg "rga"
     end
 
-    begin
-        for dir in "bin .bin local/bin"
-            if test -d $HOME/$dir
-                fish_add_path $HOME/$dir
-            end
+    for dir in bin .bin .local/bin
+        if test -d "$HOME/$dir"
+            fish_add_path -P -p "$HOME/$dir"
         end
     end
 end

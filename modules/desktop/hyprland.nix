@@ -16,8 +16,9 @@
     hyprutils
     kitty
     libnotify
-    wl-clipboard
+    mako
     waybar
+    wl-clipboard
     wofi
   ];
 }

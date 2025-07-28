@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 show_power_menu() {
-    local menu_options, selection
+    local menu_options selection
 
     menu_options="\u200B Lock
 \u200C󰤄 Suspend

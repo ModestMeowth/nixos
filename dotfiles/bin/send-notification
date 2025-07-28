@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-notify-send --urgency="$1" "$2" "<span weight='bold'>$3</span>"
