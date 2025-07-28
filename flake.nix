@@ -5,7 +5,6 @@
     nur.url = "nur";
 
     nixdb.url = "github:nix-community/nix-index-database";
-    nixdb.inputs.nixpkgs.follows = "unstable";
 
     sops-nix.url = "sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,11 +32,12 @@
           pkgs = import inputs.nixpkgs {
             inherit system;
             config.allowUnfree = true;
-            overlays = [
-              inputs.nur.overlays.default
+            overlays = with inputs; [
+              nur.overlays.default
               (final: _: {
                 unstable = import inputs.unstable {
                   inherit (final) system;
+                  overlays = with inputs; [ nixdb.overlays.nix-index ];
                   config = { allowUnfree = true; } // additionalConfig;
                 };
               })
@@ -49,7 +49,6 @@
           modules = with inputs;
             [
               sops-nix.nixosModules.sops
-              nixdb.nixosModules.nix-index
               ./modules/shared
               ./modules/cli-tui
               ./hosts/${hostname}

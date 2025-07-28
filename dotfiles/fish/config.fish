@@ -44,4 +44,12 @@ status is-interactive; and begin
         set fzf_preview_dir_cmd exa --icons=auto --color=always
         set -gx FZF_DEFAULT_OPTS "--cycle --layout=reverse --border --height=90% --marker=* --color bg:#282a36,bg+:#44475a,fg:#f8f8f2,fg+:#f8f8f2,header:#6272a4,hl:#bd93f9,hl+:#bd93f9,info:#ffb86c,marker:#ff79c6,pointer:#ff78c6,prompt:#50fa7b,spinner:#ffb86c"
     end
+
+    begin
+        for dir in "bin .bin local/bin"
+            if test -d $HOME/$dir
+                fish_add_path $HOME/$dir
+            end
+        end
+    end
 end

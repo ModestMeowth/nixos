@@ -13,6 +13,7 @@
     jq
     killall
     ripgrep-all
+    starship
     tmux
     unzip
     wget

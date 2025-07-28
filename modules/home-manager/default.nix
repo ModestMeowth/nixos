@@ -21,7 +21,7 @@ in {
 
   xdg.configFile = {
     "git".source = mkSymlink "git";
-    "fish".source = mkSymlink "fish";
+    "fish/config.fish".source = mkSymlink "fish/config.fish";
     "nvim".source = mkSymlink "nvim";
     "starship.toml".source = mkSymlink "starship/starship.toml";
   };

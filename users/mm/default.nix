@@ -3,10 +3,12 @@ let
   ifGroupsExist = groups:
     builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
+  programs.fish.enable = true;
   users.users.mm = {
     isNormalUser = true;
     uid = lib.mkForce 1001;
     description = "Modest Meowth";
+    shell = pkgs.fish;
     extraGroups = [ "wheel" "users" "input" ] ++ ifGroupsExist [
       "docker"
       "gamemode"

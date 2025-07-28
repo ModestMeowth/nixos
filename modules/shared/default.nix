@@ -17,6 +17,12 @@
   };
 
   programs = {
+    command-not-found.enable = false;
+    nix-index = {
+      enable = true;
+      package = pkgs.unstable.nix-index-with-db;
+    };
+
     nh = {
       enable = true;
       clean = {
@@ -25,12 +31,14 @@
       };
     };
 
-    nix-index-database.comma.enable = true;
-
     ssh.extraConfig = # sshconf
       ''
         SendEnv TMUX ZELLIJ TERM_PROGRAM
       '';
+  };
+
+  environment.sessionVariables = {
+    #    NIX_INDEX_DATABASE =
   };
 
   environment.systemPackages = with pkgs; [
@@ -38,8 +46,10 @@
     lsof
     mosh
     psmisc
-    usbutils
     sops
+    usbutils
+
+    unstable.comma-with-db
   ];
 
   sops = {
