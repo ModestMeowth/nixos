@@ -1,6 +1,8 @@
 {
   imports = [ ../../users/mm ];
 
-  wsl.wslConf.user.default = "mm";
-  wsl.defaultUser = "mm";
+  wsl = {
+    defaultUser = "mm";
+    wslConf.user.default = "mm";
+  };
 }

@@ -94,7 +94,23 @@
       nixosConfigurations."videodrome" = mkHost {
         hostname = "videodrome";
         additionalConfig = { cudaSupport = true; };
-        additionalModules = with inputs; [ wsl.nixosModules.default ];
+        additionalModules = with inputs; [
+          wsl.nixosModules.default
+          ./modules/shared/virtual/wsl.nix
+          hm.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.mm = {
+              imports = [
+                ./modules/home-manager
+                ./modules/home-manager/hosts/videodrome
+              ];
+            };
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.backupFileExtension = "backup";
+          }
+        ];
       };
     };
 }

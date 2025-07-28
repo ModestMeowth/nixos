@@ -1,16 +1,8 @@
-{ pkgs, ... }: {
-  wsl = {
-    enable = true;
-    useWindowsDriver = true;
-    startMenuLaunchers = true;
-    wslConf.interop.appendWindowsPath = true;
-  };
-
+{
   programs = {
     # Nvidia
     nix-ld = {
       enable = true;
-      libraries = [ pkgs.unstable.linuxPackages.nvidia_x11 ];
     };
   };
 

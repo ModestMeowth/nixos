@@ -1,1 +1,9 @@
-{ imports = [ ./secureboot.nix ./wifi-profiles.nix ./zfs.nix ]; }
+{
+  imports = [
+    ./console.nix
+    ./firewall.nix
+    ./secureboot.nix
+    ./wifi-profiles.nix
+    ./zfs.nix
+  ];
+}

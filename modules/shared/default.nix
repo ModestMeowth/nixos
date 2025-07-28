@@ -1,7 +1,6 @@
 { lib, pkgs, ... }: {
   imports = [
     ./nix.nix
-    ./firewall.nix
     ./security.nix
     # Samba shares
     ./ha-config.nix
@@ -35,10 +34,6 @@
       ''
         SendEnv TMUX ZELLIJ TERM_PROGRAM
       '';
-  };
-
-  environment.sessionVariables = {
-    #    NIX_INDEX_DATABASE =
   };
 
   environment.systemPackages = with pkgs; [

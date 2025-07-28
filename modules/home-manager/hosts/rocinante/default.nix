@@ -3,10 +3,7 @@ let
   mkSymlink = path:
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${path}";
 in {
-  home.packages = with pkgs; [
-    bitwarden-desktop
-    unstable.bootdev-cli
-  ];
+  home.packages = with pkgs; [ bitwarden-desktop unstable.bootdev-cli ];
 
   programs = {
     ghostty.enable = true;

@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ./console.nix ./editor.nix ];
+  imports = [ ./editor.nix ];
 
   environment.systemPackages = with pkgs; [
     bat

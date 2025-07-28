@@ -5,6 +5,7 @@
     generateResolvConf = false;
   };
 
+  networking.firewall.enable = lib.mkForce false;
   networking.nftables.enable = lib.mkForce false;
 
   networking = {

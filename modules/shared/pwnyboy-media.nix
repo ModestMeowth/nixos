@@ -1,7 +1,5 @@
 { config, lib, pkgs, ... }:
-let
-  cfg = config.shares.pwnyboy-media;
-  ip = "100.94.146.30";
+let cfg = config.shares.pwnyboy-media;
 in {
   options.shares.pwnyboy-media = {
     enable = lib.mkEnableOption "pwnyboy-media";
