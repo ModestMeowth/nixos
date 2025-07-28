@@ -4,6 +4,8 @@ let
     builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   programs.fish.enable = true;
+  environment.systemPackages = with pkgs.fishPlugins; [ fzf-fish puffer ];
+
   users.users.mm = {
     isNormalUser = true;
     uid = lib.mkForce 1001;

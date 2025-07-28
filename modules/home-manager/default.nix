@@ -12,7 +12,10 @@ in {
   programs = { home-manager.enable = true; };
 
   home.sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
-  home.file = { ".local/bin".source = mkSymlink "bin"; };
+  home.file = {
+    ".local/bin".source = mkSymlink "bin";
+    ".tmux.conf".source = mkSymlink "tmux/tmux.conf";
+  };
 
   xdg.configFile = {
     "git".source = mkSymlink "git";
