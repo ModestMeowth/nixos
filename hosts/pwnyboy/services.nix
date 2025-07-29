@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   services = {
     chrony.enable = true;
 
@@ -40,5 +40,6 @@
     libvirt.enable = true;
   };
 
+  systemd.services."libvirt-guests".enable = lib.mkForce false;
   virtualisation.libvirt.swtpm.enable = true;
 }
