@@ -19,4 +19,11 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+vim.opt.viewoptions = "folds,cursor"
+vim.opt.sessionoptions = "folds"
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 5
+
 vim.cmd("colorscheme dracula")

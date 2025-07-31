@@ -3,8 +3,12 @@
 
   environment.systemPackages = with pkgs; [
     bat
-    direnv
+    bat-extras.batman
+    bat-extras.batdiff
+    bat-extras.prettybat
+    btop
     curl
+    diff-so-fancy
     eza
     fd
     fzf
@@ -13,6 +17,8 @@
     just
     jq
     killall
+    nix-direnv
+    ripgrep
     ripgrep-all
     starship
     tmux

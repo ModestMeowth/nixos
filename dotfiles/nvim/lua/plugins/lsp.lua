@@ -7,10 +7,10 @@ return {
     event = "VeryLazy",
     opts = {},
     config = function()
-      require("auto-lsp").setup({
+      require"auto-lsp".setup {
         ["harper_ls"] = true,
         ["bashls"] = true,
-      })
+      }
     end,
   },
 }
