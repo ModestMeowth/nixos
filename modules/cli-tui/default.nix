@@ -9,6 +9,7 @@
     btop
     curl
     diff-so-fancy
+    direnv
     eza
     fd
     fzf
