@@ -15,15 +15,6 @@ helper = !gh auth git-credential
 template = ~/.config/git/template
 verbose = true
 
-[advice]
-addEmptyPathspec = false
-pushNonFastForward = false
-statusHints = false
-
-[blame]
-coloring = highlightRecent
-date = relative
-
 [diff]
 context = 3
 renames = copies
@@ -31,7 +22,6 @@ interHunkContext = 10
 
 [log]
 abbrevCommit = true
-graphColors = blue,yellow,cyan,green,red
 
 [status]
 branch = true
@@ -53,14 +43,11 @@ followTags = true
 rebase = true
 default = current
 
-[submodule]
-fetchJobs = 16
+[alias]
+pop = stash pop
 
 [color]
 ui = auto
-
-[color "blame"]
-highlightRecent = green,1 year ago,white,1 month ago,default, 7 days ago,blue
 
 [color "branch"]
 current = cyan bold reverse

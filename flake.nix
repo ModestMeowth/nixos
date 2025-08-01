@@ -31,15 +31,13 @@
           config = { allowUnfree = true; } // additionalConfig;
           overlays = with inputs; [
             nur.overlays.default
-            (
-              final: _: {
-                unstable = import inputs.unstable {
-                  inherit (final) system;
-                  config = { allowUnfree = true; } // additionalConfig;
-                  overlays = with inputs; [ nixdb.overlays.nix-index ];
-                };
-              }
-            )
+            (final: _: {
+              unstable = import inputs.unstable {
+                inherit (final) system;
+                config = { allowUnfree = true; } // additionalConfig;
+                overlays = with inputs; [ nixdb.overlays.nix-index ];
+              };
+            })
           ];
         };
 
@@ -74,10 +72,10 @@
         ];
       };
 
-    homeConfigurations = {
-      "mm@rocinante" = mkHome { hostname = "rocinante"; };
-      "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
-      "mm@videodrome" = mkHome { hostname = "videodrome"; };
+      homeConfigurations = {
+        "mm@rocinante" = mkHome { hostname = "rocinante"; };
+        "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
+        "mm@videodrome" = mkHome { hostname = "videodrome"; };
+      };
     };
-  };
 }

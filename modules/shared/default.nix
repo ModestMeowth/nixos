@@ -28,6 +28,7 @@
         enable = true;
         extraArgs = "--keep-since 4d --keep 5";
       };
+      flake = "/home/mm/.config/home-manager";
     };
 
     ssh.extraConfig = # sshconf
