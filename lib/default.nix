@@ -19,7 +19,7 @@
 
   mkHome = { hostname, system ? "x86_64-linux", additionalConfig ? { }
     , additionalModules ? [ ] }:
-    inputs.hm.lib.homeManagerConfiguration {
+    inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = mkPkgs {
         system = system;
         additionalConfig = additionalConfig;

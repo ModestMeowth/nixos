@@ -13,8 +13,8 @@
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.inputs.pre-commit-hooks-nix.follows = "";
 
-    hm.url = "github:nix-community/home-manager/release-25.05";
-    hm.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     wsl.url = "github:nix-community/NixOS-WSL";
     wsl.inputs.nixpkgs.follows = "nixpkgs";

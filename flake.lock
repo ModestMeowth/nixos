@@ -89,7 +89,7 @@
         "type": "github"
       }
     },
-    "hm": {
+    "home-manager": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -240,7 +240,7 @@
     },
     "root": {
       "inputs": {
-        "hm": "hm",
+        "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nix-virt": "nix-virt",
         "nixdb": "nixdb",

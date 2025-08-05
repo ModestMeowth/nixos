@@ -1,4 +1,5 @@
-let wifiInterface = "wlp2s0";
+let
+  wifiInterface = "wlp2s0";
 in {
   services = {
     resolved.enable = true;

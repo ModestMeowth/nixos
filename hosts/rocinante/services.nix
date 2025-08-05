@@ -11,10 +11,6 @@
     };
 
     smartd.enable = true;
-    prometheus.exporters = {
-      node.enable = true;
-      smartctl.enable = true;
-    };
 
     fprintd = {
       enable = true;
@@ -23,7 +19,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ smartmontools samba ];
+  environment.systemPackages = with pkgs; [
+    smartmontools
+    samba
+  ];
 
   gaming = {
     emulation.enable = true;
@@ -31,5 +30,4 @@
     steam.enable = true;
   };
 
-  virtualisation.docker.enable = true;
 }
