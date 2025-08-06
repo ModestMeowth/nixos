@@ -1,17 +1,18 @@
-{ pkgs, config, ... }: let
-  HOME = config.home.homeDirectory;
+{ pkgs, config, ... }:
+let HOME = config.home.homeDirectory;
 in {
 
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
-    extraPackages = p: with p; [
-      doom
-      pdf-tools
-      org-roam
-      treesit-grammars.with-all-grammars
-      vterm
-    ];
+    extraPackages = p:
+      with p; [
+        doom
+        pdf-tools
+        org-roam
+        treesit-grammars.with-all-grammars
+        vterm
+      ];
   };
 
   home.packages = with pkgs; [
@@ -21,11 +22,7 @@ in {
     sqlite
     texlive.combined.scheme-basic
     vips
-    (aspellWithDicts (p: with p; [
-      en
-      en-computers
-      en-science
-    ]))
+    (aspellWithDicts (p: with p; [ en en-computers en-science ]))
   ];
 
   services.emacs.enable = config.programs.emacs.enable;
@@ -50,7 +47,8 @@ in {
       fi
     '';
 
-  home.activation.syncDoomEmacs = config.lib.dag.entryAfter [ "linkGeneration" "installDoomEmacs" ] # bash
+  home.activation.syncDoomEmacs =
+    config.lib.dag.entryAfter [ "linkGeneration" "installDoomEmacs" ] # bash
     ''
       if [ -d "${HOME}/.emacs.d" ] && [ -d "${HOME}/.config/doom" ]; then
         if [  -x "${HOME}/.emacs.d/bin/doom" ]; then
@@ -70,4 +68,6 @@ in {
     DOOMDIR = "${HOME}/.config/doom";
     DOOMLOCALDIR = "${HOME}/.local/share/doom";
   };
+
+  home.shellAliases = { emacs = "doom emacs"; };
 }

@@ -45,10 +45,6 @@ status is-interactive; and begin
         abbr --add -- rg "rga"
     end
 
-    if type -q doom
-        abbr --add -- emacs "doom emacs"
-    end
-
     for dir in bin .bin .local/bin
         if test -d "$HOME/$dir"
             fish_add_path -P -p "$HOME/$dir"
