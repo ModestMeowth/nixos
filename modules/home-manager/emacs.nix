@@ -28,6 +28,8 @@ in {
     ]))
   ];
 
+  services.emacs.enable = config.programs.emacs.enable;
+
   home.activation.installDoomEmacs = config.lib.dag.entryAfter [ "writeBoundry" ] #bash
     ''
       if [ ! -d "${HOME}/.emacs.d" ]; then
