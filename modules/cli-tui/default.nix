@@ -1,6 +1,4 @@
 { pkgs, ... }: {
-  imports = [ ./editor.nix ];
-
   environment.systemPackages = with pkgs; [
     bat
     bat-extras.batman
@@ -27,5 +25,10 @@
     wget
     zip
     zoxide
+
+    treefmt
+    nixfmt
+    yamlfmt
+    taplo
   ];
 }

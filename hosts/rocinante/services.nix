@@ -19,10 +19,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    smartmontools
-    samba
-  ];
+  environment.systemPackages = with pkgs; [ smartmontools samba ];
 
   gaming = {
     emulation.enable = true;

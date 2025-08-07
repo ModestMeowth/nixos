@@ -1,6 +1,11 @@
 { pkgs, ... }: {
   fonts = {
-    packages = with pkgs.nerd-fonts; [ _0xproto caskaydia-cove noto symbols-only ];
+    packages = with pkgs.nerd-fonts; [
+      _0xproto
+      caskaydia-cove
+      noto
+      symbols-only
+    ];
 
     fontconfig = {
       enable = true;

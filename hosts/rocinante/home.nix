@@ -11,7 +11,7 @@ in {
   };
 
   xdg.configFile = {
-    "background.jpeg".source = ./background.jpeg;
+    "background.jpeg".source = "wallpaper/nebula.jpeg";
     "ghostty".source = mkSymlink "ghostty";
     "hypr".source = mkSymlink "hypr";
     "mako".source = mkSymlink "mako";

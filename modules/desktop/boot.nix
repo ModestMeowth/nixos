@@ -1,16 +1,14 @@
-{ pkgs, ... }: let
-theme = "cybernetic";
+{ pkgs, ... }:
+let theme = "cybernetic";
 in {
   boot = {
     plymouth = {
       enable = true;
       theme = theme;
       themePackages = [
-        (
-          pkgs.adi1090x-plymouth-themes.override {
-            selected_themes = [ theme ];
-          }
-        )
+        (pkgs.adi1090x-plymouth-themes.override {
+          selected_themes = [ theme ];
+        })
       ];
     };
 

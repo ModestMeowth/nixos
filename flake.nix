@@ -25,57 +25,58 @@
 
   outputs = inputs:
     let
-      mkPkgs = { system ? "x86_64-linux", additionalConfig ? { } }:
+      mkPkgs = {
+          system ? "x86_64-linux"
+        , additionalConfig ? [ ]
+      }:
         import inputs.nixpkgs {
           inherit system;
-          config = { allowUnfree = true; } // additionalConfig;
-          overlays = with inputs; [
-            nur.overlays.default
-            (final: _: {
-              unstable = import inputs.unstable {
-                inherit (final) system;
-                config = { allowUnfree = true; } // additionalConfig;
-                overlays = with inputs; [ nixdb.overlays.nix-index ];
-              };
-            })
-          ];
+          config = { allowUnfree = true; };
+          overlays = with inputs;
+            [
+              nur.overlays.default
+              (final: _: {
+                unstable = import inputs.unstable {
+                  inherit (final) system;
+                  config = { allowUnfree = true; };
+                };
+              })
+            ];
         };
 
       customLib = import ./lib { inherit inputs mkPkgs; };
     in with customLib; {
-      nixosConfigurations."rocinante" = mkHost {
-        hostname = "rocinante";
-        additionalConfig = { rocmSupport = true; };
-        additionalModules = with inputs; [
-          lanzaboote.nixosModules.lanzaboote
-          ./modules/shared/physical
-          ./modules/desktop
-          ./modules/gaming
-        ];
+      nixosConfigurations = {
+        "rocinante" = mkHost {
+          hostname = "rocinante";
+          additionalConfig = { rocmSupport = true; };
+          additionalModules = with inputs; [
+            lanzaboote.nixosModules.lanzaboote
+            ./modules/shared/physical
+            ./modules/desktop
+            ./modules/gaming
+          ];
+        };
+
+        "pwnyboy" = mkHost {
+          hostname = "pwnyboy";
+          additionalModules = with inputs; [
+            lanzaboote.nixosModules.lanzaboote
+            ./modules/shared/physical
+            nix-virt.nixosModules.default
+          ];
+        };
+
+        "videodrome" = mkHost {
+          hostname = "videodrome";
+          additionalConfig = { cudaSupport = true; };
+          additionalModules = with inputs; [
+            wsl.nixosModules.default
+            ./modules/shared/virtual/wsl.nix
+          ];
+        };
       };
 
-      nixosConfigurations."pwnyboy" = mkHost {
-        hostname = "pwnyboy";
-        additionalModules = with inputs; [
-          lanzaboote.nixosModules.lanzaboote
-          ./modules/shared/physical
-          nix-virt.nixosModules.default
-        ];
-      };
-
-      nixosConfigurations."videodrome" = mkHost {
-        hostname = "videodrome";
-        additionalConfig = { cudaSupport = true; };
-        additionalModules = with inputs; [
-          wsl.nixosModules.default
-          ./modules/shared/virtual/wsl.nix
-        ];
-      };
-
-      homeConfigurations = {
-        "mm@rocinante" = mkHome { hostname = "rocinante"; };
-        "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
-        "mm@videodrome" = mkHome { hostname = "videodrome"; };
-      };
+      homeConfigurations = { };
     };
 }

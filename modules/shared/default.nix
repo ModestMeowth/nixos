@@ -17,10 +17,7 @@
 
   programs = {
     command-not-found.enable = false;
-    nix-index = {
-      enable = true;
-      package = pkgs.unstable.nix-index-with-db;
-    };
+    nix-index-database.comma.enable = true;
 
     nh = {
       enable = true;
@@ -44,8 +41,6 @@
     psmisc
     sops
     usbutils
-
-    unstable.comma-with-db
   ];
 
   systemd.services.numLockOnTty = {
@@ -56,8 +51,7 @@
           for tty in /dev/tty{1..6}; do
             ${pkgs.kbd}/bin/setleds -D +num < "$tty";
           done
-        ''
-      );
+        '');
     };
   };
 
