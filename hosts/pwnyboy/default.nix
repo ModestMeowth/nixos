@@ -7,7 +7,6 @@
     ./samba
     ./secrets.nix
     ./services.nix
-    ./users.nix
     ./vms
   ];
 }

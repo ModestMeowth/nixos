@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  imports = [ ./editors.nix ];
+
   environment.systemPackages = with pkgs; [
     bat
     bat-extras.batman

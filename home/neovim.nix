@@ -1,6 +1,4 @@
 { pkgs, ... }: {
-  imports = [ ./emacs.nix ];
-
   programs.neovim = {
     enable = true;
     viAlias = true;
@@ -17,7 +15,7 @@
 
       lua51Packages.lua-lsp
       harper
-      nil
+      nixd
       bash-language-server
     ];
   };

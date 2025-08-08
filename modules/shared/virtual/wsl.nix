@@ -3,6 +3,11 @@
     enable = true;
     useWindowsDriver = true;
     startMenuLaunchers = true;
-    wslConf.interop.appendWindowsPath = true;
+    defaultUser = "mm";
+
+    wslConf = {
+      user.default = "mm";
+      interop.appendWindowsPath = true;
+    };
   };
 }

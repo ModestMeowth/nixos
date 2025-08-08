@@ -5,7 +5,6 @@
     ./networks.nix
     ./secrets.nix
     ./services.nix
-    ./users.nix
     #    ./vms
   ];
 }

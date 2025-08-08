@@ -1,7 +1,6 @@
 { pkgs, config, ... }:
 let HOME = config.home.homeDirectory;
 in {
-
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-pgtk;
@@ -14,16 +13,6 @@ in {
         vterm
       ];
   };
-
-  home.packages = with pkgs; [
-    fd
-    imagemagick
-    ripgrep
-    sqlite
-    texlive.combined.scheme-basic
-    vips
-    (aspellWithDicts (p: with p; [ en en-computers en-science ]))
-  ];
 
   services.emacs.enable = config.programs.emacs.enable;
 
