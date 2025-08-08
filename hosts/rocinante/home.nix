@@ -10,12 +10,14 @@ in {
     firefox.enable = true;
   };
 
+  xsession.enable = true;
+
   xdg.configFile = {
     "background.jpeg".source = mkSymlink "wallpaper/nebula.jpeg";
     "ghostty".source = mkSymlink "ghostty";
     "hypr".source = mkSymlink "hypr";
     "mako".source = mkSymlink "mako";
+    "walker".source = mkSymlink "walker";
     "waybar".source = mkSymlink "waybar";
-    "wofi".source = mkSymlink "wofi";
   };
 }

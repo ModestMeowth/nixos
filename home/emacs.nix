@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ config, lib, pkgs, ... }:
 let HOME = config.home.homeDirectory;
 in {
   programs.emacs = {
@@ -14,7 +14,16 @@ in {
       ];
   };
 
-  services.emacs.enable = config.programs.emacs.enable;
+  services.emacs.enable = true;
+  systemd.user.services.emacs.Service = lib.mkForce {
+    Environment = [
+      "DOOMDIR=${HOME}/.config/doom"
+      "DOOMLOCALDIR=${HOME}/.local/share/doom"
+    ];
+
+    ExecStart = "${HOME}/.emacs.d/bin/doom emacs --fg-daemon";
+    Type = "simple";
+  };
 
   home.activation.installDoomEmacs =
     config.lib.dag.entryAfter [ "writeBoundry" ] # bash
@@ -58,6 +67,4 @@ in {
     DOOMDIR = "${HOME}/.config/doom";
     DOOMLOCALDIR = "${HOME}/.local/share/doom";
   };
-
-  home.shellAliases = { emacs = "doom emacs"; };
 }

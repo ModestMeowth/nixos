@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  imports = [ ../desktop/fonts.nix ];
+  imports = [ ../shared/fonts.nix ];
   environment.systemPackages = with pkgs; [
     emacs
     emacsPackages.mu4e

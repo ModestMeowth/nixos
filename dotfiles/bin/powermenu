@@ -1,25 +1,32 @@
 #!/usr/bin/env bash
 
+menu() {
+    local prompt options extra preselect
+    prompt="$1"
+    options="$2"
+    extra="$3"
+    preselect="$4"
+
+    read -r -a args <<<"$extra"
+
+    if [[ -n "$preselect" ]]; then
+        local index
+        index=$(echo -e "$options" | grep -nxF "$preselect" | cut -d: -f1)
+
+        if [[ -n "$index" ]]; then
+            args+=("-a" "$index")
+        fi
+    fi
+
+    echo -e "$options" | walker --dmenu --theme dmenu_250 -p "$prompt…" "${args[@]}"
+}
+
 show_power_menu() {
-    local menu_options selection
-
-    menu_options="\u200B Lock
-\u200C󰤄 Suspend
-\u200C❌ Logout
-\u200D Relaunch
-\u2060󰜉 Restart
-\u2063󰐥 Shutdown"
-    selection=$(echo -e "$menu_options" | wofi \
-      --show dmenu \
-      --prompt "Power Options" \
-      --width 150 \
-      --height 195 \
-      -O alphabetical)
-
-    case "$selection" in
-        *Lock*) loginctl lock-session ;;
-        *Suspend*) uwsm stop ;;
+    case $(menu "System" "  Lock\n󰤄  Suspend\n  Relaunch\n󰜉  Restart\n󰐥  Shutdown") in
+        *Lock*) hyprlock ;;
+        *Suspend*) systemctl suspend ;;
         *Logout*) hyprctl dispatch exit ;;
+        *Relaunch*) uwsm stop ;;
         *Restart*) systemctl reboot ;;
         *Shutdown*) systemctl poweroff ;;
     esac

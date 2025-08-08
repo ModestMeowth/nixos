@@ -45,6 +45,10 @@ status is-interactive; and begin
         abbr --add -- rg "rga"
     end
 
+    if type -q emacs
+        abbr --add -- emacs "emacsclient -c"
+    end
+
     for dir in bin .bin .local/bin
         if test -d "$HOME/$dir"
             fish_add_path -P -p "$HOME/$dir"

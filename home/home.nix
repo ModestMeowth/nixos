@@ -12,26 +12,30 @@ in {
   };
 
   # Browsers
-  programs.firefox = {
-    package = pkgs.unstable.firefox;
-    profiles.default.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-      bitwarden
-      ublock-origin
-    ];
+  programs = {
+    firefox = {
+      package = pkgs.unstable.firefox;
+      profiles.default.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        bitwarden
+        ublock-origin
+      ];
+    };
+
+    chromium = {
+      package = (pkgs.unstable.chromium.override {
+        commandLineArgs = [
+          "--enable-features=Vulkan"
+        ];
+        enableWideVine = true;
+      });
+      extensions = [
+        "nngceckbapebfimnlniiiahkandclblb" # bitwarden
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock
+      ];
+    };
   };
 
-  programs.chromium = {
-    package = (pkgs.unstable.chromium.override {
-      commandLineArgs = [
-        "--enable-features=Vulkan"
-      ];
-      enableWideVine = true;
-    });
-    extensions = [
-      "nngceckbapebfimnlniiiahkandclblb" # bitwarden
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock
-    ];
-  };
+  services.syncthing.enable = true;
 
   home.file = {
     ".editorconfig".source = mkSymlink "editorconfig/editorconfig";
