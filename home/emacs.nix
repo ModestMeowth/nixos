@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let HOME = config.home.homeDirectory;
 in {
   programs.emacs = {
@@ -12,17 +12,6 @@ in {
         treesit-grammars.with-all-grammars
         vterm
       ];
-  };
-
-  services.emacs.enable = true;
-  systemd.user.services.emacs.Service = lib.mkForce {
-    Environment = [
-      "DOOMDIR=${HOME}/.config/doom"
-      "DOOMLOCALDIR=${HOME}/.local/share/doom"
-    ];
-
-    ExecStart = "${HOME}/.emacs.d/bin/doom emacs --fg-daemon";
-    Type = "simple";
   };
 
   home.activation.installDoomEmacs =
