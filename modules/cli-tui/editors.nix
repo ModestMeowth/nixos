@@ -13,7 +13,7 @@
     vips
   ];
 
-  services.emacs.enable = true;
+  services.emacs.enable = false;
 
   programs.neovim = {
     enable = true;

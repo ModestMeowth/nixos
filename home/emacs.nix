@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let HOME = config.home.homeDirectory;
 in {
   programs.emacs = {
