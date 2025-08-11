@@ -18,9 +18,6 @@
 
     wsl.url = "github:nix-community/NixOS-WSL";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
-
-    nix-virt.url = "github:AshleyYakeley/NixVirt";
-    nix-virt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:
@@ -63,7 +60,6 @@
           additionalModules = with inputs; [
             lanzaboote.nixosModules.lanzaboote
             ./modules/shared/physical
-            nix-virt.nixosModules.default
           ];
         };
 

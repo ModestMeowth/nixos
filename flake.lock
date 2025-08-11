@@ -135,26 +135,6 @@
         "type": "github"
       }
     },
-    "nix-virt": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1748140003,
-        "narHash": "sha256-DNBZmuk1YRM2PmwbHzVdXumRjCUzQkMarg4iI/37rOQ=",
-        "owner": "AshleyYakeley",
-        "repo": "NixVirt",
-        "rev": "5dfe108fd859b122f9a96981cb6bc12297653d6c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AshleyYakeley",
-        "repo": "NixVirt",
-        "type": "github"
-      }
-    },
     "nixdb": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -242,7 +222,6 @@
       "inputs": {
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
-        "nix-virt": "nix-virt",
         "nixdb": "nixdb",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",

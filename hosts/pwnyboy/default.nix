@@ -7,9 +7,6 @@ in {
   imports = [
     ./hardware.nix
     ./secrets.nix
-
-    ./samba
-    ./vms
   ];
 
   networking = {
@@ -119,9 +116,14 @@ in {
 
   virtualisation = {
     docker.enable = true;
-    libvirt.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
   };
 
   systemd.services."libvirt-guests".enable = lib.mkForce false;
-  virtualisation.libvirt.swtpm.enable = true;
 }
