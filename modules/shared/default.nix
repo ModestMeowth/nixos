@@ -2,6 +2,7 @@
   imports = [
     ./nix.nix
     ./security.nix
+    ./fonts.nix
     ./users.nix
     # Samba shares
     ./ha-config.nix

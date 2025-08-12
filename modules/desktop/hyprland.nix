@@ -1,6 +1,4 @@
 { pkgs, ... }: {
-  imports = [  ../shared/fonts.nix ];
-
   services.greetd = {
     enable = true;
     settings.default_session.command = ''
