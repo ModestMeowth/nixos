@@ -1,6 +1,4 @@
 { pkgs, ... }: {
-  imports = [ ./editors.nix ];
-
   environment.systemPackages = with pkgs; [
     bat
     bat-extras.batman
@@ -33,4 +31,9 @@
     yamlfmt
     taplo
   ];
+
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
 }

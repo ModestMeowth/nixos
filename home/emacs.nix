@@ -1,18 +1,37 @@
-{ config, lib, pkgs, ... }:
-let HOME = config.home.homeDirectory;
+{ config, lib, pkgs, ... }: let
+  HOME = config.home.homeDirectory;
 in {
+  home.packages = with pkgs; [
+    (aspellWithDicts (p: with p; [ en en-computers en-science ]))
+    fd
+    imagemagick
+    ripgrep
+    texlive.combined.scheme-small
+    vips
+  ];
+
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-pgtk;
+    package = pkgs.emacs;
     extraPackages = p:
       with p; [
-        doom
+        mu4e
         pdf-tools
         org-roam
         treesit-grammars.with-all-grammars
         vterm
       ];
   };
+
+  services.emacs = {
+    enable = true;
+    package = config.programs.emacs.package;
+  };
+
+  systemd.user.services.emacs.Service.Environment = [
+      "DOOMDIR=${HOME}/.config/doom"
+      "DOOMLOCALDIR=${HOME}/.local/share/doom"
+    ];
 
   home.activation.installDoomEmacs =
     config.lib.dag.entryAfter [ "writeBoundry" ] # bash
