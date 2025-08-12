@@ -45,9 +45,11 @@ status is-interactive; and begin
         abbr --add -- rg "rga"
     end
 
-    for dir in bin .bin .local/bin
+    for dir in bin .bin .local/bin .emacs.d/bin
         if test -d "$HOME/$dir"
             fish_add_path -P -p "$HOME/$dir"
         end
     end
+
+    set -q XDG_RUNTIME_DIR; or set -gx XDG_RUNTIME_DIR "/run/user/$(id -u)"
 end

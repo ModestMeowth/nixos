@@ -3,6 +3,9 @@
   HOME = config.home.homeDirectory;
 in {
   imports = [ ./emacs.nix ./neovim.nix ];
+
+  xdg.enable = true;
+
   programs.fish = {
     enable = true;
     interactiveShellInit = lib.mkAfter # fish
