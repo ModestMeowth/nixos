@@ -26,4 +26,7 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 5
 
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 vim.cmd("colorscheme dracula")

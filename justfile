@@ -1,34 +1,34 @@
-IS_MOSH := if env("PARENT_PROCESS", "false") == ".mosh-server-wr" { "true" } else { "false" }
-
 default:
-  just --choose --justfile "{{justfile()}}"
+  just --choose --justfile "{{ justfile() }}"
 
-build: git-pull os-build home-build
+build: git-pull os-build
 
-switch: git-pull os-switch home-switch
+switch: git-pull os-switch
 
-test: git-pull os-test home-test
+test: git-pull os-test
 
 os-build: git-pull
-  nh os build . {{ if IS_MOSH == "true" { " --no-nom" } else { "" } }}
+  nh os build .
 
 home-build: git-pull
-  nh home build . {{ if IS_MOSH == "true" { " --no-nom" } else { "" } }}
+  nh home build .
 
 os-switch: git-pull
-  nh os switch . {{ if IS_MOSH == "true" { " --no-nom" } else { "" } }}
+  nh os switch .
 
 home-switch: git-pull
-  nh home switch . {{ if IS_MOSH == "true" { " --no-nom" } else { "" } }}
+  nh home switch .
 
 os-test: git-pull
-  nh os test . {{ if IS_MOSH == "true" { " --no-nom" } else { "" } }}
+  nh os test .
 
 home-test: git-pull
-  nh home test . {{ if IS_MOSH == "true" { " --no-nom" } else { "" } }}
+  nh home test .
 
 boot: git-pull
-  nh os boot . {{ if IS_MOSH == "true" { " --no-nom" } else { "" } }}
+  nh os boot .
 
 git-pull:
-  git pull
+  git stash
+  git pull --rebase
+  git stash pop

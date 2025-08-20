@@ -2,7 +2,7 @@
   mkSymlink = path: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${path}";
   HOME = config.home.homeDirectory;
 in {
-  imports = [ ./emacs.nix ./neovim.nix ];
+  imports = [ ./neovim.nix ];
 
   xdg.enable = true;
 
