@@ -29,6 +29,6 @@ boot: git-pull
   nh os boot .
 
 git-pull:
-  git stash
+  - git stash
   git pull --rebase
-  git stash pop
+  - git stash pop
