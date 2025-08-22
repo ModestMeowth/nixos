@@ -35,6 +35,7 @@ in {
         443 # HTTP
         53
         853 # DNS over TCP
+        5000 # nix-serve
         8123 # HomeAssistant
         22000 # Syncthing
       ];
