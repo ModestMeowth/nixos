@@ -14,13 +14,6 @@
         [
           sops-nix.nixosModules.sops
           nixdb.nixosModules.nix-index
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs hostname; };
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.mm = import ../home { hostname = hostname; };
-          }
           ../modules/shared
           ../modules/cli-tui
           ../hosts/${hostname}
@@ -41,8 +34,9 @@
       };
 
       extraSpecialArgs = { inherit inputs hostname; };
-      modules = [
-        inputs.sops-nix.homeManagerModules.sops
+      modules = with inputs; [
+        sops-nix.homeManagerModules.sops
+        nixvim.homeModules.nixvim
         ../home
       ] ++ additionalModules;
     };

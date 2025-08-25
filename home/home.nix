@@ -2,7 +2,7 @@
   mkSymlink = path: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${path}";
   HOME = config.home.homeDirectory;
 in {
-  imports = [ ./neovim.nix ];
+  imports = [ ./neovim ];
 
   xdg.enable = true;
 
@@ -47,12 +47,10 @@ in {
   };
 
   xdg.configFile = {
-    "doom".source = mkSymlink "doom";
     "bat".source = mkSymlink "bat";
     "btop/btop.conf".source = mkSymlink "btop/btop.conf";
     "git".source = mkSymlink "git";
     "fish/localconfig.fish".source = mkSymlink "fish/config.fish";
-    "nvim".source = mkSymlink "nvim";
     "starship.toml".source = mkSymlink "starship/starship.toml";
   };
 }
