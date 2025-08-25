@@ -77,9 +77,9 @@
       };
 
       homeConfigurations = {
-        "mm@rocinante" = mkHome {
-          hostname = "rocinante";
-        };
+        "mm@rocinante" = mkHome { hostname = "rocinante"; };
+        "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
+        "mm@videodrome" = mkHome { hostname = "videodrome"; };
       };
     };
 }
