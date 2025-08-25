@@ -37,3 +37,6 @@ build-cache:
   nh os build . --hostname pwnyboy
   nh os build . --hostname rocinante
   nh os build . --hostname videodrome
+  nh home build . --configuration "mm@pwnyboy"
+  nh home build . --configuration "mm@rocinante"
+  nh home build . --configuration "mm@videodrome"
