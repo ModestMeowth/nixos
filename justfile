@@ -33,7 +33,7 @@ git-pull:
   git pull --rebase
   - git stash pop
 
-build-cache:
+build-cache: git-pull
   nh os build . --hostname pwnyboy
   nh os build . --hostname rocinante
   nh os build . --hostname videodrome
