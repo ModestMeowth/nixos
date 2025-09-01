@@ -1,4 +1,6 @@
-{ config, pkgs, ...}: {
+{ config, pkgs, ...}: let
+  wlan = "wlp2s0";
+in {
   imports = [
     ./secrets.nix
     ./hardware.nix
@@ -15,8 +17,8 @@
       enable = true;
       dns = "systemd-resolved";
       ensureProfiles.profiles = {
-        "Ponyboy Bounce House".connection.interface-name = "wlp2s0";
-        "Hyrule".connection.interface-name = "wlp2s0";
+        "Ponyboy Bounce House".connection.interface-name = wlan;
+        "Hyrule".connection.interface-name = wlan;
       };
     };
   };
@@ -46,6 +48,8 @@
         '';
     };
   };
+
+  programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [ smartmontools samba ];
 

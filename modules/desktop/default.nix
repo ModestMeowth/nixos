@@ -22,11 +22,9 @@
     kernelParams = lib.mkDefault [ "quiet" "splash" "boot.shell_on_fail" "udev.log_priority" "rd.systemd.show_status=auto" ];
   };
 
+  hardware.bluetooth.enable = true;
+
   environment.systemPackages = with pkgs; [
-    bluez
-    blueman
-    bluez-tools
-    libsForQt5.kdeconnect-kde
     pwvucontrol
     unstable.wiremix
     xdg-utils
