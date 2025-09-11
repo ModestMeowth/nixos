@@ -2,7 +2,7 @@
   imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_15;
+    kernelPackages = pkgs.linuxPackages_6_16;
 
     lanzaboote.enable = true;
 

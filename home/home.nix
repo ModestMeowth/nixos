@@ -38,8 +38,6 @@ in {
     };
   };
 
-  services.syncthing.enable = true;
-
   home.file = {
     ".editorconfig".source = mkSymlink "editorconfig/editorconfig";
     ".local/bin".source = mkSymlink "bin";

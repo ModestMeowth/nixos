@@ -10,6 +10,8 @@ in {
     firefox.enable = true;
   };
 
+  services.syncthing.enable = true;
+
   xsession.enable = true;
 
   xdg.configFile = {
