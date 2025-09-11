@@ -19,5 +19,6 @@ in {
     retroarch-joypad-autoconfig
     pcsx2
     dolphin-emu
+    azahar
   ]);
 }
