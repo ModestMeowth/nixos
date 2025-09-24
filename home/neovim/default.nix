@@ -6,6 +6,7 @@ in {
     ./cmp.nix
     ./fidget.nix
     ./lsp.nix
+    ./notes.nix
     ./snacks.nix
     ./treesitter.nix
     ./which-key.nix
