@@ -20,7 +20,6 @@
     wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs = inputs:
