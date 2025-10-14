@@ -27,7 +27,7 @@
         enable = true;
         extraArgs = "--keep-since 4d --keep 5";
       };
-      flake = "/home/mm/.config/home-manager";
+      package = pkgs.unstable.nh;
     };
 
     ssh.extraConfig = # sshconf
