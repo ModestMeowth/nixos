@@ -14,8 +14,8 @@
       experimental-features = [ "nix-command" "flakes" ];
 
       auto-optimise-store = true;
-      keep-outputs = true;
-      keep-derivations = false;
+      keep-outputs = false;
+      keep-derivations = true;
       cores = 0;
       max-jobs = "auto";
 
