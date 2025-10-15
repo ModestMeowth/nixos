@@ -1,10 +1,8 @@
-{ inputs, pkgs, ... }: {
+{ inputs, lib, pkgs, ... }: {
   system.stateVersion = "25.05";
 
   nix = {
     package = pkgs.nix;
-
-    channel.enable = false;
 
     registry = {
       stable.flake = inputs.nixpkgs;

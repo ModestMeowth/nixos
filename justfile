@@ -1,5 +1,4 @@
 BUILD_HOST := "pwnyboy"
-OPTS := "--builders " + BUILD_HOST
 
 default:
   just --choose --justfile "{{ justfile() }}"
@@ -11,25 +10,25 @@ switch: git-pull os-switch home-switch
 test: git-pull os-test home-test
 
 os-build: git-pull
-  nh os build {{ OPTS }} .
+  nh os build --build-host {{ BUILD_HOST }} .
 
 home-build: git-pull
-  nh home build {{ OPTS }} .
+  nh home build --builders {{ BUILD_HOST }} .
 
 os-switch: git-pull
-  nh os switch {{ OPTS }} .
+  nh os switch --build-host {{ BUILD_HOST }} .
 
 home-switch: git-pull
-  nh home switch {{ OPTS }} .
+  nh home switch --builders {{ BUILD_HOST }} .
 
 os-test: git-pull
-  nh os test {{ OPTS }} .
+  nh os test --build-host {{ BUILD_HOST }} .
 
 home-test: git-pull
-  nh home test {{ OPTS }} .
+  nh home test --builders {{ BUILD_HOST }} .
 
 boot: git-pull
-  nh os boot {{ OPTS }} .
+  nh os boot --build-host {{ BUILD_HOST }} .
 
 git-pull:
   - git stash

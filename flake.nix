@@ -16,7 +16,7 @@
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    wsl.url = "github:nix-community/NixOS-WSL";
+    wsl.url = "github:nix-community/NixOS-WSL/release-25.05";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     nixvim.url = "github:nix-community/nixvim";

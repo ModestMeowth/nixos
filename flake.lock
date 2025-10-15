@@ -238,11 +238,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1760139962,
-        "narHash": "sha256-4xggC56Rub3WInz5eD7EZWXuLXpNvJiUPahGtMkwtuc=",
+        "lastModified": 1760423683,
+        "narHash": "sha256-Tb+NYuJhWZieDZUxN6PgglB16yuqBYQeMJyYBGCXlt8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7e297ddff44a3cc93673bb38d0374df8d0ad73e4",
+        "rev": "a493e93b4a259cd9fea8073f89a7ed9b1c5a1da2",
         "type": "github"
       },
       "original": {
@@ -291,11 +291,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1760353389,
-        "narHash": "sha256-/NLkyQww0DEkGqC6drAUK5MEFhhygibv8tyNGpWzR3E=",
+        "lastModified": 1760472915,
+        "narHash": "sha256-8o8VoHB5IRiK+HmO387ICkkI5npIbDAoIqaIwIAy10E=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "69d72bb82d7ba1904df47cf092ce1d4c88448001",
+        "rev": "32a3fa118d187dc9c88f35a78e763a5b895b6227",
         "type": "github"
       },
       "original": {
@@ -310,11 +310,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1760416581,
-        "narHash": "sha256-vhARPqjW9EXsVne+0pMDZJe6mJJLv3vLNmsrtyKHeQo=",
+        "lastModified": 1760489512,
+        "narHash": "sha256-qXVEVWS+XpYtf6g5cgBzmP2qXEOkG0LgnA3gxFGPubI=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "61133bdfc92dd04e6225dd17adc396792c6d579f",
+        "rev": "122b6187f7bc1163c3c406d6a88d53d1e3dfe39e",
         "type": "github"
       },
       "original": {
@@ -451,15 +451,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1760401123,
-        "narHash": "sha256-+SqngIVSellamVTFUnSVn+tGEGJZ4OSmbQvd7MxpGwQ=",
+        "lastModified": 1760402075,
+        "narHash": "sha256-cT9te/Bo+3GLZ+3h6WC45rqwQ8jBEOwXrQOpKb9SkY8=",
         "owner": "nix-community",
         "repo": "NixOS-WSL",
-        "rev": "59bf0375c5db92ef19456e7a659b627adb675fe2",
+        "rev": "729e9f67eede9d915adbc554e22218b91446a8ae",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
+        "ref": "release-25.05",
         "repo": "NixOS-WSL",
         "type": "github"
       }
