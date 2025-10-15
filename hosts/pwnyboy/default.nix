@@ -60,10 +60,6 @@ in {
 
     fwupd.enable = true;
 
-    nix-serve.enable = true;
-    nix-serve.secretKeyFile = config.sops.secrets."cache-priv-key".path;
-    nix-serve.openFirewall = true;
-
     samba.enable = true;
     samba.openFirewall = true;
 
