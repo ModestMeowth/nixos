@@ -1,4 +1,8 @@
-BUILD_HOST := "pwnyboy"
+buildhost := "pwnyboy"
+hostname := `hostname`
+
+os_opts := if buildhost == hostname { "" } else { "--build-host " + buildhost }
+hm_opts := if buildhost == hostname { "" } else { "--builders " + buildhost }
 
 default:
   just --choose --justfile "{{ justfile() }}"
@@ -10,25 +14,25 @@ switch: git-pull os-switch home-switch
 test: git-pull os-test home-test
 
 os-build: git-pull
-  nh os build --build-host {{ BUILD_HOST }} .
+  nh os build {{ os_opts }} .
 
 home-build: git-pull
-  nh home build --builders {{ BUILD_HOST }} .
+  nh home build {{ hm_opts }} .
 
 os-switch: git-pull
-  nh os switch --build-host {{ BUILD_HOST }} .
+  nh os switch {{ os_opts }} .
 
 home-switch: git-pull
-  nh home switch --builders {{ BUILD_HOST }} .
+  nh home switch {{ hm_opts }} .
 
 os-test: git-pull
-  nh os test --build-host {{ BUILD_HOST }} .
+  nh os test {{ os_opts }} .
 
 home-test: git-pull
-  nh home test --builders {{ BUILD_HOST }} .
+  nh home test {{ hm_opts }}
 
 boot: git-pull
-  nh os boot --build-host {{ BUILD_HOST }} .
+  nh os boot {{ os_opts }} .
 
 git-pull:
   - git stash
