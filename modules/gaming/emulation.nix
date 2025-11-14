@@ -18,7 +18,7 @@ in {
     retroarch-assets
     retroarch-joypad-autoconfig
     pcsx2
-    unstable.dolphin-emu
+    dolphin-emu
     azahar
   ]);
 }
