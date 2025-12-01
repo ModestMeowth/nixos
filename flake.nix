@@ -25,7 +25,7 @@
     let
       mkPkgs = {
           system ? "x86_64-linux"
-        , additionalConfig ? [ ]
+        , additionalConfig ? { }
       }:
         import inputs.nixpkgs {
           inherit system;

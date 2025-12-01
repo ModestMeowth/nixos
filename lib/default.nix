@@ -2,8 +2,8 @@
   mkHost = {
       hostname
     , system ? "x86_64-linux"
+    , additionalConfig ? { }
     , additionalModules ? [ ]
-    , additionalConfig ? [ ]
   }:
     inputs.nixpkgs.lib.nixosSystem {
       pkgs = mkPkgs {
