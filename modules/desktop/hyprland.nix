@@ -23,7 +23,7 @@
     kitty
     libnotify
     mako
-    unstable.walker
+    walker
     waybar
     wl-clipboard
   ];

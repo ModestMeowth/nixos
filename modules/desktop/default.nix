@@ -26,7 +26,7 @@
 
   environment.systemPackages = with pkgs; [
     pwvucontrol
-    unstable.wiremix
+    wiremix
     xdg-utils
   ];
 
