@@ -58,4 +58,6 @@ in {
     ffxiv.enable = true;
     steam.enable = true;
   };
+
+  virtualisation.docker.enable = true;
 }

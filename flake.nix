@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.11";
     unstable.url = "nixpkgs/nixos-unstable";
-    nur.url = "nur";
+    # nur.url = "nur";
 
     nixdb.url = "github:nix-community/nix-index-database";
 
@@ -32,7 +32,7 @@
           config = { allowUnfree = true; } // additionalConfig;
           overlays = with inputs;
             [
-              nur.overlays.default
+              # nur.overlays.default
               (final: _: {
                 unstable = import inputs.unstable {
                   inherit (final) system;

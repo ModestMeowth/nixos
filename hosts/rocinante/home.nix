@@ -7,7 +7,8 @@ in {
 
   programs = {
     ghostty.enable = true;
-    firefox.enable = true;
+    # firefox.enable = true;
+    chromium.enable = true;
   };
 
   services.syncthing.enable = true;
