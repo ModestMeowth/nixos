@@ -25,7 +25,7 @@ in {
       interface = "${bridge}";
     };
 
-    nameservers = [ "${cidr}.1" "1.1.1.1" ];
+    nameservers = [ "1.1.1.1" ];
 
     firewall = {
       trustedInterfaces = [ "tailscale0" "docker0" ];
@@ -33,15 +33,11 @@ in {
       allowedTCPPorts = [
         80
         443 # HTTP
-        53
-        853 # DNS over TCP
-        5000 # nix-serve
         8123 # HomeAssistant
         22000 # Syncthing
       ];
 
       allowedUDPPorts = [
-        53 # DNS
         22000
         21027 # Syncthing
       ];
