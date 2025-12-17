@@ -26,9 +26,6 @@ in {
 
     chromium = {
       package = (pkgs.unstable.chromium.override {
-        commandLineArgs = [
-          "--enable-features=Vulkan"
-        ];
         enableWideVine = true;
       });
       extensions = [
