@@ -28,14 +28,14 @@
         , additionalConfig ? { }
       }:
         import inputs.nixpkgs {
-          inherit system;
+          system = system;
           config = { allowUnfree = true; } // additionalConfig;
           overlays = with inputs;
             [
               # nur.overlays.default
               (final: _: {
                 unstable = import inputs.unstable {
-                  inherit (final) system;
+                  system = system;
                   config = { allowUnfree = true; } // additionalConfig;
                 };
               })

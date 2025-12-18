@@ -12,6 +12,7 @@
       specialArgs = { inherit inputs hostname; };
       modules = with inputs;
         [
+          { nixpkgs.hostPlatform = system; }
           sops-nix.nixosModules.sops
           nixdb.nixosModules.nix-index
           ../modules/shared
