@@ -22,7 +22,6 @@ in {
 
   xdg.configFile = {
     "bat".source = mkSymlink "bat";
-    "btop/btop.conf".source = mkSymlink "btop/btop.conf";
     "git".source = mkSymlink "git";
     "fish/localconfig.fish".source = mkSymlink "fish/config.fish";
     "starship.toml".source = mkSymlink "starship/starship.toml";
