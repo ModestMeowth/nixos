@@ -3,12 +3,16 @@ let
   mkSymlink = path:
     config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${path}";
 in {
-  home.packages = with pkgs; [ bitwarden-desktop unstable.bootdev-cli virt-manager ];
+  home.packages = with pkgs; [
+    bitwarden-desktop
+    unstable.bootdev-cli
+    unstable.google-chrome
+    virt-manager ];
 
   programs = {
     ghostty.enable = true;
     # firefox.enable = true;
-    chromium.enable = true;
+    #chromium.enable = true;
   };
 
   services.syncthing.enable = true;
