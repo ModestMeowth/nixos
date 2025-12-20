@@ -4,7 +4,6 @@
     bat-extras.batman
     bat-extras.batdiff
     bat-extras.prettybat
-    btop
     curl
     diff-so-fancy
     direnv
@@ -13,6 +12,7 @@
     fzf
     gh
     git
+    htop
     just
     jq
     killall
@@ -32,8 +32,12 @@
     taplo
   ];
 
-  programs.vim = {
-    enable = true;
-    defaultEditor = true;
+  programs = {
+    htop.enable = true;
+
+    vim = {
+      enable = true;
+      defaultEditor = true;
+    };
   };
 }

@@ -1,6 +1,5 @@
 status is-interactive; and begin
     set -g fish_greeting
-    fish_config theme choose "Dracula"
 
     if type -q starship
         starship init fish | source

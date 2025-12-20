@@ -8,6 +8,8 @@
       ripgrep.enable = true;
     };
 
+    colorschemes.catppuccin.settings.integrations.snacks = true;
+
     plugins.snacks = {
       enable = true;
       settings = {

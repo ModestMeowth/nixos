@@ -13,6 +13,8 @@ in {
     dracula-icon-theme
     libsForQt5.qt5ct
     nordzy-cursor-theme
+    catppuccin-gtk
+    catppuccin-cursors
   ];
 
   environment.variables = {

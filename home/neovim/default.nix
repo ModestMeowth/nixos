@@ -4,6 +4,7 @@ let
 in {
   imports = [
     ./cmp.nix
+    ./diagnostics.nix
     ./fidget.nix
     ./lsp.nix
     ./notes.nix
@@ -19,7 +20,10 @@ in {
     vimAlias = true;
     luaLoader.enable = true;
 
-    colorschemes.dracula.enable = true;
+    colorschemes.catppuccin = {
+      enable = true;
+      settings.flavour = "macchiato";
+    };
 
     clipboard = {
       register = "unnamedplus";

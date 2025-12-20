@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: let
+{ config, lib, ... }: let
   mkSymlink = path: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${path}";
   HOME = config.home.homeDirectory;
 in {
@@ -12,29 +12,6 @@ in {
       ''
         source ${HOME}/.config/fish/localconfig.fish
       '';
-  };
-
-  # Browsers
-  programs = {
-    firefox = {
-      package = pkgs.unstable.firefox;
-    #   profiles.default.extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-    #     bitwarden
-    #     ublock-origin
-    #   ];
-    };
-
-    chromium = {
-      package = (pkgs.unstable.chromium.override {
-        enableWideVine = true;
-      });
-      extensions = [
-        "nngceckbapebfimnlniiiahkandclblb" # bitwarden
-        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock
-        "mnjggcdmjocbbbhaepdhchncahnbgone" # sponsorblock
-        "mmjbdbjnoablegbkcklggeknkfcjkjia" # custom new tab url
-      ];
-    };
   };
 
   home.file = {

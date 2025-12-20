@@ -5,14 +5,12 @@
   ];
 
   boot = {
-    plymouth =
-    let theme = "cybernetic";
-    in {
+    plymouth = {
       enable = true;
-      theme = theme;
+      theme = "catppuccin-macchiato";
       themePackages = [
-        (pkgs.adi1090x-plymouth-themes.override {
-          selected_themes = [ theme ];
+        (pkgs.catppuccin-plymouth.override {
+          variant = "macchiato";
         })
       ];
     };
