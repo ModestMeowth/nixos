@@ -51,7 +51,7 @@ in {
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraSetFlags = [ "--ssh" "--webclient" "--accept-routes" ];
+      extraSetFlags = [ "--ssh" "--webclient" ];
     };
 
     fwupd.enable = true;
