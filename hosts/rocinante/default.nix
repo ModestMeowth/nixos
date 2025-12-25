@@ -31,7 +31,8 @@ in {
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraSetFlags = [ "--ssh" "--webclient" ];
+      extraUpFlags = [ "--ssh" ];
+      extraSetFlags = [ "--webclient" ];
     };
 
     smartd.enable = true;
