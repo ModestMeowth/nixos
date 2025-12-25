@@ -36,7 +36,8 @@
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
       authKeyParameters.preauthorized = true;
-      extraSetFlags = [ "--ssh" "--webclient" ];
+      extraUpFlags = [ "--ssh" ];
+      extraSetFlags = [ "--webclient" ];
     };
   };
 
