@@ -16,6 +16,7 @@
 
     wsl.url = "github:nix-community/NixOS-WSL/release-25.11";
     wsl.inputs.nixpkgs.follows = "nixpkgs";
+    wsl.inputs.flake-compat.follows = "";
 
     nixvim.url = "github:nix-community/nixvim";
   };
