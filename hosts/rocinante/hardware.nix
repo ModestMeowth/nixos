@@ -65,4 +65,9 @@
       options = [ "dmask=0077" "fmask=0177" ];
     };
   };
+
+  shares.pwnyboy-media = {
+    enable = true;
+    mountpoint = "/persist/media";
+  };
 }
