@@ -1,8 +1,5 @@
 { config, modulesPath, pkgs, ... }: {
-  imports = [ ("${modulesPath}/installer/scan/not-detected.nix") ];
-
-  # system = "x86_64-linux";
-
+  imports = [ "${modulesPath}/installer/scan/not-detected.nix" ];
   boot = {
     lanzaboote.enable = true;
 
