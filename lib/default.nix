@@ -15,6 +15,7 @@
           { nixpkgs.hostPlatform = system; }
           sops-nix.nixosModules.sops
           nixdb.nixosModules.nix-index
+          stylix.nixosModules.stylix
           ../modules/shared
           ../modules/cli-tui
           ../hosts/${hostname}
@@ -38,6 +39,7 @@
       modules = with inputs; [
         sops-nix.homeManagerModules.sops
         nixvim.homeModules.nixvim
+        stylix.homeModules.stylix
         ../home
       ] ++ additionalModules;
     };

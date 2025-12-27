@@ -75,13 +75,8 @@
       };
 
       homeConfigurations = {
-        "mm@rocinante" = mkHome {
-            hostname = "rocinante";
-            additionalModules = with inputs; [
-              stylix.homeModules.stylix
-            ];
-          };
-        "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
+        "mm@rocinante" = mkHome { hostname = "rocinante"; };
+        "mm@pwnyboy" = mkHome { hostname = "pwnyboy";};
         "mm@videodrome" = mkHome { hostname = "videodrome"; };
       };
     };
