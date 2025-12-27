@@ -8,10 +8,11 @@
         "modules-left": [ "hyprland/workspaces" ],
         "modules-center": [ "clock" ],
         "modules-right": [
-            "tray",
-            "network",
             "wireplumber",
-            "battery"
+            "network",
+            "backlight",
+            "battery",
+            "tray"
         ],
 
         "hyprland/workspaces": {
@@ -19,12 +20,6 @@
             "format": "{icon}",
             "format-icons": {
                 "default": "",
-                "1": "1",
-                "2": "2",
-                "3": "3",
-                "4": "4",
-                "5": "5",
-                "active": "󱓻"
             },
             "persistent-workspaces": {
                 "1": [ ],
@@ -36,9 +31,8 @@
         },
 
         "clock": {
-            "format": "{:%A %H:%M}",
-            "format-alt": "{:%d %B %W%V %Y}",
-            "tooltip": false
+            "format": "  {:%H:%M    %a, %b %d}",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         },
 
         "network": {
@@ -55,22 +49,24 @@
             "on-click": "hyprctl dispatch -- togglespecialworkspace networkManager"
         },
 
+        "backlight": {
+            "device": "amdgpu_bl1",
+            "format": "{icon}",
+            "format-icons": ["", "", "", "", "", "", "", "", ""]
+        },
+
         "battery": {
-            "format": "{capacity}% {icon}",
-            "format-full": "Charged ",
-            "format-discharging": "{capacity}% {icon}",
-            "format-charging": "{capacity}% {icon}",
-            "format-plugged": "",
+            "states": {
+              "warning": 30,
+              "critical": 15
+            },
+            "format": "{icon}",
+            "format-charging": "{icon}",
+            "format-plugged": "{icon}",
+            "format-alt": "{icon}",
             "format-icons": {
                 "charging": [ "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅" ],
                 "default": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀","󰂁", "󰂂", "󰁹" ],
-            },
-            "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-            "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
-            "interval": 5,
-            "states": {
-              "warning": 20,
-              "critical": 10
             }
         },
         "bluetooth": {

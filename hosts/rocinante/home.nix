@@ -20,7 +20,10 @@ in {
   xsession.enable = true;
 
   xdg.configFile = {
-    "background.jpeg".source = mkSymlink "wallpaper/nebula.jpeg";
+    "nebula.jpeg".source = mkSymlink "wallpaper/nebula.jpeg";
+    "Cat.png".source = mkSymlink "wallpaper/Cat.png";
+    "dark-cat-rosewater.png".source = mkSymlink "wallpaper/dark-cat-rosewater.png";
+    "face.png".source = mkSymlink "wallpaper/face.png";
     "ghostty".source = mkSymlink "ghostty";
     "hypr".source = mkSymlink "hypr";
     "mako".source = mkSymlink "mako";

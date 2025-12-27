@@ -24,6 +24,17 @@ in {
   };
 
   services = {
+    auto-cpufreq = {
+      enable = true;
+      settings.battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      settings.charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+    };
     chrony.enable = true;
     fwupd.enable = true;
 

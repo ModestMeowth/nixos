@@ -1,51 +1,101 @@
+@define-color text      #cad3f5;
+@define-color surface0  #363a4f;
+
+@define-color blue      #8aadf4;
+@define-color lavendar  #b7bdf8;
+@define-color sapphire  #7dc4e4;
+@define-color sky       #91d7e3;
+@define-color green     #a6da95;
+@define-color yellow    #eed49f;
+@define-color peach     #f5a97f;
+@define-color maroon    #ee00a0;
+@define-color red       #ed8796;
+
 * {
-    border: none;
-    border-radius: 0;
     min-height: 0;
-    font-family: "Serif";
+    font-family: "0xProto Nerd Font";
     font-size: 14px;
 }
 
 window#waybar {
-    opacity: 0.9;
-    background-color: #282a36;
-    color: #f8f8f2;
-    border-bottom: 2px solid #363447;
+    background: transparent;
+    color: @text;
+    margin: 5px 5px;
 }
 
 #workspaces {
-    margin-left: 7px;
+    border-radius: 1rem;
+    margin: 5px;
+    background-color: @surface0;
+    margin-left: 1rem;
 }
 
-#workspace button {
-    all: initial;
-    padding: 2px 6px;
-    margin-right: 3px;
-    background: #363447;
+#workspaces button {
+    color: @lavendar;
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+#workspaces button.active {
+    color: @sky;
+    border-radius: 1rem;
 }
 
 #workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-    background-image: linear-gradient(0deg, #44475a, #282a36);
-}
-
-#workspaces button:active {
-    background-image: linear-gradient(0deg, #bd93f9, #282a36);
-}
-
-#workspaces button.urgent {
-    background-image: linear-gradient(0deg, #ff5555, #282a36);
+    color: @sapphire;
+    border-radius: 1rem;
 }
 
 #battery,
-#bluetooth,
+#backlight,
 #clock,
 #network,
 #tray,
 #wireplumber {
-    min-width: 16px;
-    margin-right: 18px;
+    background-color: @surface0;
+    padding: 0.5rem 1rem;
+    margin: 5px 0;
+}
+
+#clock {
+    color: @lavendar;
+    border-radius: 1rem;
+    margin-right: 1rem;
+}
+
+#battery {
+    color: @green;
+}
+
+#battery.charging {
+    color: @green;
+}
+
+#battery.warning:not(.charging) {
+    color: @red;
+}
+
+#backlight {
+    color: @yellow;
+}
+
+#backlight, #battery {
+    border-radius: 0;
+}
+
+#network {
+    color: @peach;
+}
+
+#wireplumber {
+    color: @maroon;
+    border-radius: 1rem 0px 0px 1rem;
+    margin-left: 1rem;
+}
+
+#tray {
+    margin-right: 1rem;
+    border-radius: 0px 1rem 1rem 0px;
 }
 
 tooltip {

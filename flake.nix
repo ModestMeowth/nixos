@@ -19,6 +19,7 @@
     wsl.inputs.flake-compat.follows = "";
 
     nixvim.url = "github:nix-community/nixvim";
+    stylix.url = "github:nix-community/stylix/release-25.11";
   };
 
   outputs = inputs:
@@ -48,6 +49,7 @@
           additionalConfig = { rocmSupport = true; };
           additionalModules = with inputs; [
             lanzaboote.nixosModules.lanzaboote
+            stylix.nixosModules.stylix
             ./modules/shared/physical
             ./modules/desktop
             ./modules/gaming
@@ -73,7 +75,12 @@
       };
 
       homeConfigurations = {
-        "mm@rocinante" = mkHome { hostname = "rocinante"; };
+        "mm@rocinante" = mkHome {
+            hostname = "rocinante";
+            additionalModules = with inputs; [
+              stylix.homeModules.stylix
+            ];
+          };
         "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
         "mm@videodrome" = mkHome { hostname = "videodrome"; };
       };
