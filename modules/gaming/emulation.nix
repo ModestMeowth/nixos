@@ -11,6 +11,7 @@ in {
         dolphin
         fceumm
         flycast
+        genesis-plus-gx
         mgba
         parallel-n64
         swanstation
