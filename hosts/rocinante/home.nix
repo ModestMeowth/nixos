@@ -27,6 +27,7 @@ in {
     "ghostty".source = mkSymlink "ghostty";
     "hypr".source = mkSymlink "hypr";
     "mako".source = mkSymlink "mako";
+    "uwsm".source = mkSymlink "uwsm";
     "walker".source = mkSymlink "walker";
     "waybar".source = mkSymlink "waybar";
   };

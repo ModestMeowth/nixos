@@ -1,5 +1,5 @@
-{ config, lib, pkgs, ... }: let
-  mkSymlink = path: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${path}";
+{ config, lib, ... }: let
+  mkSymlink = p: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${p}";
   HOME = config.home.homeDirectory;
 in {
   imports = [ ./neovim ];
@@ -13,6 +13,8 @@ in {
         source ${HOME}/.config/fish/localconfig.fish
       '';
   };
+
+  services.ssh-agent.enable = true;
 
   home.file = {
     ".editorconfig".source = mkSymlink "editorconfig/editorconfig";
