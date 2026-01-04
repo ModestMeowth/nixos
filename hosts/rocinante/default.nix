@@ -8,10 +8,8 @@ in {
 
   networking = {
     hostName = "rocinante";
-
-    search = [ "cat-alkaline.ts.net" "home.arpa" ];
-
-    firewall.trustedInterfaces = [ "tailscale0" "docker0" ];
+    search = [ "threefinger.farm" ];
+    firewall.trustedInterfaces = [ "tailscale0" ];
 
     networkmanager = {
       enable = true;

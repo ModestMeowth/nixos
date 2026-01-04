@@ -17,6 +17,7 @@ in {
           "ecb174755f12819ece61d5e729e2f41c8b34820f2210b2ae9c226188b3864b34";
 
         ipv4.method = "auto";
+        ipv4.routing-rules = "priority 1000 to 192.168.0.0/24 table 254";
         ipv6.addr-gen-mode = "default";
         ipv6.method = "auto";
       };
