@@ -1,9 +1,4 @@
-{ config, lib, pkgs, ... }:
-let
-  bridge = "bridge0";
-  cidr = "192.168.0";
-  prefix = 24;
-in {
+{ config, lib, pkgs, ... }: {
   imports = [
     ./hardware.nix
     ./secrets.nix
@@ -11,24 +6,30 @@ in {
 
   networking = {
     hostName = "pwnyboy";
-    bridges."${bridge}".interfaces = [ "enp3s0" ];
-
+    search = [ "threefinger.farm" ];
     useDHCP = false;
 
-    interfaces."${bridge}".ipv4.addresses = [{
-      address = "${cidr}.30";
-      prefixLength = prefix;
-    }];
-
-    defaultGateway = {
-      address = "${cidr}.1";
-      interface = "${bridge}";
+    bonds.bond0 = {
+      interfaces = [ "enp3s0" "enp4s0" ];
+      driverOptions = {
+        miimon = "100";
+        mode = "active-backup";
+      };
     };
 
-    nameservers = [ "1.1.1.1" ];
+    bridges.bridge0.interfaces = [ "bond0" ];
+
+    interfaces.bridge0 = {
+      macAddress = "a8:b8:e0:05:a6:02";
+      useDHCP = true;
+    };
+
+    localCommands = ''
+      ip rule add to 192.168.0.0/24 table main priority 1000
+    '';
 
     firewall = {
-      trustedInterfaces = [ "tailscale0" "docker0" ];
+      trustedInterfaces = [ "tailscale0" ];
 
       allowedTCPPorts = [
         80
@@ -51,8 +52,7 @@ in {
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraUpFlags = [ "--ssh" ];
-      extraSetFlags = [ "--webclient" ];
+      extraUpFlags = [ "--ssh" "--accept-routes" "--web-client" ];
     };
 
     fwupd.enable = true;
