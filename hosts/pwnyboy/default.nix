@@ -24,9 +24,9 @@
       useDHCP = true;
     };
 
-    # localCommands = ''
-    #   ip rule add to 192.168.0.0/24 table main priority 1000
-    # '';
+    localCommands = ''
+      ip rule add to 192.168.0.0/24 table main priority 1000
+    '';
 
     firewall = {
       trustedInterfaces = [ "tailscale0" ];
