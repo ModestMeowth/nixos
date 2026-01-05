@@ -40,8 +40,9 @@ in {
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraUpFlags = [ "--ssh" ];
-      extraSetFlags = [ "--webclient" ];
+      extraUpFlags = [ "--ssh" "--operator=mm" "--accept-routes" "--reset" ];
+      extraSetFlags = [ "--ssh" "--operator=mm" "--accept-routes" ];
+      useRoutingFeatures = "client";
     };
 
     smartd.enable = true;
