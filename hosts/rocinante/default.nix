@@ -45,6 +45,8 @@ in {
       useRoutingFeatures = "client";
     };
 
+    pcscd.enable = true;
+
     smartd.enable = true;
     fprintd.enable = true;
 
@@ -61,12 +63,12 @@ in {
   };
 
   programs.kdeconnect.enable = true;
+  programs.yubikey-manager.enable = true;
 
   environment.systemPackages = with pkgs; [ smartmontools samba ];
 
   gaming = {
     emulation.enable = true;
-    ffxiv.enable = true;
     steam.enable = true;
   };
 

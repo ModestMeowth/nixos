@@ -22,12 +22,12 @@ menu() {
 }
 
 show_power_menu() {
-    case $(menu "System" "  Lock\n󰤄  Suspend\n  Relaunch\n󰜉  Restart\n󰐥  Shutdown") in
+    case $(menu "System" "  Lock\n󰩈  Logout\n󰤄  Suspend\n  Relaunch\n󰜉  Restart\n󰐥  Shutdown") in
         *Lock*) hyprlock ;;
-        *Suspend*) systemctl suspend ;;
         *Logout*) hyprctl dispatch exit ;;
         *Relaunch*) uwsm stop ;;
         *Restart*) systemctl reboot ;;
+        *Suspend*) systemctl suspend ;;
         *Shutdown*) systemctl poweroff ;;
     esac
 }

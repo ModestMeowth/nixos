@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
-  mkSymlink = path:
-    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${path}";
+  mkSymlink = p:
+    config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${p}";
 in {
   home.packages = with pkgs; [
     bitwarden-desktop
