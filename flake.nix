@@ -27,6 +27,7 @@
       mkPkgs = {
           system ? "x86_64-linux"
         , additionalConfig ? { }
+        , additionalOverlays ? []
       }:
         import inputs.nixpkgs {
           system = system;
@@ -36,9 +37,10 @@
                 unstable = import inputs.unstable {
                   system = system;
                   config = { allowUnfree = true; } // additionalConfig;
+                  overlays = additionalOverlays;
                 };
               })
-            ];
+            ] ++ additionalOverlays;
         };
 
       customLib = import ./lib { inherit inputs mkPkgs; };
@@ -75,7 +77,18 @@
       };
 
       homeConfigurations = {
-        "mm@rocinante" = mkHome { hostname = "rocinante"; };
+        "mm@rocinante" = mkHome {
+            hostname = "rocinante";
+            additionalOverlays = [
+              (self: super: {
+                google-chrome = super.google-chrome.override {
+                  commandLineArgs = [
+                    "--enable-features=VaapiVideoDecodeLinuxGLVaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo"
+                  ];
+                };
+              })
+            ];
+        };
         "mm@pwnyboy" = mkHome { hostname = "pwnyboy";};
         "mm@videodrome" = mkHome { hostname = "videodrome"; };
       };

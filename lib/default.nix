@@ -4,11 +4,14 @@
     , system ? "x86_64-linux"
     , additionalConfig ? { }
     , additionalModules ? [ ]
+    , additionalOverlays ? [ ]
   }:
     inputs.nixpkgs.lib.nixosSystem {
       pkgs = mkPkgs {
         additionalConfig = additionalConfig;
-        system = system; };
+        additionalOverlays = additionalOverlays;
+        system = system;
+      };
       specialArgs = { inherit inputs hostname; };
       modules = with inputs;
         [
@@ -28,11 +31,13 @@
     , system ? "x86_64-linux"
     , additionalConfig ? { }
     , additionalModules ? [ ]
+    , additionalOverlays ? [ ]
   }:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = mkPkgs {
         system = system;
         additionalConfig = additionalConfig;
+        additionalOverlays = additionalOverlays;
       };
 
       extraSpecialArgs = { inherit inputs hostname; };
