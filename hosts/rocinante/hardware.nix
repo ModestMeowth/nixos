@@ -1,4 +1,5 @@
-{ config, modulesPath, pkgs, ... }: {
+{ config, modulesPath, pkgs, ... }:
+{
   imports = [ "${modulesPath}/installer/scan/not-detected.nix" ];
   boot = {
     lanzaboote.enable = true;
@@ -61,6 +62,11 @@
       fsType = "vfat";
       options = [ "dmask=0077" "fmask=0177" ];
     };
+  };
+
+  services.sanoid.datasets = {
+    "zroot/persist/home/mm".use_template = [ "default" ];
+    "zroot/persist/home/root".use_template = [ "default" ];
   };
 
   shares.pwnyboy-media = {

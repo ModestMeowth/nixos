@@ -15,13 +15,12 @@
     zfs.trim.enable = true;
 
     sanoid.enable = true;
-    sanoid.templates = {
-      default.autoprune = true;
-      default.autosnap = true;
-
-      default.hourly = 36;
-      default.daily = 30;
-      default.monthly = 3;
+    sanoid.templates.default = {
+      autoprune = true;
+      autosnap = true;
+      hourly = 24;
+      daily = 30;
+      monthly = 12;
     };
 
     smartd.enable = true;

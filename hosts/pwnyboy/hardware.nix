@@ -79,9 +79,15 @@ in {
   boot.zfs.extraPools = [ "docker" "persist" ];
 
   services.sanoid.datasets = {
-    "${persist}".useTemplate = [ "default" ];
-    "persist/backups".useTemplate = [ "default" ];
-    "persist/cloud".useTemplate = [ "default" ];
+    "zroot/persist/home/mm".use_template = [ "default" ];
+    "zroot/persist/home/root".use_template = [ "default" ];
+
+    "persist/backups/emulation/saves".use_template = [ "default" ];
+    "persist/backups/signal".use_template = [ "default" ];
+    "persist/cloud/photos".use_template = [ "default" ];
+    "persist/data".use_template = [ "default" ];
+
+    "docker/config".use_template = [ "default" ];
   };
 
   shares = { ha-config.enable = true; };
