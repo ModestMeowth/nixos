@@ -24,10 +24,6 @@
       useDHCP = true;
     };
 
-    localCommands = ''
-      ip rule add to 192.168.0.0/24 table main priority 1000
-    '';
-
     firewall = {
       trustedInterfaces = [ "tailscale0" ];
 
@@ -52,8 +48,8 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraUpFlags = [ "--ssh" "--operator=mm" "--accept-routes" "--reset" ];
-      extraSetFlags = [ "--ssh" "--operator=mm" "--accept-routes" ];
+      extraUpFlags = [ "--ssh" "--operator=mm" "--reset" ];
+      extraSetFlags = [ "--ssh" "--operator=mm" ];
       useRoutingFeatures = "client";
       openFirewall = true;
     };
