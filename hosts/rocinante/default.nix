@@ -40,8 +40,8 @@ in {
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraUpFlags = [ "--ssh" "--operator=mm" "--accept-routes" "--reset" ];
-      extraSetFlags = [ "--ssh" "--operator=mm" "--accept-routes" ];
+      extraUpFlags = [ "--ssh" "--operator=mm" "--reset" ];
+      extraSetFlags = [ "--ssh" "--operator=mm" ];
       useRoutingFeatures = "client";
     };
 
