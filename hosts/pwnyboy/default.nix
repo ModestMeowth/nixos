@@ -19,10 +19,21 @@
 
     bridges.bridge0.interfaces = [ "bond0" ];
 
-    interfaces.bridge0 = {
-      macAddress = "a8:b8:e0:05:a6:02";
-      useDHCP = true;
+    interfaces.bridge0.ipv4.addresses = [
+      {
+        address = "192.168.0.30";
+        prefixLength = 24;
+      }
+    ];
+
+    defaultGateway = {
+      address = "192.168.0.1";
+      interface = "bridge0";
     };
+
+    nameservers = [
+      "192.168.0.1"
+    ];
 
     firewall = {
       trustedInterfaces = [ "tailscale0" ];
