@@ -18,7 +18,7 @@ in {
 
   home.file = {
     ".editorconfig".source = mkSymlink "editorconfig/editorconfig";
-    ".local/bin".source = mkSymlink "bin";
+    ".local/bin/mosh".source = mkSymlink "bin/mosh";
     ".tmux.conf".source = mkSymlink "tmux/tmux.conf";
   };
 

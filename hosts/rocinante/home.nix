@@ -19,6 +19,12 @@ in {
 
   xsession.enable = true;
 
+  home.file = {
+    ".local/bin/powermenu".source = mkSymlink "bin/powermenu";
+    ".local/bin/toggle-dnd".source = mkSymlink "bin/toggle-dnd";
+    ".local/bin/toggle-idle".source = mkSymlink "bin/toggle-idle";
+  };
+
   xdg.configFile = {
     "nebula.jpeg".source = mkSymlink "wallpaper/nebula.jpeg";
     "Cat.png".source = mkSymlink "wallpaper/Cat.png";
