@@ -19,12 +19,16 @@
 
     bridges.bridge0.interfaces = [ "bond0" ];
 
-    interfaces.bridge0.ipv4.addresses = [
-      {
-        address = "192.168.0.30";
-        prefixLength = 24;
-      }
-    ];
+    interfaces = {
+      enp3s0.wakeOnLan.enable = true;
+      enp4s0.wakeOnLan.enable = true;
+      bridge0.ipv4.addresses = [
+        {
+          address = "192.168.0.30";
+          prefixLength = 24;
+        }
+      ];
+    };
 
     defaultGateway = {
       address = "192.168.0.1";
@@ -62,6 +66,7 @@
       extraUpFlags = [ "--ssh" "--operator=mm" "--reset" ];
       extraSetFlags = [ "--ssh" "--operator=mm" ];
       useRoutingFeatures = "client";
+
       openFirewall = true;
     };
 
