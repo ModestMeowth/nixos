@@ -9,15 +9,7 @@
     search = [ "threefinger.farm" ];
     useDHCP = false;
 
-    bonds.bond0 = {
-      interfaces = [ "enp3s0" "enp4s0" ];
-      driverOptions = {
-        miimon = "100";
-        mode = "active-backup";
-      };
-    };
-
-    bridges.bridge0.interfaces = [ "bond0" ];
+    bridges.bridge0.interfaces = [ "enp3s0" "enp4s0" ];
 
     interfaces = {
       enp3s0.wakeOnLan.enable = true;
