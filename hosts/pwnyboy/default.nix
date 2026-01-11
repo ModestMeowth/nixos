@@ -35,9 +35,7 @@
       trustedInterfaces = [ "tailscale0" ];
 
       allowedTCPPorts = [
-        80
-        443 # HTTP
-        8123 # HomeAssistant
+        443
         22000 # Syncthing
       ];
 
@@ -55,8 +53,8 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraUpFlags = [ "--ssh" "--operator=mm" "--reset" ];
-      extraSetFlags = [ "--ssh" "--operator=mm" ];
+      extraUpFlags = [ "--ssh" "--accept-routes" "--operator=mm" "--reset" ];
+      extraSetFlags = [ "--ssh" "--accept-routes" "--operator=mm" ];
       useRoutingFeatures = "client";
 
       openFirewall = true;
