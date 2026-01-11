@@ -24,19 +24,19 @@
       enp4s0.wakeOnLan.enable = true;
       bridge0.ipv4.addresses = [
         {
-          address = "192.168.0.30";
+          address = "192.168.1.30";
           prefixLength = 24;
         }
       ];
     };
 
     defaultGateway = {
-      address = "192.168.0.1";
+      address = "192.168.1.1";
       interface = "bridge0";
     };
 
     nameservers = [
-      "192.168.0.1"
+      "192.168.1.1"
     ];
 
     firewall = {
