@@ -36,6 +36,11 @@
 
       allowedTCPPorts = [
         443
+        8081
+        8083 # MQTT Websocket
+        8123 # HomeAssistant
+
+        8883 # MQTT
         22000 # Syncthing
       ];
 
@@ -53,8 +58,8 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraUpFlags = [ "--ssh" "--accept-routes" "--operator=mm" "--reset" ];
-      extraSetFlags = [ "--ssh" "--accept-routes" "--operator=mm" ];
+      extraUpFlags = [ "--ssh" "--operator=mm" "--reset" ];
+      extraSetFlags = [ "--ssh" "--operator=mm" ];
       useRoutingFeatures = "client";
 
       openFirewall = true;
