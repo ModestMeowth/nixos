@@ -5,7 +5,6 @@
     ./fonts.nix
     ./users.nix
     # Samba shares
-    ./ha-config.nix
     ./pwnyboy-media.nix
   ];
 

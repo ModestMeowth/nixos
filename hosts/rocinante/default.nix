@@ -8,12 +8,10 @@ in {
 
   networking = {
     hostName = "rocinante";
-    search = [ "threefinger.farm" ];
     firewall.trustedInterfaces = [ "tailscale0" ];
 
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
       ensureProfiles.profiles = {
         "Ponyboy Bounce House".connection.interface-name = wlan;
         "Hyrule".connection.interface-name = wlan;
@@ -49,17 +47,6 @@ in {
 
     smartd.enable = true;
     fprintd.enable = true;
-
-    resolved = {
-      enable = true;
-      dnssec = "true";
-      dnsovertls = "opportunistic";
-      extraConfig = # ini
-        ''
-          [Resolve]
-          MulticastDNS=yes
-        '';
-    };
   };
 
   programs.kdeconnect.enable = true;
