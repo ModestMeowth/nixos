@@ -59,5 +59,8 @@ in {
     steam.enable = true;
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    package = pkgs.unstable.docker;
+  };
 }
