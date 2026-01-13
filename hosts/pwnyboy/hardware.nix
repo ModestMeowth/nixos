@@ -40,12 +40,6 @@ in {
     # Random-seed prevents boot on this particular NVME...
     services."systemd-boot-random-seed".enable = lib.mkForce false;
     services."systemd-random-seed".enable = lib.mkForce false;
-
-    # Nixvirt starts before ttyUSB0 is ready
-    services."nixvirt" = {
-      requires = [ "dev-ttyUSB0.device" ];
-      after = [ "dev-ttyUSB0.device" ];
-    };
   };
 
   fileSystems = {
@@ -89,6 +83,4 @@ in {
 
     "docker/config".use_template = [ "default" ];
   };
-
-  shares = { ha-config.enable = true; };
 }

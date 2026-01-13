@@ -116,17 +116,10 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ docker-compose ];
-
   virtualisation = {
-    docker.enable = true;
-    libvirtd = {
+    docker = {
       enable = true;
-      qemu = {
-        swtpm.enable = true;
-      };
+      package = pkgs.unstable.docker;
     };
   };
-
-  systemd.services."libvirt-guests".enable = lib.mkForce false;
 }
