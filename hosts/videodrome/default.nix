@@ -31,13 +31,16 @@
   }];
 
   services = {
-    tailscale = {
+    tailscale =
+      let
+        flags = [ "--ssh" "--operator=mm" ];
+      in {
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
       authKeyParameters.preauthorized = true;
-      extraUpFlags = [ "--ssh" ];
-      extraSetFlags = [ "--webclient" ];
+      extraUpFlags = flags ++ [ "--reset" ];
+      extraSetFlags = flags;
     };
   };
 

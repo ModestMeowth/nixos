@@ -34,12 +34,15 @@ in {
     chrony.enable = true;
     fwupd.enable = true;
 
-    tailscale = {
+    tailscale =
+      let
+        flags= [ "--ssh" "--operator=mm" ];
+      in {
       enable = true;
       package = pkgs.unstable.tailscale;
       authKeyFile = config.sops.secrets."tskey".path;
-      extraUpFlags = [ "--ssh" "--operator=mm" "--reset" ];
-      extraSetFlags = [ "--ssh" "--operator=mm" ];
+      extraUpFlags = flags ++ [ "--reset" ];
+      extraSetFlags = flags;
       useRoutingFeatures = "client";
     };
 
