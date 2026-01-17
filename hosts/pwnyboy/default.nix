@@ -54,7 +54,7 @@
   services = {
     chrony.enable = true;
     tailscale = let
-        flags = [ "--ssh" "--operator=mm" "--reset" ];
+        flags = [ "--ssh" "--operator=mm" ];
       in {
       enable = true;
       package = pkgs.unstable.tailscale;
