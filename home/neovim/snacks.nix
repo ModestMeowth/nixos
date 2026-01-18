@@ -65,7 +65,6 @@
     extraPackages = with pkgs; [
       fd
       ghostscript_headless
-      mermaid-cli
       sqlite
       texlive.combined.scheme-basic
     ];
