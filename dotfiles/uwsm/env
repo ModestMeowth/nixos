@@ -1,4 +1,4 @@
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
 
 export XCURSOR_SIZE=24
 export HYPRCURSOR_SIZE=24
