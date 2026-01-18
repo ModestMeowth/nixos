@@ -5,9 +5,11 @@ let
 in {
   home.packages = with pkgs; [
     bitwarden-desktop
+    signal-desktop
     unstable.bootdev-cli
     unstable.google-chrome
-    virt-manager ];
+    virt-manager
+  ];
 
   programs = {
     ghostty.enable = true;

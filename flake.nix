@@ -3,6 +3,8 @@
     nixpkgs.url = "nixpkgs/nixos-25.11";
     unstable.url = "nixpkgs/nixos-unstable";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     nixdb.url = "github:nix-community/nix-index-database";
 
     sops-nix.url = "sops-nix";
@@ -22,7 +24,8 @@
     stylix.url = "github:nix-community/stylix/release-25.11";
   };
 
-  outputs = inputs:
+  outputs =
+    { flake-parts, ...} @ inputs:
     let
       mkPkgs = {
           system ? "x86_64-linux"
@@ -44,8 +47,18 @@
         };
 
       customLib = import ./lib { inherit inputs mkPkgs; };
-    in with customLib; {
-      nixosConfigurations = {
+    in
+    with customLib; flake-parts.lib.mkFlake { inherit inputs; }
+    {
+      systems = ["x86_64-linux" "aarch64-linux"];
+
+      perSystem =
+      { pkgs, ... }:
+      {
+          formatter = pkgs.nixfmt;
+      };
+
+      flake.nixosConfigurations = {
         "rocinante" = mkHost {
           hostname = "rocinante";
           additionalConfig = { rocmSupport = true; };
@@ -76,7 +89,7 @@
         };
       };
 
-      homeConfigurations = {
+      flake.homeConfigurations = {
         "mm@rocinante" = mkHome {
             hostname = "rocinante";
             additionalOverlays = [
