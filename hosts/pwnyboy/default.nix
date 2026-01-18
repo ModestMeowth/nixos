@@ -4,6 +4,8 @@
     ./secrets.nix
   ];
 
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   networking = {
     hostName = "pwnyboy";
     search = [ "threefinger.farm" ];
