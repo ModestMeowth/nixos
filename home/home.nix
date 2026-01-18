@@ -14,7 +14,11 @@ in {
       '';
   };
 
-  services.ssh-agent.enable = true;
+  services.ssh-agent = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
 
   home.file = {
     ".editorconfig".source = mkSymlink "editorconfig/editorconfig";
