@@ -7,34 +7,34 @@ hm_opts := if buildhost == hostname { "" } else { "--builders " + buildhost }
 default:
   just --choose --justfile "{{ justfile() }}"
 
-build: git-pull os-build home-build
+build: pull os-build home-build
 
-switch: git-pull os-switch home-switch
+switch: pull os-switch home-switch
 
-test: git-pull os-test home-test
+test: pull os-test home-test
 
-os-build: git-pull
+os-build: pull
   nh os build {{ os_opts }} .
 
-home-build: git-pull
+home-build: pull
   nh home build {{ hm_opts }} .
 
-os-switch: git-pull
+os-switch: pull
   nh os switch {{ os_opts }} .
 
-home-switch: git-pull
+home-switch: pull
   nh home switch {{ hm_opts }} .
 
-os-test: git-pull
+os-test: pull
   nh os test {{ os_opts }} .
 
-home-test: git-pull
+home-test: pull
   nh home test {{ hm_opts }}
 
-boot: git-pull
+boot: pull
   nh os boot {{ os_opts }} .
 
-git-pull:
+pull:
   - git stash
   git pull --rebase
   - git stash pop

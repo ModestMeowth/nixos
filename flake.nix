@@ -38,7 +38,7 @@
           overlays = [
               (final: _: {
                 unstable = import inputs.unstable {
-                  system = system;
+                  inherit (final) system;
                   config = { allowUnfree = true; } // additionalConfig;
                   overlays = additionalOverlays;
                 };
@@ -93,7 +93,7 @@
         "mm@rocinante" = mkHome {
             hostname = "rocinante";
             additionalOverlays = [
-              (self: super: {
+              (_: super: {
                 google-chrome = super.google-chrome.override {
                   commandLineArgs = [
                     "--enable-features=VaapiVideoDecodeLinuxGLVaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo"
