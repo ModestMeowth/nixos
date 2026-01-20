@@ -11,5 +11,10 @@
       group = "wheel";
       sopsFile = ./secrets.sops.yaml;
     };
+
+    secrets."ha-nut-user" = {
+      mode = "0440";
+      group = "wheel";
+    };
   };
 }
