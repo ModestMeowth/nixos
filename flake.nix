@@ -36,9 +36,9 @@
           system = system;
           config = { allowUnfree = true; } // additionalConfig;
           overlays = [
-              (final: _: {
+              (_: _: {
                 unstable = import inputs.unstable {
-                  inherit (final) system;
+                  system = system;
                   config = { allowUnfree = true; } // additionalConfig;
                   overlays = additionalOverlays;
                 };
