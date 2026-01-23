@@ -10,14 +10,6 @@ in
 {
   options.fleet.useSecureboot = lib.mkEnableOption "device uses secureboot";
 
-  options.boot.lanzaboote = {
-    enable = lib.mkEnableOption "Enable the LANZABOOTE";
-    pkiBundle = lib.mkOption {
-      type = lib.types.nullOr lib.types.externalPath;
-      description = "PKI bundle containing db, PK, KEK";
-    };
-  };
-
   config = lib.mkIf cfg.useSecureboot {
     fleet.useEfi = true;
     boot = {

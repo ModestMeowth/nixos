@@ -17,7 +17,7 @@
 
   fleet = {
     useSecureboot = true;
-    useZFS = true;
+    useZfs = true;
   };
 
   hardware = {

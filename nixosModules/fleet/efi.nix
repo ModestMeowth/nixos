@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
-  cfg = config.fleet.hasEfi;
+  cfg = config.fleet.useEfi;
 in
 {
-  options.fleet.hasEfi = lib.mkEnableOption "device uses efi";
+  options.fleet.useEfi = lib.mkEnableOption "device uses efi";
 
   config = lib.mkIf cfg {
     boot.loader.efi = {

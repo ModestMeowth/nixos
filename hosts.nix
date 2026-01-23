@@ -10,6 +10,7 @@ let
           };
 
           modules = with inputs; [
+            lanzaboote.nixosModules.lanzaboote
             nix-index-database.nixosModules.nix-index
             sops-nix.nixosModules.sops
             ./nixosModules
@@ -38,19 +39,8 @@ let
 in
 {
   flake.nixosConfigurations = {
-    "rocinante" = mkHost {
-      hostname = "rocinante";
-      mod = with inputs; [
-        lanzaboote.nixosModules.lanzaboote
-      ];
-    };
-
-    "pwnyboy" = mkHost {
-      hostname = "pwnyboy";
-      mod = with inputs; [
-        lanzaboote.nixosModules.lanzaboote
-      ];
-    };
+    "rocinante" = mkHost { hostname = "rocinante"; };
+    "pwnyboy" = mkHost { hostname = "pwnyboy"; };
 
     "videodrome" = mkHost {
       hostname = "videodrome";
