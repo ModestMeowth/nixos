@@ -71,7 +71,7 @@
       extraPackages = with pkgs.bat-extras; [
         batman batdiff prettybat
       ];
-      settings.theme = "Catppuccin Machiato";
+      settings.theme = "Catppuccin-Macchiato";
     };
 
     command-not-found.enable = false;
