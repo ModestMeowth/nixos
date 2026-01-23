@@ -3,6 +3,9 @@ hostname := `hostname`
 
 builder_opts := if buildhost == hostname {""} else {"--builders 'ssh://mm@" + buildhost +"' --max-jobs 0"}
 
+default:
+  just --choose --justfile "{{justfile()}}"
+
 pull:
   - git stash
   git pull --rebase
@@ -12,7 +15,7 @@ stashClear:
   git stash clear
 
 boot:
-  nh os boot {{builder_opts}}.
+  nh os boot {{builder_opts}} .
 
 build: buildHost buildHome
 
