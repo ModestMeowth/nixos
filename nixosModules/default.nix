@@ -1,5 +1,7 @@
 { inputs, lib, pkgs, ... }:
 {
+  system.stateVersion = "25.11";
+
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [(final: _: {
@@ -18,7 +20,6 @@
     allowed-users = [ "@wheel" ];
     trusted-users = [ "@wheel" ];
   };
-
 
   imports = [
     ./fleet

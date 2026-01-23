@@ -15,6 +15,10 @@
 
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
+  fleet = {
+    useSecureboot = true;
+  };
+
   hardware = {
     graphics.enable = true;
     graphics.extraPackages = with pkgs; [
@@ -32,7 +36,7 @@
     search = ["threefinger.farm"];
     useDHCP = false;
 
-    bridges.bridge0.interface = ["enp3s0" "enp4s0"];
+    bridges.bridge0.interfaces = ["enp3s0" "enp4s0"];
 
     interfaces = {
       enp3s0.wakeOnLan.enable = true;

@@ -4,6 +4,8 @@ let
   HOME = config.home.homeDirectory;
 in
 {
+  home.stateVersion = "25.11";
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [(final: _: {
     unstable = import inputs.unstable {
@@ -19,7 +21,6 @@ in
   home = {
     username = "mm";
     homeDirectory = "/home/mm";
-    stateVersion = "25.11";
 
     file = {
       ".editorconfig".source = mkSymlink "editorconfig/editorconfig";

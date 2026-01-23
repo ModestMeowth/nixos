@@ -12,8 +12,6 @@ in
     ./secrets.nix
   ];
 
-  system.stateVersion = "25.11";
-
   boot = {
     initrd.verbose = false;
     kernelParams = [ "quiet" ];
