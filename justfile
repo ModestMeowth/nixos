@@ -37,4 +37,5 @@ switchHome:
 
 mkrpi-img:
   nom build {{builder_opts}} \
+    --out-link $HOME/rpi-sdcard \
     .#nixosConfigurations.rpi.config.system.build.sdImage --system aarch64-linux

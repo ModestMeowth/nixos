@@ -19,8 +19,11 @@ in
 
     packages = with pkgs; [
       bitwarden-desktop
+      nmap
       signal-desktop
+      rpi-imager
       virt-manager
+      wireshark
 
       unstable.bootdev-cli
       unstable.google-chrome

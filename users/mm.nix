@@ -32,6 +32,7 @@ in
       "networkmanager"
       "libvirtd"
       "samba-users"
+      "wireshark"
     ];
 
     hashedPasswordFile = config.sops.secrets.mm-passwd.path;

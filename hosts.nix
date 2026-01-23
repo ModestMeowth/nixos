@@ -48,6 +48,10 @@ in
         wsl.nixosModules.wsl
       ];
     };
+
+    rpi = inputs.nixpkgs.lib.nixosSystem {
+      modules = [ ./nixosModules/rpi/mkimg.nix ];
+    };
   };
 
   flake.homeConfigurations = {

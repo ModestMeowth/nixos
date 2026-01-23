@@ -46,6 +46,11 @@ in
 
   programs = {
     kdeconnect.enable = true;
+    wireshark = {
+      enable = true;
+      dumpcap.enable = true;
+      usbmon.enable = true;
+    };
     yubikey-manager.enable = true;
   };
 
