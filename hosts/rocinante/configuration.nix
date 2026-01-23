@@ -59,7 +59,6 @@ in
     };
 
     fwupd.enable = true;
-    lvm.enable = false;
     pcscd.enable = true;
 
     sanoid.datasets = {

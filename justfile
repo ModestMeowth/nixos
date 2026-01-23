@@ -1,7 +1,9 @@
 buildhost := "pwnyboy"
+builduser := "mm"
+
 hostname := `hostname`
 
-builder_opts := if buildhost == hostname {""} else {"--builders 'ssh://" + buildhost +"' --max-jobs 0"}
+builder_opts := if buildhost == hostname {""} else {"--builders "+ builduser + "@" + buildhost + " --max-jobs 0"}
 
 default:
   just --choose --justfile "{{justfile()}}"
