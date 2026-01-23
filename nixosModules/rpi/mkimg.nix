@@ -1,4 +1,4 @@
-{modulesPath, ...}:
+{lib, modulesPath, ...}:
 let
   wlan = "wlan0";
 in
@@ -31,4 +31,6 @@ in
       vimAlias = true;
     };
   };
+
+  users.users.nixos.initialHashedPassword = "$y$j9T$DQT1KD1SVuoKLGNg1STB..$27jCRv1NsVWVMk94JSBQQknLjJzgq88.stwN0NdedTD";
 }
