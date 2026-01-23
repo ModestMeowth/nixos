@@ -5,16 +5,21 @@
 }:
 {
   imports = [
+    ./hardware-configuration.nix
     ./secrets.nix
   ];
 
-  wsl.wslConf.network = {
-    hostname = "videodrome";
-    generateHosts = false;
-    generateResolvConf = false;
+  wsl = {
+    enable = true;
+
+    wslConf.network = {
+      hostname = "videodrome";
+      generateHosts = false;
+      generateResolvConf = false;
+    };
   };
 
-  envirnoment.shellAlias.nvidia-smi = "NIX_LD_LIBRARY_PATH=/usr/lib/wsl/lib /usr/lib/wsl/lib/nvidia-smi";
+  environment.shellAliases.nvidia-smi = "NIX_LD_LIBRARY_PATH=/usr/lib/wsl/lib /usr/lib/wsl/lib/nvidia-smi";
 
   networking = {
     firewall.enable = lib.mkForce false;
@@ -31,7 +36,7 @@
     ];
 
     # Tailscale breaks ssh without MTU 1500
-    interfaces.eth0.mtu = 1500;
+    # interfaces.eth0.mtu = 1500;
   };
 
   programs = {
@@ -39,21 +44,21 @@
     nix-ld.enable = true;
   };
 
-  # Allow NOPASSWD to set MTU if it drifts
-  security.sudo.extraRules = [
-    {
-      groups = [ "wheel" ];
-      commands = [
-        {
-          command = "/run/current-system/sw/bin/ip link set dev eth0 mtu 1500";
-          options = [
-            "SETENV"
-            "NOPASSWD"
-          ];
-        }
-      ];
-    }
-  ];
+  # # Allow NOPASSWD to set MTU if it drifts
+  # security.sudo.extraRules = [
+  #   {
+  #     groups = [ "wheel" ];
+  #     commands = [
+  #       {
+  #         command = "/run/current-system/sw/bin/ip link set dev eth0 mtu 1500";
+  #         options = [
+  #           "SETENV"
+  #           "NOPASSWD"
+  #         ];
+  #       }
+  #     ];
+  #   }
+  # ];
 
   services = {
     tailscale =

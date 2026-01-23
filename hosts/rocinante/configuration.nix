@@ -22,6 +22,7 @@ in
     isLaptop = true;
     useSecureboot = true;
     useHyprland = true;
+    useZfs = true;
   };
 
   gaming = {
