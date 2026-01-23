@@ -72,6 +72,32 @@
     };
   };
 
+  power.ups = {
+    enable = true;
+    mode = "netserver";
+    openFirewall = true;
+
+    upsd.listen = [
+      { address = "0.0.0.0"; }
+      { address = "::"; }
+    ];
+
+    users."ha".passwordFile = config.sops.secrets."ha-nut-user".path;
+
+    ups."network" = {
+      driver = "usbhid-ups";
+      description = "Networking UPS";
+      port = "auto";
+      directives = ["vendorid = 051d" "productid = 0002"];
+    };
+
+    upsmon.monitor."network" = {
+      system = "network@192.168.1.30";
+      user = "ha";
+      passwordFile = config.sops.secrets."ha-nut-user".path;
+    };
+  };
+
   services = {
     chrony.enable = true;
     tailscale =
