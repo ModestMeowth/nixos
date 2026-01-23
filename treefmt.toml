@@ -3,17 +3,13 @@ allow-missing-formatter = true
 [global]
 excludes = ["flake.lock", "*.sops.*", "justfile", ".editorconfig", ".gitignore"]
 
-[formatter.mdformat]
-command = "mdformat"
-includes = ["*.md"]
-
 [formatter.nix]
 command = "nixfmt"
 includes = ["*.nix"]
 
 [formatter.taplo]
 command = "taplo"
-includes = ["*.toml"]
+includes = ["*toml"]
 options = ["format"]
 
 [formatter.yaml]

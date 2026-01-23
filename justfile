@@ -1,40 +1,35 @@
 buildhost := "pwnyboy"
 hostname := `hostname`
 
-os_opts := if buildhost == hostname { "" } else { "--build-host " + buildhost }
-hm_opts := if buildhost == hostname { "" } else { "--builders " + buildhost }
-
-default:
-  just --choose --justfile "{{ justfile() }}"
-
-build: pull os-build home-build
-
-switch: pull os-switch home-switch
-
-test: pull os-test home-test
-
-os-build: pull
-  nh os build {{ os_opts }} .
-
-home-build: pull
-  nh home build {{ hm_opts }} .
-
-os-switch: pull
-  nh os switch {{ os_opts }} .
-
-home-switch: pull
-  nh home switch {{ hm_opts }} .
-
-os-test: pull
-  nh os test {{ os_opts }} .
-
-home-test: pull
-  nh home test {{ hm_opts }}
-
-boot: pull
-  nh os boot {{ os_opts }} .
+builder_opts := if buildhost == hostname {""} else {"--builders 'ssh://mm@" + buildhost +"' --max-jobs 0"}
 
 pull:
   - git stash
   git pull --rebase
   - git stash pop
+
+stashClear:
+  git stash clear
+
+boot:
+  nh os boot {{builder_opts}}.
+
+build: buildHost buildHome
+
+buildHost:
+  nh os build {{builder_opts}} .
+
+buildHome:
+  nh home build {{builder_opts}} .
+
+switch: switchHost switchHome
+
+switchHost:
+  nh os switch {{builder_opts}} .
+
+switchHome:
+  nh home switch {{builder_opts}} .
+
+mkrpi-img:
+  nom build {{builder_opts}} \
+    .#nixosConfigurations.rpi.config.system.build.sdImage --system aarch64-linux

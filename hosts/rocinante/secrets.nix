@@ -1,9 +1,7 @@
-{ config, ... }: {
+{
   sops = {
-    secrets."tskey" = {
-      mode = "0440";
-      group = "wheel";
-      sopsFile = ./secrets.sops.yaml;
-    };
+    secrets."tskey".mode = "0440";
+    secrets."tskey".group = "wheel";
+    secrets."tskey".sopsFile = ./secrets.sops.yaml;
   };
 }
