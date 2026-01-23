@@ -35,7 +35,7 @@ in
     services.greetd = {
       enable = true;
       settings.default_session.command = ''
-        ${pkgs.tuigreet}/bin/tuigreet --time --time-format "%R" --cmd "uwsm start -f -- hyprland-uwsm.desktop"
+        ${pkgs.tuigreet}/bin/tuigreet --time --time-format "%R" --cmd "uwsm start -F -- hyprland-uwsm.desktop"
       '';
       useTextGreeter = true;
     };

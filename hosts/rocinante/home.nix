@@ -1,6 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  mkSymlink = p: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfile/${p}";
+  mkSymlink = p: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${p}";
 in
 {
   gtk = {
@@ -19,10 +19,11 @@ in
 
     packages = with pkgs; [
       bitwarden-desktop
-      unstable.bootdev-cli
-      unstable.google-chrome
       signal-desktop
       virt-manager
+
+      unstable.bootdev-cli
+      unstable.google-chrome
     ];
   };
 

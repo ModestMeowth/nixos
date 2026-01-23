@@ -1,6 +1,6 @@
 {
   programs.nixvim = {
-    colorschemes.catpuccin.settings.integrations.cmp = true;
+    colorschemes.catppuccin.settings.integrations.cmp = true;
 
     plugins.cmp = {
       autoEnableSources = true;
