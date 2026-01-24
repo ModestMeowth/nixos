@@ -11,5 +11,14 @@ in
     networkmanager.ensureProfiles.profiles."Ponyboy Bounce House".connection.interface-name = wlan;
   };
 
-  services.tailscale.enable = true;
+  services = {
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+    };
+    technitium-dns-server = {
+      enable = true;
+      openFirewall = true;
+    };
+  };
 }
