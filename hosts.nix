@@ -49,6 +49,13 @@ in
       ];
     };
 
+    "skinman" = mkHost {
+      hostname = "skinman";
+      mod = with inputs; [
+        nixos-hardware.nixosModules.raspberry-pi-4
+      ];
+    };
+
     rpi = inputs.nixpkgs.lib.nixosSystem {
       modules = [ ./nixosModules/rpi/mkimg.nix ];
     };
@@ -58,5 +65,6 @@ in
     "mm@rocinante" = mkHome { hostname = "rocinante"; };
     "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
     "mm@videodrome" = mkHome { hostname = "videodrome"; };
+    "mm@skinman" = mkHome { hostname = "skinman"; system = "aarch64-linux"; };
   };
 }
