@@ -11,11 +11,17 @@
 
   wsl = {
     enable = true;
+    defaultUser = "mm";
+    startMenuLaunchers = true;
+    useWindowsDriver = true;
 
-    wslConf.network = {
-      hostname = "videodrome";
-      generateHosts = false;
-      generateResolvConf = false;
+    wslConf = {
+      user.default = "mm";
+      network = {
+        hostname = "videodrome";
+        generateHosts = false;
+        generateResolvConf = false;
+      };
     };
   };
 
@@ -75,4 +81,6 @@
         extraSetFlags = flags;
       };
   };
+
+  shares.pwnyboy-media.enable = true;
 }
