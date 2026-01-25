@@ -36,6 +36,7 @@
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
               just
+              nh
               nix-diff
               nix-fast-build
               nix-output-monitor
