@@ -12,6 +12,7 @@ in
   };
 
   services = {
+    cockpit.enable = true;
     tailscale = {
       enable = true;
       openFirewall = true;
