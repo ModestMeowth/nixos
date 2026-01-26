@@ -18,7 +18,6 @@
     wslConf = {
       user.default = "mm";
       network = {
-        hostname = "videodrome";
         generateHosts = false;
         generateResolvConf = false;
       };
@@ -30,6 +29,8 @@
   networking = {
     firewall.enable = lib.mkForce false;
     nftables.enable = lib.mkForce false;
+
+    hostName = "videodrome";
 
     nameservers = [
       "1.1.1.1"
