@@ -12,13 +12,24 @@
     })];
   };
 
-  nix.settings = {
-    experimental-features = "nix-command flakes";
-    auto-optimise-store = true;
-    keep-outputs = true;
-    keep-derivations = true;
-    allowed-users = [ "@wheel" ];
-    trusted-users = [ "@wheel" ];
+  nix = {
+    distributedBuilds = true;
+    buildMachines = [{
+      hostName = "pwnyboy";
+      sshUser = "mm";
+      systems = ["x86_64-linux" "aarch64-linux"];
+    }];
+
+    settings = {
+      experimental-features = "nix-command flakes";
+
+      auto-optimise-store = true;
+      keep-outputs = true;
+      keep-derivations = true;
+
+      allowed-users = [ "@wheel" ];
+      trusted-users = [ "@wheel" ];
+    };
   };
 
   imports = [
