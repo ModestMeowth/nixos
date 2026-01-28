@@ -19,6 +19,7 @@ in
     isNormalUser = true;
     uid = lib.mkForce 1001;
     description = "Modest Meowth";
+    linger = true;
     shell = pkgs.fish;
     extraGroups = [
       "wheel"
