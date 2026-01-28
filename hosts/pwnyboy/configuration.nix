@@ -6,7 +6,10 @@
   ];
 
   boot = {
-    binfmt.emulatedSystems = [ "aarch64-linux" ];
+    binfmt = {
+      emulatedSystems = [ "aarch64-linux" ];
+      preferStaticEmulators = true;
+    };
     initrd.availableKernelModules = ["sr_mod"];
     kernelModules = ["vfio_virqfd" "vfio_pci"];
     kernelParams = ["intel_iommu=on" "iommu=pt"];

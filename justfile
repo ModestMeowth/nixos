@@ -32,7 +32,7 @@ build user=shell("whoami") hostname=shell("hostname"): (nixos-build hostname) (h
 
 # nixos-rebuild switch AND home-manager switch
 [group("nix")]
-switch user=shell("whoami") hostname=shell("hostname"): (nixos-build hostname) (home-build user hostname)
+switch user=shell("whoami") hostname=shell("hostname"): (nixos-switch hostname) (home-switch user hostname)
 
 # nixos-rebuild boot
 [group("nix")]
@@ -47,7 +47,7 @@ nixos-build hostname=shell("hostname"):
 # nixos-rebuild switch
 [group("nix")]
 nixos-switch hostname=shell("hostname"):
-  sudo nixos-rebuld switch --flake .#{{hostname}}
+  sudo nixos-rebuild switch --flake .#{{hostname}}
 
 # home-manager build
 [group("nix")]
