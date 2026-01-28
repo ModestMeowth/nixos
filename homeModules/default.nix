@@ -1,18 +1,11 @@
-{ config, inputs, lib, ... }:
+{ config, lib, ... }:
 let
   mkSymlink = p: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${p}";
   HOME = config.home.homeDirectory;
 in
 {
   home.stateVersion = "25.11";
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [(final: _: {
-    unstable = import inputs.unstable {
-      inherit (final.stdenv.hostPlatform) system;
-      inherit (final) config;
-    };
-  })];
+  news.display = "silent";
 
   imports = [
     ./neovim

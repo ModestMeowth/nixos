@@ -1,16 +1,6 @@
-{ inputs, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   system.stateVersion = "25.11";
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [(final: _: {
-      unstable = import inputs.unstable {
-        inherit (final.stdenv.hostPlatform) system;
-        inherit (final) config;
-      };
-    })];
-  };
 
   nix = {
     distributedBuilds = true;
@@ -101,7 +91,6 @@
       openFirewall = true;
     };
 
-    nh.enable = true;
     nix-index-database.comma.enable = true;
 
     starship.enable = true;

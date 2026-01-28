@@ -2,12 +2,10 @@
 let
   mkHost =
     {hostname, mod ? [], system ? "x86_64-linux"}:
-      withSystem system (ctx@{config, inputs', ...}:
+      withSystem system ({inputs', final, ...}:
         inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            packages = config.packages;
-            inherit inputs inputs';
-          };
+          pkgs = final;
+          specialArgs = { inherit inputs inputs'; };
 
           modules = with inputs; [
             lanzaboote.nixosModules.lanzaboote
@@ -20,13 +18,10 @@ let
         });
   mkHome =
     {hostname, mod ? [], system ? "x86_64-linux"}:
-      withSystem system (ctx@{config, inputs', pkgs, ...}:
+      withSystem system ({inputs', final, ...}:
         inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            packages = config.packages;
-            inherit inputs inputs';
-          };
+          pkgs = final;
+          extraSpecialArgs = { inherit inputs inputs'; };
 
           modules = with inputs; [
             nixvim.homeModules.nixvim

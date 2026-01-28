@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -25,25 +24,27 @@
   };
 
   outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; }
+    inputs@{flake-parts, nixpkgs, self, ...}:
+    flake-parts.lib.mkFlake { inherit inputs; }
     {
-      systems = inputs.nixpkgs.lib.systems.flakeExposed;
-      imports = [ ./hosts.nix ];
+      imports = [
+        flake-parts.flakeModules.easyOverlay
+        ./hosts.nix
+      ];
+
+      systems = nixpkgs.lib.systems.flakeExposed;
       perSystem =
-        {pkgs, ...}:
+        {config, inputs', pkgs, system, ...}:
         {
-          devShells.default = pkgs.mkShell {
-            packages = with pkgs; [
-              just
-              nh
-              nix-diff
-              nix-fast-build
-              nix-output-monitor
-              nix-tree
-              nvd
-            ];
+          packages = import ./packages { inherit inputs' pkgs; };
+          overlayAttrs = { inherit (config.packages) bootdev-cli tailscale; };
+          _module.args.pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = [ self.overlays.default ];
           };
+
+          devShells.default = import ./shell.nix { inherit inputs' pkgs; };
         };
     };
 }

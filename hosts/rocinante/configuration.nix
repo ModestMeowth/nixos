@@ -80,7 +80,6 @@ in
       in
       {
         enable = true;
-        package = pkgs.unstable.tailscale;
         authKeyFile = config.sops.secrets."tskey".path;
         extraUpFlags = flags ++ [ "--reset" ];
         extraSetFlags = flags;
@@ -97,6 +96,6 @@ in
 
   virtualisation.docker = {
     enable = true;
-    package = pkgs.unstable.docker;
+    package = pkgs.docker_29;
   };
 }

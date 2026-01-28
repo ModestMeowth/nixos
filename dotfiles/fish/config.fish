@@ -19,7 +19,6 @@ status is-interactive; and begin
 
     if type -q just
         abbr --add -- j just
-        set -gx JUST_UNSTABLE "true"
     end
 
     if  type -q eza

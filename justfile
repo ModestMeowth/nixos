@@ -1,43 +1,78 @@
-hostname := `hostname`
-targethost := env("TARGETHOST", hostname)
-buildhost := env("BUILDHOST", hostname)
-builduser := env("BUILDUSER", env("USER"))
+set unstable := true
+set shell := ["bash", "-euo", "pipefail", "-c"]
 
-builder_opts := if buildhost == hostname {""} else {" --builders "+ builduser + "@" + buildhost + " --max-jobs 0"}
-target_os_opts := if targethost == hostname {""} else {" -H " + targethost}
-target_hm_opts := if targethost == hostname {""} else {" -c " + builduser + "@" + buildhost}
+nixShebang := "/usr/bin/env -S nix shell --inputs-from " + justfile_directory()
+realShebang := "/usr/bin/env bash -euo pipefail"
 
+[private]
 default:
-  just --choose --justfile "{{justfile()}}"
+  @just -l
 
-pull:
-  - git stash
-  git pull --rebase
-  - git stash pop
+# update custom packages with nvfetcher
+[group("repository")]
+update-packages:
+  #!{{nixShebang}} nixpkgs#nvfetcher -c {{realShebang}}
+  cd ./packages
+  nvfetcher
 
-stashClear:
-  git stash clear
+# nixos-rebuild boot AND home-manager switch
+[group("nix")]
+boot user=shell("whoami") hostname=shell("hostname"): (nixos-boot hostname) (home-switch user hostname)
 
-boot:
-  nh os boot{{builder_opts}}{{target_os_opts}} .
+# nixos-rebuild build AND home-manager build
+[group("nix")]
+build user=shell("whoami") hostname=shell("hostname"): (nixos-build hostname) (home-build user hostname)
 
-build: buildHost buildHome
+# nixos-rebuild boot
+[group("nix")]
+nixos-boot hostname=shell("hostname"):
+  sudo nixos-rebuild boot --flake .#{{hostname}}
 
-buildHost:
-  nh os build{{builder_opts}}{{target_os_opts}} .
+# nixos-rebuild build
+[group("nix")]
+nixos-build hostname=shell("hostname"):
+  nixos-rebuild build --flake .#{{hostname}}
 
-buildHome:
-  nh home build{{builder_opts}}{{target_hm_opts}} .
+# nixos-rebuild switch
+[group("nix")]
+nixos-switch hostname=shell("hostname"):
+  sudo nixos-rebuld switch --flake .#{{hostname}}
 
-switch: switchHost switchHome
+# home-manager build
+[group("nix")]
+home-build user=shell("whoami") hostname=shell("hostname"):
+  #!{{nixShebang}} nixpkgs#home-manager -c {{realShebang}}
+  home-manager build --flake .#{{user}}@{{hostname}}
 
-switchHost:
-  nh os switch{{builder_opts}}{{target_os_opts}} .
+# home-manager switch
+[group("nix")]
+home-switch user=shell("whoami") hostname=shell("hostname"):
+  #!{{nixShebang}} nixpkgs#home-manager -c {{realShebang}}
+  home-manager switch --flake .#{{user}}@{{hostname}}
 
-switchHome:
-  nh home switch{{builder_opts}}{{target_hm_opts}} .
-
+# Makes an sd-card for an aarch64 SBC eg. raspberry-pi >= 3
+[group("nix")]
 mkrpi-img:
-  nom build {{builder_opts}} \
-    --out-link $HOME/rpi-sdcard \
-    .#nixosConfigurations.rpi.config.system.build.sdImage --system aarch64-linux
+  nix build .#nixosConfiguration.rpi.config.build.sd-card --system aarch64-linux
+
+# run garbage collection for items greater that [day]s (default 7days)
+[group("store")]
+gc day='7':
+  sudo nix-collect-garbage --delete-older-than {{day}}d
+  nix-collect-garbage --delete-older-than {{day}}d
+
+# verify nix store
+[group("store")]
+verify-store:
+  nix store verify --all
+
+# repair nix store
+[group("store")]
+repair-store *paths:
+  nix store repair {{paths}}
+
+# show all gc roots in the nix store
+[group("store")]
+gcroot:
+  #!{{nixShebang}} nixpkgs#eza -c {{realShebang}}
+  eza -lag /nix/var/nix/gcroots/auto/
