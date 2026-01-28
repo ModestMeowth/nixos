@@ -24,6 +24,8 @@
     };
   };
 
+  fleet.isWsl = true;
+
   environment.shellAliases.nvidia-smi = "NIX_LD_LIBRARY_PATH=/usr/lib/wsl/lib /usr/lib/wsl/lib/nvidia-smi";
 
   networking = {

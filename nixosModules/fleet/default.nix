@@ -12,5 +12,6 @@
     ./secureboot.nix
     ./server.nix
     ./zfs.nix
+    ./wsl.nix
   ];
 }
