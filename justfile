@@ -30,6 +30,10 @@ boot user=shell("whoami") hostname=shell("hostname"): (nixos-boot hostname) (hom
 [group("nix")]
 build user=shell("whoami") hostname=shell("hostname"): (nixos-build hostname) (home-build user hostname)
 
+# nixos-rebuild switch AND home-manager switch
+[group("nix")]
+switch user=shell("whoami") hostname=shell("hostname"): (nixos-build hostname) (home-build user hostname)
+
 # nixos-rebuild boot
 [group("nix")]
 nixos-boot hostname=shell("hostname"):
