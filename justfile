@@ -64,7 +64,7 @@ home-switch user=shell("whoami") hostname=shell("hostname"):
 # Makes an sd-card for an aarch64 SBC eg. raspberry-pi >= 3
 [group("nix")]
 mkrpi-img:
-  nix build .#nixosConfigurations.rpi.config.system.build.sdImage --system aarch64-linux
+  nix build .#nixosConfigurations.rpi.config.system.build.sdImage
 
 # run garbage collection for items greater that [day]s (default 7days)
 [group("store")]

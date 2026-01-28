@@ -18,6 +18,7 @@ in
 
     "skinman" = mkHost {
       hostname = "skinman";
+      system = "aarch64-linux";
       mod = with inputs; [
         nixos-hardware.nixosModules.raspberry-pi-4
       ];

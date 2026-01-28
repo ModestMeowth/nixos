@@ -18,5 +18,5 @@
     extraModulePackages = [ ];
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+  nixpkgs.hostPlatform = "aarch64-linux";
 }
