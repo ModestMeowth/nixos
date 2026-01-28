@@ -8,6 +8,13 @@ realShebang := "/usr/bin/env bash -euo pipefail"
 default:
   @just -l
 
+# git stash and pull
+[group("repository")]
+pull:
+  - git stash
+  git pull --rebase
+  - git stash pop
+
 # update custom packages with nvfetcher
 [group("repository")]
 update-packages:
