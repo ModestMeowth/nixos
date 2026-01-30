@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
-  mkSymlink = p: config.lib.file.mkOutOfStoreSymlink "/etc/nixos/dotfiles/${p}";
+  HOME = config.home.homeDirectory;
+  mkSymlink = p: config.lib.file.mkOutOfStoreSymlink "${HOME}/code/nixos/dotfiles/${p}";
 in
 {
   gtk = {
@@ -31,7 +32,16 @@ in
 
   programs.ghostty.enable = true;
 
-  services.syncthing.enable = true;
+  services = {
+    syncthing.enable = true;
+    udiskie = {
+      enable = true;
+      settings.program_options = {
+        file_manager =
+          "${config.programs.ghostty.package}/bin/ghostty -e ${config.programs.yazi.package}/bin/yazi";
+      };
+    };
+  };
 
   stylix = {
     enable = true;

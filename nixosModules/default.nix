@@ -91,6 +91,15 @@
       openFirewall = true;
     };
 
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        dates = "weekly";
+        extraArgs = "--keep 3";
+      };
+    };
+
     nix-index-database.comma.enable = true;
 
     starship.enable = true;
@@ -121,6 +130,11 @@
         value = "1048576";
       }
     ];
+  };
+
+  services = {
+    udisks2.enable = true;
+    upower.enable = true;
   };
 
   time.timeZone = "America/Chicago";

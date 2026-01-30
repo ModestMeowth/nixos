@@ -24,6 +24,12 @@ in
       walker
       waybar
       wl-clipboard
+      (catppuccin-sddm.override {
+        flavor = "macchiato";
+        accent = "mauve";
+        font = "Caskaydia Nerd Font";
+        fontSize = "9";
+      })
     ];
 
     programs.hyprland = {
@@ -32,12 +38,19 @@ in
       xwayland.enable = true;
     };
 
-    services.greetd = {
-      enable = true;
-      settings.default_session.command = ''
-        ${pkgs.tuigreet}/bin/tuigreet --time --time-format "%R" --cmd "uwsm start -F -- hyprland-uwsm.desktop"
-      '';
-      useTextGreeter = true;
+    services.displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "mm";
+      };
+
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        autoLogin.relogin = true;
+        autoNumlock = true;
+        theme = "catppuccin-macchiato-mauve";
+      };
     };
   };
 }
