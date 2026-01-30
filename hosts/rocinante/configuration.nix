@@ -83,6 +83,7 @@ in
         authKeyFile = config.sops.secrets."tskey".path;
         extraUpFlags = flags ++ [ "--reset" ];
         extraSetFlags = flags;
+        openFirewall = true;
         useRoutingFeatures = "client";
       };
 

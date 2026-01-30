@@ -19,6 +19,7 @@
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
 
   fleet = {
+    isServer = true;
     useSecureboot = true;
     useZfs = true;
   };
