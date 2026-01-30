@@ -11,7 +11,7 @@ default:
 # git stash and pull
 [group("repository")]
 pull:
-  - git stash
+  - git stash push
   git pull --rebase
   - git stash pop
 
