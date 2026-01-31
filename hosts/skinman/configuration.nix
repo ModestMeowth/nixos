@@ -8,7 +8,12 @@ in
 
   networking = {
     hostName = "skinman";
-    networkmanager.ensureProfiles.profiles."Ponyboy Bounce House".connection.interface-name = wlan;
+    networkmanager.ensureProfiles.profiles = {
+      "Ponyboy Bounce House".connection = {
+        autoconnect = false;
+        interface-name = wlan;
+      };
+    };
   };
 
   services = {
