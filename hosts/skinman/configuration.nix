@@ -12,12 +12,13 @@ in
   };
 
   services = {
-    chronyd.enable = false;
     cockpit.enable = true;
+
     tailscale = {
       enable = true;
       openFirewall = true;
     };
+
     technitium-dns-server = {
       enable = true;
       openFirewall = true;

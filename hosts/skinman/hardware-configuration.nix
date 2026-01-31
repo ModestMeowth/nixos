@@ -6,7 +6,10 @@
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
   ];
 
-  hardware.raspberry-pi."4".apply-overlays-dtmerge.enable = true;
+  hardware.raspberry-pi."4" = {
+    apply-overlays-dtmerge.enable = true;
+    poe-plus-hat.enable = true;
+  };
 
   boot = {
     initrd = {
