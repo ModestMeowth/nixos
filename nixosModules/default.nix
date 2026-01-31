@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   system.stateVersion = "25.11";
 
@@ -31,8 +31,10 @@
   ];
 
   documentation = {
-    nixos.enable = true;
-    man.generateCaches = true;
+    doc.enable = lib.mkDefault false;
+    info.enable = lib.mkDefault false;
+    man.generateCaches = lib.mkForce false;
+    nixos.enable = lib.mkForce false;
   };
 
   environment.systemPackages = with pkgs; [

@@ -23,6 +23,8 @@ in
   };
 
   programs = {
+    man.generateCaches = lib.mkForce false;
+
     fish = {
       enable = true;
       interactiveShellInit = lib.mkAfter ''
