@@ -12,6 +12,7 @@ in
   };
 
   services = {
+    chronyd.enable = false;
     cockpit.enable = true;
     tailscale = {
       enable = true;
