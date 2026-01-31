@@ -4,7 +4,10 @@ in
 {
   imports = [ ./hardware-configuration.nix ];
 
-  fleet.isRpi = true;
+  fleet = {
+    isRpi = true;
+    isServer = true;
+  };
 
   networking = {
     hostName = "skinman";
@@ -17,7 +20,15 @@ in
   };
 
   services = {
-    cockpit.enable = true;
+    cockpit = {
+      enable = true;
+      allowed-origins = [
+        "https://skinman:9090"
+        "https://skinman.threefinger.farm"
+        "https://skinman.cat-alkaline.ts.net:9090"
+      ];
+      openFirewall = true;
+    };
 
     tailscale = {
       enable = true;

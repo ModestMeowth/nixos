@@ -2,9 +2,12 @@ keys:
   - &pnby_host_age age15fhvwthgd5f6spcvr5st3lknm3xqlfdyj2s3xnld8c947w78s9nsl0q8zv
   - &roci_host_age age1xltxc87jgp6fzjlwapfctpa23vaqn2cqwqyta8vh0g0yrgs6adfqs0arc9
   - &vdrm_host_age age1f5hmq63suekp3tcy8886x406nw79z8hc3l6sj3kk4s3reuhg8d0s2jf4tu
+  - &skmn_host_age age1t4dvuc673na2l5v8vgdc038rf3m0g356rtujs7eje48ynug7vdjqdkjqr6
+
   - &pnby_mm_age age1qex5ky044eyqrsymkg6ynfvpy96wxjdldvdmlmy35e5mt2v5zczqla98ed
   - &roci_mm_age age18lt2qwmtvuj0ujf9zrxr4wsehhxuvqc3e79s53c20wq5fv6jhqyst4m83t
   - &vdrm_mm_age age1vz6akhdt4hwfxe3d2n7er2nym7lttcg7uchafysajdtwa696zcyq6latjk
+  - &skmn_mm_age age1cdyvnexeckc9xt372avmh0cnjxxm5ydf0k0emk4yfx6ml5f6vplqv06uqu
 creation_rules:
   - path_regex: .*\.sops.ya?ml$
     key_groups:
@@ -13,6 +16,9 @@ creation_rules:
           - *pnby_host_age
           - *roci_host_age
           - *vdrm_host_age
+          - *skmn_host_age
+
           - *pnby_mm_age
           - *roci_mm_age
           - *vdrm_mm_age
+          - *skmn_mm_age

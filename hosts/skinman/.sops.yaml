@@ -1,5 +1,5 @@
 keys:
-  - &skmn_host_age age1qzdr0e56jx3gvq8cqexp344sed4pjcyjg6vpwwfvhjcyu37v8f5s4dg4a8
+  - &skmn_host_age age1t4dvuc673na2l5v8vgdc038rf3m0g356rtujs7eje48ynug7vdjqdkjqr6
   - &skmn_mm_age age1cdyvnexeckc9xt372avmh0cnjxxm5ydf0k0emk4yfx6ml5f6vplqv06uqu
 creation_rules:
   - path_regex: .*\.sops.ya?ml$
