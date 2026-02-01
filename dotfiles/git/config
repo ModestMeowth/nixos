@@ -1,6 +1,6 @@
 [user]
-email = "daniel.j.eberle@protonmail.com"
-name = "Daniel Eberle"
+	email = modest@meowth.dev
+	name = Modest Meowth
 
 [init]
 defaultBranch = main
