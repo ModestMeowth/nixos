@@ -33,9 +33,7 @@ in
     };
 
     jjui.enable = true;
-    jujutsu = {
-      enable = true;
-    };
+    jujutsu.enable = true;
 
     yazi = {
       enable = true;
@@ -73,6 +71,7 @@ in
     configFile = {
       "bat".source = mkSymlink "bat";
       "git".source = mkSymlink "git";
+      "jj".source = mkSymlink "jj";
       "fish/localconfig.fish".source = mkSymlink "fish/config.fish";
       "starship.toml".source = mkSymlink "starship/starship.toml";
     };

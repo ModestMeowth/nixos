@@ -13,6 +13,18 @@
     };
     vendorHash = "sha256-ZDioEU5uPCkd+kC83cLlpgzyOsnpj2S7N+lQgsQb8uY=";
   };
+  jujutsu = {
+    pname = "jujutsu";
+    version = "v0.37.0";
+    src = fetchFromGitHub {
+      owner = "jj-vcs";
+      repo = "jj";
+      rev = "v0.37.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-KN8hukahS+/RowmQoaUrfxCKFT9YUhaIXzh84cBV1Ck=";
+    };
+    "Cargo.lock" = builtins.readFile ./jujutsu-v0.37.0/Cargo.lock;
+  };
   tailscale = {
     pname = "tailscale";
     version = "v1.94.1";
