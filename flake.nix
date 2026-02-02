@@ -32,7 +32,7 @@
         ./hosts.nix
       ];
 
-      systems = nixpkgs.lib.systems.flakeExposed;
+      systems = ["aarch64-linux" "x86_64-linux"];
       perSystem =
         {config, inputs', pkgs, system, ...}:
         {
@@ -41,9 +41,8 @@
           _module.args.pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
-            overlays = [ self.overlays.default ];
+            overlays = [self.overlays.default];
           };
-
           devShells.default = import ./shell.nix { inherit inputs' pkgs; };
         };
     };

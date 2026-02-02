@@ -1,8 +1,4 @@
-{ config, pkgs, ... }:
-let
-  HOME = config.home.homeDirectory;
-  mkSymlink = p: config.lib.file.mkOutOfStoreSymlink "${HOME}/code/nixos/dotfiles/${p}";
-in
+{ config, lib', pkgs, ... }:
 {
   gtk = {
     iconTheme = {
@@ -13,9 +9,9 @@ in
 
   home = {
     file = {
-      ".local/bin/powermenu".source = mkSymlink "bin/powermenu";
-      ".local/bin/toggle-dnd".source = mkSymlink "bin/toggle-dnd";
-      ".local/bin/toggle-idle".source = mkSymlink "bin/toggle-idle";
+      ".local/bin/powermenu".source = lib'.mkDotfile "bin/powermenu";
+      ".local/bin/toggle-dnd".source = lib'.mkDotfile "bin/toggle-dnd";
+      ".local/bin/toggle-idle".source = lib'.mkDotfile "bin/toggle-idle";
     };
 
     packages = with pkgs; [
@@ -77,15 +73,15 @@ in
   };
 
   xdg.configFile = {
-    "nebula.jpeg".source = mkSymlink "wallpaper/nebula.jpeg";
-    "Cat.png".source = mkSymlink "wallpaper/Cat.png";
-    "dark-cat-rosewater.png".source = mkSymlink "wallpaper/dark-cat-rosewater.png";
-    "face.png".source = mkSymlink "wallpaper/face.png";
-    "ghostty".source = mkSymlink "ghostty";
-    "hypr".source = mkSymlink "hypr";
-    "mako".source = mkSymlink "mako";
-    "uwsm".source = mkSymlink "uwsm";
-    "walker".source = mkSymlink "walker";
-    "waybar".source = mkSymlink "waybar";
+    "nebula.jpeg".source = lib'.mkDotfile "wallpaper/nebula.jpeg";
+    "Cat.png".source = lib'.mkDotfile "wallpaper/Cat.png";
+    "dark-cat-rosewater.png".source = lib'.mkDotfile "wallpaper/dark-cat-rosewater.png";
+    "face.png".source = lib'.mkDotfile "wallpaper/face.png";
+    "ghostty".source = lib'.mkDotfile "ghostty";
+    "hypr".source = lib'.mkDotfile "hypr";
+    "mako".source = lib'.mkDotfile "mako";
+    "uwsm".source = lib'.mkDotfile "uwsm";
+    "walker".source = lib'.mkDotfile "walker";
+    "waybar".source = lib'.mkDotfile "waybar";
   };
 }

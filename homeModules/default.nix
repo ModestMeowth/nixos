@@ -1,8 +1,4 @@
-{ config, lib, pkgs, ... }:
-let
-  HOME = config.home.homeDirectory;
-  mkSymlink = p: config.lib.file.mkOutOfStoreSymlink "${HOME}/code/nixos/dotfiles/${p}";
-in
+{ lib, lib', pkgs, ... }:
 {
   home.stateVersion = "25.11";
   news.display = "silent";
@@ -16,9 +12,9 @@ in
     homeDirectory = "/home/mm";
 
     file = {
-      ".editorconfig".source = mkSymlink "editorconfig/editorconfig";
-      ".local/bin/mosh".source = mkSymlink "bin/mosh";
-      ".tmux.conf".source = mkSymlink "tmux/tmux.conf";
+      ".editorconfig".source = lib'.mkDotfile "editorconfig/editorconfig";
+      ".local/bin/mosh".source = lib'.mkDotfile "bin/mosh";
+      ".tmux.conf".source = lib'.mkDotfile "tmux/tmux.conf";
     };
   };
 
@@ -28,7 +24,7 @@ in
     fish = {
       enable = true;
       interactiveShellInit = lib.mkAfter ''
-        source ${HOME}/.config/fish/localconfig.fish
+        source $HOME/.config/fish/localconfig.fish
       '';
     };
 
@@ -69,11 +65,11 @@ in
   xdg = {
     enable = true;
     configFile = {
-      "bat".source = mkSymlink "bat";
-      "git".source = mkSymlink "git";
-      "jj".source = mkSymlink "jj";
-      "fish/localconfig.fish".source = mkSymlink "fish/config.fish";
-      "starship.toml".source = mkSymlink "starship/starship.toml";
+      "bat".source = lib'.mkDotfile "bat";
+      "git".source = lib'.mkDotfile "git";
+      "jj".source = lib'.mkDotfile "jj";
+      "fish/localconfig.fish".source = lib'.mkDotfile "fish/config.fish";
+      "starship.toml".source = lib'.mkDotfile "starship/starship.toml";
     };
   };
 }

@@ -1,22 +1,20 @@
-{withSystem, inputs, ...}:
+{inputs, self, withSystem, ...}:
 let
-  flakeLib = import ./lib.nix { inherit inputs withSystem; };
-  mkHost = flakeLib.mkHost;
-  mkHome = flakeLib.mkHome;
+  lib' = import ./lib/hosts.nix {inherit inputs self withSystem; };
 in
 {
   flake.nixosConfigurations = {
-    "rocinante" = mkHost { hostname = "rocinante"; };
-    "pwnyboy" = mkHost { hostname = "pwnyboy"; };
+    "rocinante" = lib'.mkHost { hostname = "rocinante"; };
+    "pwnyboy" = lib'.mkHost { hostname = "pwnyboy"; };
 
-    "videodrome" = mkHost {
+    "videodrome" = lib'.mkHost {
       hostname = "videodrome";
       mod = with inputs; [
         wsl.nixosModules.wsl
       ];
     };
 
-    "skinman" = mkHost {
+    "skinman" = lib'.mkHost {
       hostname = "skinman";
       system = "aarch64-linux";
       mod = with inputs; [
@@ -30,9 +28,9 @@ in
   };
 
   flake.homeConfigurations = {
-    "mm@rocinante" = mkHome { hostname = "rocinante"; };
-    "mm@pwnyboy" = mkHome { hostname = "pwnyboy"; };
-    "mm@videodrome" = mkHome { hostname = "videodrome"; };
-    "mm@skinman" = mkHome { hostname = "skinman"; system = "aarch64-linux"; };
+    "mm@rocinante" = lib'.mkHome { hostname = "rocinante"; };
+    "mm@pwnyboy" = lib'.mkHome { hostname = "pwnyboy"; };
+    "mm@videodrome" = lib'.mkHome { hostname = "videodrome"; };
+    "mm@skinman" = lib'.mkHome { hostname = "skinman"; system = "aarch64-linux"; };
   };
 }
