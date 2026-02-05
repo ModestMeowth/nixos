@@ -1,32 +1,26 @@
-{ezModules, inputs, pkgs, ...}:
+{ezModules, pkgs, ...}:
 let
   wlan = "wlp2s0";
 in
 {
   nixpkgs.config.allowUnfree = true;
 
-  imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
-
-    ezModules.desktop
-    ezModules.efi
-    ezModules.gaming
-    ezModules.laptop
-    ezModules.hyprland
-    ezModules.shares
-    ezModules.secureboot
-    ezModules.tailscale
-    ezModules.unstable
-    ezModules.zfs
+  imports = with ezModules; [
+    desktop
+    docker
+    efi
+    gaming
+    laptop
+    hyprland
+    shares
+    secureboot
+    tailscale
+    unstable
+    zfs
 
     ./hardware-configuration.nix
     ./secrets.nix
   ];
-
-  boot = {
-    kernelParams = ["quiet"];
-    plymouth.enable = true;
-  };
 
   gaming = {
     emulation = true;
@@ -58,8 +52,6 @@ in
   };
 
   services = {
-    chrony.enable = true;
-
     fprintd = {
       enable = true;
       tod.enable = true;
@@ -82,12 +74,5 @@ in
     mountpoint = "/persist/media";
   };
 
-  virtualisation.docker = {
-    enable = true;
-    package = pkgs.docker_29;
-    autoPrune = {
-      enable = true;
-      flags = ["--all"];
-    };
-  };
+  virtualisation.docker.package = pkgs.docker_29;
 }

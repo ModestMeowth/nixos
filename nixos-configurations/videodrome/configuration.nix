@@ -1,10 +1,10 @@
 {ezModules, lib, ...}:
 {
-  imports = [
-    ezModules.shares
-    ezModules.tailscale
-    ezModules.unstable
-    ezModules.wsl
+  imports = with ezModules; [
+    shares
+    tailscale
+    unstable
+    wsl
 
     ./hardware-configuration.nix
     ./secrets.nix

@@ -2,13 +2,16 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  imports = [
+  imports = with ezModules; [
     inputs.lanzaboote.nixosModules.lanzaboote
 
-    ezModules.secureboot
-    ezModules.tailscale
-    ezModules.unstable
-    ezModules.zfs
+    cockpit
+    docker
+    efi
+    secureboot
+    tailscale
+    unstable
+    zfs
 
     ./hardware-configuration.nix
     ./secrets.nix
@@ -107,7 +110,13 @@
   };
 
   services = {
-    chrony.enable = true;
+    cockpit.allowed-origins = [
+      "https://pwnyboy:9090"
+      "https://pwnyboy.threefinger.farm"
+      "https://pwnyboy.cat-alkaline.ts.net:9090"
+      "https://pwnyboy.com"
+    ];
+
     fwupd.enable = true;
 
     samba = {
@@ -152,8 +161,5 @@
     "systemd-random-seed".enable = lib.mkForce false;
   };
 
-  virtualisation.docker = {
-    enable = true;
-    package = pkgs.docker_29;
-  };
+  virtualisation.docker.package = pkgs.docker_29;
 }

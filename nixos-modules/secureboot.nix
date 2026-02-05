@@ -1,9 +1,12 @@
 {
+  inputs,
   lib,
   pkgs,
   ...
 }:
 {
+  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
+
   boot = {
     lanzaboote.enable = true;
     lanzaboote.pkiBundle = lib.mkDefault "/var/lib/sbctl";

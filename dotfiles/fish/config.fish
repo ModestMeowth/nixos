@@ -39,6 +39,10 @@ status is-interactive; and begin
         set -gx FZF_DEFAULT_OPTS "--cycle --layout=reverse --border --height=90% --marker=* --color bg:#282a36,bg+:#44475a,fg:#f8f8f2,fg+:#f8f8f2,header:#6272a4,hl:#bd93f9,hl+:#bd93f9,info:#ffb86c,marker:#ff79c6,pointer:#ff78c6,prompt:#50fa7b,spinner:#ffb86c"
     end
 
+    if type -q doggo
+        abbr --add -- dig "doggo"
+    end
+
     if type -q rga
         abbr --add -- rg "rga"
     end

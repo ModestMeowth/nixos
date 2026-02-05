@@ -15,11 +15,12 @@ in
     ];
   };
 
-  imports = [
-    ezModules.bootdev
-    ezModules.desktop
-    ezModules.hyprland
-    ezModules.syncthing
-    ezModules.virt-manager
+  imports = with ezModules; [
+    bootdev
+    desktop
+    hyprland
+    network-utils
+    syncthing
+    virt-manager
   ];
 }

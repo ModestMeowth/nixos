@@ -38,6 +38,9 @@
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; }
     ({config, ...}:
+    let
+      lib' = import ./lib.nix { inherit config inputs; };
+    in
     {
       imports = [
         inputs.flake-parts.flakeModules.easyOverlay
@@ -50,19 +53,7 @@
         root = ./.;
         globalArgs = { inherit inputs; };
         nixos.configurationEntryPoint = "configuration.nix";
-        home.users =
-          let
-            inherit (builtins) attrNames;
-            inherit (inputs.nixpkgs.lib) forEach mergeAttrsList;
-            allHosts = (config.flake.nixosConfigurations
-              // config.flake.darwinConfigurations);
-            allMM = mergeAttrsList (
-              forEach (attrNames allHosts)
-              (host: {
-                  "mm-${host}".nameFunction = (_: "mm@${host}");
-              }));
-          in
-            allMM;
+        home.users = lib'.mkHomeConfigsForUser "mm";
       };
 
       perSystem =
