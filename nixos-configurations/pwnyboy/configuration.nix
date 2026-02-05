@@ -4,7 +4,9 @@
 
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote
+
     ezModules.secureboot
+    ezModules.tailscale
     ezModules.unstable
     ezModules.zfs
 
@@ -106,18 +108,6 @@
 
   services = {
     chrony.enable = true;
-    tailscale =
-      let
-        flags = ["--ssh" "--operator=mm"];
-      in
-      {
-        enable = true;
-        authKeyFile = config.sops.secrets."tskey".path;
-        extraUpFlags = flags ++ [ "--reset" ];
-        extraSetFlags = flags;
-        useRoutingFeatures = "client";
-        openFirewall = true;
-      };
     fwupd.enable = true;
 
     samba = {
