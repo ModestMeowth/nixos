@@ -13,28 +13,4 @@
     };
     vendorHash = "sha256-ZDioEU5uPCkd+kC83cLlpgzyOsnpj2S7N+lQgsQb8uY=";
   };
-  jujutsu = {
-    pname = "jujutsu";
-    version = "v0.37.0";
-    src = fetchFromGitHub {
-      owner = "jj-vcs";
-      repo = "jj";
-      rev = "v0.37.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-KN8hukahS+/RowmQoaUrfxCKFT9YUhaIXzh84cBV1Ck=";
-    };
-    "Cargo.lock" = builtins.readFile ./jujutsu-v0.37.0/Cargo.lock;
-  };
-  tailscale = {
-    pname = "tailscale";
-    version = "v1.94.1";
-    src = fetchFromGitHub {
-      owner = "tailscale";
-      repo = "tailscale";
-      rev = "v1.94.1";
-      fetchSubmodules = false;
-      sha256 = "sha256-jk4C2xw6vKIjo5F+FHRNTgNGZ7Zl+Hgpl84xeptCs1g=";
-    };
-    vendorHash = "sha256-WeMTOkERj4hvdg4yPaZ1gRgKnhRIBXX55kUVbX/k/xM=";
-  };
 }

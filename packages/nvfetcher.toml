@@ -2,14 +2,3 @@
 fetch.github = "bootdotdev/bootdev"
 src.github_tag = "bootdotdev/bootdev"
 passthru = { vendorHash = "sha256-ZDioEU5uPCkd+kC83cLlpgzyOsnpj2S7N+lQgsQb8uY=" }
-
-[jujutsu]
-fetch.github = "jj-vcs/jj"
-src.github = "jj-vcs/jj"
-extract = ["Cargo.lock"]
-
-[tailscale]
-fetch.github = "tailscale/tailscale"
-src.github_tag = "tailscale/tailscale"
-src.include_regex = "v1.94.*"
-passthru = { vendorHash = "sha256-WeMTOkERj4hvdg4yPaZ1gRgKnhRIBXX55kUVbX/k/xM=" }
