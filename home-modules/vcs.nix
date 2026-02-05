@@ -11,4 +11,9 @@
       package = pkgs.unstable.jujutsu;
     };
   };
+
+  xdg.configFile = {
+    "git/config".source = ../dotfiles/git/config;
+    "jj/config.toml".source = ../dotfiles/jj/config.toml;
+  };
 }
