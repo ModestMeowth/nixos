@@ -1,11 +1,9 @@
-{ezModules, pkgs, ...}:
-let
-  inherit (pkgs.stdenv) isDarwin;
-in
+{ezModules, ...}:
 {
+  nixpkgs.system = "aarch64-linux"; # system is getting clobbered somewhere, this works for now
   home = {
     username = "mm";
-    homeDirectory = if isDarwin then "/Users/mm" else "/home/mm";
+    homeDirectory = "/home/mm";
   };
 
   imports = [
