@@ -1,10 +1,8 @@
-{config, ezModules, inputs, lib, pkgs, ...}:
+{config, ezModules, lib, pkgs, ...}:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = with ezModules; [
-    inputs.lanzaboote.nixosModules.lanzaboote
-
     cockpit
     docker
     efi
