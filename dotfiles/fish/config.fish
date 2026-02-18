@@ -1,10 +1,6 @@
 status is-interactive; and begin
     set -g fish_greeting
 
-    if string match -q -- xterm-256color $TERM
-        COLORTERM=truecolor
-    end
-
     if type -q starship
         starship init fish | source
         enable_transience

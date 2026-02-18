@@ -1,5 +1,6 @@
 [editor]
 color-modes = true
+true-color = true
 end-of-line-diagnostics = "hint"
 line-number = "relative"
 mouse = false
