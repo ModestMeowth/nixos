@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec walker --width 644 --maxheight 300 --minheight 300 "$@"

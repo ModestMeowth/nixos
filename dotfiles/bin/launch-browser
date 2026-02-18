@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+default_browser=$(xdg-settings get default-web-browser)
+browser_exec=$(sed -n 's/^Exec=\([^ ]*\).*/\1/p' {~/.local,~/.nix-profile,/usr,/run/current-system/sw}/share/applications/$default_browser 2>/dev/null | head -1)
+
+if [[ $browser_exec =~ (firefox|zen) ]]; then
+    private_flag="--private-window"
+    profile_flag="--profile"
+elif [[ $browser_exec =~ edge ]]; then
+    private_flag="--inprivate"
+    profile_flag="--profile-dir"
+else
+    private_flag="--incognito"
+    profile_flag="--profile-directory"
+fi
+
+args=${*/--profile/$profile_flag}
+
+exec setsid uwsm-app -- "$browser_exec" ${args/--private/$private_flag}

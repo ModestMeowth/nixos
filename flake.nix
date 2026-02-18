@@ -10,58 +10,65 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
     lanzaboote.url = "github:nix-community/lanzaboote";
-    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager/release-25.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     wsl.url = "github:nix-community/nixos-wsl/release-25.11";
-    wsl.inputs.nixpkgs.follows = "nixpkgs";
-    wsl.inputs.flake-compat.follows = "";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
-    nixvim.url = "github:nix-community/nixvim/nixos-25.11";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Ugghh, takes 2 styling flakes to do what I want
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
+
     stylix.url = "github:nix-community/stylix/release-25.11";
 
+    # Hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    # Walker
     elephant.url = "github:abenz1267/elephant";
-    elephant.inputs.nixpkgs.follows ="nixpkgs";
+
     walker.url = "github:abenz1267/walker";
     walker.inputs.elephant.follows = "elephant";
-    walker.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Screensave
+    terminaltexteffects.url = "github:chrisbuilds/terminaltexteffects?shallow=1";
   };
 
   outputs =
     inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; }
-    ({config, ...}:
-    let
-      lib' = import ./lib.nix { inherit config inputs; };
-    in
-    {
-      imports = [
-        inputs.flake-parts.flakeModules.easyOverlay
-        inputs.ez-configs.flakeModule
-      ];
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      { config, ... }:
+      let
+        lib' = import ./lib.nix { inherit config inputs; };
+      in
+      {
+        imports = [
+          inputs.flake-parts.flakeModules.easyOverlay
+          inputs.ez-configs.flakeModule
+        ];
 
-      systems = ["aarch64-linux" "x86_64-linux"];
+        systems = [
+          "aarch64-linux"
+          "x86_64-linux"
+        ];
 
-      ezConfigs = {
-        root = ./.;
-        globalArgs = { inherit inputs; };
-        nixos.configurationEntryPoint = "configuration.nix";
-        home.users = lib'.mkHomeConfigsForUser "mm";
-      };
-
-      perSystem =
-        {pkgs, ...}:
-        {
-          devShells.default = import ./shell.nix { inherit pkgs; };
-          packages.bootdev-cli = pkgs.callPackage ./packages/bootdev.nix { };
-          formatter = pkgs.nixfmt;
+        ezConfigs = {
+          root = ./.;
+          globalArgs = { inherit inputs; };
+          nixos.configurationEntryPoint = "configuration.nix";
+          home.users = lib'.mkHomeConfigsForUser "mm";
         };
-    });
+
+        perSystem =
+          { pkgs, ... }:
+          {
+            devShells.default = import ./shell.nix { inherit pkgs; };
+            packages.bootdev-cli = pkgs.callPackage ./packages/bootdev.nix { };
+            formatter = pkgs.nixfmt;
+          };
+      }
+    );
 }

@@ -21,8 +21,14 @@ status is-interactive; and begin
         abbr --add -- j just
     end
 
-    if  type -q eza
-        abbr --add -- ls "eza"
+    if type -q hx
+        function vim
+            hx $argv
+        end
+    end
+
+    if type -q eza
+        abbr --add -- ls eza
         abbr --add -- la "eza -a"
         abbr --add -- ll "eza -l"
         abbr --add -- lla "eza -la"
@@ -40,11 +46,11 @@ status is-interactive; and begin
     end
 
     if type -q doggo
-        abbr --add -- dig "doggo"
+        abbr --add -- dig doggo
     end
 
     if type -q rga
-        abbr --add -- rg "rga"
+        abbr --add -- rg rga
     end
 
     for dir in bin .bin .local/bin .emacs.d/bin

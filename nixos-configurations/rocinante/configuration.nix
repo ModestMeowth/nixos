@@ -1,4 +1,4 @@
-{ezModules, pkgs, ...}:
+{ ezModules, pkgs, ... }:
 let
   wlan = "wlp2s0";
 in
@@ -10,6 +10,7 @@ in
     docker
     efi
     gaming
+    # kmscon
     laptop
     hyprland
     shares
@@ -62,8 +63,8 @@ in
     pcscd.enable = true;
 
     sanoid.datasets = {
-      "zroot/persist/home/mm".use_template = ["default"];
-      "zroot/persist/home/root".use_template = ["default"];
+      "zroot/persist/home/mm".use_template = [ "default" ];
+      "zroot/persist/home/root".use_template = [ "default" ];
     };
 
     xserver.videoDrivers = [ "amdgpu" ];

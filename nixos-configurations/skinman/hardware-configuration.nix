@@ -1,4 +1,4 @@
-{modulesPath, ...}:
+{ modulesPath, ... }:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -9,7 +9,10 @@
   boot = {
     initrd = {
       allowMissingModules = true;
-      availableKernelModules = [ "xhci_pci" "usbhid" ];
+      availableKernelModules = [
+        "xhci_pci"
+        "usbhid"
+      ];
       kernelModules = [ ];
     };
     kernelModules = [ ];
@@ -25,7 +28,10 @@
     "/boot/firmware" = {
       device = "/dev/disk/by-uuid/2178-694E";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
     };
   };
 }

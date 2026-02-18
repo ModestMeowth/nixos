@@ -1,23 +1,43 @@
-{ezModules, inputs, lib, pkgs, ...}:
+{
+  ezModules,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   system.stateVersion = "25.11";
 
-  imports = [
-    inputs.sops-nix.nixosModules.sops
-    inputs.nix-index-database.nixosModules.nix-index
+  imports =
+    with inputs;
+    [
+      sops-nix.nixosModules.sops
+      nix-index-database.nixosModules.nix-index
+      stylix.nixosModules.stylix
+      catppuccin.nixosModules.catppuccin
+    ]
+    ++ (with ezModules; [
+      networkmanager
+      secrets
+      theme
+      users
+    ]);
 
-    ezModules.networkmanager
-    ezModules.secrets
-    ezModules.users
-  ];
+  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = "America/Chicago";
 
   nix = {
     distributedBuilds = true;
-    buildMachines = [{
-      hostName = "pwnyboy";
-      sshUser = "mm";
-      systems = ["x86_64-linux" "aarch64-linux"];
-    }];
+    buildMachines = [
+      {
+        hostName = "pwnyboy";
+        sshUser = "mm";
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
+      }
+    ];
 
     settings = {
       experimental-features = "nix-command flakes";
@@ -28,6 +48,26 @@
 
       allowed-users = [ "@wheel" ];
       trusted-users = [ "@wheel" ];
+
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+        "https://lanzaboote.cachix.org"
+        "https://hyprland.cachix.org"
+        "https://catppuccin.cachix.org"
+        "https://walker.cachix.org"
+        "https://walker-git.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "lanzaboote.cachix.org-1:Nt9//zGmqkg1k5iu+B3bkj3OmHKjSw9pvf3faffLLNk="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
+        "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+        "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
+      ];
     };
   };
 
@@ -39,43 +79,46 @@
   };
 
   environment.systemPackages = with pkgs; [
-      age
-      curl
-      diff-so-fancy
-      eza
-      fd
-      fzf
-      gh
-      jq
-      just
-      killall
-      lsof
-      nixfmt
-      psmisc
-      ripgrep
-      ripgrep-all
-      sops
-      treefmt
-      taplo
-      unzip
-      usbutils
-      wget
-      yamlfmt
-      yq
-      zip
-    ];
-
-  i18n.defaultLocale = "en_US.UTF-8";
+    age
+    curl
+    diff-so-fancy
+    eza
+    fd
+    fzf
+    gh
+    gum
+    jq
+    just
+    killall
+    lsof
+    nixfmt
+    psmisc
+    ripgrep
+    ripgrep-all
+    sops
+    treefmt
+    taplo
+    unzip
+    usbutils
+    wget
+    yamlfmt
+    yq
+    zip
+  ];
 
   networking.nftables.enable = true;
+
+  fonts.packages = [ pkgs.nerd-fonts.symbols-only ];
 
   programs = {
     bat = {
       enable = true;
       extraPackages = with pkgs.bat-extras; [
-        batman batdiff prettybat
+        batman
+        batdiff
+        prettybat
       ];
-      settings.theme = "Catppuccin-Macchiato";
+      settings.theme = ''"Catppuccin Macchiato"'';
     };
 
     command-not-found.enable = false;
@@ -140,5 +183,4 @@
     upower.enable = true;
   };
 
-  time.timeZone = "America/Chicago";
 }

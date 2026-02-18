@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-send_notification() {
-    notify-send --urgency="$1" "$2" "<span weight='bold'>$3</span>"
-}
-
 if pgrep -x hypridle >/dev/null; then
     pkill -x hypridle
-    send_notification low "" "Screen-lock disabled"
+    notify-send "System locking when idle disabled"
 else
     uwsm app -- hypridle >/dev/null 2>&1 &
-    send_notification low "" "Screen-lock enabled"
+    notify-send "System locking when idle enabled"
 fi

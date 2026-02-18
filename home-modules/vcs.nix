@@ -1,13 +1,14 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs = {
     git = {
       enable = true;
     };
 
-    gh.enable  = true;
+    gh.enable = true;
 
     jujutsu = {
-      enable  = true;
+      enable = true;
       package = pkgs.unstable.jujutsu;
     };
   };

@@ -6,7 +6,7 @@
         "height": 26,
 
         "modules-left": [ "hyprland/workspaces" ],
-        "modules-center": [ "clock" ],
+        "modules-center": [ "clock", "custom/screen-recording-indicator" ],
         "modules-right": [
             "wireplumber",
             "network",
@@ -19,7 +19,7 @@
             "on-click": "activate",
             "format": "{icon}",
             "format-icons": {
-                "default": "",
+                "default": ""
             },
             "persistent-workspaces": {
                 "1": [ ],
@@ -32,7 +32,14 @@
 
         "clock": {
             "format": "  {:%H:%M    %a, %b %d}",
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        },
+
+        "custom/screen-recording-indicator": {
+            "on-click": "~/.local/bin/screenrecord",
+            "exec": "~/.config/waybar/screen-recording-indicator.sh",
+            "signal": 8,
+            "return-type": "json"
         },
 
         "network": {
@@ -66,15 +73,8 @@
             "format-alt": "{icon}",
             "format-icons": {
                 "charging": [ "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅" ],
-                "default": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀","󰂁", "󰂂", "󰁹" ],
+                "default": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀","󰂁", "󰂂", "󰁹" ]
             }
-        },
-        "bluetooth": {
-            "format": "",
-            "format-disabled": "󰂲",
-            "format-connected": "",
-            "tooltip-format": "Devices connected: {num_connections}",
-            "on-click": "hyprctl dispatch -- togglespecialworkspace bluetooth"
         },
 
         "wireplumber": {
@@ -90,6 +90,6 @@
         "tray": {
             "icon-size": 21,
             "spacing": 10
-        },
+        }
     }
 ]

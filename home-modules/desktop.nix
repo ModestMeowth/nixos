@@ -1,65 +1,63 @@
-{ config, inputs, pkgs, ... }:
 {
-  imports = [
-    inputs.stylix.homeModules.stylix
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  inherit (lib.strings)
+    stringLength
+    substring
+    toUpper
+    ;
+
+  HOME = config.home.homeDirectory;
+  cap = str: toUpper (substring 0 1 str) + substring 1 (stringLength str) str;
+  flavor = config.catppuccin.flavor;
+  monoFont = config.stylix.fonts.monospace.name;
+  emojiFont = config.stylix.fonts.emoji.name;
+in
+{
+  home.packages = with pkgs; [
+    bitwarden-desktop
+    google-chrome
+    libnotify
+    signal-desktop
+    rpi-imager
   ];
 
-  gtk = {
-    iconTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
-    };
-  };
-
-  home.packages = with pkgs; [
-      bitwarden-desktop
-      google-chrome
-      signal-desktop
-      rpi-imager
-    ];
-
+  catppuccin.ghostty.enable = false;
   programs.ghostty.enable = true;
+  xdg.configFile."ghostty/config".text = ''
+    theme = Catppuccin ${cap flavor}
+    font-family = ${monoFont}
+    font-family = ${emojiFont}
+  ''
+  + builtins.readFile ../dotfiles/ghostty/config;
 
   services = {
     udiskie = {
       enable = true;
       settings.program_options = {
-        file_manager =
-          "${config.programs.ghostty.package}/bin/ghostty -e ${config.programs.yazi.package}/bin/yazi";
+        file_manager = "${config.programs.ghostty.package}/bin/ghostty -e ${config.programs.yazi.package}/bin/yazi";
       };
     };
   };
 
   stylix = {
-    enable = true;
-    autoEnable = false;
-
     cursor = {
       name = "Catppuccin Macchiato Mauve";
       package = pkgs.catppuccin-cursors.macchiatoMauve;
       size = 24;
     };
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    polarity = "dark";
 
-    fonts = {
-      serif.name = "0xProt Nerd Font Propo";
-      serif.package = pkgs.nerd-fonts._0xproto;
-
-      sansSerif.name = "Caskaydia Cove Nerd Font";
-      sansSerif.package = pkgs.nerd-fonts.caskaydia-cove;
-
-      monospace.name = "0xProt Nerd Font Mono";
-      monospace.package = pkgs.nerd-fonts._0xproto;
-
-      emoji.name = "Noto-Color-Emoji";
-      emoji.package = pkgs.nerd-fonts.noto;
-    };
-
-    targets.gtk = {
-      enable = true;
-      colors.enable = true;
-      fonts.enable = true;
+    targets = {
+      gtk.enable = true;
+      kde.enable = true;
+      qt.enable = true;
+      font-packages.enable = lib.mkForce true;
     };
   };
 
@@ -68,9 +66,24 @@
     "Cat.png".source = ../dotfiles/wallpaper/Cat.png;
     "dark-cat-rosewater.png".source = ../dotfiles/wallpaper/dark-cat-rosewater.png;
     "face.png".source = ../dotfiles/wallpaper/face.png;
-    "ghostty" = {
-      source = ../dotfiles/ghostty;
-      recursive = true;
+  };
+
+  xdg.terminal-exec = {
+    enable = true;
+    settings.default = [ "com.mitchellh.ghostty.desktop" ];
+  };
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+
+    desktop = null;
+    templates = null;
+    publicShare = null;
+
+    extraConfig = {
+      SCREENSHOT_DIR = "${HOME}/Pictures/Screenshots";
+      SCREENRECORD_DIR = "${HOME}/Videos/Screencasts";
     };
   };
 }

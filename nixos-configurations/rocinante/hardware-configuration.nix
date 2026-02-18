@@ -1,7 +1,7 @@
-{config, modulesPath, ...}:
+{ config, modulesPath, ... }:
 {
   nixpkgs.hostPlatform = "x86_64-linux";
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
@@ -15,27 +15,30 @@
       "sd_mod"
     ];
 
-    kernelModules = [ "kvm-amd" "acpi_call" ];
+    kernelModules = [
+      "kvm-amd"
+      "acpi_call"
+    ];
   };
 
   fileSystems = {
     "/" = {
       device = "zroot/rocinante/root";
       fsType = "zfs";
-      options = ["zfsutil"];
+      options = [ "zfsutil" ];
     };
 
     "/nix" = {
       device = "zroot/rocinante/nix";
       fsType = "zfs";
-      options = ["zfsutil"];
+      options = [ "zfsutil" ];
     };
 
     "/persist/etc" = {
       device = "zroot/persist/etc";
       fsType = "zfs";
       neededForBoot = true;
-      options = ["zfsutil"];
+      options = [ "zfsutil" ];
     };
 
     "/boot" = {

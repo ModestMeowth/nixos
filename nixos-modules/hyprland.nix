@@ -1,24 +1,26 @@
-{inputs, pkgs, ...}: {
-  imports = [inputs.walker.nixosModules.default];
+{ inputs, pkgs, ... }:
+{
+  imports = [ inputs.hyprland.nixosModules.default ];
+
   environment.systemPackages = with pkgs; [
-    hyprlock
-    hypridle
-    hyprpaper
-    hyprpicker
-    hyprsunset
-    libnotify
-    mako
-    waybar
+    gpu-screen-recorder
+    ffmpeg
+    v4l-utils
     wl-clipboard
+    wl-clip-persist
   ];
 
   programs = {
     hyprland = {
       enable = true;
-      withUWSM = true;
       xwayland.enable = true;
     };
 
-    walker.enable = true;
+    hyprlock.enable = true;
+  };
+
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = { };
   };
 }

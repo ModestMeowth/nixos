@@ -1,4 +1,4 @@
-{ezModules, ...}:
+{ ezModules, ... }:
 {
   nixpkgs.system = "aarch64-linux"; # system is getting clobbered somewhere, this works for now
 
@@ -7,8 +7,8 @@
     homeDirectory = "/home/mm";
   };
 
-  imports = [
-    ezModules.network-utils
-    ezModules.syncthing
+  imports = with ezModules; [
+    network-utils
+    syncthing
   ];
 }

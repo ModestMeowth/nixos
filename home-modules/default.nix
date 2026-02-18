@@ -1,25 +1,82 @@
-{ ezModules, inputs, lib, pkgs, ... }:
+{
+  ezModules,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 {
   home.stateVersion = "25.11";
   nixpkgs.config.allowUnfree = true;
   news.display = "silent";
 
-  imports = [
-    inputs.sops-nix.homeModules.sops
-    inputs.nixvim.homeModules.nixvim
+  imports =
+    with inputs;
+    [
+      sops-nix.homeModules.sops
+      stylix.homeModules.stylix
+      catppuccin.homeModules.catppuccin
+    ]
+    ++ (with ezModules; [
 
-    ezModules.fish
-    ezModules.neovim
-    ezModules.unstable
-    ezModules.vcs
-  ];
+      editor
+      fish
+      theme
+      unstable
+      vcs
+      yazi
+    ]);
+
+  nix = {
+    package = pkgs.nix;
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "pwnyboy";
+        sshUser = "mm";
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
+      }
+    ];
+
+    settings = {
+      experimental-features = "nix-command flakes";
+
+      auto-optimise-store = true;
+      keep-outputs = true;
+      keep-derivations = true;
+
+      allowed-users = [ "@wheel" ];
+      trusted-users = [ "@wheel" ];
+
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+        "https://catppuccin.cachix.org"
+        "https://hyprland.cachix.org"
+        "https://walker.cachix.org"
+        "https://walker-git.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+        "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
+      ];
+    };
+  };
 
   home = {
     file = {
       ".editorconfig".source = ../dotfiles/editorconfig/editorconfig;
       ".local/bin/mosh" = {
-          source = ../dotfiles/bin/mosh;
-          executable = true;
+        source = ../dotfiles/bin/mosh;
+        executable = true;
       };
       ".tmux.conf".source = ../dotfiles/tmux/tmux.conf;
     };
@@ -28,28 +85,17 @@
   programs = {
     man.generateCaches = lib.mkForce false;
 
-    yazi = {
+    eza = {
       enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      plugins = with pkgs.yaziPlugins; {
-        git = git;
-        mediainfo = mediainfo;
-        mount = mount;
-        ouch = ouch;
-        rich-preview = rich-preview;
-        starship = starship;
-        time-travel = time-travel;
-        yatline = yatline;
-        yatline-catppuccin = yatline-catppuccin;
-      };
 
-      initLua = ''
-        local catppuccin_theme = require("yatline-catppuccin"):setup("macchiato")
-        require("yatline"):setup({
-          theme = catppuccin_theme,
-        })
-      '';
+      colors = "auto";
+      git = true;
+      icons = "auto";
+
+      extraOptions = [
+        "--group-directories-first"
+        "--header"
+      ];
     };
   };
 
@@ -57,6 +103,10 @@
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
+  };
+
+  stylix.targets = {
+
   };
 
   xdg.enable = true;

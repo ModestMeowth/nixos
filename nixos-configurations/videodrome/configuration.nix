@@ -1,4 +1,4 @@
-{ezModules, lib, ...}:
+{ ezModules, lib, ... }:
 {
   imports = with ezModules; [
     shares

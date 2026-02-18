@@ -1,4 +1,4 @@
-{ezModules, pkgs, ...}:
+{ ezModules, pkgs, ... }:
 let
   inherit (pkgs.stdenv) isDarwin;
 in
@@ -8,8 +8,8 @@ in
     homeDirectory = if isDarwin then "/Users/mm" else "/home/mm";
   };
 
-  imports = [
-    ezModules.bootdev
-    ezModules.network-utils
+  imports = with ezModules; [
+    bootdev
+    network-utils
   ];
 }

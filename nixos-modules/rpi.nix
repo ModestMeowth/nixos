@@ -1,9 +1,15 @@
-{ezModules, lib, pkgs, ...}: {
+{
+  ezModules,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ezModules.networkmanager
   ];
 
-  environment.systemPackages = [pkgs.raspberrypi-eeprom];
+  environment.systemPackages = [ pkgs.raspberrypi-eeprom ];
 
   networking.networkmanager.enable = lib.mkDefault true;
 

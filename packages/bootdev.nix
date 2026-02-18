@@ -11,7 +11,12 @@ let
   sourceData = callPackage ./_sources/generated.nix { };
 in
 buildGoModule (finalAttr: {
-  inherit (sourceData.bootdev-cli) pname src version vendorHash;
+  inherit (sourceData.bootdev-cli)
+    pname
+    src
+    version
+    vendorHash
+    ;
 
   ldflags = [
     "-s"

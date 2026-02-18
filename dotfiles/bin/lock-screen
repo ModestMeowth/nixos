@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+pidof hyprlock || hyprlock &
+
+pkill -f dev.meowth.screensaver

@@ -1,4 +1,4 @@
-{ezModules, inputs, ...}:
+{ ezModules, inputs, ... }:
 let
   wlan = "wlan0";
 in

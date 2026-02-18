@@ -1,6 +1,52 @@
-font-family = 0xProto Nerd Font Mono
 font-size = 10
-keybind = clear
-theme = Catppuccin Macchiato
+
 shell-integration = detect
-gtk-single-instance = false
+shell-integration-features = no-cursor,ssh-env
+
+window-theme = ghostty
+window-padding-x = 8
+window-padding-y = 8
+
+confirm-close-surface = false
+resize-overlay = never
+gtk-toolbar-style = flat
+
+cursor-style = "block"
+cursor-style-blink = false
+
+mouse-scroll-multiplier = 0.95
+
+async-backend = epoll
+
+# keybind = alt+v=activate_key_table:vim
+
+# keybind = vim/
+
+# keybind = vim/j=scroll_page_lines:1
+# keybind = vim/k=scroll_page_lines:-1
+
+# keybind = vim/ctrl+d=scroll_page_down
+# keybind = vim/ctrl+u=scroll_page_up
+# keybind = vim/ctrl+f=scroll_page_down
+# keybind = vim/ctrl+b=scroll_page_up
+# keybind = vim/shift+j=scroll_page_down
+# keybind = vim/shift+k=scroll_page_up
+
+# keybind = vim/g>g=scroll_to_top
+# keybind = vim/shift+g=scroll_to_bottom
+
+# keybind = vim/slash=start_search
+# keybind = vim/n=navigate_search:next
+# keybind = vim/shift+n=navigate_search:previous
+
+# keybind = vim/v=copy_to_clipboard
+# keybind = vim/y=copy_to_clipboard
+# keybind = vim/p=paste_from_clipboard
+
+# keybind = vim/shift+semicolon=toggle_command_palette
+
+# keybind = vim/escape=deactivate_key_table
+# keybind = vim/q=deactivate_key_table
+# keybind = vim/i=deactivate_key_table
+
+# keybind = vim/catch_all=ignore

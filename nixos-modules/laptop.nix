@@ -1,5 +1,6 @@
-{lib, pkgs, ...}: {
-  environment.systemPackages = [pkgs.brightnessctl];
+{ lib, pkgs, ... }:
+{
+  environment.systemPackages = [ pkgs.brightnessctl ];
   networking.networkmanager.enable = lib.mkDefault true;
 
   services.auto-cpufreq = {

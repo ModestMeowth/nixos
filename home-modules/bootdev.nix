@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   nixpkgs.overlays = [
     (final: _: {
@@ -6,5 +6,5 @@
     })
   ];
 
-  home.packages = [pkgs.bootdev-cli];
+  home.packages = [ pkgs.bootdev-cli ];
 }

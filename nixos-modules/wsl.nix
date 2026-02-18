@@ -1,4 +1,5 @@
-{inputs, lib, ...}: {
+{ inputs, lib, ... }:
+{
   imports = [
     inputs.wsl.nixosModules.wsl
   ];
@@ -22,7 +23,7 @@
 
     wslConf = {
       user.default = lib.mkDefault "mm";
-      network =  {
+      network = {
         generateHosts = lib.mkDefault false;
         generateResolvConf = lib.mkDefault false;
       };

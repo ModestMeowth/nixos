@@ -1,4 +1,10 @@
-{config, ezModules, lib, pkgs, ...}:
+{
+  config,
+  ezModules,
+  lib,
+  pkgs,
+  ...
+}:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -6,6 +12,7 @@
     cockpit
     docker
     efi
+    kmscon
     secureboot
     tailscale
     unstable
@@ -20,10 +27,19 @@
       emulatedSystems = [ "aarch64-linux" ];
       preferStaticEmulators = true;
     };
-    initrd.availableKernelModules = ["sr_mod"];
-    kernelModules = ["vfio_virqfd" "vfio_pci"];
-    kernelParams = ["intel_iommu=on" "iommu=pt"];
-    zfs.extraPools = ["docker" "persist"];
+    initrd.availableKernelModules = [ "sr_mod" ];
+    kernelModules = [
+      "vfio_virqfd"
+      "vfio_pci"
+    ];
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+    ];
+    zfs.extraPools = [
+      "docker"
+      "persist"
+    ];
   };
 
   environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
@@ -41,11 +57,14 @@
 
   networking = {
     hostName = "pwnyboy";
-    nameservers = ["192.168.1.1"];
-    search = ["threefinger.farm"];
+    nameservers = [ "192.168.1.1" ];
+    search = [ "threefinger.farm" ];
     useDHCP = false;
 
-    bridges.bridge0.interfaces = ["enp3s0" "enp4s0"];
+    bridges.bridge0.interfaces = [
+      "enp3s0"
+      "enp4s0"
+    ];
 
     interfaces = {
       enp3s0.wakeOnLan.enable = true;
@@ -97,7 +116,10 @@
       driver = "usbhid-ups";
       description = "Networking UPS";
       port = "auto";
-      directives = ["vendorid = 051d" "productid = 0002"];
+      directives = [
+        "vendorid = 051d"
+        "productid = 0002"
+      ];
     };
 
     upsmon.monitor."network" = {
@@ -133,6 +155,17 @@
         "mangled names" = "no";
         "vfs objects" = "catia";
         "catia:mappings" = "0x3a:0x5f";
+      };
+
+      settings.media = {
+        browsable = "yes";
+        comment = "media";
+        path = "/persist/data/media";
+
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
       };
     };
 
