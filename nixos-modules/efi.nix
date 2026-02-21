@@ -6,6 +6,9 @@
       efiSysMountPoint = lib.mkDefault "/boot";
     };
 
-    systemd-boot.configurationLimit = lib.mkDefault 5;
+    timeout = 3;
+    systemd-boot = {
+      configurationLimit = lib.mkDefault 5;
+    };
   };
 }

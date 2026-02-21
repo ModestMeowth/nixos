@@ -2,6 +2,7 @@
   config,
   lib,
   osConfig,
+  pkgs,
   ...
 }:
 let
@@ -11,6 +12,11 @@ let
   ts = osConfig.services.tailscale;
 in
 {
+
+  home.packages = with pkgs; [
+    bluetui
+  ];
+
   services.mako = {
     enable = true;
     extraConfig = ''

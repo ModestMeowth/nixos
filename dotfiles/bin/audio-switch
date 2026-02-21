@@ -51,6 +51,6 @@ if [ "$next_sink_name" != "$current_sink_name" ]; then
 fi
 
 swayosd-client \
-    --monitored "$focused_monitor" \
+    --monitor "$focused_monitor" \
     --custom-message "$next_sink_description" \
     --custom-icon "$next_sink_volume_icon"

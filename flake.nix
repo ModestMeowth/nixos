@@ -24,9 +24,6 @@
 
     stylix.url = "github:nix-community/stylix/release-25.11";
 
-    # Hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
-
     # Walker
     elephant.url = "github:abenz1267/elephant";
 

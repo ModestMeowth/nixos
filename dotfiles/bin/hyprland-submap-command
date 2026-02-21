@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -x
+
+timeout=3
+
+case "$1" in
+-n)
+    shift
+    timeout="$1"
+    shift
+;;
+esac
+
+hyprctl dispatch submap "$1"
+sleep "$timeout"
+hyprctl dispatch submap reset

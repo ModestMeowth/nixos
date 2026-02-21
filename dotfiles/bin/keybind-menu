@@ -4,6 +4,8 @@
 
 declare -A KEYCODE_SYM_MAP
 
+SUBMAP="${1:-""}"
+
 build_keymap_cache() {
     local keymap
     keymap="$(xkbcli compile-keymap)" || {
@@ -84,11 +86,13 @@ parse_keycodes() {
 # - Output comma-separated values that the parser can understand
 dynamic_bindings() {
     hyprctl -j binds |
-        jq -r '.[] | {modmask, key, keycode, description, dispatcher, arg} | "\(.modmask),\(.key)@\(.keycode),\(.description),\(.dispatcher),\(.arg)"' |
+        jq -r --arg submap "$SUBMAP" '.[] | select(.submap == $submap and .dispatcher != "submap" and .arg != "reset")| {modmask, key, keycode, description, dispatcher, arg} | "\(.modmask),\(.key)@\(.keycode),\(.description),\(.dispatcher),\(.arg)"' |
         sed -r \
             -e 's/null//' \
             -e 's,uwsm app -- ,,' \
             -e 's,uwsm-app -- ,,' \
+            -e 's/exec, hyprland-submap-command/submap, /' \
+            -e 's/exec, hyprland-submap-command -n [0-9]/submap, /' \
             -e 's/@0//' \
             -e 's/,@/,code:/' \
             -e 's/^0,/,/' \
@@ -111,7 +115,8 @@ dynamic_bindings() {
 
 # Hardcoded bindings, like the copy-url extension and such
 static_bindings() {
-    echo "SHIFT ALT,L,Copy URL from Web App,extension,copy-url"
+    return
+    # echo "SHIFT ALT,L,Copy URL from Web App,extension,copy-url"
 }
 
 # Parse and format keybindings

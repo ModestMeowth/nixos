@@ -5,15 +5,12 @@
         "spacing": 0,
         "height": 26,
 
-        "modules-left": [ "hyprland/workspaces" ],
-        "modules-center": [ "clock", "custom/screen-recording-indicator" ],
-        "modules-right": [
-            "wireplumber",
-            "network",
-            "backlight",
-            "battery",
-            "tray"
+        "modules-left": [
+            "hyprland/workspaces",
+            "hyprland/submap"
         ],
+        "modules-center": [ "clock" ],
+        "modules-right": [ "group/statusbar" ],
 
         "hyprland/workspaces": {
             "on-click": "activate",
@@ -26,8 +23,13 @@
                 "2": [ ],
                 "3": [ ],
                 "4": [ ],
-                "5": [ ]
+                "5": [ ],
+                "6": [ ]
             }
+        },
+
+        "hyprland/submap": {
+           "default-submap": ""
         },
 
         "clock": {
@@ -42,54 +44,83 @@
             "return-type": "json"
         },
 
+        "group/statusbar": {
+            "orientation": "horizontal",
+            "modules": [
+                "custom/screen-recording-indicator",
+                "pulseaudio",
+                "network",
+                "battery",
+                "bluetooth",
+                "tray"
+            ]
+        },
+
         "network": {
             "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ],
             "format": "{icon}",
             "format-wifi": "{icon}",
-            "format-ethernet": "",
-            "format-disconnected": "",
+            "format-ethernet": "󰀂",
+            "format-disconnected": "󰤮",
             "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
             "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
             "tooltip-disconnected": "Disconnected",
             "interval": 3,
             "nospacing": 1,
-            "on-click": "hyprctl dispatch -- togglespecialworkspace networkManager"
+            "on-click": "launch-wifi"
         },
 
-        "backlight": {
-            "device": "amdgpu_bl1",
-            "format": "{icon}",
-            "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "bluetooth": {
+            "format": "",
+            "format-device-preferences": ["EPOS GTW 270"],
+            "format-disabled": "󰂲",
+            "format-connected": "󰂱",
+            "format-connected-battery": "󰂱 {device_battery_percentage}%",
+            "format-no-controller": "",
+            "format-off": "󰂲",
+            "tooltip-format": "Devices connected: {num_connections}\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}",
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
+            "on-click": "launch-bluetooth"
         },
 
         "battery": {
-            "states": {
-              "warning": 30,
-              "critical": 15
-            },
-            "format": "{icon}",
-            "format-charging": "{icon}",
-            "format-plugged": "{icon}",
+            "format": "{capacity}% {icon}",
             "format-alt": "{icon}",
+            "format-charging": "{icon}",
+            "format-discharging": "{icon}",
+            "format-full": "󰂅",
+            "format-plugged": "",
             "format-icons": {
                 "charging": [ "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅" ],
                 "default": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀","󰂁", "󰂂", "󰁹" ]
-            }
+            },
+            "interval": 5,
+            "states": {
+              "warning": 20,
+              "critical": 10
+            },
+            "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+            "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%"
         },
 
-        "wireplumber": {
+        "pulseaudio": {
             "format": "{icon} {volume}%",
+            "format-icons": {
+                "handsfree": "",
+                "headphones": "",
+                "headset": "",
+                "default": [ "", "", "" ]
+            },
             "format-muted": "",
-            "format-icons": [ "", "", "" ],
+            "on-click": "launch-audio",
             "scroll-step": 5,
-            "on-click": "hyprctl dispatch -- togglespecialworkspace volume",
-            "on-click-right": "hyprctl dispatch -- togglespecialworkspace mixer",
             "tooltip-format": "Playing at {volume}%"
         },
 
         "tray": {
-            "icon-size": 21,
-            "spacing": 10
+            "icon-size": 16,
+            "spacing": 1
         }
     }
 ]

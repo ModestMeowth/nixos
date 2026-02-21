@@ -1,5 +1,6 @@
 { lib, ... }:
 {
+  catppuccin.fish.enable = false;
   programs.fish = {
     enable = true;
     interactiveShellInit = lib.mkAfter ''

@@ -1,3 +1,16 @@
 #!/usr/bin/env bash
 
-launch-or-focus-tui nmtui
+network_tui=""
+for candidate in gazelle impala nmtui; do
+    if command -v "$candidate"; then
+        network_tui="$candidate"
+        break
+    fi
+done
+
+if [[ -z "$network_tui" ]]; then
+    echo No wifi tui found
+    exit 1
+fi
+
+launch-or-focus-tui "$network_tui"

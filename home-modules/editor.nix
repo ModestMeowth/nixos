@@ -5,16 +5,11 @@
 
   programs.helix = {
     enable = true;
-    package = pkgs.evil-helix;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      bash-language-server
-      fish-lsp
+      harper
       markdown-oxide
       nixd
-      taplo
-      vscode-css-languageserver
-      yamlfmt
     ];
 
     extraConfig = ''

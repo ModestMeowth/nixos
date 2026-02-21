@@ -20,8 +20,10 @@ in
 {
   home.packages = with pkgs; [
     bitwarden-desktop
+    imv
     google-chrome
     libnotify
+    mpv
     signal-desktop
     rpi-imager
   ];

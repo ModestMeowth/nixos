@@ -1,12 +1,15 @@
 { pkgs, ... }:
 pkgs.mkShell {
-  builtInputs = with pkgs; [
+  buildInputs = with pkgs; [
     just
+    sops
+
     treefmt
 
-    # LSPs for helix
+    # LSPs
     bash-language-server
     fish-lsp
+    hyprls
     nixd
     taplo
     yamlfmt

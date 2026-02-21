@@ -23,7 +23,7 @@
       sansSerif.name = "Caskaydia Cove Nerd Font";
       sansSerif.package = pkgs.nerd-fonts.caskaydia-cove;
 
-      monospace.name = "0xProtoNerd Font Mono";
+      monospace.name = "0xProto Nerd Font Mono";
       monospace.package = config.stylix.fonts.serif.package;
 
       emoji.name = "Noto-Color-Emoji";

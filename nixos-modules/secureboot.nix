@@ -17,6 +17,7 @@
       };
 
       pkiBundle = lib.mkDefault "/var/lib/sbctl";
+
     };
 
     loader.grub.enable = lib.mkForce false;

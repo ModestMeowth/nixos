@@ -1,22 +1,21 @@
 { ezModules, pkgs, ... }:
-let
-  wlan = "wlp2s0";
-in
 {
   nixpkgs.config.allowUnfree = true;
+  networking.hostName = "rocinante";
 
   imports = with ezModules; [
     desktop
     docker
     efi
     gaming
-    # kmscon
+    kmscon
     laptop
     hyprland
     shares
     secureboot
     tailscale
     unstable
+    wireless
     zfs
 
     ./hardware-configuration.nix
@@ -32,14 +31,6 @@ in
     amdgpu.initrd.enable = true;
     graphics.enable = true;
     graphics.enable32Bit = true;
-  };
-
-  networking = {
-    hostName = "rocinante";
-    networkmanager.ensureProfiles.profiles = {
-      "Ponyboy Bounce House".connection.interface-name = wlan;
-      "Hyrule".connection.interface-name = wlan;
-    };
   };
 
   programs = {
@@ -60,6 +51,11 @@ in
     };
 
     fwupd.enable = true;
+
+    kmscon.extraConfig = ''
+      mode=1920x1200
+    '';
+
     pcscd.enable = true;
 
     sanoid.datasets = {

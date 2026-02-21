@@ -41,8 +41,6 @@
   };
 
   services = {
-    blueman.enable = true;
-
     displayManager = {
       autoLogin = {
         enable = lib.mkDefault true;

@@ -1,3 +1,17 @@
+@keyframes urgent-blink {
+    0% {
+        background-color: @surface0;
+    }
+
+    50% {
+        background-color: @surface1;
+    }
+
+    100% {
+        background-color: @surface2;
+    }
+}
+
 * {
     min-height: 0;
     font-family: "0xProto Nerd Font";
@@ -7,95 +21,142 @@
 window#waybar {
     background: transparent;
     color: @text;
-    margin: 5px 5px;
 }
 
-#workspaces {
-    border-radius: 1rem;
-    margin: 5px;
-    background-color: @surface0;
-    margin-left: 1rem;
+#workspaces,
+#submap,
+#clock,
+#custom-screen-recording-indicator,
+#statusbar {
+    border-radius: 0 0 1rem 1rem;
+    margin: 0 1rem;
+    padding: 0.25rem 1rem;
+    background-color: @base;
 }
 
 #workspaces button {
-    color: @lavendar;
-    border-radius: 1rem;
+    color: @surface1;
     padding: 0.4rem;
 }
 
-#workspaces button.active {
-    color: @sky;
-    border-radius: 1rem;
-}
-
 #workspaces button:hover {
-    color: @sapphire;
-    border-radius: 1rem;
+    background-color: @surface2;
 }
 
-#battery,
-#backlight,
-#clock,
-#custom-screen-recording-indicator,
-#network,
-#tray,
-#wireplumber {
-    background-color: @surface0;
-    padding: 0.5rem 1rem;
-    margin: 5px 0;
+#workspaces button.urgent {
+    animation: urgent-blink 2s infinite ease-in-out alternate;
 }
 
-#clock,
-#custom-screen-recording-indicator {
+#workspaces button.active:nth-child(1),
+#workspaces button.urgent:nth-child(1),
+#workspaces button.active:nth-child(1):hover {
+    color: @red;
+}
+
+#workspaces button.active:nth-child(2),
+#workspaces button.urgent:nth-child(2),
+#workspaces button.active:nth-child(2):hover {
+    color: @green;
+}
+
+#workspaces button.active:nth-child(3),
+#workspaces button.urgent:nth-child(3),
+#workspaces button.active:nth-child(3):hover {
+    color: @yellow;
+}
+
+#workspaces button.active:nth-child(4),
+#workspaces button.urgent:nth-child(4),
+#workspaces button.active:nth-child(4):hover {
+    color: @blue;
+}
+
+#workspaces button.active:nth-child(5),
+#workspaces button.urgent:nth-child(5),
+#workspaces button.active:nth-child(5):hover {
+    color: @maroon;
+}
+
+#workspaces button.active:nth-child(6),
+#workspaces button.urgent:nth-child(6),
+#workspaces button.active:nth-child(6):hover {
+    color: @sky;
+}
+
+#clock {
     color: @lavender;
-    border-radius: 1rem;
-    margin-right: 1rem;
 }
 
 #custom-screen-recording-indicator.active {
     color: @red;
 }
 
-#battery {
-    color: @green;
-}
-
-#battery.charging {
-    color: @green;
-}
-
-#battery.warning:not(.charging) {
+#submap.Capture {
     color: @red;
+}
+
+#submap.Applications {
+    color: @green;
+}
+
+#submap.Utilities {
+    color: @sky;
+}
+
+#statusbar {
+    padding: 0 1rem;
+}
+
+#statusbar * {
+    padding: 0 0.75rem;
+}
+
+#statusbar #tray {
+    padding: 0;
+}
+
+#pulseaudio {
+    color: @maroon;
+}
+
+
+#battery,
+#bluetooth,
+#network,
+#pulseaudio.muted {
+    /* Gray-out anything not interesting */
+    color: @surface1;
+}
+
+#bluetooth.connected,
+#pulseaudio.bluetooth {
+    color: @sky;
 }
 
 #backlight {
     color: @yellow;
 }
 
-#backlight,
-#battery {
-    border-radius: 0;
+#battery.warning:not(.charging) {
+    color: @yellow;
 }
 
-#network {
-    color: @peach;
+#battery.critical:not(.charging) {
+    color: @red;
 }
 
-#wireplumber {
-    color: @maroon;
-    border-radius: 1rem 0px 0px 1rem;
-    margin-left: 1rem;
+#battery.charging.warning,
+#battery.charging.critical {
+    color: @green;
 }
 
-#tray {
-    margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
+#network.disconnected,
+#network.diabled,
+#network.linked {
+    color: @red;
 }
 
-tooltip {
-    padding: 2px;
-}
-
+tooltip,
 tooltip label {
     padding: 2px;
 }

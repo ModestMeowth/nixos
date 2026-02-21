@@ -17,7 +17,7 @@
       catppuccin.nixosModules.catppuccin
     ]
     ++ (with ezModules; [
-      networkmanager
+      # networkmanager
       secrets
       theme
       users

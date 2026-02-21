@@ -6,12 +6,10 @@
 }:
 {
   imports = [
-    ezModules.networkmanager
+    ezModules.wireless
   ];
 
   environment.systemPackages = [ pkgs.raspberrypi-eeprom ];
-
-  networking.networkmanager.enable = lib.mkDefault true;
 
   nix.settings = {
     builders-use-substitutes = lib.mkDefault true;
