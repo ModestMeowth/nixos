@@ -1,0 +1,9 @@
+keys:
+  - &skmn_age age1qzdr0e56jx3gvq8cqexp344sed4pjcyjg6vpwwfvhjcyu37v8f5s4dg4a8
+  - &mm_age age18lt2qwmtvuj0ujf9zrxr4wsehhxuvqc3e79s53c20wq5fv6jhqyst4m83t
+creation_rules:
+  - path_regex: .*\.sops.ya?ml$
+    key_groups:
+      - age:
+          - *skmn_age
+          - *mm_age

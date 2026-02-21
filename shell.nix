@@ -2,6 +2,7 @@
 pkgs.mkShell {
   buildInputs = with pkgs; [
     just
+    nh
     sops
 
     treefmt

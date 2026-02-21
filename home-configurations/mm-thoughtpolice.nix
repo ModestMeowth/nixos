@@ -28,10 +28,4 @@ in
     enable = true;
     indicator = true;
   };
-
-  wayland.windowManager.hyprland.extraConfig = ''
-    input {
-      kb_options = ctrl:swapcaps
-    }
-  '';
 }

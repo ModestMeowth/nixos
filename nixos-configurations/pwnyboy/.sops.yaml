@@ -1,0 +1,9 @@
+keys:
+  - &pnby_age age15fhvwthgd5f6spcvr5st3lknm3xqlfdyj2s3xnld8c947w78s9nsl0q8zv
+  - &mm_age age18lt2qwmtvuj0ujf9zrxr4wsehhxuvqc3e79s53c20wq5fv6jhqyst4m83t
+creation_rules:
+  - path_regex: .*\.sops.ya?ml$
+    key_groups:
+      - age:
+          - *pnby_age
+          - *mm_age

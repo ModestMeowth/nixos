@@ -110,5 +110,6 @@ in
     (mkBinFile' "bin/toggle-nightlight")
 
     (mkBinFile' "bin/terminal-cwd")
+    (mkBinFile' "bin/monitor-profile")
   ];
 }

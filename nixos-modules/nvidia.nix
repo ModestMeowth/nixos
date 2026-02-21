@@ -1,14 +1,21 @@
-{config, lib, ...}:
+{config, lib, pkgs, ...}:
 let
   docker = config.virtualisation.docker;
 in
 {
-  hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    open = lib.mkDefault true;
-    modesetting.enable = true;
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
+    nvidia = {
+      modesetting.enable = true;
+      open = lib.mkDefault true;
+    };
+
+    nvidia-container-toolkit.enable = lib.mkDefault docker.enable;
   };
 
-  hardware.nvidia-container-toolkit = lib.mkDefault docker.enable;
+  services.xserver.videoDrivers = [ "nvidia" ];
 }
