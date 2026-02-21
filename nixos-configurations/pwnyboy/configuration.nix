@@ -9,6 +9,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = with ezModules; [
+    builder
     cockpit
     docker
     efi
@@ -23,10 +24,6 @@
   ];
 
   boot = {
-    binfmt = {
-      emulatedSystems = [ "aarch64-linux" ];
-      preferStaticEmulators = true;
-    };
     initrd.availableKernelModules = [ "sr_mod" ];
     kernelModules = [
       "vfio_virqfd"
