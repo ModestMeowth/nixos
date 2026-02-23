@@ -14,6 +14,8 @@
     enable = lib.mkDefault true;
     autoEnable = lib.mkDefault false;
 
+    polarity = "dark";
+
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-${config.catppuccin.flavor}.yaml";
 
     fonts = {

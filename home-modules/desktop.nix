@@ -56,6 +56,7 @@ in
     polarity = "dark";
 
     targets = {
+      gnome.enable = true; # Needed to set system to dark mode default
       gtk.enable = true;
       kde.enable = true;
       qt.enable = true;
