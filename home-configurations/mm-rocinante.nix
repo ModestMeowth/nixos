@@ -1,6 +1,7 @@
-{ ezModules, pkgs, ... }:
+{ config, ezModules, pkgs, ... }:
 let
   inherit (pkgs.stdenv) isDarwin;
+  wallpaper = config.stylix.image;
 in
 {
   home.username = "mm";
@@ -35,10 +36,29 @@ in
     }
   '';
 
-  xdg.configFile."hypr/hyprland.conf.d/monitor.conf".text = ''
-    monitorv2 {
-      output = eDP-1
-      mode = 1920x1200@60
-    }
-  '';
+  xdg.configFile = {
+    "hypr/hyprland.conf.d/monitor.conf".text = ''
+      monitorv2 {
+        output = eDP-1
+        mode = 1920x1200@60
+        vrr = 3
+      }
+    '';
+
+    "hypr/hyprpaper.conf".text = ''
+      wallpaper {
+        monitor = eDP-1
+        path = ${wallpaper}
+        fit_mode = contain
+      }
+
+      splash = false
+    '';
+
+    "hypr/hyprsunset.conf".text = ''
+      profile {
+        temperature = 3000
+      }
+    '';
+  };
 }

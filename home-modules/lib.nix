@@ -1,15 +1,10 @@
 { lib, ... }:
 let
-  inherit (builtins)
-    attrNames
-    readDir
-    readFile
-    ;
-
   inherit (lib)
     mergeAttrsList
     ;
-
+in
+rec {
   mkBinFile =
     binDir:
     {
@@ -25,10 +20,6 @@ let
 
   mkBinFiles = binDir: list: mergeAttrsList (map (f: (mkBinFile binDir { source = f; })) list);
 
-  mergeDotfiles =
-    path:
-    map (f: readFile f) (map (f: ../dotfiles/${path}/${f}) (attrNames (readDir ../dotfiles/${path})));
-
   mkFile =
     {
       source,
@@ -42,11 +33,4 @@ let
     };
 
   mkFiles = list: mergeAttrsList (map (f: mkFile { source = f; }) list);
-in
-{
-  mkBinFile = mkBinFile;
-  mkBinFiles = mkBinFiles;
-  mergeDotfiles = mergeDotfiles;
-  mkFile = mkFile;
-  mkFiles = mkFiles;
 }

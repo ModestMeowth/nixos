@@ -69,7 +69,7 @@ show_capture_menu() {
     *Screenshot*) screenshot ;;
     *Screenrecord*) show_screenrecord_menu ;;
     *Color*) pkill hyprpicker || hyprpicker -a ;;
-    *) back_to show_system_menu ;;
+    *) back_to show_main_menu ;;
     esac
 }
 
@@ -110,7 +110,7 @@ show_power_menu() {
     profile=$(menu "Power Profile" "$(power-profiles-list)" "" "$(powerprofilesctl get)")
 
     if [[ "$profile" == "CNCLD" || -z "$profile" ]]; then
-        back_to show_system_menu
+        back_to show_main_menu
     else
         powerprofilesctl set "$profile"
     fi

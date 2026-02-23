@@ -12,24 +12,47 @@ let
   ts = osConfig.services.tailscale;
 in
 {
-
   home.packages = with pkgs; [
+    unstable.hyprpolkitagent
+    unstable.hyprpicker
+
     bluetui
+    grim
+    libxkbcommon # xkbcli
+    playerctl
+    slurp
+    wayfreeze
   ];
 
-  services.mako = {
-    enable = true;
-    extraConfig = ''
-      font=${font}
-    ''
-    + readFile ../../dotfiles/mako/config;
-  };
+  services = {
+    hyprpaper = {
+      enable = true;
+      package = pkgs.unstable.hyprpaper;
+    };
 
-  services.swayosd.enable = true;
+    hyprpolkitagent = {
+      enable = true;
+      package = pkgs.unstable.hyprpolkitagent;
+    };
 
-  services.tailscale-systray = lib.mkIf ts.enable {
-    enable = true;
-    package = ts.package;
+    hyprsunset = {
+      enable = true;
+      package = pkgs.unstable.hyprsunset;
+    };
+
+    mako = {
+      enable = true;
+      extraConfig = ''
+        font=${font}
+      '' + readFile ../../dotfiles/mako/config;
+    };
+
+    tailscale-systray = lib.mkIf ts.enable {
+      enable = true;
+      package = ts.package;
+    };
+
+    swayosd.enable = true;
   };
 
   programs.waybar = {
@@ -37,9 +60,5 @@ in
     systemd.enable = true;
     settings = importJSON ../../dotfiles/waybar/config.jsonc;
     style = readFile ../../dotfiles/waybar/style.css;
-  };
-  xdg.configFile."waybar/screen-recording-indicator.sh" = {
-    source = ../../dotfiles/waybar/screen-recording-indicator.sh;
-    executable = true;
   };
 }

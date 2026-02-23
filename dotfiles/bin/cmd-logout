@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-nohup -c "sleep 2 && hyprctl dispatch exit" &
+nohup bash -c "sleep 2 && uwsm stop" >/dev/null 2>&1 &
 
 hyprland-window-close-all
 sleep 1
