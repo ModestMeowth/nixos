@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-profile="${1:-default}"
-
-hyprmon --profile "$profile"

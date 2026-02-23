@@ -25,6 +25,7 @@
   gaming = {
     emulation = true;
     steam = true;
+    wine = true;
   };
 
   programs = {

@@ -30,7 +30,6 @@ in
     grim
     libxkbcommon # xkbcli
 
-    unstable.hyprmon
     unstable.hyprpicker
 
     playerctl
@@ -110,6 +109,5 @@ in
     (mkBinFile' "bin/toggle-nightlight")
 
     (mkBinFile' "bin/terminal-cwd")
-    (mkBinFile' "bin/monitor-profile")
   ];
 }
