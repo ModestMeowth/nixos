@@ -51,9 +51,10 @@ in
     "hypr/hyprpaper.conf".text = ''
       wallpaper {
         monitor =
-        path = "${wallpaper}"
-        fit_mode = contain
+        path = ${wallpaper}
       }
+
+      splash = false
     '';
 
     "hypr/hyprsunset.conf".text = ''
