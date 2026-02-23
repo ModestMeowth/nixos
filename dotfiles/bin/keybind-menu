@@ -110,7 +110,8 @@ dynamic_bindings() {
             -e 's/^72,/SUPER ALT,/' \
             -e 's/^73,/SUPER SHIFT ALT,/' \
             -e 's/^76,/SUPER CTRL ALT,/' \
-            -e 's/^77,/SUPER SHIFT CTRL ALT,/'
+            -e 's/^77,/SUPER SHIFT CTRL ALT,/' \
+            -e 's/SHIFT,SLASH/,\?/'
 }
 
 # Hardcoded bindings, like the copy-url extension and such
