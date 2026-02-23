@@ -33,14 +33,14 @@ in
   xdg.configFile = {
     "hypr/hyprland.conf.d/monitor.conf".text = ''
         monitorv2 {
-          output = HDMI-A-1
+          output = DP-1
           mode = 3440x1440@74.98
           position = 0x0
           vrr = 3
         }
 
         monitorv2 {
-          output = DP-1
+          output = DP-2
           mode =  1920x1080@74.973
           position = 3440x0
           transform = 1

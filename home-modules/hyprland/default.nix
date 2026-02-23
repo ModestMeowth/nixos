@@ -16,9 +16,12 @@
     package = null;
     portalPackage = null;
     systemd.variables = ["--all"];
-    extraConfig = ''
-      source = ~/.config/hypr/hyprland.conf.d/*
-    '';
+    settings = {
+      source = [
+        "~/.config/hypr/hyprland.conf.d/*"
+      ];
+      input.follow_mouse = 2;
+    };
   };
 
   xdg.configFile."hypr/hyprland.conf.d" = {

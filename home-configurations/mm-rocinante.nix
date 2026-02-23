@@ -33,7 +33,6 @@ in
   wayland.windowManager.hyprland.extraConfig = ''
     input {
       kb_options = ctrl:swapcaps
-      follow_mouse = 1
     }
   '';
 
