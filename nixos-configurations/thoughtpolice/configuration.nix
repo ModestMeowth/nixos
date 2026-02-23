@@ -42,6 +42,7 @@
     fwupd.enable = true;
 
     pcscd.enable = true;
+    power-profiles-daemon.enable = true;
 
     sanoid.datasets = {
       "zroot/persist/home/mm".use_template = [ "default" ];

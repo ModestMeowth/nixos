@@ -20,6 +20,7 @@ in
     grim
     libxkbcommon # xkbcli
     playerctl
+    satty
     slurp
     wayfreeze
   ];
