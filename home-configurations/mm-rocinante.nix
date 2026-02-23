@@ -34,4 +34,11 @@ in
       kb_options = ctrl:swapcaps
     }
   '';
+
+  xdg.configFile."hypr/hyprland.conf.d/monitor.conf".text = ''
+    monitorv2 {
+      output = eDP-1
+      mode = 1920x1200@60
+    }
+  '';
 }
