@@ -32,20 +32,25 @@ in
 
   xdg.configFile = {
     "hypr/hyprland.conf.d/monitor.conf".text = ''
-        monitorv2 {
-          output = DP-1
-          mode = 3440x1440@74.98
-          position = 0x0
-          vrr = 3
+        opengl {
+          nvidia_anti_flicker = true
         }
 
         monitorv2 {
-          output = DP-2
-          mode =  1920x1080@74.973
+          output = DP-1
+          mode = 3440x1440@75
+          position = 0x0
+        }
+
+        monitorv2 {
+          output = HDMI-A-1
+          mode =  1920x1080@75
           position = 3440x0
           transform = 1
-          vrr = 3
         }
+
+        workspace = 1, monitor:DP-1
+        workspace = 2, monitor:HDMI-A-1
       '';
 
     "hypr/hyprpaper.conf".text = ''

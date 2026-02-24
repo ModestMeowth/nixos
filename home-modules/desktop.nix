@@ -1,5 +1,6 @@
 {
   config,
+  ezModules,
   lib,
   pkgs,
   ...
@@ -18,6 +19,9 @@ let
   emojiFont = config.stylix.fonts.emoji.name;
 in
 {
+  imports = [
+    ezModules.chromium
+  ];
   home.packages = with pkgs; [
     bitwarden-desktop
     imv
