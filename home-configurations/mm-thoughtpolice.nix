@@ -20,7 +20,6 @@ in
     bitwarden-desktop
     kdePackages.dolphin
     kdePackages.kcalc
-    google-chrome
     signal-desktop
     wireshark
   ];

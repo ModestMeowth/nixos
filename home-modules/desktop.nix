@@ -25,7 +25,6 @@ in
   home.packages = with pkgs; [
     bitwarden-desktop
     imv
-    google-chrome
     libnotify
     mpv
     signal-desktop
@@ -66,13 +65,6 @@ in
       qt.enable = true;
       font-packages.enable = lib.mkForce true;
     };
-  };
-
-  xdg.configFile = {
-    "nebula.jpeg".source = ../dotfiles/wallpaper/nebula.jpeg;
-    "Cat.png".source = ../dotfiles/wallpaper/Cat.png;
-    "dark-cat-rosewater.png".source = ../dotfiles/wallpaper/dark-cat-rosewater.png;
-    "face.png".source = ../dotfiles/wallpaper/face.png;
   };
 
   xdg.terminal-exec = {
