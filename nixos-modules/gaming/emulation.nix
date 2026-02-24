@@ -18,9 +18,11 @@ in
             bsnes
             desmume
             fceumm
+            flycast
             genesis-plus-gx
             mgba
             parallel-n64
+            ppsspp
             swanstation
           ]
         ))
