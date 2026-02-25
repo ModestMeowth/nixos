@@ -6,6 +6,7 @@
   imports = with ezModules; [
     builder
     desktop
+    docker
     efi
     gaming
     hyprland
@@ -21,6 +22,12 @@
     ./hardware-configuration.nix
     ./secrets.nix
   ];
+
+  boot = {
+    loader.systemd-boot.consoleMode = "3";
+    kernelParams = [ "video=efifb:3440x1440-bgr" ];
+    plymouth.extraConfig = "DeviceScale=1";
+  };
 
   gaming = {
     emulation = true;
