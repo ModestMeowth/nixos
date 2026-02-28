@@ -38,31 +38,31 @@ switch user=shell("whoami") hostname=shell("hostname"): (nixos-switch hostname) 
 [group("nix")]
 nixos-boot hostname=shell("hostname"):
   #!{{nixShebang}} nixpkgs#nh -c {{realShebang}}
-  nh os boot -H {{hostname}} .
+  nh os boot -H {{hostname}} . --accept-flake-config
 
 # nixos-rebuild build
 [group("nix")]
 nixos-build hostname=shell("hostname"):
   #!{{nixShebang}} nixpkgs#nh -c {{realShebang}}
-  nh os build -H {{hostname}} .
+  nh os build -H {{hostname}} . --accept-flake-config
 
 # nixos-rebuild switch
 [group("nix")]
 nixos-switch hostname=shell("hostname"):
   #!{{nixShebang}} nixpkgs#nh -c {{realShebang}}
-  nh os switch -H {{hostname}} .
+  nh os switch -H {{hostname}} . --accept-flake-config
 
 # home-manager build
 [group("nix")]
 home-build user=shell("whoami") hostname=shell("hostname"):
   #!{{nixShebang}} nixpkgs#nh -c {{realShebang}}
-  nh home build -c {{user}}@{{hostname}} .
+  nh home build -c {{user}}@{{hostname}} . --accept-flake-config
 
 # home-manager switch
 [group("nix")]
 home-switch user=shell("whoami") hostname=shell("hostname"):
   #!{{nixShebang}} nixpkgs#nh -c {{realShebang}}
-  nh home switch -c {{user}}@{{hostname}} .
+  nh home switch -c {{user}}@{{hostname}} . --accept-flake-config
 
 # Makes an sd-card for an aarch64 SBC eg. raspberry-pi >= 3
 [group("nix")]
