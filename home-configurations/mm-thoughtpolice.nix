@@ -11,6 +11,7 @@ in
     bootdev
     desktop
     hyprland
+    lutris
     network-utils
     syncthing
     virt-manager

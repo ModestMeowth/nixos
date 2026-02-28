@@ -31,6 +31,7 @@
 
   gaming = {
     emulation = true;
+    lutris = true;
     steam = true;
     wine = true;
   };

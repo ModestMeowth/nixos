@@ -1,8 +1,8 @@
 {
   imports = [
     ./ffxiv.nix
-    ./gamemode.nix
     ./emulation.nix
+    ./gamemode.nix
     ./steam.nix
     ./wine.nix
   ];
