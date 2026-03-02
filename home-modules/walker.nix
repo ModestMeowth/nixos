@@ -1,19 +1,19 @@
-{ inputs, ... }:
+{ pkgs, ... }:
 let
   inherit (builtins) fromTOML readFile;
 in
 {
-  imports = [ inputs.walker.homeManagerModules.default ];
-
-  programs.walker = {
+  services.walker = {
     enable = true;
-    runAsService = true;
+    package = pkgs.unstable.walker;
+    systemd.enable = true;
 
-    config = fromTOML (readFile ../dotfiles/walker/config.toml);
-    themes."style" = {
-      style =
-        readFile ../dotfiles/walker/themes/catppuccin.css + readFile ../dotfiles/walker/themes/style.css;
-      layouts."layout" = readFile ../dotfiles/walker/themes/layout.xml;
-    };
+    settings = fromTOML (readFile ../dotfiles/walker/config.toml);
+  };
+
+  xdg.configFile = {
+    "walker/themes/style/style.css".text =
+      readFile ../dotfiles/walker/themes/catppuccin.css + readFile ../dotfiles/walker/themes/style.css;
+    "walker/themes/style/layout.xml".source = ../dotfiles/walker/themes/layout.xml;
   };
 }

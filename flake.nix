@@ -24,12 +24,6 @@
 
     stylix.url = "github:nix-community/stylix/release-25.11";
 
-    # Walker
-    elephant.url = "github:abenz1267/elephant";
-
-    walker.url = "github:abenz1267/walker";
-    walker.inputs.elephant.follows = "elephant";
-
     # Screensave
     terminaltexteffects.url = "github:chrisbuilds/terminaltexteffects?shallow=1";
   };
@@ -45,8 +39,6 @@
         "https://lanzaboote.cachix.org"
         "https://hyprland.cachix.org"
         "https://catppuccin.cachix.org"
-        "https://walker.cachix.org"
-        "https://walker-git.cachix.org"
       ];
 
       trusted-public-keys = [
@@ -58,8 +50,6 @@
         "lanzaboote.cachix.org-1:Nt9//zGmqkg1k5iu+B3bkj3OmHKjSw9pvf3faffLLNk="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
-        "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
-        "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
       ];
   };
 
