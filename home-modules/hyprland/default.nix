@@ -1,7 +1,6 @@
 {ezModules, ... }:
 {
   imports = [
-    ezModules.tte
     ezModules.walker
 
     ./hypridle.nix

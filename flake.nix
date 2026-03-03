@@ -21,11 +21,7 @@
 
     # Ugghh, takes 2 styling flakes to do what I want
     catppuccin.url = "github:catppuccin/nix/release-25.11";
-
     stylix.url = "github:nix-community/stylix/release-25.11";
-
-    # Screensave
-    terminaltexteffects.url = "github:chrisbuilds/terminaltexteffects?shallow=1";
   };
 
   nixConfig = {

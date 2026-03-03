@@ -22,6 +22,7 @@ in
     playerctl
     satty
     slurp
+    unstable.terminaltexteffects
     wayfreeze
   ];
 
