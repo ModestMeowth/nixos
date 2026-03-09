@@ -3,13 +3,13 @@
 {
   bootdev-cli = {
     pname = "bootdev-cli";
-    version = "v1.25.0";
+    version = "v1.26.0";
     src = fetchFromGitHub {
       owner = "bootdotdev";
       repo = "bootdev";
-      rev = "v1.25.0";
+      rev = "v1.26.0";
       fetchSubmodules = false;
-      sha256 = "sha256-uMmGWICLIE2vJa5bDUYYConsXoDbMljm6A61XYmu1Ko=";
+      sha256 = "sha256-hr8mqnX4mv6P8WpXCpP678lLUaanUu6X4jL5GJeBdzo=";
     };
     vendorHash = "sha256-ZDioEU5uPCkd+kC83cLlpgzyOsnpj2S7N+lQgsQb8uY=";
   };
