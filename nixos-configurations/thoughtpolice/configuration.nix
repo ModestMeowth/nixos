@@ -15,7 +15,6 @@
     secureboot
     shares
     tailscale
-    unstable
     wireless
     zfs
 

@@ -18,7 +18,6 @@
     ezModules.editor
     ezModules.fish
     ezModules.theme
-    ezModules.unstable
     ezModules.vcs
     ezModules.yazi
   ];

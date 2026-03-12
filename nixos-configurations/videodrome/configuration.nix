@@ -3,7 +3,6 @@
   imports = with ezModules; [
     shares
     tailscale
-    unstable
     wsl
 
     ./hardware-configuration.nix

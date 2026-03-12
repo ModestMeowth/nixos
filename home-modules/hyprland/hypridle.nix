@@ -3,7 +3,7 @@ let
   font = config.stylix.fonts.sansSerif.name;
 in
 {
-  home.packages = [ pkgs.unstable.hypridle ];
+  home.packages = [ pkgs.hypridle ];
 
   xdg.configFile = {
     "hypr/hypridle.conf".text = builtins.readFile ../../dotfiles/hypr/hypridle.conf;
@@ -15,7 +15,6 @@ in
 
   catppuccin.hyprlock.useDefaultConfig = false;
   programs.hyprlock = {
-    package = pkgs.unstable.hyprlock;
     enable = true;
     extraConfig = ''
       $font = ${font}

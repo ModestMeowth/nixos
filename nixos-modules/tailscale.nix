@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -14,7 +13,6 @@ in
 {
   services.tailscale = {
     enable = true;
-    package = pkgs.unstable.tailscale;
     authKeyFile = lib.mkIf (builtins.hasAttr "tskey" secrets) secrets."tskey".path;
     extraUpFlags = lib.mkDefault (flags ++ [ "--reset" ]);
     extraSetFlags = lib.mkDefault flags;

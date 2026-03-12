@@ -1,7 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?shallow=1&ref=nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     ez-configs.url = "github:ehllie/ez-configs";
@@ -13,15 +12,15 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
 
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager";
 
-    wsl.url = "github:nix-community/nixos-wsl/release-25.11";
+    wsl.url = "github:nix-community/nixos-wsl";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
 
     # Ugghh, takes 2 styling flakes to do what I want
-    catppuccin.url = "github:catppuccin/nix/release-25.11";
-    stylix.url = "github:nix-community/stylix/release-25.11";
+    catppuccin.url = "github:catppuccin/nix";
+    stylix.url = "github:nix-community/stylix";
   };
 
   nixConfig = {

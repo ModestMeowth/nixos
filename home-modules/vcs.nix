@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs = {
     git = {
@@ -9,7 +8,6 @@
 
     jujutsu = {
       enable = true;
-      package = pkgs.unstable.jujutsu;
     };
   };
 

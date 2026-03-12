@@ -16,7 +16,6 @@
     kmscon
     secureboot
     tailscale
-    unstable
     zfs
 
     ./hardware-configuration.nix

@@ -1,4 +1,3 @@
-set unstable := true
 set shell := ["bash", "-euo", "pipefail", "-c"]
 
 nixShebang := "/usr/bin/env -S nix shell --inputs-from " + justfile_directory()

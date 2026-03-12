@@ -2,7 +2,6 @@
 {
   services.kmscon = {
     enable = true;
-    package = pkgs.unstable.kmscon;
     hwRender = true;
   };
 

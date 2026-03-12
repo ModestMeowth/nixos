@@ -1,11 +1,9 @@
-{ pkgs, ... }:
 let
   inherit (builtins) fromTOML readFile;
 in
 {
   services.walker = {
     enable = true;
-    package = pkgs.unstable.walker;
     systemd.enable = true;
 
     settings = fromTOML (readFile ../dotfiles/walker/config.toml);

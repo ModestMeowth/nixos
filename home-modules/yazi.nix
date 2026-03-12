@@ -4,6 +4,7 @@
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
+    shellWrapperName = "y"; # can remove if stateVersion >= 26.05
     plugins = with pkgs.yaziPlugins; {
       git = git;
       mediainfo = mediainfo;

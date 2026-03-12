@@ -9,7 +9,6 @@ in
     cockpit
     rpi
     tailscale
-    unstable
 
     ./hardware-configuration.nix
   ];

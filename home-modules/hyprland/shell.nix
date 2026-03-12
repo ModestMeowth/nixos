@@ -13,8 +13,8 @@ let
 in
 {
   home.packages = with pkgs; [
-    unstable.hyprpolkitagent
-    unstable.hyprpicker
+    hyprpolkitagent
+    hyprpicker
 
     bluetui
     grim
@@ -22,25 +22,14 @@ in
     playerctl
     satty
     slurp
-    unstable.terminaltexteffects
+    terminaltexteffects
     wayfreeze
   ];
 
   services = {
-    hyprpaper = {
-      enable = true;
-      package = pkgs.unstable.hyprpaper;
-    };
-
-    hyprpolkitagent = {
-      enable = true;
-      package = pkgs.unstable.hyprpolkitagent;
-    };
-
-    hyprsunset = {
-      enable = true;
-      package = pkgs.unstable.hyprsunset;
-    };
+    hyprpaper.enable = true;
+    hyprpolkitagent.enable = true;
+    hyprsunset.enable = true;
 
     mako = {
       enable = true;

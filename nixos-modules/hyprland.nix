@@ -11,8 +11,6 @@
   programs = {
     hyprland = {
       enable = true;
-      package = pkgs.unstable.hyprland;
-      portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
       xwayland.enable = true;
       withUWSM = true;
     };
@@ -22,7 +20,6 @@
 
   programs.uwsm = {
     enable = true;
-    package = pkgs.unstable.uwsm;
     waylandCompositors = { };
   };
 }
