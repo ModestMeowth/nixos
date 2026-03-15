@@ -18,19 +18,19 @@ for m in $(hyprctl monitors -j | jq -r '.[] | .name'); do
     *Alacritty*) hyprctl dispatch exec -- \
         alacritty --class=dev.meowth.screensaver \
             --config-file ~/.config/screensaver/alactritty.toml \
-            -e screensaver
+            -e ~/.local/bin/screensaver
     ;;
     *ghostty*) hyprctl dispatch exec -- \
         ghostty --class=dev.meowth.screensaver \
             --config-file=~/.config/screensaver/ghostty \
             --font-size=18 \
-            -e screensaver
+            -e ~/.local/bin/screensaver
     ;;
     *kitty*) hyprctl dispatch exec -- \
         kitty --class=dev.meowth.screensaver \
             --override font_size=18 \
             --override window_padding_width=0 \
-            -e screensaver
+            -e ~/.local/bin/screensaver
     ;;
     *) notify-send "✋  Screensaver only runs in Alacritty, Ghostty, or Kitty" ;;
     esac
