@@ -34,6 +34,8 @@
     wine = true;
   };
 
+  hardware.nvidia.open = false;
+
   programs = {
     kdeconnect.enable = true;
     wireshark = {
