@@ -1,6 +1,6 @@
 {
     "bootdev-cli": {
-        "cargoLocks": null,
+        "cargoLock": null,
         "date": null,
         "extract": null,
         "name": "bootdev-cli",
@@ -15,11 +15,11 @@
             "name": null,
             "owner": "bootdotdev",
             "repo": "bootdev",
-            "rev": "v1.26.0",
-            "sha256": "sha256-hr8mqnX4mv6P8WpXCpP678lLUaanUu6X4jL5GJeBdzo=",
+            "rev": "v1.27.1",
+            "sha256": "sha256-oIMx5LotjsC4yo9bx/KdVxBuzYOQo/pK8RaykdDMLDo=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v1.26.0"
+        "version": "v1.27.1"
     }
 }
