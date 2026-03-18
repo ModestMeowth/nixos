@@ -4,6 +4,7 @@
   networking.hostName = "rocinante";
 
   imports = with ezModules; [
+    _3dprinting
     desktop
     docker
     efi

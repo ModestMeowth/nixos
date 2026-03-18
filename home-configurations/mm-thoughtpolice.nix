@@ -8,7 +8,6 @@ in
   home.homeDirectory = if isDarwin then "/Users/mm" else "/home/mm";
 
   imports = with ezModules; [
-    _3dprinting
     bootdev
     desktop
     hyprland
