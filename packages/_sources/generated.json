@@ -15,11 +15,11 @@
             "name": null,
             "owner": "bootdotdev",
             "repo": "bootdev",
-            "rev": "v1.27.1",
-            "sha256": "sha256-oIMx5LotjsC4yo9bx/KdVxBuzYOQo/pK8RaykdDMLDo=",
+            "rev": "v1.27.4",
+            "sha256": "sha256-9avSkYxXqwaLCJeNTJJG8biEVUwZVYRauZclw8wbd50=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v1.27.1"
+        "version": "v1.27.4"
     }
 }
