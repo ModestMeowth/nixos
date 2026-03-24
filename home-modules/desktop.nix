@@ -80,6 +80,8 @@ in
     templates = null;
     publicShare = null;
 
+    setSessionVariables = lib.mkDefault true;
+
     extraConfig = {
       SCREENSHOT_DIR = "${HOME}/Pictures/Screenshots";
       SCREENRECORD_DIR = "${HOME}/Videos/Screencasts";

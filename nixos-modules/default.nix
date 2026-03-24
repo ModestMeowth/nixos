@@ -25,7 +25,7 @@
   documentation = {
     doc.enable = lib.mkDefault false;
     info.enable = lib.mkDefault false;
-    man.generateCaches = lib.mkForce false;
+    man.cache.enable = lib.mkForce false;
     nixos.enable = lib.mkForce false;
   };
 
