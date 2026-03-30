@@ -1,7 +1,6 @@
 {ezModules, pkgs, ...}:
 {
   nixpkgs.config.allowUnfree = true;
-  networking.hostName = "thoughtpolice";
 
   imports = with ezModules; [
     builder
@@ -15,7 +14,6 @@
     secureboot
     shares
     tailscale
-    wireless
     zfs
 
     ./hardware-configuration.nix
@@ -32,6 +30,11 @@
     emulation = true;
     steam = true;
     wine = true;
+  };
+
+  networking = {
+    hostName = "thoughtpolice";
+    useDHCP = true;
   };
 
   programs = {
