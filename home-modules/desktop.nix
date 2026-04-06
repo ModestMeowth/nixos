@@ -49,6 +49,8 @@ in
     };
   };
 
+  gtk.gtk4.theme = config.gtk.theme;
+
   stylix = {
     cursor = {
       name = "Catppuccin Macchiato Mauve";
