@@ -50,11 +50,7 @@
     };
   };
 
-  services.ssh-agent = {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-  };
+  services.ssh-agent.enable = true;
 
   stylix.targets = {
 
