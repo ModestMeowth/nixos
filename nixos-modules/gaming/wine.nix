@@ -8,14 +8,8 @@ let
   cfg = config.gaming.wine;
 in
 {
-  options.gaming.wine = lib.mkEnableOption "wine";
-
-  config = lib.mkIf cfg {
-    environment = {
-      systemPackages = with pkgs.wineWow64Packages; [
+    environment.systemPackages = lib.mkIf cfg (with pkgs.wineWow64Packages; [
         stagingFull
         fonts
-      ];
-    };
-  };
+      ]);
 }

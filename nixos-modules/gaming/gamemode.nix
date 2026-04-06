@@ -1,13 +1,11 @@
 { config, lib, ... }:
 let
-  cfg = config.gaming;
+  cfg = config.gaming.gamemode;
 in
 {
-  config = lib.mkIf (cfg.emulation || cfg.steam || cfg.wine) {
-    programs = {
+    programs = lib.mkIf cfg {
       gamemode.enable = true;
       gamemode.settings.general.desiredgov = "performance";
       gamemode.settings.general.inhibit_screensaver = 1;
     };
-  };
 }

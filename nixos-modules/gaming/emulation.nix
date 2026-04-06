@@ -8,11 +8,7 @@ let
   cfg = config.gaming.emulation;
 in
 {
-  options.gaming.emulation = lib.mkEnableOption "retroarch";
-
-  config = lib.mkIf cfg {
-    environment = {
-      systemPackages = with pkgs; [
+    environment.systemPackages = lib.mkIf cfg (with pkgs; [
         (retroarch.withCores (
           cores: with cores; [
             bsnes
@@ -31,7 +27,5 @@ in
         pcsx2
         dolphin-emu
         azahar
-      ];
-    };
-  };
+      ]);
 }

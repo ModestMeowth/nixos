@@ -28,6 +28,8 @@
 
   gaming = {
     emulation = true;
+    gamemode = true;
+    gamescope = true;
     steam = true;
     wine = true;
   };
