@@ -6,7 +6,6 @@ in
   options.gaming = {
     emulation = mkEnableOption "emulation";
     ffxiv = mkEnableOption "ffxiv";
-    gamemode = mkEnableOption "gamemode";
     gamescope = mkEnableOption "gamescope";
     steam = mkEnableOption "steam";
     wine = mkEnableOption "wine";

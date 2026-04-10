@@ -19,6 +19,7 @@ in
     "brightness-keyboard"
     "swayosd-brightness"
     "audio-switch"
+    "hyprscope"
 
     "launch-or-focus"
     "launch-tui"
