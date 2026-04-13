@@ -57,10 +57,15 @@
     search = [ "threefinger.farm" ];
     useDHCP = false;
 
-    bridges.bridge0.interfaces = [
-      "enp3s0"
-      "enp4s0"
-    ];
+    bridges = {
+      bridge0.interfaces = [
+        "enp3s0"
+      ];
+
+      bridge1.interfaces = [
+        "enp4s0"
+      ];
+    };
 
     interfaces = {
       enp3s0.wakeOnLan.enable = true;
