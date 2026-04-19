@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  cfgDM = config.services.displayManager;
+in
 {
   catppuccin.sddm = {
     font = config.stylix.fonts.sansSerif.name;
@@ -47,9 +50,11 @@
         user = lib.mkDefault "mm";
       };
 
-      sddm = {
+      sddm = lib.mkIf (!cfgDM.gdm.enable) {
         enable = true;
-        wayland.enable = true;
+        wayland = {
+          enable = true;
+        };
         autoLogin.relogin = lib.mkDefault true;
         autoNumlock = true;
       };

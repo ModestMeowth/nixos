@@ -52,4 +52,8 @@ in
     settings = importJSON ../../dotfiles/waybar/config.jsonc;
     style = readFile ../../dotfiles/waybar/style.css;
   };
+
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
+  ];
 }

@@ -4,5 +4,7 @@
     blender
     openscad
     orca-slicer
+    nanum
+    nanum-gothic-coding
   ];
 }
