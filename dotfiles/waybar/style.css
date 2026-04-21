@@ -93,8 +93,13 @@ window#waybar {
     color: @red;
 }
 
-#custom-notification-silence-indicatior.active {
+#custom-idle-indicator.active {
     color: @pink;
+}
+
+
+#custom-notification-silence-indicator.active {
+    color: @mauve;
 }
 
 #submap.Capture {
