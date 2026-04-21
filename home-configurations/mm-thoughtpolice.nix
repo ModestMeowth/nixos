@@ -20,8 +20,9 @@ in
 
   home.packages = with pkgs; [
     bitwarden-desktop
-    kdePackages.dolphin
-    kdePackages.kcalc
+    gnome-calculator
+    nautilus
+    nautilus-open-any-terminal
     signal-desktop
     wireshark
   ];

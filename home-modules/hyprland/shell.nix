@@ -9,6 +9,7 @@ let
   inherit (builtins) readFile;
   inherit (lib) importJSON;
   font = config.stylix.fonts.serif.name;
+  fontMono = config.stylix.fonts.monospace.name;
   ts = osConfig.services.tailscale;
 in
 {
