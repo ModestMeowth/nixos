@@ -44,10 +44,28 @@
             "return-type": "json"
         },
 
+
+        "custom/idle-indicator": {
+            "on-click": "~/.local/bin/toggle-idle",
+            "exec": "~/.config/waybar/idle-indicator.sh",
+            "signal": 9,
+            "return-type": "json"
+        },
+
+        "custom/notification-silence-indicator": {
+            "on-click": "~/.local/bin/toggle-dnd",
+            "exec": "~/.config/waybar/notification-silence-indicator.sh",
+            "signal": 10,
+            "return-type": "json"
+        },
+
         "group/statusbar": {
             "orientation": "horizontal",
             "modules": [
                 "custom/screen-recording-indicator",
+                "custom/idle-indicator",
+                "custom/notification-silence-indicator",
+
                 "pulseaudio",
                 "network",
                 "battery",

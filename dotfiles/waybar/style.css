@@ -27,6 +27,8 @@ window#waybar {
 #submap,
 #clock,
 #custom-screen-recording-indicator,
+#custom-idle-indicator,
+#custom-notification-silence-indicator,
 #statusbar {
     border-radius: 0 0 1rem 1rem;
     margin: 0 1rem;
@@ -89,6 +91,10 @@ window#waybar {
 
 #custom-screen-recording-indicator.active {
     color: @red;
+}
+
+#custom-notification-silence-indicatior.active {
+    color: @pink;
 }
 
 #submap.Capture {

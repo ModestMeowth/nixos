@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-if pgrep -x hypridle >/dev/null; then
-    pkill -x hypridle
-    notify-send "System locking when idle disabled"
+if pgrep -f hypridle >/dev/null; then
+    pkill -f hypridle
+    notify-send -u low "󱫖    System locking when idle disabled"
 else
     uwsm app -- hypridle >/dev/null 2>&1 &
-    notify-send "System locking when idle enabled"
+    notify-send -u low "󱫖    System locking when idle enabled"
 fi
+
+pkill -RTMIN+9 waybar

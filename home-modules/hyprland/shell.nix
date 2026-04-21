@@ -8,6 +8,7 @@
 let
   inherit (builtins) readFile;
   inherit (lib) importJSON;
+  lib' = import ../lib.nix { inherit lib; };
   font = config.stylix.fonts.serif.name;
   fontMono = config.stylix.fonts.monospace.name;
   ts = osConfig.services.tailscale;
@@ -54,7 +55,15 @@ in
     style = readFile ../../dotfiles/waybar/style.css;
   };
 
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-  ];
+  xdg = {
+    configFile = lib'.mkBinFiles "waybar" [
+      "idle-indicator.sh"
+      "notification-silence-indicator.sh"
+      "screen-recording-indicator.sh"
+    ];
+
+    portal.extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+  };
 }
