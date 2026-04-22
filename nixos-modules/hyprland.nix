@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    egl-wayland
     gpu-screen-recorder
     ffmpeg
     v4l-utils

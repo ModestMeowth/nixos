@@ -32,7 +32,19 @@ in
     indicator = true;
   };
 
+  wayland.windowManager.hyprland.settings.env = [
+    "LIBVA_DRIVER_NAME,nvidia"
+    "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+    "ELECTRON_OZONE_PLATFORM_HINT,auto"
+  ];
+
   xdg.configFile = {
+    "uwsm/env".text = ''
+      export LIBVA_DRIVER_NAME=nvidia
+      export __GLX_VENDOR_LIBRARY_NAME=nvidia
+      export ELECTRON_OZONE_PLATFORM_HINT=auto
+    '';
+
     "hypr/hyprland.conf.d/monitor.conf".text = ''
         opengl {
           nvidia_anti_flicker = true

@@ -1,4 +1,4 @@
-{ezModules, pkgs, ...}:
+{ezModules, ...}:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -10,6 +10,7 @@
     gaming
     hyprland
     kmscon
+    mdns
     nvidia
     secureboot
     shares
