@@ -15,6 +15,7 @@
     secureboot
     shares
     tailscale
+    yubikey
     zfs
 
     ./hardware-configuration.nix
@@ -52,7 +53,6 @@
   services = {
     fwupd.enable = true;
 
-    pcscd.enable = true;
     power-profiles-daemon.enable = true;
 
     sanoid.datasets = {

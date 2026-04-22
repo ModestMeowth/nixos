@@ -15,6 +15,7 @@
     secureboot
     tailscale
     wireless
+    yubikey
     zfs
 
     ./hardware-configuration.nix
@@ -43,19 +44,11 @@
   };
 
   services = {
-    fprintd = {
-      enable = true;
-      tod.enable = true;
-      tod.driver = pkgs.libfprint-2-tod1-elan;
-    };
-
     fwupd.enable = true;
 
     kmscon.extraConfig = ''
       mode=1920x1200
     '';
-
-    pcscd.enable = true;
 
     sanoid.datasets = {
       "zroot/persist/home/mm".use_template = [ "default" ];
