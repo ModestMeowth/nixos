@@ -118,8 +118,8 @@
       description = "Networking UPS";
       port = "auto";
       directives = [
-        "vendorid = 051d"
-        "productid = 0002"
+        "vendorid = 0764"
+        "productid = 0501"
       ];
     };
 
