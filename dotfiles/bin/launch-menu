@@ -99,9 +99,9 @@ show_system_menu() {
     *Lock*) lock-screen ;;
     *Screensaver*) launch-screensaver ;;
     *Suspend*) systemctl suspend ;;
-    *Logout*) cmd-logout ;;
-    *Restart*) cmd-reboot ;;
-    *Shutdown*) cmd-poweroff ;;
+    *Logout*) hyprshutdown ;;
+    *Restart*) hyprshutdown -p reboot ;;
+    *Shutdown*) hyprshutdown -p poweroff ;;
     esac
 }
 

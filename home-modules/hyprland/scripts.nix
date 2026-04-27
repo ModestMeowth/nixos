@@ -4,9 +4,6 @@ let
 in
 {
   home.file = lib'.mkBinFiles ".local/bin" [
-    "cmd-reboot"
-    "cmd-shutdown"
-    "cmd-logout"
     "lock-screen"
 
     "hyprland-submap-command"
