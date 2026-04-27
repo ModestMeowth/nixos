@@ -11,19 +11,22 @@ in
     _3dprinting
     bootdev
     desktop
+    gaming
     hyprland
-    lutris
     network-utils
     syncthing
     virt-manager
   ];
 
+  gaming = {
+    bottles = true;
+    lutris = true;
+  };
+
   home.packages = with pkgs; [
-    bitwarden-desktop
     gnome-calculator
     nautilus
     nautilus-open-any-terminal
-    signal-desktop
     wireshark
   ];
 

@@ -17,6 +17,7 @@ in
   home.packages = with pkgs; [
     hyprpolkitagent
     hyprpicker
+    hyprshutdown
 
     bluetui
     grim
