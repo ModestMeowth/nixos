@@ -8,8 +8,11 @@ let
   cfg = config.gaming.wine;
 in
 {
-    environment.systemPackages = lib.mkIf cfg (with pkgs.wineWow64Packages; [
-        stagingFull
-        fonts
-      ]);
+    config = lib.mkIf cfg {
+      boot.kernelModules = [ "ntsync" ];
+      environment.systemPackages = lib.mkIf cfg (with pkgs.wineWow64Packages; [
+          stagingFull
+          fonts
+        ]);
+    };
 }
