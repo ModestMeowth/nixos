@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   networking.wireless.iwd = {
     enable = true;

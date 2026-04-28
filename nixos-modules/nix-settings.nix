@@ -1,7 +1,7 @@
-{config, lib, ...}:
+{ lib, ... }:
 {
   nix = {
-    distributedBuilds = true;
+    distributedBuilds = lib.mkDefault true;
     buildMachines = [
       {
         hostName = "pwnyboy";
@@ -10,7 +10,6 @@
           "x86_64-linux"
           "aarch64-linux"
         ];
-        speedFactor = lib.mkIf (config.networking.hostName == "pwnyboy") 2;
       }
       {
         hostName = "thoughtpolice";
@@ -19,7 +18,6 @@
           "x86_64-linux"
           "aarch64-linux"
         ];
-        speedFactor = lib.mkIf (config.networking.hostName == "thoughtpolice") 2;
       }
     ];
 
@@ -38,17 +36,17 @@
         "https://nix-community.cachix.org"
       ];
 
-      extra-substituters = [
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+
+      extraSubstituters = [
         "https://lanzaboote.cachix.org"
         "https://hyprland.cachix.org"
         "https://catppuccin.cachix.org"
         "https://walker.cachix.org"
         "https://walker-git.cachix.org"
-      ];
-
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
       extra-trusted-public-keys = [

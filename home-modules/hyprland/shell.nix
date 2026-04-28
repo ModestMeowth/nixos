@@ -38,7 +38,8 @@ in
       enable = true;
       extraConfig = ''
         font=${font}
-      '' + readFile ../../dotfiles/mako/config;
+      ''
+      + readFile ../../dotfiles/mako/config;
     };
 
     tailscale-systray = lib.mkIf ts.enable {

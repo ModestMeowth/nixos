@@ -1,7 +1,12 @@
-{config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.programs.elephant;
-  settingsFormat = pkgs.formats.toml {};
+  settingsFormat = pkgs.formats.toml { };
   defaultProviders = [
     "bluetooth"
     "bookmarks"
@@ -54,7 +59,7 @@ in
       type = lib.types.submodule {
         freeformType = settingsFormat.type;
       };
-      default = {};
+      default = { };
       example = lib.literalExpression ''
         {
           auto_detect_launch_prefix = false;
@@ -67,13 +72,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [cfg.package];
+    home.packages = [ cfg.package ];
 
     systemd.user.services.elephant = lib.mkIf cfg.installService {
       Unit = {
         Description = "Elephant launcher backend";
-        After = ["graphical-session.target"];
-        PartOf = ["graphical-session.target"];
+        After = [ "graphical-session.target" ];
+        PartOf = [ "graphical-session.target" ];
         ConditionEnvironment = "WAYLAND_DISPLAY";
       };
 
@@ -84,20 +89,22 @@ in
         RestartSec = 1;
 
         X-Restart-Triggers = [
-          (builtins.hashString "sha256" (builtins.toJSON {
-            inherit (cfg) settings providers;
-          }))
+          (builtins.hashString "sha256" (
+            builtins.toJSON {
+              inherit (cfg) settings providers;
+            }
+          ))
         ];
 
         ExecStopPost = "${pkgs.coreutils}/bin/rm -f /tmp/elephant.sock";
       };
 
       Install = {
-        WantedBy = ["graphical-session.target"];
+        WantedBy = [ "graphical-session.target" ];
       };
     };
 
-    xdg.configFile = lib.mkIf (cfg.settings != {}) {
+    xdg.configFile = lib.mkIf (cfg.settings != { }) {
       "elephant/elephant.toml".source = settingsFormat.generate "elephant.toml" cfg.settings;
     };
   };

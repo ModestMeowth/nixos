@@ -11,7 +11,7 @@ in
       flags = lib.mkDefault [ "--all" ];
     };
 
-    daemon.settings.features.cdi = (nvidia.enable  && ! rootless.enable);
+    daemon.settings.features.cdi = (nvidia.enable && !rootless.enable);
     rootless.daemon.settings.features.cdi = (nvidia.enable && rootless.enable);
   };
 }

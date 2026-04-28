@@ -1,6 +1,7 @@
-{ezModules, ...}:
+{ ezModules, ... }:
 {
   nixpkgs.config.allowUnfree = true;
+  nix.distributedBuilds = false;
 
   imports = with ezModules; [
     builder

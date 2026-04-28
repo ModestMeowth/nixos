@@ -1,4 +1,4 @@
-{lib, ...}:
+{ lib, ... }:
 let
   incusIf = "incusbr0";
 in
@@ -13,8 +13,14 @@ in
     nftables.enable = true;
 
     firewall.interfaces.${incusIf} = {
-      allowedTCPPorts = [ 53 67 ];
-      allowedUDPPorts = [ 53 67 ];
+      allowedTCPPorts = [
+        53
+        67
+      ];
+      allowedUDPPorts = [
+        53
+        67
+      ];
     };
   };
 }

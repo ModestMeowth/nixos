@@ -1,4 +1,9 @@
-{ config, ezModules, pkgs, ... }:
+{
+  config,
+  ezModules,
+  pkgs,
+  ...
+}:
 let
   inherit (pkgs.stdenv) isDarwin;
   wallpaper = config.stylix.image;

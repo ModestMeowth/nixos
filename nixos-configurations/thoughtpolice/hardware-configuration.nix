@@ -17,30 +17,33 @@
     kernelModules = [ "kvm-amd" ];
   };
 
-  fileSystems."/" =
-    { device = "zroot/thoughtpolice/root";
-      fsType = "zfs";
-      options = [ "zfsutil" ];
-    };
+  fileSystems."/" = {
+    device = "zroot/thoughtpolice/root";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+  };
 
-  fileSystems."/nix" =
-    { device = "zroot/thoughtpolice/nix";
-      fsType = "zfs";
-      options = [ "zfsutil" ];
-    };
+  fileSystems."/nix" = {
+    device = "zroot/thoughtpolice/nix";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+  };
 
-  fileSystems."/persist/etc" =
-    { device = "zroot/persist/etc";
-      fsType = "zfs";
-      neededForBoot = true;
-      options = [ "zfsutil" ];
-    };
+  fileSystems."/persist/etc" = {
+    device = "zroot/persist/etc";
+    fsType = "zfs";
+    neededForBoot = true;
+    options = [ "zfsutil" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3B4E-D7BA";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/3B4E-D7BA";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
 
   hardware = {
     cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;

@@ -1,4 +1,9 @@
-{ config, ezModules, pkgs, ... }:
+{
+  config,
+  ezModules,
+  pkgs,
+  ...
+}:
 let
   inherit (pkgs.stdenv) isDarwin;
   wallpaper = config.stylix.image;
@@ -49,26 +54,26 @@ in
     '';
 
     "hypr/hyprland.conf.d/monitor.conf".text = ''
-        opengl {
-          nvidia_anti_flicker = true
-        }
+      opengl {
+        nvidia_anti_flicker = true
+      }
 
-        monitorv2 {
-          output = DP-1
-          mode = 3440x1440@75
-          position = 0x0
-        }
+      monitorv2 {
+        output = DP-1
+        mode = 3440x1440@75
+        position = 0x0
+      }
 
-        monitorv2 {
-          output = HDMI-A-1
-          mode =  1920x1080@75
-          position = 3440x0
-          transform = 1
-        }
+      monitorv2 {
+        output = HDMI-A-1
+        mode =  1920x1080@75
+        position = 3440x0
+        transform = 1
+      }
 
-        workspace = 1, monitor:DP-1
-        workspace = 2, monitor:HDMI-A-1
-      '';
+      workspace = 1, monitor:DP-1
+      workspace = 2, monitor:HDMI-A-1
+    '';
 
     "hypr/hyprpaper.conf".text = ''
       wallpaper {

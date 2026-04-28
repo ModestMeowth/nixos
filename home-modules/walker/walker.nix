@@ -1,9 +1,14 @@
-{config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (builtins) fromTOML readFile;
 
   cfg = config.programs.walker;
-  settingsFormat = pkgs.formats.toml {};
+  settingsFormat = pkgs.formats.toml { };
 in
 {
   options.programs.walker = {
@@ -11,7 +16,7 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default =  pkgs.walker;
+      default = pkgs.walker;
     };
 
     installService = lib.mkOption {
@@ -24,7 +29,7 @@ in
       type = lib.types.submodule {
         freeformType = settingsFormat.type;
       };
-      default = {};
+      default = { };
       example = lib.literalExpression ''
         {
           theme = "default";
@@ -39,7 +44,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [cfg.package];
+    home.packages = [ cfg.package ];
 
     programs.elephant.enable = true;
 
@@ -52,12 +57,14 @@ in
           "elephant.service"
         ];
 
-        Requires = ["elephant.service"];
-        PartOf = ["graphical-session.target"];
+        Requires = [ "elephant.service" ];
+        PartOf = [ "graphical-session.target" ];
         X-Restart-Triggers = [
-          (builtins.hashString "sha256" (builtins.toJSON {
-            inherit (cfg) settings;
-          }))
+          (builtins.hashString "sha256" (
+            builtins.toJSON {
+              inherit (cfg) settings;
+            }
+          ))
         ];
       };
 
@@ -67,11 +74,11 @@ in
       };
 
       Install = {
-        WantedBy = ["graphical-session.target"];
+        WantedBy = [ "graphical-session.target" ];
       };
     };
 
-    xdg.configFile = lib.mkIf (cfg.settings != {}) {
+    xdg.configFile = lib.mkIf (cfg.settings != { }) {
       "walker/config.toml".source = settingsFormat.generate "walker-config.toml" cfg.settings;
     };
   };

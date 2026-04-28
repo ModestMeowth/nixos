@@ -1,4 +1,4 @@
-{config, lib, ...}:
+{ config, lib, ... }:
 let
   docker = config.virtualisation.docker;
 in

@@ -1,4 +1,4 @@
-{ezModules, ... }:
+{ ezModules, ... }:
 {
   imports = [
     ezModules.walker
@@ -14,7 +14,7 @@
     enable = true;
     package = null;
     portalPackage = null;
-    systemd.variables = ["--all"];
+    systemd.variables = [ "--all" ];
     settings = {
       source = [
         "~/.config/hypr/hyprland.conf.d/*"

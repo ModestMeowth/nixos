@@ -1,4 +1,10 @@
-{config, lib, osConfig, pkgs, ...}:
+{
+  config,
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 let
   cfg = config.gaming;
   osSteam = osConfig.programs.steam;
