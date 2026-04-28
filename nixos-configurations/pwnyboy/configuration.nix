@@ -15,6 +15,7 @@
     docker
     efi
     kmscon
+    ncps
     secureboot
     tailscale
     zfs
