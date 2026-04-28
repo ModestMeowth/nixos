@@ -1,3 +1,4 @@
+{config, lib, ...}:
 {
   nix = {
     distributedBuilds = true;
@@ -9,6 +10,7 @@
           "x86_64-linux"
           "aarch64-linux"
         ];
+        speedFactor = lib.mkIf (config.networking.hostName == "pwnyboy") 2;
       }
       {
         hostName = "thoughtpolice";
@@ -17,6 +19,7 @@
           "x86_64-linux"
           "aarch64-linux"
         ];
+        speedFactor = lib.mkIf (config.networking.hostName == "thoughtpolice") 2;
       }
     ];
 
