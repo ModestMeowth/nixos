@@ -1,8 +1,12 @@
-{config, lib, ...}:
+{ezModules, config, lib, ...}:
 let
   port = 8501;
 in
 {
+  imports = [
+    ezModules.postgresql
+  ];
+
   services = {
     ncps = {
       enable = true;
@@ -40,12 +44,7 @@ in
     };
 
     postgresql = {
-      enable = true;
       ensureDatabases = [ "ncps" ];
-      authentication = lib.mkOverride 10 ''
-        #type database DBuser auth-method
-        local all      all    trust
-      '';
       ensureUsers = [{
         name = "ncps";
         ensureDBOwnership = true;
