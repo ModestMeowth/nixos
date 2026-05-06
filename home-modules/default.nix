@@ -56,5 +56,9 @@
 
   };
 
-  xdg.enable = true;
+  xdg = {
+    enable = true;
+
+    configFile."face.png".source = ../dotfiles/wallpaper/face.png;
+  };
 }

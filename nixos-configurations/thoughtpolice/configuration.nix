@@ -4,10 +4,12 @@
   nix.distributedBuilds = false;
 
   imports = with ezModules; [
+    appimage
     builder
     desktop
     docker
     efi
+    flatpak
     gaming
     hyprland
     kmscon
@@ -27,6 +29,7 @@
     loader.systemd-boot.consoleMode = "3";
     kernelParams = [ "video=efifb:3440x1440-bgr" ];
     plymouth.extraConfig = "DeviceScale=1";
+    kernelModules = [ "sg" ];
   };
 
   gaming = {

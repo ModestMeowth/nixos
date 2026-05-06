@@ -23,13 +23,9 @@ in
     virt-manager
   ];
 
-  gaming = {
-    bottles = true;
-    lutris = true;
-  };
-
   home.packages = with pkgs; [
     gnome-calculator
+    makemkv
     nautilus
     nautilus-open-any-terminal
     wireshark

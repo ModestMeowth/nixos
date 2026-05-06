@@ -27,6 +27,7 @@ in
       "wheel"
       "users"
       "input"
+      "cdrom"
     ]
     ++ ifGroupsExist [
       "docker"
