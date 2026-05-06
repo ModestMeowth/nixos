@@ -90,7 +90,11 @@
 
         "bluetooth": {
             "format": "",
-            "format-device-preferences": ["EPOS GTW 270"],
+            "format-device-preferences": [
+                "soundcore Liberty 5",
+                "Xbox Wireless Controll",
+                "MX Vertical"
+            ],
             "format-disabled": "󰂲",
             "format-connected": "󰂱",
             "format-connected-battery": "󰂱 {device_battery_percentage}%",
