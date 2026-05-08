@@ -1,3 +1,6 @@
-.direnv
+/.direnv
+/.pre-commit-config.yaml
 .env
-*result*
+result
+result-*
+.worktree

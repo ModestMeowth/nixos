@@ -1,11 +1,20 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?shallow=1";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
 
-    ez-configs.url = "github:ehllie/ez-configs";
-    ez-configs.inputs.nixpkgs.follows = "nixpkgs";
-    ez-configs.inputs.flake-parts.follows = "flake-parts";
+    systems.url = "github:nix-systems/default";
+
+    ez-configs = {
+      url = "github:ehllie/ez-configs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
     lanzaboote.url = "github:nix-community/lanzaboote";
@@ -61,12 +70,10 @@
         imports = [
           inputs.flake-parts.flakeModules.easyOverlay
           inputs.ez-configs.flakeModule
+          ./flake-module.nix
         ];
 
-        systems = [
-          "aarch64-linux"
-          "x86_64-linux"
-        ];
+        systems = import inputs.systems;
 
         ezConfigs = {
           root = ./.;
@@ -78,9 +85,7 @@
         perSystem =
           { pkgs, ... }:
           {
-            devShells.default = import ./shell.nix { inherit pkgs; };
             packages.bootdev-cli = pkgs.callPackage ./packages/bootdev.nix { };
-            formatter = pkgs.nixfmt;
           };
       }
     );

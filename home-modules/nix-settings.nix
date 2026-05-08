@@ -32,9 +32,6 @@
 
       extra-substituters = [
         "https://catppuccin.cachix.org"
-        "https://hyprland.cachix.org"
-        "https://walker.cachix.org"
-        "https://walker-git.cachix.org"
       ];
 
       trusted-public-keys = [
@@ -45,9 +42,6 @@
 
       extra-trusted-public-keys = [
         "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
-        "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
       ];
     };
   };
