@@ -30,6 +30,13 @@
     # Ugghh, takes 2 styling flakes to do what I want
     catppuccin.url = "github:catppuccin/nix";
     stylix.url = "github:nix-community/stylix";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.7.0";
+
+    scopebuddy = {
+      url = "github:HikariKnight/ScopeBuddy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -81,12 +88,6 @@
           nixos.configurationEntryPoint = "configuration.nix";
           home.users = lib'.mkHomeConfigsForUser "mm";
         };
-
-        perSystem =
-          { pkgs, ... }:
-          {
-            packages.bootdev-cli = pkgs.callPackage ./packages/bootdev.nix { };
-          };
       }
     );
 }

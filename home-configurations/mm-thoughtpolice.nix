@@ -16,12 +16,23 @@ in
     _3dprinting
     bootdev
     desktop
+    flatpak
     gaming
     hyprland
     network-utils
     syncthing
     virt-manager
   ];
+
+  gaming = {
+    azahar.enable = true;
+    bottles.enable = true;
+    dolphin.enable = true;
+    pcsx2.enable = true;
+    retroarch.enable = true;
+    rpcs3.enable = true;
+    steam.enable = true;
+  };
 
   home.packages = with pkgs; [
     gnome-calculator

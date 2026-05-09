@@ -32,13 +32,6 @@
     kernelModules = [ "sg" ];
   };
 
-  gaming = {
-    emulation = true;
-    gamescope = true;
-    steam = true;
-    wine = true;
-  };
-
   networking = {
     hostName = "thoughtpolice";
     useDHCP = true;

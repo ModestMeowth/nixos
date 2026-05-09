@@ -5,8 +5,16 @@
   ...
 }:
 let
-  cfg = config.gaming;
+  cfg = config.gaming.bottles;
 in
 {
-  home.packages = lib.mkIf cfg.bottles [ pkgs.bottles ];
+  config = lib.mkIf cfg.enable {
+    services.flatpak.packages = lib.mkIf cfg.flatpak [
+      "com.usebottles.bottles"
+    ];
+
+    home.packages = lib.mkIf (!cfg.flatpak) [
+      pkgs.bottles
+    ];
+  };
 }
