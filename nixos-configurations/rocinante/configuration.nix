@@ -62,6 +62,4 @@
     enable = true;
     mountpoint = "/persist/media";
   };
-
-  virtualisation.docker.package = pkgs.docker_29;
 }

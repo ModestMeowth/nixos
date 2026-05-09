@@ -194,6 +194,4 @@
     "systemd-boot-random-seed".enable = lib.mkForce false;
     "systemd-random-seed".enable = lib.mkForce false;
   };
-
-  virtualisation.docker.package = pkgs.docker_29;
 }
