@@ -1,4 +1,4 @@
-{ ezModules, pkgs, ... }:
+{ ezModules, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   networking.hostName = "rocinante";
@@ -7,6 +7,7 @@
     desktop
     docker
     efi
+    flatpak
     gaming
     kmscon
     laptop
@@ -21,11 +22,6 @@
     ./hardware-configuration.nix
     ./secrets.nix
   ];
-
-  gaming = {
-    emulation = true;
-    steam = true;
-  };
 
   hardware = {
     amdgpu.initrd.enable = true;

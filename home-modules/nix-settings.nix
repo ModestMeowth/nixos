@@ -25,13 +25,13 @@
       trusted-users = [ "@wheel" ];
 
       substituters = [
-        "http://pwnyboy:8501"
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
+        "http://pwnyboy:8501?priority=1"
+        "https://nix-community.cachix.org?priority=30"
+        "https://cache.nixos.org?priority=40"
       ];
 
       extra-substituters = [
-        "https://catppuccin.cachix.org"
+        "https://catppuccin.cachix.org?priority=11"
       ];
 
       trusted-public-keys = [

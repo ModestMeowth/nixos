@@ -32,25 +32,19 @@
     stylix.url = "github:nix-community/stylix";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.7.0";
-
-    scopebuddy = {
-      url = "github:HikariKnight/ScopeBuddy";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   nixConfig = {
     experimental-features = "nix-command flakes";
       substituters = [
-        "http://pwnyboy:8501"
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
+        "http://pwnyboy:8501?priority=1"
+        "https://nix-community.cachix.org?priority=30"
+        "https://cache.nixos.org?priority=40"
       ];
 
       extra-substituters = [
-        "https://lanzaboote.cachix.org"
-        "https://hyprland.cachix.org"
-        "https://catppuccin.cachix.org"
+        "https://lanzaboote.cachix.org?priority=10"
+        "https://catppuccin.cachix.org?priority=11"
       ];
 
       trusted-public-keys = [
@@ -61,7 +55,6 @@
 
       extra-trusted-public-keys = [
         "lanzaboote.cachix.org-1:Nt9//zGmqkg1k5iu+B3bkj3OmHKjSw9pvf3faffLLNk="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
       ];
   };

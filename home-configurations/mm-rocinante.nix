@@ -16,11 +16,19 @@ in
     _3dprinting
     bootdev
     desktop
+    flatpak
+    gaming
     hyprland
     network-utils
     syncthing
     virt-manager
   ];
+
+  gaming = {
+    bottles.enable = true;
+    retroarch.enable = true;
+    steam.enable = true;
+  };
 
   home.packages = with pkgs; [
     bitwarden-desktop
