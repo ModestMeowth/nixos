@@ -44,21 +44,16 @@ in
     indicator = true;
   };
 
-  wayland.windowManager.hyprland.extraConfig = ''
-    input {
-      kb_options = ctrl:swapcaps
-    }
-  '';
+  wayland.windowManager.hyprland.settings = {
+    config.input.kb_options = "ctrl:swapcaps";
+    monitor = {
+      output = "eDP-1";
+      mode = "1920.x1200@60";
+      vrr = 3;
+    };
+  };
 
   xdg.configFile = {
-    "hypr/hyprland.conf.d/monitor.conf".text = ''
-      monitorv2 {
-        output = eDP-1
-        mode = 1920x1200@60
-        vrr = 3
-      }
-    '';
-
     "hypr/hyprpaper.conf".text = ''
       wallpaper {
         monitor = eDP-1

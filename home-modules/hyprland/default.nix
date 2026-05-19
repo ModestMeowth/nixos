@@ -3,28 +3,37 @@
   imports = [
     ezModules.walker
 
-    ./hypridle.nix
+    # ./hypridle.nix
     ./scripts.nix
     ./shell.nix
   ];
 
   home.sessionPath = [ "$HOME/.local/bin" ];
 
+  catppuccin.hyprland.enable = false;
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
     portalPackage = null;
-    systemd.variables = [ "--all" ];
-    settings = {
-      source = [
-        "~/.config/hypr/hyprland.conf.d/*"
-      ];
-      input.follow_mouse = 2;
-    };
-  };
+    configType = "lua";
+    extraConfig = #lua
+    ''
+      local HOME = os.getenv("HOME")
+      local XDG = os.getenv("XDG_CONFIG_HOME") or (HOME .. "./config")
 
-  xdg.configFile."hypr/hyprland.conf.d" = {
-    source = ../../dotfiles/hypr/hyprland.conf.d;
-    recursive = true;
+      package.path = package.path .. ";" .. XDG .. "/hypr" .. "/?.lua"
+
+      local function try_require(name)
+        if package.searchpath(name, package.path) then
+          require(name)
+        end
+      end
+
+      try_require("monitors")
+      try_require("bindings.tiling")
+      try_require("bindings.apps")
+      try_require("bindings.utils")
+    '';
   };
 }
