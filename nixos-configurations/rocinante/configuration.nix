@@ -31,6 +31,7 @@
 
   programs = {
     kdeconnect.enable = true;
+    nix-ld.enable = true;
     wireshark = {
       enable = true;
       dumpcap.enable = true;
