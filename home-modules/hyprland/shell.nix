@@ -15,9 +15,9 @@ let
 in
 {
   home.packages = with pkgs; [
-    hyprpolkitagent
-    hyprpicker
-    hyprshutdown
+    # hyprpolkitagent
+    # hyprpicker
+    # hyprshutdown
 
     bluetui
     grim
@@ -30,24 +30,24 @@ in
   ];
 
   services = {
-    hyprpaper.enable = true;
-    hyprpolkitagent.enable = true;
-    hyprsunset.enable = true;
+  #   hyprpaper.enable = true;
+  #   hyprpolkitagent.enable = true;
+  #   hyprsunset.enable = true;
 
-    mako = {
-      enable = true;
-      extraConfig = ''
-        font=${font}
-      ''
-      + readFile ../../dotfiles/mako/config;
-    };
+  #   mako = {
+  #     enable = true;
+  #     extraConfig = ''
+  #       font=${font}
+  #     ''
+  #     + readFile ../../dotfiles/mako/config;
+  #   };
 
     tailscale-systray = lib.mkIf ts.enable {
       enable = true;
       package = ts.package;
     };
 
-    swayosd.enable = true;
+  #   swayosd.enable = true;
   };
 
   programs.waybar = {

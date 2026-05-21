@@ -4,12 +4,12 @@ let
 in
 {
   home.file = lib'.mkBinFiles ".local/bin" [
-    "lock-screen"
+    # "lock-screen"
 
-    "hyprland-submap-command"
-    "hyprland-window-close-all"
-    "hyprland-window-pop"
-    "hyprland-workspace-toggle-gaps"
+    # "hyprland-submap-command"
+    # "hyprland-window-close-all"
+    # "hyprland-window-pop"
+    # "hyprland-workspace-toggle-gaps"
 
     "battery-remaining"
     "brightness-display"
@@ -34,16 +34,16 @@ in
     "launch-walker"
     "launch-wifi"
 
-    "launch-menu"
-    "keybind-menu"
-    "power-profiles-list"
+    # "launch-menu"
+    # "keybind-menu"
+    # "power-profiles-list"
 
-    "restart-app"
-    "restart-waybar"
+    # "restart-app"
+    # "restart-waybar"
 
-    "screenrecord"
-    "screenshot"
-    "screensaver"
+    # "screenrecord"
+    # "screenshot"
+    # "screensaver"
 
     "toggle-dnd"
     "toggle-idle"
