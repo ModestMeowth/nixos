@@ -45,7 +45,10 @@ in
   };
 
   wayland.windowManager.hyprland.settings = {
-    config.input.kb_options = "ctrl:swapcaps";
+    config = {
+      general.layout = "master";
+      input.kb_options = "ctrl:swapcaps";
+    };
     monitor = {
       output = "eDP-1";
       mode = "1920.x1200@60";

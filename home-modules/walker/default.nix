@@ -1,4 +1,6 @@
+{lib, ...}:
 let
+  lua = lib.generators.mkLuaInline;
   inherit (builtins) readFile;
 in
 {
@@ -13,6 +15,19 @@ in
       settings = fromTOML (readFile ../../dotfiles/walker/config.toml);
     };
   };
+
+  wayland.windowManager.hyprland.settings.bind = [
+    {
+      _args = [
+        "SUPER+SPACE"
+        (lua #lua
+          ''hl.dsp.exec_cmd("launch-walker")'')
+        {
+          description = "App launcher";
+        }
+      ];
+    }
+  ];
 
   xdg.configFile = {
     "walker/themes/sytle/style.css".text =

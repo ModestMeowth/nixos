@@ -3,8 +3,7 @@ let
   font = config.stylix.fonts.sansSerif.name;
 in
 {
-  home.packages = [ pkgs.hypridle ];
-
+  services.hypridle.enable = true;
   xdg.configFile = {
     "hypr/hypridle.conf".text = builtins.readFile ../../dotfiles/hypr/hypridle.conf;
     "screensaver" = {
@@ -22,8 +21,9 @@ in
     + builtins.readFile ../../dotfiles/hypr/hyprlock.conf;
   };
 
-  # hypridle systemd service does not have bash for some reason I can't seem to fix
-  wayland.windowManager.hyprland.extraConfig = ''
-    exec-once = uwsm app -- hypridle
-  '';
+  # # hypridle systemd service does not have bash for some reason I can't seem to fix
+  # wayland.windowManager.hyprland.extraConfig = ''
+  #   hl
+  #   exec-once = uwsm app -- hypridle
+  # '';
 }
