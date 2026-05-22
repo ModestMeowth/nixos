@@ -26,8 +26,9 @@ in
     extraGroups = [
       "wheel"
       "users"
-      "input"
       "cdrom"
+      "input"
+      "video"
     ]
     ++ ifGroupsExist [
       "docker"

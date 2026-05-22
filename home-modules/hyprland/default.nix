@@ -3,8 +3,6 @@
   imports = [
     ezModules.walker
 
-    ./animations.nix
-    ./bindings.nix
     ./hypridle.nix
     ./scripts.nix
     ./shell.nix
@@ -21,6 +19,7 @@
     configType = "lua";
     settings = {
       config = {
+        animations.enabled = true;
         cursor = {
           no_hardware_cursors = true;
         };
@@ -98,6 +97,13 @@
           hl.dsp.window.move({workspace = tostring(workspace), follow = false}),
           { description = "Move window silently to workspace " .. workspace })
       end
+
+      require("conf")
     '';
+  };
+
+  xdg.configFile."hypr/conf" = {
+    source = ../../dotfiles/hypr/conf;
+    recursive = true;
   };
 }

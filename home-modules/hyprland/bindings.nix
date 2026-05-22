@@ -20,7 +20,7 @@ in
 {
   wayland.windowManager.hyprland.settings = {
     bind = [
-      (bind "${mainMod}+RETURN" (exec "xdg-terminal") {
+      (bind "${mainMod}+RETURN" (exec "xdg-terminal-exec") {
         description = "Open Terminal";
       })
 

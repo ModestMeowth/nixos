@@ -20,10 +20,4 @@ in
     ''
     + builtins.readFile ../../dotfiles/hypr/hyprlock.conf;
   };
-
-  # # hypridle systemd service does not have bash for some reason I can't seem to fix
-  # wayland.windowManager.hyprland.extraConfig = ''
-  #   hl
-  #   exec-once = uwsm app -- hypridle
-  # '';
 }

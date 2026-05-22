@@ -85,8 +85,8 @@ in
     setSessionVariables = lib.mkDefault true;
 
     extraConfig = {
-      SCREENSHOT_DIR = "${HOME}/Pictures/Screenshots";
-      SCREENRECORD_DIR = "${HOME}/Videos/Screencasts";
+      SCREENSHOT = "${HOME}/Pictures/Screenshots";
+      SCREENRECORD = "${HOME}/Videos/Screencasts";
     };
   };
 }
