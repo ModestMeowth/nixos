@@ -26,9 +26,7 @@ in
     };
 
     settings = lib.mkOption {
-      type = lib.types.submodule {
-        freeformType = settingsFormat.type;
-      };
+      type = lib.types.submodule { freeformType = settingsFormat.type; };
       default = { };
       example = lib.literalExpression ''
         {
@@ -59,13 +57,7 @@ in
 
         Requires = [ "elephant.service" ];
         PartOf = [ "graphical-session.target" ];
-        X-Restart-Triggers = [
-          (builtins.hashString "sha256" (
-            builtins.toJSON {
-              inherit (cfg) settings;
-            }
-          ))
-        ];
+        X-Restart-Triggers = [ (builtins.hashString "sha256" (builtins.toJSON { inherit (cfg) settings; })) ];
       };
 
       Service = {

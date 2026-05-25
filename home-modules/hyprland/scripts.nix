@@ -5,19 +5,23 @@ in
 {
   home.packages = [ pkgs.lua5_5 ]; # keybind menu script needs lua, use same version hyprland does
   home.file = lib'.mkBinFiles ".local/bin" [
-    "lock-screen"
-
-    # "hyprland-submap-command"
-    # "hyprland-window-close-all"
-    # "hyprland-window-pop"
-    # "hyprland-workspace-toggle-gaps"
+    "hyprland-window-close-all"
+    "hyprland-window-pop"
+    "hyprland-workspace-toggle-gaps"
     "hyprland-focused-monitor"
 
     "battery-remaining"
-    "brightness-display"
-    "brightness-keyboard"
-    "swayosd-brightness"
-    "audio-switch"
+
+    "kbd-brightness"
+    "kbd-brightness-mute"
+    "screen-brightness"
+
+    "osd-brightness"
+    "osd-kbd-brightness"
+    "osd-client"
+
+    "audio-input-mute"
+    "audio-output-switch"
 
     "hyprscope"
 
@@ -37,17 +41,20 @@ in
     "launch-walker"
     "launch-wifi"
 
-    # "capture-screencast"
-    # "capture-screenshot"
+    "capture-screencast"
+    "capture-screenshot"
 
-    # "launch-menu"
+    "launch-menu"
     "keybind-menu"
-    # "power-profiles-list"
+    "power-profiles-list"
 
     "restart-app"
     "restart-waybar"
 
     "screensaver"
+
+    "system-lock"
+    "system-wake"
 
     "toggle-dnd"
     "toggle-idle"

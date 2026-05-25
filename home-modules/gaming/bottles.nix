@@ -9,12 +9,8 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    services.flatpak.packages = lib.mkIf cfg.flatpak [
-      "com.usebottles.bottles"
-    ];
+    services.flatpak.packages = lib.mkIf cfg.flatpak [ "com.usebottles.bottles" ];
 
-    home.packages = lib.mkIf (!cfg.flatpak) [
-      pkgs.bottles
-    ];
+    home.packages = lib.mkIf (!cfg.flatpak) [ pkgs.bottles ];
   };
 }

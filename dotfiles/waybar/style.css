@@ -97,7 +97,6 @@ window#waybar {
     color: @pink;
 }
 
-
 #custom-notification-silence-indicator.active {
     color: @mauve;
 }
@@ -129,7 +128,6 @@ window#waybar {
 #pulseaudio {
     color: @maroon;
 }
-
 
 #battery,
 #bluetooth,

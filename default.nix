@@ -7,4 +7,4 @@
     url = "https://github.com/nixos/flake-compat/archives${rev}.tar.gz";
     sha256 = narHash;
   }
-) { src = ./.;}).defaultNix
+) { src = ./.; }).defaultNix

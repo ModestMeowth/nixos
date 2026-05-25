@@ -1,4 +1,5 @@
 {
+  config,
   ezModules,
   inputs,
   lib,
@@ -31,6 +32,8 @@
       };
       ".tmux.conf".source = ../dotfiles/tmux/tmux.conf;
     };
+
+    sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
   };
 
   programs = {

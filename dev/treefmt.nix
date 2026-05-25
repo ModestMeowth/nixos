@@ -1,4 +1,4 @@
-{inputs, ...}:
+{ inputs, ... }:
 {
   imports = [ inputs.treefmt-nix.flakeModule ];
 
@@ -12,6 +12,11 @@
         width = 120;
         strict = true;
       };
+      prettier = {
+        enable = true;
+        excludes = [ "*.sops*" ];
+      };
+      stylua.enable = true;
     };
   };
 }

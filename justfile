@@ -21,6 +21,11 @@ update-packages:
   cd ./packages
   nvfetcher
 
+[group("repository")]
+update-sops-keys:
+  #! {{ nixShebang }} nixpkgs#sops nixpkgs#findutils -c {{ realShebang }}
+  find . -type f -name \*.sops.yaml ! -name .sops.yaml -exec sops updatekeys --yes {} \;
+
 # nixos-rebuild boot AND home-manager switch
 [group("nix")]
 boot user=shell("whoami") hostname=shell("hostname"): (nixos-boot hostname) (home-switch user hostname)

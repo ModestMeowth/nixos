@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./pwnyboy-media.nix
-  ];
-}
+{ imports = [ ./pwnyboy-media.nix ]; }

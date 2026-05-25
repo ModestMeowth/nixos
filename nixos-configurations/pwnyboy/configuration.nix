@@ -60,13 +60,9 @@
     useDHCP = false;
 
     bridges = {
-      bridge0.interfaces = [
-        "enp3s0"
-      ];
+      bridge0.interfaces = [ "enp3s0" ];
 
-      bridge1.interfaces = [
-        "enp4s0"
-      ];
+      bridge1.interfaces = [ "enp4s0" ];
     };
 
     interfaces = {

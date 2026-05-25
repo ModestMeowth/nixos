@@ -8,7 +8,7 @@
 services.openssh.enable = true;
 ```
 
-### *OR* manually generated keys
+### _OR_ manually generated keys
 
 ```sh
 ssh-keygen -P /path/to/key

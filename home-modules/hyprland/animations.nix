@@ -1,52 +1,90 @@
 let
-  curve =
-    name: type: args:
-    {
-      _args = [
-        name
-        ({
-          inherit type;
-        } // args)
-      ];
-    };
+  curve = name: type: args: {
+    _args = [
+      name
+      ({ inherit type; } // args)
+    ];
+  };
 
-  bezier =
-    name: points:
-    curve name "bezier" points;
+  bezier = name: points: curve name "bezier" points;
 
-  spring =
-    name: args:
-    curve name "spring" args;
+  spring = name: args: curve name "spring" args;
 
-  animation =
-    leaf: speed: curve:
-    {
-      _args = [
-        ({
+  animation = leaf: speed: curve: {
+    _args = [
+      (
+        {
           inherit leaf speed;
           enabled = true;
-        } // curve)
-      ];
-    };
+        }
+        // curve
+      )
+    ];
+  };
 in
 {
   wayland.windowManager.hyprland.settings = {
     config.animations.enabled = true;
     curve = [
       (bezier "easeOutQuint" {
-        points = [ [ 0.23 1 ] [ 0.32 1 ] ];
+        points = [
+          [
+            0.23
+            1
+          ]
+          [
+            0.32
+            1
+          ]
+        ];
       })
       (bezier "easeInOutCubic" {
-        points = [ [ 0.65 0.05 ]  [ 0.36 1 ] ];
+        points = [
+          [
+            0.65
+            0.05
+          ]
+          [
+            0.36
+            1
+          ]
+        ];
       })
       (bezier "linear" {
-        points = [ [ 0 0 ] [ 1 1 ] ];
+        points = [
+          [
+            0
+            0
+          ]
+          [
+            1
+            1
+          ]
+        ];
       })
       (bezier "almostLinear" {
-        points = [ [ 0.5 0.5 ] [ 0.75 1 ] ];
+        points = [
+          [
+            0.5
+            0.5
+          ]
+          [
+            0.75
+            1
+          ]
+        ];
       })
       (bezier "quick" {
-        points = [ [ 0.15 0 ] [ 0.1 1 ] ];
+        points = [
+          [
+            0.15
+            0
+          ]
+          [
+            0.1
+            1
+          ]
+        ];
       })
 
       (spring "easy" {
@@ -57,15 +95,9 @@ in
     ];
 
     animation = [
-      (animation "global" 10 {
-        bezier = "default";
-      })
-      (animation "border" 5.39 {
-        bezier = "easeOutQuint";
-      })
-      (animation "windows" 4.79 {
-        spring = "easy";
-      })
+      (animation "global" 10 { bezier = "default"; })
+      (animation "border" 5.39 { bezier = "easeOutQuint"; })
+      (animation "windows" 4.79 { spring = "easy"; })
       (animation "windowsIn" 4.1 {
         spring = "easy";
         style = "popin 87%";
@@ -74,18 +106,10 @@ in
         bezier = "linear";
         style = "popin 87%";
       })
-      (animation "fadeIn" 1.73 {
-        bezier = "almostLinear";
-      })
-      (animation "fadeOut" 1.46 {
-        bezier = "almostLinear";
-      })
-      (animation "fade" 3.03 {
-        bezier = "quick";
-      })
-      (animation "layers" 3.81 {
-        bezier = "easeOutQuint";
-      })
+      (animation "fadeIn" 1.73 { bezier = "almostLinear"; })
+      (animation "fadeOut" 1.46 { bezier = "almostLinear"; })
+      (animation "fade" 3.03 { bezier = "quick"; })
+      (animation "layers" 3.81 { bezier = "easeOutQuint"; })
       (animation "layersIn" 4 {
         bezier = "easeOutQuint";
         style = "fade";
@@ -94,12 +118,8 @@ in
         bezier = "linear";
         style = "fade";
       })
-      (animation "fadeLayersIn" 1.79 {
-        bezier = "almostLinear";
-      })
-      (animation "fadeLayersOut" 1.39 {
-        bezier = "almostLinear";
-      })
+      (animation "fadeLayersIn" 1.79 { bezier = "almostLinear"; })
+      (animation "fadeLayersOut" 1.39 { bezier = "almostLinear"; })
       (animation "workspaces" 1.94 {
         bezier = "almostLinear";
         style = "fade";
@@ -112,9 +132,7 @@ in
         bezier = "almostLinear";
         style = "fade";
       })
-      (animation "zoomFactor" 7 {
-        bezier = "quick";
-      })
+      (animation "zoomFactor" 7 { bezier = "quick"; })
     ];
   };
 }

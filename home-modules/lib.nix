@@ -1,8 +1,6 @@
 { lib, ... }:
 let
-  inherit (lib)
-    mergeAttrsList
-    ;
+  inherit (lib) mergeAttrsList;
 in
 rec {
   mkBinFile =

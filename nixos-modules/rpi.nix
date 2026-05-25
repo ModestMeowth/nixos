@@ -5,9 +5,7 @@
   ...
 }:
 {
-  imports = [
-    ezModules.wireless
-  ];
+  imports = [ ezModules.wireless ];
 
   environment.systemPackages = [ pkgs.raspberrypi-eeprom ];
 

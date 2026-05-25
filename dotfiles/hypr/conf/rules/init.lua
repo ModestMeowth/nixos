@@ -1,0 +1,6 @@
+require("conf.rules.browser")
+require("conf.rules.pip")
+require("conf.rules.smartgaps")
+require("conf.rules.system")
+require("conf.rules.terminals")
+require("conf.rules.windows")

@@ -25,11 +25,13 @@ for m in $(hyprctl monitors -j | jq -r '.[] | .name'); do
     hypr_focus_monitor "$m"
 
     case $terminal in
-    *Alacritty*) hypr_exec "alacritty --class=dev.meowth.screensaver --config-file ~/.config/screensaver/alactritty.toml -e ~/.local/bin/screensaver"
+    *Alacritty*) hypr_exec "alacritty --class=dev.meowth.screensaver --config-file ~/.config/screensaver/alactritty.toml -e screensaver"
     ;;
-    *ghostty*) hypr_exec "ghostty --class=dev.meowth.screensaver --config-file=~/.config/screensaver/ghostty --font-size=18 -e ~/.local/bin/screensaver"
+    *ghostty*) hypr_exec "ghostty --class=dev.meowth.screensaver --config-file=~/.config/screensaver/ghostty --font-size=18 -e screensaver"
     ;;
-    *kitty*) hypr_exec "kitty --class=dev.meowth.screensaver --override font_size=18 --override window_padding_width=0 -e ~/.local/bin/screensaver"
+    *foot*) hypr_exec "foot --app-id=dev.meowth.screensaver --config-file=~/.config/screensaver/foot.ini -e screensaver"
+    ;;
+    *kitty*) hypr_exec "kitty --class=dev.meowth.screensaver --override font_size=18 --override window_padding_width=0 -e screensaver"
     ;;
     *) notify-send "✋  Screensaver only runs in Alacritty, Ghostty, or Kitty" ;;
     esac

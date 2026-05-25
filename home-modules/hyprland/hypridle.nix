@@ -3,7 +3,16 @@ let
   font = config.stylix.fonts.sansSerif.name;
 in
 {
-  services.hypridle.enable = true;
+  # the service definition does not play nice with bash
+  # service.hypridle.enable = true;
+  home.packages = [ pkgs.hypridle ];
+  wayland.windowManager.hyprland.extraConfig = # lua
+    ''
+      hl.on("hyprland.start", function()
+        hl.exec_cmd("uwsm app -- hypridle")
+      end)
+    '';
+
   xdg.configFile = {
     "hypr/hypridle.conf".text = builtins.readFile ../../dotfiles/hypr/hypridle.conf;
     "screensaver" = {

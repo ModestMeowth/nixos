@@ -1,3 +1,1 @@
-{
-  imports = [ ./mm.nix ];
-}
+{ imports = [ ./mm.nix ]; }

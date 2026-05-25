@@ -1,8 +1,6 @@
 { modulesPath, ... }:
 {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   nixpkgs.hostPlatform = "aarch64-linux";
 

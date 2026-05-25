@@ -1,8 +1,6 @@
-{inputs, lib, ...}:
+{ inputs, lib, ... }:
 {
-  imports = [
-    inputs.flake-parts.flakeModules.partitions
-  ];
+  imports = [ inputs.flake-parts.flakeModules.partitions ];
 
   partitions.dev = {
     module = ./dev;

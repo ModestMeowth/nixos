@@ -56,9 +56,7 @@ in
     };
 
     settings = lib.mkOption {
-      type = lib.types.submodule {
-        freeformType = settingsFormat.type;
-      };
+      type = lib.types.submodule { freeformType = settingsFormat.type; };
       default = { };
       example = lib.literalExpression ''
         {
@@ -88,13 +86,7 @@ in
         Restart = "on-failure";
         RestartSec = 1;
 
-        X-Restart-Triggers = [
-          (builtins.hashString "sha256" (
-            builtins.toJSON {
-              inherit (cfg) settings providers;
-            }
-          ))
-        ];
+        X-Restart-Triggers = [ (builtins.hashString "sha256" (builtins.toJSON { inherit (cfg) settings providers; })) ];
 
         ExecStopPost = "${pkgs.coreutils}/bin/rm -f /tmp/elephant.sock";
       };

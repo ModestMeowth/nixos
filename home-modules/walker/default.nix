@@ -1,4 +1,4 @@
-{lib, ...}:
+{ lib, ... }:
 let
   lua = lib.generators.mkLuaInline;
   inherit (builtins) readFile;
@@ -20,19 +20,18 @@ in
     {
       _args = [
         "SUPER+SPACE"
-        (lua #lua
-          ''hl.dsp.exec_cmd("launch-walker")'')
-        {
-          description = "App launcher";
-        }
+        (
+          # lua
+          lua ''hl.dsp.exec_cmd("launch-walker")''
+        )
+        { description = "App launcher"; }
       ];
     }
   ];
 
   xdg.configFile = {
     "walker/themes/sytle/style.css".text =
-      readFile ../../dotfiles/walker/themes/catppuccin.css
-      + readFile ../../dotfiles/walker/themes/style.css;
+      readFile ../../dotfiles/walker/themes/catppuccin.css + readFile ../../dotfiles/walker/themes/style.css;
     "walker/themes/style/layout.xml".source = ../../dotfiles/walker/themes/layout.xml;
 
     "elephant" = {

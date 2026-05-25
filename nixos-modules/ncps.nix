@@ -1,11 +1,14 @@
-{ezModules, config, lib, ...}:
+{
+  ezModules,
+  config,
+  lib,
+  ...
+}:
 let
   port = 8501;
 in
 {
-  imports = [
-    ezModules.postgresql
-  ];
+  imports = [ ezModules.postgresql ];
 
   services = {
     ncps = {
@@ -45,10 +48,12 @@ in
 
     postgresql = {
       ensureDatabases = [ "ncps" ];
-      ensureUsers = [{
-        name = "ncps";
-        ensureDBOwnership = true;
-      }];
+      ensureUsers = [
+        {
+          name = "ncps";
+          ensureDBOwnership = true;
+        }
+      ];
     };
   };
 

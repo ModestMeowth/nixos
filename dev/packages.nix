@@ -1,6 +1,6 @@
 {
   perSystem =
-    {config, ...}:
+    { config, ... }:
     {
       checks = config.checks;
     };

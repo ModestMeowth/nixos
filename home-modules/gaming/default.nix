@@ -1,15 +1,13 @@
-{ config, inputs, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  ...
+}:
 let
-  inherit (lib)
-    literalExpression
-    mkEnableOption
-    mkOption
-    ;
+  inherit (lib) literalExpression mkEnableOption mkOption;
 
-  inherit (lib.types)
-    bool
-    submodule
-    ;
+  inherit (lib.types) bool submodule;
 
   gamingOption = desc: {
     options = {
@@ -40,40 +38,22 @@ in
   ];
 
   options.gaming = {
-    azahar = mkOption {
-      type = submodule (gamingOption "azahar");
-    };
+    azahar = mkOption { type = submodule (gamingOption "azahar"); };
 
-    bottles = mkOption {
-      type = submodule (gamingOption "bottles");
-    };
+    bottles = mkOption { type = submodule (gamingOption "bottles"); };
 
-    dolphin = mkOption {
-      type = submodule (gamingOption "dolphin");
-    };
+    dolphin = mkOption { type = submodule (gamingOption "dolphin"); };
 
-    lutris = mkOption {
-      type = submodule (gamingOption "lutris");
-    };
+    lutris = mkOption { type = submodule (gamingOption "lutris"); };
 
-    pcsx2 = mkOption {
-      type = submodule (gamingOption "PCSX2");
-    };
+    pcsx2 = mkOption { type = submodule (gamingOption "PCSX2"); };
 
-    retroarch = mkOption {
-      type = submodule (gamingOption "retroarch");
-    };
+    retroarch = mkOption { type = submodule (gamingOption "retroarch"); };
 
-    rpcs3 = mkOption {
-      type = submodule (gamingOption "rpcs3");
-    };
+    rpcs3 = mkOption { type = submodule (gamingOption "rpcs3"); };
 
-    steam = mkOption {
-      type = submodule (gamingOption "steam");
-    };
+    steam = mkOption { type = submodule (gamingOption "steam"); };
 
-    wine = mkOption {
-      type = submodule (gamingOption "wine");
-    };
+    wine = mkOption { type = submodule (gamingOption "wine"); };
   };
 }

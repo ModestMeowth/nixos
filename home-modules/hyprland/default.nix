@@ -8,8 +8,6 @@
     ./shell.nix
   ];
 
-  home.sessionPath = [ "$HOME/.local/bin" ];
-
   catppuccin.hyprland.enable = false;
 
   wayland.windowManager.hyprland = {
@@ -80,26 +78,26 @@
       };
     };
 
-    extraConfig = #lua
-    ''
-      for workspace = 1, 6 do
-        key = "code:" .. tostring(workspace+9)
-        hl.bind(
-          "SUPER+" .. key,
-          hl.dsp.focus({ workspace = tostring(workspace) }),
-          { description = "Switch to workspace " .. workspace })
-        hl.bind(
-          "SUPER+SHIFT+" .. key,
-          hl.dsp.window.move({ workspace = tostring(workspace) }),
-          { description = "Move window to workspace " .. workspace })
-        hl.bind(
-          "SUPER+SHIFT+ALT+" .. key,
-          hl.dsp.window.move({workspace = tostring(workspace), follow = false}),
-          { description = "Move window silently to workspace " .. workspace })
-      end
+    extraConfig = # lua
+      ''
+        for workspace = 1, 6 do
+          key = "code:" .. tostring(workspace+9)
+          hl.bind(
+            "SUPER+" .. key,
+            hl.dsp.focus({ workspace = tostring(workspace) }),
+            { description = "Switch to workspace " .. workspace })
+          hl.bind(
+            "SUPER+SHIFT+" .. key,
+            hl.dsp.window.move({ workspace = tostring(workspace) }),
+            { description = "Move window to workspace " .. workspace })
+          hl.bind(
+            "SUPER+SHIFT+ALT+" .. key,
+            hl.dsp.window.move({workspace = tostring(workspace), follow = false}),
+            { description = "Move window silently to workspace " .. workspace })
+        end
 
-      require("conf")
-    '';
+        require("conf")
+      '';
   };
 
   xdg.configFile."hypr/conf" = {

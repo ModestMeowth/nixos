@@ -1,8 +1,6 @@
 { inputs, lib, ... }:
 {
-  imports = [
-    inputs.wsl.nixosModules.wsl
-  ];
+  imports = [ inputs.wsl.nixosModules.wsl ];
 
   services = {
     chrony.enable = lib.mkForce false;

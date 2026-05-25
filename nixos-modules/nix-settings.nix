@@ -1,4 +1,4 @@
-{lib, ...}:
+{ lib, ... }:
 {
   nix = {
     distributedBuilds = lib.mkDefault true;

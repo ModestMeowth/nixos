@@ -1,12 +1,15 @@
-{config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.gaming.retroarch;
 in
 {
   config = lib.mkIf cfg.enable {
-    services.flatpak.packages = lib.mkIf cfg.flatpak [
-      "org.libretro.RetroArch"
-    ];
+    services.flatpak.packages = lib.mkIf cfg.flatpak [ "org.libretro.RetroArch" ];
 
     home.packages = lib.mkIf (!cfg.flatpak) (
       with pkgs;

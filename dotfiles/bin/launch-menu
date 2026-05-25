@@ -15,8 +15,15 @@ back_to() {
     fi
 }
 
+toggle_existing_menu() {
+    if pgrep -f "walker.*--dmenu" >/dev/null; then
+        walker --close >/dev/null 2>&1
+        exit 0
+    fi
+}
+
 menu() {
-    local prompt options extra preselect index
+    local prompt options extra preselect
 
     prompt="$1"
     options="$2"
@@ -26,6 +33,7 @@ menu() {
     read -r -a args <<<"$extra"
 
     if [[ -n "$preselect" ]]; then
+        local index
         index=$(echo -e "$options" | grep -nxF "$preselect" | cut -d: -f1)
         if [[ -n "$index" ]]; then
               args+=("-c" "$index")
@@ -35,9 +43,19 @@ menu() {
     echo -e "$options" | launch-walker --dmenu --width 295 --minheight 1 --maxheight 630 -p "$prompt…" "${args[@]}" 2>/dev/null
 }
 
+show_capture_menu() {
+    case $(menu "Capture" "  Screenshot\n  Screenrecord\n󰃉  Color") in
+    *Screenshot*) capture-screenshot ;;
+    *Screenrecord*) show_screenrecord_menu ;;
+    *Color*) pkill hyprpicker || hyprpicker -a ;;
+    *) back_to show_main_menu ;;
+    esac
+}
+
+
 get_webcam_list() {
     v4l2-ctl --list-devices 2>/dev/null | while IFS= read -r line; do
-        if [[ "$line" != $'\t' && -n "$line" ]]; then
+        if [[ "$line" != $'\t'* && -n "$line" ]]; then
             local name
             name="$line"
             IFS= read -r device || break
@@ -52,29 +70,20 @@ show_webcam_select_menu() {
     devices=$(get_webcam_list)
     count=$(echo "$devices" | grep -c . 2>/dev/null || echo 0)
 
-    if [[ -z "$devices" || "$count" -eq 0 ]]; then
+    if [[ -z "$devices" ]] || (( count == 0 )); then
         notify-send "No webcam devices found" -u critical -t 3000
         return 1
     fi
 
-    if [[ "$count" -eq 1 ]]; then
+    if (( count == 1 )); then
         echo "$devices" | awk '{print $1}'
     else
         menu "Select Webcam" "$devices" | awk '{print $1}'
     fi
 }
 
-show_capture_menu() {
-    case $(menu "Capture" "  Screenshot\n  Screenrecord\n󰃉  Color") in
-    *Screenshot*) screenshot ;;
-    *Screenrecord*) show_screenrecord_menu ;;
-    *Color*) pkill hyprpicker || hyprpicker -a ;;
-    *) back_to show_main_menu ;;
-    esac
-}
-
 show_screenrecord_menu() {
-    screenrecord --stop-recording && exit 0
+    capture-screencast --stop-recording && exit 0
 
     case $(menu "Screenrecord" "  With desktop audio\n  With desktop + microphone audio\n  With desktop + microphone audio + webcam") in
     *"With desktop audio") screenrecord --with-desktop-audio ;;
@@ -85,7 +94,7 @@ show_screenrecord_menu() {
             back_to show_capture_menu
             return
         }
-        screenrecord --with-desktop-audio --with-microphone-audio --with-webcam --webcam-device="$device"
+        capture-screencast --with-desktop-audio --with-microphone-audio --with-webcam --webcam-device="$device"
         ;;
     *) back_to show_capture_menu ;;
     esac
@@ -96,8 +105,8 @@ show_system_menu() {
     options="  Lock\n󱄄  Screensaver\n󰍃 Logout\n󰒲  Suspend\n󰜉  Restart\n󰐥  Shutdown"
 
     case $(menu "System" "$options") in
-    *Lock*) lock-screen ;;
-    *Screensaver*) launch-screensaver ;;
+    *Lock*) system-lock ;;
+    *Screensaver*) launch-screensaver force ;;
     *Suspend*) systemctl suspend ;;
     *Logout*) hyprshutdown ;;
     *Restart*) hyprshutdown -p reboot ;;

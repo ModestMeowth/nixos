@@ -30,9 +30,7 @@
         "https://cache.nixos.org?priority=40"
       ];
 
-      extra-substituters = [
-        "https://catppuccin.cachix.org?priority=11"
-      ];
+      extra-substituters = [ "https://catppuccin.cachix.org?priority=11" ];
 
       trusted-public-keys = [
         "pwnyboy:GonEZtCkw+aFq6oHxKN7SB8y6p8NSkDuRsadSyZ0NuA="
@@ -40,9 +38,7 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
 
-      extra-trusted-public-keys = [
-        "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
-      ];
+      extra-trusted-public-keys = [ "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU=" ];
     };
   };
 }
