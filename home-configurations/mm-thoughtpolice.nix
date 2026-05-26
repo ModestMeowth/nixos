@@ -47,41 +47,36 @@ in
     indicator = true;
   };
 
-  wayland.windowManager.hyprland.settings.env = [
-    "LIBVA_DRIVER_NAME,nvidia"
-    "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-    "ELECTRON_OZONE_PLATFORM_HINT,auto"
-  ];
+  wayland.windowManager.hyprland.settings = {
+    config.opengl.nvidia_anti_flicker = true;
+    monitor = [
+      {
+        output = "DP-1";
+        mode = "3440x1440@60";
+        position = "0x0";
+      }
+      {
+        output = "HDMI-A-1";
+        mode = "1920x1080";
+        position = "3440x0";
+        transform = 1;
+
+      }
+    ];
+
+    workspace_rule = [
+      {
+        workspace = "1";
+        monitor = "DP-1";
+      }
+      {
+        workspace = "2";
+        monitor = "HDMI-A-1";
+      }
+    ];
+  };
 
   xdg.configFile = {
-    "uwsm/env".text = ''
-      export LIBVA_DRIVER_NAME=nvidia
-      export __GLX_VENDOR_LIBRARY_NAME=nvidia
-      export ELECTRON_OZONE_PLATFORM_HINT=auto
-    '';
-
-    "hypr/hyprland.conf.d/monitor.conf".text = ''
-      opengl {
-        nvidia_anti_flicker = true
-      }
-
-      monitorv2 {
-        output = DP-1
-        mode = 3440x1440@75
-        position = 0x0
-      }
-
-      monitorv2 {
-        output = HDMI-A-1
-        mode =  1920x1080@75
-        position = 3440x0
-        transform = 1
-      }
-
-      workspace = 1, monitor:DP-1
-      workspace = 2, monitor:HDMI-A-1
-    '';
-
     "hypr/hyprpaper.conf".text = ''
       wallpaper {
         monitor =

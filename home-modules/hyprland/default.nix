@@ -1,4 +1,7 @@
-{ ezModules, ... }:
+{ ezModules, lib, ... }:
+let
+  lua = lib.generators.mkLuaInline;
+in
 {
   imports = [
     ezModules.walker
@@ -7,8 +10,6 @@
     ./scripts.nix
     ./shell.nix
   ];
-
-  catppuccin.hyprland.enable = false;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -29,6 +30,10 @@
             size = 2;
             passes = 1;
           };
+          shadow = {
+            color = lua "colors.surface1";
+            color_inactive = lua "colors.surface1";
+          };
         };
 
         dwindle = {
@@ -42,6 +47,8 @@
           border_size = 2;
           resize_on_border = false;
           allow_tearing = false;
+          col.active_border = lua "colors.mauve";
+          col.inactive_border = lua "colors.surface0";
         };
 
         input = {
@@ -76,6 +83,13 @@
           mouse_move_enables_dpms = true;
         };
       };
+
+      window_rule = [
+        {
+          match.xwayland = 1;
+          border_color = lua "colors.red";
+        }
+      ];
     };
 
     extraConfig = # lua
