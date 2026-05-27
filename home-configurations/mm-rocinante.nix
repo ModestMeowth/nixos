@@ -9,6 +9,7 @@ let
   wallpaper = config.stylix.image;
 in
 {
+  nixpkgs.config.rocmSupport = true;
   home.username = "mm";
   home.homeDirectory = if isDarwin then "/Users/mm" else "/home/mm";
 
