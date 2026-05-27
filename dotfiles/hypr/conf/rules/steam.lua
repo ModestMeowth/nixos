@@ -5,7 +5,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-  match = { class = "steam", title = "steam" },
+  match = { class = "steam", title = "Steam" },
   center = true,
   size = { 1100, 700 },
 })

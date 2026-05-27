@@ -55,6 +55,7 @@ in
           kb_layout = "us";
           repeat_rate = 40;
           repeat_delay = 600;
+          follow_mouse = 2;
 
           numlock_by_default = true;
 
