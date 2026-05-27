@@ -12,4 +12,5 @@ in
 
     nvidia-container-toolkit.enable = lib.mkDefault docker.enable;
   };
+  services.xserver.videoDrivers = [ "nvidia" ];
 }

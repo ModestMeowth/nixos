@@ -1,7 +1,10 @@
 { ezModules, ... }:
 {
   nixpkgs = {
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      cudaSupport = true;
+    };
     hostPlatform = "x86_64-linux";
   };
 
