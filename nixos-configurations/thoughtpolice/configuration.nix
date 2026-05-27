@@ -7,6 +7,43 @@
 
   nix.distributedBuilds = false;
 
+  fileSystems."/" = {
+    device = "zroot/thoughtpolice/root";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+  };
+
+  fileSystems."/nix" = {
+    device = "zroot/thoughtpolice/nix";
+    fsType = "zfs";
+    options = [ "zfsutil" ];
+  };
+
+  fileSystems."/persist/etc" = {
+    device = "zroot/persist/etc";
+    fsType = "zfs";
+    neededForBoot = true;
+    options = [ "zfsutil" ];
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/3B4E-D7BA";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
+  };
+
+  hardware = {
+    facter = {
+      enable = true;
+      reportPath = ./facter.json;
+    };
+
+    graphics.enable32Bit = true;
+  };
+
   imports = with ezModules; [
     appimage
     builder
@@ -25,7 +62,6 @@
     yubikey
     zfs
 
-    ./hardware-configuration.nix
     ./secrets.nix
   ];
 
