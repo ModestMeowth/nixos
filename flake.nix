@@ -38,6 +38,7 @@
     experimental-features = "nix-command flakes";
     substituters = [
       "http://pwnyboy:8501?priority=1"
+      "https://cache.nixos-cuda.org?=20"
       "https://nix-community.cachix.org?priority=30"
       "https://cache.nixos.org?priority=40"
     ];
@@ -49,8 +50,9 @@
 
     trusted-public-keys = [
       "pwnyboy:GonEZtCkw+aFq6oHxKN7SB8y6p8NSkDuRsadSyZ0NuA="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
 
     extra-trusted-public-keys = [

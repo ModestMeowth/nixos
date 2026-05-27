@@ -8,6 +8,7 @@ status is-interactive; and begin
 
     if type -q direnv
         direnv hook fish | source
+        abbr --add -- drl "direnv reload"
     end
 
     if type -q zoxide

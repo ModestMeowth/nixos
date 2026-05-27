@@ -20,7 +20,6 @@ in
     bitwarden-desktop
     imv
     libnotify
-    mpv
     signal-desktop
     rpi-imager
   ];
@@ -33,6 +32,11 @@ in
     font-family = ${emojiFont}
   ''
   + builtins.readFile ../dotfiles/ghostty/config;
+
+  programs.mpv = {
+    enable = true;
+    scripts = [ pkgs.mpvScripts.builtins.autoload ] ++ (with pkgs.mpvScripts; [ mpris thumbfast]);
+  };
 
   services = {
     udiskie = {
