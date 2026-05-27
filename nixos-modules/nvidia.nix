@@ -5,10 +5,6 @@ in
 {
   boot.extraModprobeConfig = "options nvidia NVreg_UsePageAttributeTable=1";
   hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
 
     nvidia = {
       modesetting.enable = true;
@@ -18,6 +14,4 @@ in
 
     nvidia-container-toolkit.enable = lib.mkDefault docker.enable;
   };
-
-  services.xserver.videoDrivers = [ "nvidia" ];
 }
