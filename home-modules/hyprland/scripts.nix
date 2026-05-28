@@ -24,6 +24,7 @@ in
     "audio-output-switch"
 
     "hyprscope"
+    "hyprlock-fix"
 
     "launch-or-focus"
     "launch-tui"
