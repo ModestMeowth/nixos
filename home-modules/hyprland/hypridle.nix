@@ -21,19 +21,11 @@ in
     };
   };
 
-  catppuccin.hyprlock.enable = false;
+  catppuccin.hyprlock.useDefaultConfig = false;
 
   programs.hyprlock = {
     enable = true;
-    # hyprland lua colors now supported by catppucin, but breaks hyprlock because they removed all the .conf themes it referenced.
-    # manually set colors until it is fixed
     extraConfig = ''
-      $accent = rgb(cba6f7)
-      $accentAlpha = cba6f7
-      $surface0 = rgb(323244)
-      $red = rgb(f38ba8)
-      $text = rgb(cdd6f4)
-      $textAlpha = cdd6f4
       $font = ${font}
     ''
     + builtins.readFile ../../dotfiles/hypr/hyprlock.conf;

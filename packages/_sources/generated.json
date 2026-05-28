@@ -1,25 +1,25 @@
 {
-  "bootdev-cli": {
-    "cargoLock": null,
-    "date": null,
-    "extract": null,
-    "name": "bootdev-cli",
-    "passthru": {
-      "vendorHash": "sha256-ZDioEU5uPCkd+kC83cLlpgzyOsnpj2S7N+lQgsQb8uY="
-    },
-    "pinned": false,
-    "src": {
-      "deepClone": false,
-      "fetchSubmodules": false,
-      "leaveDotGit": false,
-      "name": null,
-      "owner": "bootdotdev",
-      "repo": "bootdev",
-      "rev": "v1.29.3",
-      "sha256": "sha256-6fdzSwCtJG8SFqInVsOc5EO4g9esMU/z9MYtou1ylFI=",
-      "sparseCheckout": [],
-      "type": "github"
-    },
-    "version": "v1.29.3"
-  }
+    "bootdev-cli": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "bootdev-cli",
+        "passthru": {
+            "vendorHash": "sha256-ZDioEU5uPCkd+kC83cLlpgzyOsnpj2S7N+lQgsQb8uY="
+        },
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "bootdotdev",
+            "repo": "bootdev",
+            "rev": "v1.29.5",
+            "sha256": "sha256-nfgmlKIXtQqiharS1ezES5dFa6IE7Q2TvIhh/qiIB2Q=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v1.29.5"
+    }
 }
