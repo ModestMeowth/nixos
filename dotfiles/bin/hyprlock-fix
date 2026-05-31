@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-hyprctl --instance 0 eval 'hl.config({ misc = { allow_session_lock_restore = true } })'
-sleep 1
-hyprctl --instance 0 eval 'hl.exec_cmd("hyprlock")'
-sleep 1
-hyprctl --instance 0 eval 'hl.config({ misc = { allow_session_lock_restore = false } })'
+hyprctl --instance 0 eval 'hl.config({ misc = { allow_session_lock_restore = true } })' \
+    && hyprctl --instance 0 eval 'hl.exec_cmd("hyprlock")' \
+    && hyprctl --instance 0 eval 'hl.config({ misc = { allow_session_lock_restore = false } })'
