@@ -71,6 +71,8 @@
     kernelParams = [
       "intel_iommu=on"
       "iommu=pt"
+      "i915.force_probe=!4692"
+      "xe.force_probe=4692"
     ];
     zfs.extraPools = [
       "docker"
