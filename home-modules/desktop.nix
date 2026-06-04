@@ -17,10 +17,10 @@ in
 {
   imports = [ ezModules.chromium ];
   home.packages = with pkgs; [
-    bitwarden-desktop
+    # bitwarden-desktop
     imv
     libnotify
-    signal-desktop
+    # signal-desktop
     rpi-imager
   ];
 
@@ -35,7 +35,13 @@ in
 
   programs.mpv = {
     enable = true;
-    scripts = [ pkgs.mpvScripts.builtins.autoload ] ++ (with pkgs.mpvScripts; [ mpris thumbfast]);
+    scripts = [
+      pkgs.mpvScripts.builtins.autoload
+    ]
+    ++ (with pkgs.mpvScripts; [
+      mpris
+      thumbfast
+    ]);
   };
 
   services = {
@@ -46,8 +52,6 @@ in
       };
     };
   };
-
-  gtk.gtk4.theme = config.gtk.theme;
 
   stylix = {
     cursor = {
