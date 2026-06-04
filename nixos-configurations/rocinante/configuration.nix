@@ -85,9 +85,7 @@
 
     fwupd.enable = true;
 
-    kmscon.extraConfig = ''
-      mode=1920x1200
-    '';
+    kmscon.config.mode = "1920x1200";
 
     sanoid.datasets = {
       "zroot/persist/home/mm".use_template = [ "default" ];

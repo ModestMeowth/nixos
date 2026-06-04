@@ -32,7 +32,7 @@ in
   };
 
   home.packages = with pkgs; [
-    bitwarden-desktop
+    # bitwarden-desktop
     gnome-calculator
     nautilus
     nautilus-open-any-terminal
