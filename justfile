@@ -14,6 +14,19 @@ pull:
   git pull --rebase
   - git stash pop
 
+[group("repository")]
+update: update-packages update-flake update-dev-flake
+
+# update flake
+[group("repository")]
+update-flake:
+  nix flake update
+
+# update dev flake
+[group("repository")]
+update-dev-flake:
+  nix flake update --flake {{justfile_directory()}}/dev
+
 # update custom packages with nvfetcher
 [group("repository")]
 update-packages:
@@ -23,7 +36,7 @@ update-packages:
 
 [group("repository")]
 update-sops-keys:
-  #! {{ nixShebang }} nixpkgs#sops nixpkgs#findutils -c {{ realShebang }}
+  #!{{ nixShebang }} nixpkgs#sops nixpkgs#findutils -c {{ realShebang }}
   find . -type f -name \*.sops.yaml ! -name .sops.yaml -exec sops updatekeys --yes {} \;
 
 # nixos-rebuild boot AND home-manager switch
