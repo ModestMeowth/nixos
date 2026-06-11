@@ -43,6 +43,8 @@
     };
   };
 
+  hardware.bluetooth.enable = true;
+
   hardware.facter = {
     enable = true;
     reportPath = ./facter.json;
