@@ -36,9 +36,6 @@ in
           ];
         };
 
-        allowPutVerb = true;
-        allowDeleteVerb = true;
-
         maxSize = "100G";
         lru.schedule = "0 2 * * *";
       };
