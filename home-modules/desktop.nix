@@ -20,7 +20,7 @@ in
     # bitwarden-desktop
     imv
     libnotify
-    # signal-desktop
+    signal-desktop
     rpi-imager
   ];
 
