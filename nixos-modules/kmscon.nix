@@ -2,7 +2,7 @@
 {
   services.kmscon = {
     enable = true;
-    hwRender = true;
+    config.hwaccel = true;
   };
 
   stylix.targets.kmscon = {
