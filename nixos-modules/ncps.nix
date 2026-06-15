@@ -6,8 +6,30 @@
 }:
 let
   port = 8501;
+  cfg = config.services.ncps;
 in
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      ncps = prev.ncps.overrideAttrs (old: {
+        src = old.src.overrideAttrs {
+          tag = "v0.10.0-rc14";
+          hash = lib.fakeHash;
+        };
+        vendorHash = lib.fakeHash;
+        postInstall = ''
+          mkdir -p $out/share/ncps
+          wrapProgram $out/bin/ncps --set XZ_BINARY_PATH ${prev.lib.getExe' prev.xz "xz"}
+        '';
+        doCheck = false;
+      });
+    })
+  ];
+
+  systemd.services.ncps.preStart = lib.mkForce ''
+    ${lib.getExe cfg.package} migrate up --cache-database-url ${cfg.cache.databaseURL}
+  '';
+
   imports = [ ezModules.postgresql ];
 
   services = {
