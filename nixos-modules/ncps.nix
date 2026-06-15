@@ -14,9 +14,9 @@ in
       ncps = prev.ncps.overrideAttrs (old: {
         src = old.src.overrideAttrs {
           tag = "v0.10.0-rc14";
-          hash = lib.fakeHash;
+          hash = "sha256-kGtMV+U/xzDt2PLrvn9bCBtiYqdsueICsGou3lfLRKE=";
         };
-        vendorHash = lib.fakeHash;
+        vendorHash = "sha256-MKhrXZjgYVKseXv6kBuK5TkCrrW2GcMQxnlT8OqoCeU=";
         postInstall = ''
           mkdir -p $out/share/ncps
           wrapProgram $out/bin/ncps --set XZ_BINARY_PATH ${prev.lib.getExe' prev.xz "xz"}
