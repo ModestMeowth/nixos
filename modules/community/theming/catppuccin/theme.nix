@@ -10,7 +10,10 @@ in
         ./_kmscon.nix
       ];
 
-      theming.polarity = lib.mkIf (flavor == "latte") "light";
+      theming.polarity = if (flavor == "latte") then
+        "light"
+      else
+        "dark";
 
       catppuccin = {
         enable = true;
@@ -24,7 +27,10 @@ in
       {
         imports = [ inputs.catppuccin.homeModules.catppuccin ];
 
-        theming.polarity = lib.mkIf (flavor == "latte") "light";
+        theming.polarity = if (flavor == "latte") then
+          "light"
+        else
+          "dark";
 
         catppuccin = {
           inherit accent flavor;

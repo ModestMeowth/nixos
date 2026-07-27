@@ -10,11 +10,13 @@
         inherit (config.theming) fonts polarity;
       in
       {
-        dconf.settings."org/gnome/desktop/interface".color-scheme = polarity;
+        gtk = {
+          colorScheme = polarity;
 
-        gtk.font = {
-          inherit (fonts.sansSerif) package name;
-          size = fonts.sizes.applications;
+          font = {
+            inherit (fonts.sansSerif) package name;
+            size = fonts.sizes.applications;
+          };
         };
       };
   };
