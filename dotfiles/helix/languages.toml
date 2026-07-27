@@ -1,0 +1,4 @@
+[language-server.harper-ls]
+args = ["--stdio"]
+command = "harper-ls"
+config = { harper-ls = { diagnosticSeverity = "error", linters = { long_sentences = false } } }

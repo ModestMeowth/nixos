@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+restart-app waybar

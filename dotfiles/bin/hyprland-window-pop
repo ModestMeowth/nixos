@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+width=${1:-1300}
+height=${2:-900}
+x=${3:-}
+y=${4:-}
+
+active=$(hyprctl activewindow -j)
+pinned=$(echo "$active" | jq ".pinned")
+addr=$(echo "$active" | jq -r ".address")
+window="address:$addr"
+
+if [[ $pinned == "true" ]]; then
+    hyprctl dispatch "hl.dsp.window.pin({ window = \"$window\" })"
+    hyprctl dispatch "hl.dsp.window.float({ window = \"$window\", action=\"toggle\" })"
+    hyprctl dispatch "hl.dsp.window.tag({ window = \"$window\", tag=\"-pop\" })"
+elif [[ -n $addr ]]; then
+    hyprctl dispatch "hl.dsp.window.float({ window = \"$window\", action=\"toggle\" })"
+    hyprctl dispatch "hl.dps.window.resize({ window = \"$window\", x = $width, y = $height })"
+
+    if [[ -n $x && $y ]]; then
+        hyprctl dispatch "hl.dsp.window.move({ window = \"$window\", x = $x, y = $y })"
+    else
+        hyprctl dispatch "hl.dsp.window.center({ window = \"$window\" })"
+    fi
+
+    hyprctl dispatch "hl.dsp.window.pin({ window = \"$window\" })"
+    hyprctl dispatch "hl.dsp.window_alter_zorder({ window = \"$window\", mode = \"top\" })"
+    hyprctl dispatch "hl.dsp.tag({ window = \"$window\", tag = \"+pop\" })"
+fi

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+sysmon="top"
+for candidate in btop htop; do
+    if command -v "$candidate"; then
+        sysmon="$candidate"
+        break
+    fi
+done
+
+launch-or-focus-tui "$sysmon" "$@"

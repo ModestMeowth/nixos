@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+    echo "Usage: menu-select <prompt> <option>... [-- walker args..]" >&2
+    exit 1
+}
+
+if (( $# < 2 )); then
+    usage
+fi
+
+prompt="$1"
+shift
+
+options=()
+walker_args=()
+
+while (( $# > 0 )); do
+    if [[ $1 == "--" ]]; then
+        shift
+        walker_args=("$@")
+        break
+    fi
+
+    options +=("$1")
+    shift
+done
+
+if (( ${#options[@]} == 0 )); then
+    usage
+fi
+
+printf '%s\n' "${options[@]}" | launch-walker --dmenu --width 295 --minheight 1 --maxheight 300 -p "$prompt…" "${walker_args[@]}"

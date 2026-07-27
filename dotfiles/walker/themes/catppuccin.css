@@ -1,0 +1,7 @@
+@import "../themes/catppuccin.css";
+
+@accent = @mauve;
+@border = @text;
+@foreground = @text;
+@background = @base;
+@selected-text = @surface2;

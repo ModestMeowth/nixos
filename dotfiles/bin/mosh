@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+/run/current-system/sw/bin/mosh $*
+
+[ $? -eq 10 ] && /run/current-system/sw/bin/ssh $*

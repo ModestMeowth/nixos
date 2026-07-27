@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+calc=""
+for candidate in gnome-calculator kcalc; do
+    if command -v "$candidate" &> /dev/null; then
+        calc="$candidate"
+        break
+    fi
+done
+if [[ "$calc" == "" ]]; then
+        echo Calculator not found
+    exit 1
+fi
+
+launch-or-focus "$calc"

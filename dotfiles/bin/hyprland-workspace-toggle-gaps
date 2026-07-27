@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+workspace_id=$(hyprctl activeworkspace -j | jq -r .id)
+gaps=$(hyprctl workspacerules -j | jq -r ".[] | select(.workspaceString==\"$workspace_id\") | .gapsOut[0] // 0")
+
+echo "$gaps"
+
+if [[ $gaps == "0" ]]; then
+    hyprctl eval 'hl.config({ general = { gaps_out = 10, gaps_in = 5, border_size = 2 } })'
+else
+    hyprctl eval 'hl.config({ general = { gaps_out = 0, gaps_in = 0, border_size = 0 } })'
+fi

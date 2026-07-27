@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+if ! command -v tte &>/dev/null; then
+    exit 1
+fi
+
+pgrep -f dev.meowth.screensaver && exit 0
+
+walker -q
+
+focused=$(hyprland-focused-monitor)
+terminal=$(xdg-terminal-exec --print-id)
+
+hypr_focus_monitor() {
+    hyprctl dispatch "hl.dsp.focus({ monitor = \"$1\" })" >/dev/null
+}
+
+hypr_exec() {
+    local command="$1"
+
+    hyprctl dispatch "hl.dsp.exec_cmd([[$command]])"
+}
+
+for m in $(hyprctl monitors -j | jq -r '.[] | .name'); do
+    hypr_focus_monitor "$m"
+
+    case $terminal in
+    *Alacritty*) hypr_exec "alacritty --class=dev.meowth.screensaver --config-file ~/.config/screensaver/alactritty.toml -e screensaver"
+    ;;
+    *ghostty*) hypr_exec "ghostty --class=dev.meowth.screensaver --config-file=~/.config/screensaver/ghostty --font-size=18 -e screensaver"
+    ;;
+    *foot*) hypr_exec "foot --app-id=dev.meowth.screensaver --config-file=~/.config/screensaver/foot.ini -e screensaver"
+    ;;
+    *kitty*) hypr_exec "kitty --class=dev.meowth.screensaver --override font_size=18 --override window_padding_width=0 -e screensaver"
+    ;;
+    *) notify-send "✋  Screensaver only runs in Alacritty, Ghostty, or Kitty" ;;
+    esac
+done
+
+hypr_focus_monitor "$focused"

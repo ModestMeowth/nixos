@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+file_manager=""
+for candidate in nautilus dolphin; do
+    if command -v "$candidate"; then
+       file_manager="$candidate"
+       break
+    fi
+done
+
+exec setsid uwsm-app -- "$file_manager" "$@"
