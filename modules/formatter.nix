@@ -15,6 +15,9 @@
 
       fish_indent.enable = true;
       kdlfmt.enable = true;
+      stylua.enable = true;
+      taplo.enable = true;
+      yamlfmt.enable = true;
     };
 
     settings.global.excludes = [

@@ -3,3 +3,15 @@
 [user]
 email = "modest@meowth.dev"
 name = "Modest Meowth"
+
+[git]
+auto-local-branch = true
+
+[revset-aliases]
+"trunk()" = "bookmark(main@origin)"
+
+[snapshot]
+max-new-file-size = 4194304
+
+[ui]
+default-command = ["log", "--reversed"]

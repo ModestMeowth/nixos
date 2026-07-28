@@ -5,9 +5,17 @@
     };
 
     homeManager = {
-      home.shellAliases = {
-        cat = "bat";
+      home = {
+        sessionVariables = {
+          XDG_CONFIG_HOME = "$HOME/.config";
+        };
+
+        shellAliases = {
+          cat = "bat";
+        };
       };
+
+      programs.bash.enable = true;
     };
   };
 }

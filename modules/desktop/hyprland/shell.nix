@@ -1,6 +1,7 @@
-{ lib, ... }:
+{ den, lib, ... }:
 {
   den.aspects.desktop._.hyprland = {
+    includes = [ den.aspects.desktop._.quickshell ];
     homeManager =
       {
         config,

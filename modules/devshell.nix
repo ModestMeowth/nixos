@@ -12,8 +12,17 @@
           sops
           just
           nix-unit
+
+          # lSPs
+          fish-lsp
+          kdePackages.qtdeclarative # qmlls
+          lua-language-server
           nixd
           nixf
+          taplo
+          vscode-json-languageserver
+          yaml-language-server
+
           # config.formatter
         ];
       };
