@@ -14,6 +14,7 @@ in
     ];
 
     homeManager = {
+      theming.wallpaper = wallpaper;
       nixpkgs.config.cudaSupport = true;
 
       wayland.windowManager.hyprland.settings = {

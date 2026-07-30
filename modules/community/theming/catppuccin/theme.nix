@@ -25,7 +25,10 @@ in
     homeManager =
       { pkgs, ... }:
       {
-        imports = [ inputs.catppuccin.homeModules.catppuccin ];
+        imports = [
+          inputs.catppuccin.homeModules.catppuccin
+          ./_quickshell.nix
+        ];
 
         theming.polarity = if (flavor == "latte") then
           "light"

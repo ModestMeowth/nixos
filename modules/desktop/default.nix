@@ -4,6 +4,7 @@
     includes = with theming; [
       fontconfig
       gtk
+      wallpaper
     ];
 
     nixos = {

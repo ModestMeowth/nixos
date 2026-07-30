@@ -16,6 +16,8 @@ in
     homeManager = {
       nixpkgs.config.rocmSupport = true;
 
+      theming.wallpaper = wallpaper;
+
       wayland.windowManager.hyprland.settings = {
         config = {
           general.layout = "master";
