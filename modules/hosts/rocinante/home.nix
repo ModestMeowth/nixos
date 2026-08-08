@@ -3,7 +3,7 @@ let
   wallpaper = inputs.self + /assets/wall.png;
 in
 {
-  # den.homes.x86_64-linux."mm@rocinante" = { };
+  den.homes.x86_64-linux."mm@rocinante" = { };
 
   den.aspects.mm._.rocinante = {
     includes = with den.aspects.desktop._; [

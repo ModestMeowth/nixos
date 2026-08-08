@@ -1,5 +1,7 @@
 { ... }:
 {
+  den.homes.x86_64-linux."mm@pwnyboy" = { };
+
   den.aspects.mm._.pwnyboy = {
     includes = [ ];
 

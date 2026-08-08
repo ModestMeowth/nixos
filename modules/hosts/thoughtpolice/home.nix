@@ -3,7 +3,7 @@ let
   wallpaper = inputs.self + /assets/wall.png;
 in
 {
-  # den.homes.x86_64-linux."mm@thoughtpolice" = { };
+  den.homes.x86_64-linux."mm@thoughtpolice" = { };
 
   den.aspects.mm._.thoughtpolice = {
     includes = with den.aspects.desktop._; [
