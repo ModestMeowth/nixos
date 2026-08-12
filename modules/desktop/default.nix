@@ -1,12 +1,5 @@
-{ theming, ... }:
 {
   den.aspects.desktop = {
-    includes = with theming; [
-      fontconfig
-      gtk
-      wallpaper
-    ];
-
     nixos = {
       programs.dconf.enable = true;
     };

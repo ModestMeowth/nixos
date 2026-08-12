@@ -59,13 +59,13 @@
             "launch-password-manager"
             "launch-screensaver"
             "launch-sysmon"
-            "launch-walker"
+            # "launch-walker"
             "launch-wifi"
 
             "capture-screencast"
             "capture-screenshot"
 
-            "launch-menu"
+            # "launch-menu"
             "keybind-menu"
             "power-profiles-list"
 

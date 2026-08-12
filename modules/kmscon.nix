@@ -1,17 +1,13 @@
 {
   den.aspects.kmscon = {
     nixos =
-      { config, ... }:
-      let
-        fonts = config.theming.fonts;
-      in
+      {pkgs, ...}:
       {
+        fonts.packages = [ pkgs.nerd-fonts._0xproto ];
         services.kmscon = {
           enable = true;
           config = {
             hwaccel = true;
-            font-name = fonts.monospace.name;
-            font-size = fonts.sizes.terminal;
           };
         };
       };

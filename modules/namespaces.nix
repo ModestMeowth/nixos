@@ -5,6 +5,6 @@
 {
   imports = with inputs.den; [
     (namespace "gaming" true)
-    (namespace "theming" true)
+    # (namespace "theming" true)
   ];
 }

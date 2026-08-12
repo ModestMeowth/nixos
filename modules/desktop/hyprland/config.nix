@@ -1,7 +1,7 @@
 { inputs, lib, ... }:
-let
-  lua = lib.generators.mkLuaInline;
-in
+# let
+#   lua = lib.generators.mkLuaInline;
+# in
 {
   den.aspects.desktop._.hyprland = {
     homeManager = {
@@ -22,10 +22,10 @@ in
                 size = 2;
                 passes = 1;
               };
-              shadow = {
-                color = lua "colors.surface1";
-                color_inactive = lua "colors.surface1";
-              };
+              # shadow = {
+              #   color = lua "colors.surface1";
+              #   color_inactive = lua "colors.surface1";
+              # };
             };
 
             dwindle = {
@@ -39,8 +39,8 @@ in
               border_size = 2;
               resize_on_border = false;
               allow_tearing = false;
-              col.active_border = lua "colors.mauve";
-              col.inactive_border = lua "colors.surface0";
+              # col.active_border = lua "colors.mauve";
+              # col.inactive_border = lua "colors.surface0";
             };
 
             input = {
@@ -78,7 +78,7 @@ in
             window_rule = [
               {
                 match.xwayland = 1;
-                border_color = lua "colors.red";
+                # border_color = lua "colors.red";
               }
             ];
           };

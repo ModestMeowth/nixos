@@ -15,20 +15,29 @@
 
     _.graphical = {
       includes = [ den.aspects.boot ];
-      nixos = {
-        boot = {
-          plymouth.enable = true;
-          consoleLogLevel = 3;
-          initrd.verbose = false;
-          kernelParams = [
-            "quiet"
-            "splash"
-            "boot.shell_on_fail"
-            "udev.log_priority=3"
-            "rd.systemd.show_status=auto"
-          ];
+      nixos =
+        {pkgs, ...}:
+        {
+          boot = {
+            plymouth = {
+              enable = true;
+              theme = "catppuccin-mocha";
+              themePackages = [ (pkgs.catppuccin-plymouth.override { variant = "mocha"; }) ];
+            };
+
+            consoleLogLevel = 3;
+            initrd.verbose = false;
+            kernelParams = [
+              "quiet"
+              "splash"
+              "boot.shell_on_fail"
+              "udev.log_priority=3"
+              "rd.systemd.show_status=auto"
+            ];
+          };
+
+          stylix.targets.plymouth.enable = false;
         };
-      };
     };
 
     nixos =
@@ -45,6 +54,8 @@
 
           limine = {
             enable = true;
+            maxGenerations = 5;
+            style.wallpapers = [ ];
           };
         };
 

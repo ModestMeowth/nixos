@@ -9,8 +9,7 @@
       profiles.laptop
       yubikey._.u2f
 
-      desktop._.hyprland
-      desktop._.sddm
+      desktop._.dms._.hyprland
 
       virt._.docker
       gaming.default

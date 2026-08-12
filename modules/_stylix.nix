@@ -1,8 +1,7 @@
-{inputs, ...}:
-let
-  scheme = pkgs: {
+{pkgs, ...}: {
+  stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/theme/catppuccin-mocha.yaml";
     cursor = {
       package = pkgs.catppuccin-cursors.mochaMauve;
       name = "catppuccin-mocha-mauve-cursors";
@@ -18,8 +17,6 @@ let
         package = pkgs.nerd-fonts.caskaydia-cove;
         name = "Caskaydia Cove Nerd Font";
       };
-
-      sizes.terminal = 11;
     };
 
     icons = {
@@ -30,24 +27,5 @@ let
     };
 
     polarity = "dark";
-  };
-in
-{
-  den.default = {
-    nixos =
-      {pkgs, ...}:
-      {
-        imports = [ inputs.stylix.nixosModules.stylix ];
-        stylix = (scheme pkgs) // {
-          homeManagerIntegration.autoImport = false;
-        };
-      };
-
-    homeManager =
-      {pkgs, ...}:
-      {
-        imports = [ inputs.stylix.homeModules.stylix ];
-        stylix = scheme pkgs;
-      };
   };
 }

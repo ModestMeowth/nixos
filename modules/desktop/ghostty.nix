@@ -1,40 +1,28 @@
 {
   den.aspects.desktop._.ghostty = {
-    homeManager =
-      { config, ... }:
-      let
-        fonts = config.theming.fonts;
-      in
-      {
-        programs.ghostty = {
-          enable = true;
-          settings = {
-            font-family = [
-              fonts.monospace.name
-              fonts.emoji.name
-            ];
+    homeManager = {
+      programs.ghostty = {
+        enable = true;
+        settings = {
+          shell-integration = "detect";
+          shell-integration-features = "no-cursor,ssh-env";
 
-            font-size = fonts.sizes.terminal;
+          window-padding-x = 8;
+          window-padding-y = 8;
 
-            shell-integration = "detect";
-            shell-integration-features = "no-cursor,ssh-env";
+          window-theme = "ghostty";
+          gtk-toolbar-style = "flat";
 
-            window-padding-x = 8;
-            window-padding-y = 8;
+          cursor-style = "block";
+          cursor-style-blink = false;
 
-            window-theme = "ghostty";
-            gtk-toolbar-style = "flat";
+          confirm-close-surface = false;
+          resize-overlay = "never";
 
-            cursor-style = "block";
-            cursor-style-blink = false;
-
-            confirm-close-surface = false;
-            resize-overlay = "never";
-
-            mouse-scroll-multiplier = 0.95;
-            async-backend = "epoll";
-          };
+          mouse-scroll-multiplier = 0.95;
+          async-backend = "epoll";
         };
       };
+    };
   };
 }

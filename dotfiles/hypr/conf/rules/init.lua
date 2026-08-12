@@ -1,5 +1,7 @@
 require("conf.rules.bitwarden")
 require("conf.rules.browser")
+require("conf.rules.dms")
+require("conf.rules.gnome")
 require("conf.rules.hyprshot")
 require("conf.rules.pip")
 require("conf.rules.smartgaps")

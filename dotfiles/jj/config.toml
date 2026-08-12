@@ -7,11 +7,27 @@ name = "Modest Meowth"
 [git]
 auto-local-branch = true
 
+[aliases]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+rebase-all = ["rebase", "-s", "all:roots(trunk()..mutable())", "-d", "trunk()"]
+
 [revset-aliases]
-"trunk()" = "bookmark(main@origin)"
+"p(n)" = "p(@, n)"
+"p(r, n)" = "roots(r | ancestor(r-, n))"
 
 [snapshot]
 max-new-file-size = 4194304
 
 [ui]
 default-command = ["log", "--reversed"]
+
+[templates]
+log_node = '''
+if(self && !current_working_copy && !immutable && !conflict && in_branch(self),
+  "◇",
+  builtin_log_node
+)
+'''
+
+[template-aliases]
+"in_branch(commit)" = 'commit.contained_in("immutable_heads()..bookmarks()")'

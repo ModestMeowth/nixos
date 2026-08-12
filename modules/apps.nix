@@ -55,9 +55,9 @@
 
     homeManager =
       { config, pkgs, ... }:
-      let
-        inherit (config.catppuccin) accent;
-      in
+      # let
+      #   inherit (config.catppuccin) accent;
+      # in
       {
         home.packages = with pkgs; [
           just
@@ -89,16 +89,7 @@
               starship = starship;
               time-travel = time-travel;
               yatline = yatline;
-              yatline-catppuccin = yatline-catppuccin;
             };
-
-            initLua = # lua
-              ''
-                local catppuccin_theme = require("yatline-catppuccin"):setup("${accent}")
-                require("yatline"):setup({
-                  theme = catppuccin_theme,
-                })
-              '';
           };
 
           zoxide.enable = true;

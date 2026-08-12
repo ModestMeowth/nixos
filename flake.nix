@@ -2,8 +2,6 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    catppuccin.url = "github:catppuccin/nix";
-
     den.url = "github:denful/den";
 
     deploy-rs = {
@@ -42,6 +40,10 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix";
     };
 
     treefmt-nix = {

@@ -6,7 +6,7 @@
         "ventoy-gtk3"
       ])
       (den._.insecure [
-        "ventoy-gtk3-1.1.12"
+        "ventoy-gtk3-1.1.17"
       ])
     ];
 
@@ -23,14 +23,9 @@
     homeManager =
       {
         config,
-        lib,
-        osConfig,
         pkgs,
         ...
       }:
-      let
-        ts = osConfig.services.tailscale;
-      in
       {
         home.packages = with pkgs; [
           gnome-calculator
@@ -62,11 +57,6 @@
           kdeconnect = {
             enable = true;
             indicator = true;
-          };
-
-          tailscale-systray = lib.mkIf ts.enable {
-            enable = lib.mkDefault true;
-            package = lib.mkDefault ts.package;
           };
 
           udiskie = {

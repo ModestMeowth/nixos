@@ -1,0 +1,6 @@
+hl.bind("SUPER+SPACE", hl.dsp.exec_cmd("dms ipc call launcher open"), { description = "Open launcher" })
+hl.bind("SUPER+SHIFT+V", hl.dsp.exec_cmd("dms ipc call clipboard open"), { description = "Open launcher" })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("dms ipc call audio increment 5") , { description = "Volume up", locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("dms ipc call audio decrement 5") , { description = "Volume down", locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("dms ipc call audio mute") , { description = "Toggle mute", locked = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("dms ipc call audio micmute") , { description = "Toggle microphone", locked = true })
