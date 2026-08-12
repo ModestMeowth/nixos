@@ -2,10 +2,7 @@
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    catppuccin.url = "github:catppuccin/nix";
 
     den.url = "github:denful/den";
 
@@ -19,26 +16,12 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    fast-flake-update = {
-      url = "github:Mic92/fast-flake-update";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     import-tree.url = "github:denful/import-tree/v0.2.0";
-
-    microvm = {
-      url = "github:microvm-nix/microvm.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
