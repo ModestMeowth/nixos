@@ -6,10 +6,10 @@
     includes = [ ];
 
     homeManager =
-      { pkgs, ... }:
+      { lib, pkgs, ... }:
       {
-        catppuccin.cursors.enable = false;
-
+        stylix.icons.enable = lib.mkForce false;
+        home.pointerCursor.enable = lib.mkForce false;
         home.packages = with pkgs; [
           curl
           doggo
