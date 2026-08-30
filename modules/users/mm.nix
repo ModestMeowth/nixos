@@ -25,12 +25,10 @@
             "video"
           ]
           ++ ifGroupExists [
-            "docker"
             "gamemode"
             "libvirtd"
             "network"
             "networkmanager"
-            "podman"
             "samba-users"
             "wireshark"
           ];

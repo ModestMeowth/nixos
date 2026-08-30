@@ -1,8 +1,21 @@
 {
   den.aspects.desktop = {
-    nixos = {
-      programs.dconf.enable = true;
-    };
+    nixos =
+      {pkgs, ...}:
+      {
+        programs.dconf.enable = true;
+        services.gnome.gnome-keyring.enable = true;
+
+        xdg.portal = {
+          extraPortals = with pkgs; [
+            xdg-desktop-portal-gtk
+            xdg-desktop-portal-gnome
+            kdePackages.xdg-desktop-portal-kde
+          ];
+
+          xdgOpenUsePortal = true;
+        };
+      };
 
     homeManager =
       { config, ... }:
@@ -14,11 +27,14 @@
         qt.enable = true;
         gtk.enable = true;
 
+
         xdg = {
           terminal-exec = {
             enable = true;
             settings.default = [ "com.mitchellh.ghostty.desktop" ];
           };
+
+          portal.xdgOpenUsePortal = true;
 
           userDirs = {
             enable = true;

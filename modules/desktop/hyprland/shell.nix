@@ -17,10 +17,19 @@
           terminaltexteffects
         ];
 
-        xdg.portal.extraPortals = with pkgs; [
-            xdg-desktop-portal-gtk
-            xdg-desktop-portal-kde
-          ];
+        xdg.portal = {
+          config = {
+            common.default = [ "gtk" ];
+            hyprland = {
+              default = [
+                "hyprland"
+                "gtk"
+              ];
+
+              "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+            };
+          };
+        };
       };
   };
 }

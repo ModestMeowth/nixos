@@ -42,10 +42,18 @@
           dumpcap.enable = true;
           usbmon.enable = true;
         };
+
       };
 
       services = {
         fwupd.enable = true;
+        displayManager.dms-greeter.compositor.customConfig = ''
+          hl.monitor({
+            mode = "3440x1440@60",
+            output = "DP-1",
+            position = "0x0"
+          })
+        '';
       };
 
       shares.pwnyboy-media = {

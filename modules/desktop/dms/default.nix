@@ -8,6 +8,7 @@
       {
         services.displayManager.dms-greeter = {
           enable = true;
+          configHome = "/home/mm";
         };
 
         programs.dms-shell.enable = true;

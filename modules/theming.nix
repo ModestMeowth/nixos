@@ -29,6 +29,7 @@ let
       light = "Papirus-Light";
     };
 
+    overlays.enable = false;
     polarity = "dark";
   };
 in
