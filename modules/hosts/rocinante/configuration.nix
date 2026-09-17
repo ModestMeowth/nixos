@@ -7,12 +7,14 @@
   den.aspects.rocinante = {
     includes = with den.aspects; [
       profiles.laptop
+
       yubikey._.u2f
 
       desktop._.dms._.hyprland
 
       virt._.docker
       gaming.default
+      printing.default
     ];
 
     nixos = {
