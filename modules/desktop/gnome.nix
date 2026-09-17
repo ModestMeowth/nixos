@@ -1,10 +1,10 @@
 {
   den.aspects.desktop._.gnome = {
     nixos =
-      { pkgs, ... }:
+      { lib, pkgs, ... }:
       {
         services = {
-          displayManager.gdm.enable = true;
+          displayManager.gdm.enable = lib.mkForce true;
           desktopManager.gnome.enable = true;
 
           gnome = {

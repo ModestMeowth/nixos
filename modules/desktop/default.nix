@@ -27,6 +27,7 @@
         qt.enable = true;
         gtk.enable = true;
 
+        services.gnome-keyring.enable = true;
 
         xdg = {
           terminal-exec = {

@@ -26,6 +26,7 @@
       };
 
       programs = {
+        hyprland.withUWSM = false;
         kdeconnect.enable = true;
         nix-ld.enable = true;
         wireshark = {
@@ -36,8 +37,12 @@
       };
 
       services = {
-        fwupd.enable = true;
+        displayManager = {
+          gdm.enable = true;
+          dms-greeter.enable = false;
+        };
 
+        fwupd.enable = true;
         xserver.videoDrivers = [ "amdgpu" ];
       };
 

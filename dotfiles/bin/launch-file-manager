@@ -8,4 +8,11 @@ for candidate in nautilus dolphin; do
     fi
 done
 
-exec setsid uwsm-app -- "$file_manager" "$@"
+if command -v uwsm &>/dev/null; then
+    if uwsm check may-start; then
+        exec setsid uwsm-app -- "$file_manager" "$@"
+        exit 0
+    fi
+fi
+
+exec setsid -- "$file_manager" "$@"

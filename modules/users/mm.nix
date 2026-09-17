@@ -34,10 +34,10 @@
           ];
         };
 
-        services.displayManager.autoLogin = {
-          enable = true;
-          user = "mm";
-        };
+        # services.displayManager.autoLogin = {
+        #   enable = true;
+        #   user = "mm";
+        # };
       };
 
     homeManager =
@@ -51,8 +51,11 @@
           };
         };
 
-        xdg.configFile = {
-          "tmux/tmux.conf".source = inputs.self + /dotfiles/tmux/tmux.conf;
+        xdg = {
+          localBinInPath = true;
+          configFile = {
+            "tmux/tmux.conf".source = inputs.self + /dotfiles/tmux/tmux.conf;
+          };
         };
 
         programs = {

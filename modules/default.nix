@@ -1,6 +1,7 @@
 { den, lib, ... }:
 let
   stateVersion = "26.11";
+
 in
 {
   den.default = {
@@ -12,6 +13,12 @@ in
     nixos =
       { pkgs, ... }:
       {
+        # nixpkgs.overlays = [
+        #   (final: prev: {
+        #     buildGo125Module = prev.buildGoModule;
+        #   })
+        # ];
+
         system.stateVersion = stateVersion;
 
         networking.hostId = "00bab10c";
@@ -60,6 +67,12 @@ in
     homeManager =
       { ... }:
       {
+        # nixpkgs.overlays = [
+        #   (final: prev: {
+        #     buildGo125Module = prev.buildGoModule;
+        #   })
+        # ];
+
         home.stateVersion = stateVersion;
       };
   };

@@ -4,7 +4,10 @@
     includes = with den.aspects.desktop._; [ wayland ];
 
     nixos =
-      { pkgs, ... }:
+      { config, pkgs, ... }:
+      let
+        dm = config.services.displayManager;
+      in
       {
         environment.systemPackages = with pkgs; [
           egl-wayland
@@ -19,14 +22,30 @@
           hyprland = {
             enable = true;
             xwayland.enable = true;
-            withUWSM = true;
+            withUWSM = !dm.gdm.enable;
           };
 
-          hyprlock.enable = true;
+          uwsm.enable = !dm.gdm.enable;
+        };
+      };
 
-          uwsm = {
-            enable = true;
-            waylandCompositors = { };
+    homeManager =
+      { osConfig, ...}:
+      let
+        dm = osConfig.services.displayManager;
+      in
+      {
+        wayland.windowManager.hyprland = {
+          systemd = {
+            enable = dm.gdm.enable;
+            variables = [
+              "DISPLAY"
+              "HYPRLAND_INSTANCE_SIGNATURE"
+              "WAYLAND_DISPLAY"
+              "XDG_CURRENT_DESKTOP"
+              "XDG_SESSION_TYPE"
+              "PATH"
+            ];
           };
         };
       };

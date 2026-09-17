@@ -16,4 +16,11 @@ fi
 
 args=${*/--profile/$profile_flag}
 
-exec setsid uwsm-app -- "$browser_exec" ${args/--private/$private_flag}
+if command -v uwsm &>/dev/null; then
+    if uwsm check may-start; then
+        exec setsid uwsm-app -- "$browser_exec" ${args/--private/$private_flag}
+        exit 0
+    fi
+fi
+
+exec setsid -- "$browser_exec" ${args/--private/$private_flag}

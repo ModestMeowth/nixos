@@ -8,13 +8,8 @@
           hyprpicker
           hyprshutdown
 
-          bluetui
-          grim
           libxkbcommon # xkbcli
           playerctl
-          satty
-          slurp
-          terminaltexteffects
         ];
 
         xdg.portal = {

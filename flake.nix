@@ -68,7 +68,7 @@
     substituters = [
       "http://pwnyboy:8501"
       "https://catppuccin.cachix.org"
-      "https://cache.nixos-cuda.org"
+      # "https://cache.nixos-cuda.org"
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
     ];

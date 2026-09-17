@@ -6,8 +6,6 @@ fi
 
 pgrep -f dev.meowth.screensaver && exit 0
 
-walker -q
-
 focused=$(hyprland-focused-monitor)
 terminal=$(xdg-terminal-exec --print-id)
 

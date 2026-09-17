@@ -7,7 +7,7 @@
       in
       {
         services.displayManager.dms-greeter = {
-          enable = true;
+          enable = lib.mkDefault true;
           configHome = "/home/mm";
         };
 
