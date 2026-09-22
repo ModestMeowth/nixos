@@ -41,7 +41,7 @@
               upstream = {
                 urls = [
                   "https://catppuccin.cachix.org"
-                  "https://cache.nixos-cudo.org"
+                  "https://cache.nixos-cuda.org"
                   "https://nix-community.cachix.org"
                   "https://cache.nixos.org"
                 ];
