@@ -1,33 +1,29 @@
 {
   den.aspects.desktop = {
     nixos =
-      {pkgs, ...}:
+      {config, lib, ...}:
+      let
+        gdm = config.services.displayManager.gdm;
+      in
       {
-        programs.dconf.enable = true;
-        services.gnome.gnome-keyring.enable = true;
+        programs.dconf.enable = lib.mkDefault true;
+        services.gnome.gnome-keyring.enable = lib.mkIf gdm.enable true;
 
-        xdg.portal = {
-          extraPortals = with pkgs; [
-            xdg-desktop-portal-gtk
-            xdg-desktop-portal-gnome
-            kdePackages.xdg-desktop-portal-kde
-          ];
-
-          xdgOpenUsePortal = true;
-        };
+        xdg.portal.xdgOpenUsePortal = true;
       };
 
     homeManager =
-      { config, ... }:
+      { config, lib, osConfig, ... }:
       let
         HOME = config.home.homeDirectory;
+        gdm = osConfig.services.displayManager.gdm;
       in
       {
         home.pointerCursor.enable = true;
         qt.enable = true;
         gtk.enable = true;
 
-        services.gnome-keyring.enable = true;
+        services.gnome-keyring.enable = lib.mkIf gdm.enable true;
 
         xdg = {
           terminal-exec = {

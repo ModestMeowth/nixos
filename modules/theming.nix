@@ -31,12 +31,20 @@ let
 
     overlays.enable = false;
     polarity = "dark";
+
+    targets = {
+      qt.enable = false;
+      gtk.enable = false;
+    };
   };
 in
 {
   den.default = {
     nixos =
-      {pkgs, ...}:
+      {config, pkgs, ...}:
+      let
+        plasma = config.services.desktopManager.plasma6;
+      in
       {
         imports = [ inputs.stylix.nixosModules.stylix ];
         stylix = (scheme pkgs) // {
@@ -45,10 +53,13 @@ in
       };
 
     homeManager =
-      {pkgs, ...}:
+      {pkgs, osConfig, ...}:
+      let
+        qt = osConfig.stylix.targets.qt;
+      in
       {
         imports = [ inputs.stylix.homeModules.stylix ];
-        stylix = scheme pkgs;
+        stylix = scheme pkgs // {};
       };
   };
 }

@@ -10,7 +10,7 @@
 
       yubikey._.u2f
 
-      desktop._.dms._.hyprland
+      desktop._.plasma
 
       virt._.docker
       gaming.default
@@ -26,7 +26,6 @@
       };
 
       programs = {
-        hyprland.withUWSM = false;
         kdeconnect.enable = true;
         nix-ld.enable = true;
         wireshark = {
@@ -37,11 +36,6 @@
       };
 
       services = {
-        displayManager = {
-          gdm.enable = true;
-          dms-greeter.enable = false;
-        };
-
         fwupd.enable = true;
         xserver.videoDrivers = [ "amdgpu" ];
       };

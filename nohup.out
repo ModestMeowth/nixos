@@ -1,0 +1,46 @@
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qmlRegisterType requires absolute URLs.
+qt.qml.propertyCache.append: Member visible of the object PlasmaQuick::Dialog overrides a member of the base object. Consider renaming it or adding final or override specifier
+qt.qml.propertyCache.append: Member enabled of the object DeclarativeDropArea overrides a member of the base object. Consider renaming it or adding final or override specifier
+Connecting to deprecated signal QDBusConnectionInterface::serviceOwnerChanged(QString,QString,QString)
+qt.qpa.wayland: There are no outputs - creating placeholder screen
+kde.plasmashell: requesting unexisting screen available rect -1
+The Wayland connection broke. Did the Wayland compositor die?

@@ -25,3 +25,6 @@ boot host=hostname *args:
 
 ci test="" *args:
   nix-unit --flake '.#tests.systems.{{system}}.system-agnostic.{{test}}' "$@"
+
+rc2nix *args:
+  nix run github:nix-community/plasma-manager -- {{ args }}
