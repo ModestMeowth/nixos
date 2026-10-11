@@ -11,7 +11,8 @@
       nvidia
       yubikey._.u2f
 
-      desktop._.dms._.hyprland
+      # desktop._.dms._.hyprland
+      desktop._.plasma
 
       virt._.docker
       gaming.default
