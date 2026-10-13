@@ -15,6 +15,19 @@
             };
           };
 
+          shortcuts = {
+            "KDE Keyboard Layout Switcher" = {
+              "Switch to Last-Used Keyboard Layout" = mkDefault [ ];  # Meta+Alt+L
+              "Switch to Next Keyboard Layout" = mkDefault [ ];       # Meta+Alt+K
+            };
+
+            "services/org.kde.touchpadshortcuts.desktop" = {
+              DisableTouchpad = mkDefault [ ];                        # Touchpad On
+              EnableTouchpad = mkDefault [ ];                         # Touchpad Off
+              ToggleTouchpad = mkDefault [ ];                         # Touchpad Toggle, Meta+Ctrl+Zenkaku Hankaku, Meta+Ctrl+Touchpad Toggle
+            };
+          };
+
           configFile.kxkbrc.Layout.ResetOldOptions = mkDefault true;
         };
       };

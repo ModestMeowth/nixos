@@ -20,7 +20,7 @@
               };
             }
             "org.kde.plasma.marginsseparator"
-            "org.kde.systray"
+            "org.kde.plasma.systemtray"
             {
               digitalClock = {
                 time.format = "24h";

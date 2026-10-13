@@ -14,10 +14,6 @@
         programs.plasma = {
           enable = true;
           overrideConfig = mkDefault true;
-
-          workspace = {
-            clickItemTo = mkDefault "select";
-          };
         };
       };
   };
