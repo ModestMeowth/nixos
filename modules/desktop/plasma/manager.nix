@@ -7,43 +7,17 @@
 
     homeManager =
       { lib, ... }:
+      let
+        inherit (lib) mkDefault;
+      in
       {
         programs.plasma = {
           enable = true;
-          overrideConfig = true;
-
-          configFile = {
-            kxkbrc.Layout = {
-              Options = lib.mkDefault "compose:ralt";
-              ResetOldOptions = true;
-            };
-          };
+          overrideConfig = mkDefault true;
 
           workspace = {
-            clickItemTo = lib.mkDefault "select";
-
-            wallpaper = "${inputs.self}/assets/black-cat.png";
+            clickItemTo = mkDefault "select";
           };
-
-          panels = [
-            {
-              location = "bottom";
-              widgets = [
-                {
-                  name = "org.kde.plasma.kickoff";
-                }
-                {
-                  iconTasks = {
-                    
-                    launchers = [
-                      "applications:org.kde.dolphin.desktop"
-                      "applications:org.kde.konsole.desktop"
-                    ];
-                  };
-                }
-              ];
-            }
-          ];
         };
       };
   };

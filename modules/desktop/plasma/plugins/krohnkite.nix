@@ -52,8 +52,8 @@
             KrohnkiteSpreadLayout = mkDefault [ ];
             KrohnkiteStackedLayout = mkDefault [ ];
             KrohnkiteStairLayout = mkDefault [ ];
-            KrohnkiteTileLayout = mkDefault [ ];
-            KrohnkiteToggleFloat = mkDefault [ ];
+            KrohnkiteTileLayout = mkDefault [ "Meta+M" ];
+            KrohnkiteToggleFloat = mkDefault [ "Meta+P" ];
             KrohnkiteTreeColumnLayout = mkDefault [ ];
             KrohnkitegrowWidth = mkDefault [ ];
             KrohnkitetoggleDock = mkDefault [ ];

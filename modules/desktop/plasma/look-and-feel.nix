@@ -3,24 +3,33 @@
   den.aspects.desktop._.plasma = {
     homeManager =
       { lib, ...}:
+      let
+        inherit (lib) mkDefault;
+      in
       {
         programs.plasma = {
+          workspace = {
+            wallpaper = "${inputs.self}/assets/black-cat.png";
+            splashScreen.theme = mkDefault "None";
+          };
+
           configFile = {
             kwinrc = {
-              Effect-diminactive.Strength = lib.mkDefault 40;
+              Effect-diminactive = {
+                Strength = mkDefault 40;
+              };
+
               NightColor = {
-                Active = lib.mkDefault true;
-                Mode = lib.mkDefault "Constant";
-                NightTemperature = lib.mkDefault 4000;
+                Active = mkDefault true;
+                Mode = mkDefault "Constant";
+                NightTemperature = mkDefault 4000;
               };
 
               Plugins = {
-                diminactiveEnabled = lib.mkDefault true;
-                translucencyEnabled = lib.mkDefault true;
+                diminactiveEnabled = mkDefault false;
+                translucencyEnabled = mkDefault true;
               };
             };
-
-            plasmarc.Wallpapers.userWallpapers = "${inputs.self}/assets/black-cat.png";
           };
         };
       };
