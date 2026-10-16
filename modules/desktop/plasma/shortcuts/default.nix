@@ -3,6 +3,7 @@
     homeManager =
       {lib, ...}:
       let
+        inherit (lib) mkDefault;
         mkEmptyDefault =
           list:
             lib.genAttrs list (item: lib.mkDefault [ ]);
@@ -42,8 +43,6 @@
           ];
 
           plasmashell = mkEmptyDefault [
-            "activate application launcher"      # Meta, Alt+F1
-
             "activate task manager entry 1"      # Meta+1
             "activate task manager entry 2"      # Meta+2
             "activate task manager entry 3"      # Meta+3
@@ -59,7 +58,9 @@
             "next activity"                      # Meta+A
             "previous activity"                  # Meta+Shift+A
             "show dashboard"                     # Ctrl+F12
-          ];
+          ] // {
+            "activate application launcher" = mkDefault [ "Meta" ];      # Meta, Alt+F1
+          };
 
           "services/org.kde.krunner.desktop" = mkEmptyDefault [
             "Launch"                             # Alt+Space, Alt+F2, Search
