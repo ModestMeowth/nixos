@@ -7,6 +7,7 @@
       in
       {
         programs.plasma.shortcuts = {
+          "activate application launcher" = [ "Meta" ];
           "services/org.kde.konsole.desktop"._launch = mkDefault [ ];           # Ctrl+Alt+T
           "services/org.kde.emojier.desktop"._launch = mkDefault [ "Meta+." ];  # Meta+Ctrl+Alt+Shift+Space, Meta+.
 

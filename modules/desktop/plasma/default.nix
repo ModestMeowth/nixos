@@ -1,4 +1,4 @@
-{den, inputs, ...}:
+{den, ...}:
 {
   den.aspects.desktop._.plasma = {
     includes = with den.aspects; [
@@ -20,10 +20,8 @@
       };
 
     homeManager =
-      { system, ...}: {
-        imports = [ inputs.plasma-manager.homeModules.plasma-manager ];      
+      { ...}: {
 
-        home.packages = [ inputs.plasma-manager.packages.${system}.rc2nix ];
       };
   };
 }
