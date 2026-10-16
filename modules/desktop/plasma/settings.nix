@@ -25,6 +25,11 @@
                 RememberOpenedTabs = mkDefault false;
               };
             };
+
+            kwinrc = {
+              WIndows.PerOutputVirtualDesktops = mkDefault true;
+            };
+
             systemsettingsrc.systemsettings_sidebar_mode.HighlightNonDefaultSettings = mkDefault true;
           };
         };
