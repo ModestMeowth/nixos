@@ -3,6 +3,8 @@
   den.aspects.thoughtpolice = {
     includes = [ den.aspects.filesystems._.zfs ];
 
+    boot.zfs.extraPools = [ "tank" ];
+
     nixos = {
       fileSystems."/" = {
         device = "zroot/thoughtpolice/root";
