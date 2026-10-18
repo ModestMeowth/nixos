@@ -35,6 +35,8 @@
         kernelModules = [ "sg" ];
       };
 
+      environment.variables.LIBVA_DRIVER_NAME = "nvidia";
+
       programs = {
         kdeconnect.enable = true;
         nix-ld.enable = true;

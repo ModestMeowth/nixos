@@ -13,18 +13,20 @@
     homeManager = {
       nixpkgs.config.rocmSupport = true;
 
-      programs.plasma = {
-        input = {
-          keyboard.options = [ "ctrl:swapcaps" ];
-          touchpads = [
-            {
-              enable = true;
-              name = "SYNA801A:00 06CB:CEC6 Touchpad";
-              vendorId = "06cb";
-              productId = "cec6";
-              naturalScroll = true;
-            }
-          ];
+      programs = {
+        plasma = {
+          input = {
+            keyboard.options = [ "ctrl:swapcaps" ];
+            touchpads = [
+              {
+                enable = true;
+                name = "SYNA801A:00 06CB:CEC6 Touchpad";
+                vendorId = "06cb";
+                productId = "cec6";
+                naturalScroll = true;
+              }
+            ];
+          };
         };
       };
     };

@@ -14,6 +14,12 @@
     homeManager = {
       nixpkgs.config.cudaSupport = true;
 
+      programs.chromium = {
+        commandLineArgs = [
+          "--ozone-platform=x11" # wayland+nvidia broken for now
+        ];
+      };
+
       # wayland.windowManager.hyprland.settings = {
       #   config.opengl.nvidia_anti_flicker = true;
 
