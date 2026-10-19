@@ -8,17 +8,15 @@ in
     includes = with den._; [
       define-user
       hostname
-    ];
+    ]
+    ++
+    (with den.aspects; [
+      apps
+    ]);
 
     nixos =
       { pkgs, ... }:
       {
-        # nixpkgs.overlays = [
-        #   (final: prev: {
-        #     buildGo125Module = prev.buildGoModule;
-        #   })
-        # ];
-
         system.stateVersion = stateVersion;
 
         networking.hostId = "00bab10c";
@@ -67,12 +65,6 @@ in
     homeManager =
       { ... }:
       {
-        # nixpkgs.overlays = [
-        #   (final: prev: {
-        #     buildGo125Module = prev.buildGoModule;
-        #   })
-        # ];
-
         home.stateVersion = stateVersion;
       };
   };
