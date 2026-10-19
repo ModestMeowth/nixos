@@ -1,6 +1,12 @@
 {
   den.aspects.desktop._.ghostty = {
     homeManager = {
+      # required if systemd > 262 until fixed 10/21/26
+      xdg.configFile."systemd/user/app-com.mitchellh.ghostty.service.d/override.conf".text = ''
+        [Service]
+        Type=dbus
+      '';
+
       programs.ghostty = {
         enable = true;
         settings = {
