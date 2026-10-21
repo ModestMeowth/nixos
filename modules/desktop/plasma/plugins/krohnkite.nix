@@ -14,48 +14,57 @@
             Script-krohnkite = {
               adjustLayout = mkDefault false;
               adjustLayoutLive = mkDefault false;
-              screenGapBottom = mkDefault 10;
-              screenGapLeft = mkDefault 10;
-              screenGapRight = mkDefault 10;
-              screenGapTop = mkDefault 10;
+              screenGapBottom = mkDefault 0;
+              screenGapLeft = mkDefault 0;
+              screenGapRight = mkDefault 0;
+              screenGapTop = mkDefault 0;
+              screenGapBetween = mkDefault 10;
+              soleWindowNoBorders = mkDefault true;
+              soleWindowNoGaps = mkDefault true;
             };
           };
 
           shortcuts.kwin = {
-            KrohnkiteBTreeLayout = mkDefault [ ];
-            KrohnkiteColumnsLayout = mkDefault [ ];
-            KrohnkiteDecrease = mkDefault [ ];
+            KrohnkiteSetMaster = mkDefault [ "Meta+M" ];
+            KrohnkiteIncrease = mkDefault [ "Meta+N" ];
+            KrohnkiteDecrease = mkDefault [ "Meta+Shift+N" ];
+
+
+            KrohnkiteFocusLeft = mkDefault [ "Meta+H" ];
+            KrohnkiteFocusDown = mkDefault [ "Meta+J" ];
+            KrohnkiteFocusUp = mkDefault [ "Meta+K" ];
+            KrohnkiteFocusRight = mkDefault [ "Meta+L" ];
+
+            KrohnkiteShiftLeft = mkDefault [ "Meta+Shift+H" ];
+            KrohnkiteShiftDown = mkDefault [ "Meta+Shift+J" ];
+            KrohnkiteShiftUp = mkDefault [ "Meta+Shift+K" ];
+            KrohnkiteShiftRight = mkDefault [ "Meta+Shift+L" ];
+
+            KrohnkitegrowWidth = mkDefault [ "Meta+Ctrl+H" ];
+            KrohnkiteShrinkHeight = mkDefault [ "Meta+Ctrl+J" ];
+            KrohnkiteGrowHeight = mkDefault [ "Meta+Ctrl+K" ];
+            KrohnkiteShrinkWidth = mkDefault [ "Meta+Ctrl+L" ];
+
+            KrohnkiteMonocleLayout = mkDefault [ "Meta+F" ];
+            KrohnkiteTileLayout = mkDefault [ "Meta+M" ];
+            KrohnkiteToggleFloat = mkDefault [ "Meta+P" ];
+
             KrohnkiteFloatAll = mkDefault [ ];
             KrohnkiteFloatingLayout = mkDefault [ ];
-            KrohnkiteFocusDown = mkDefault "Meta+J";
-            KrohnkiteFocusLeft = mkDefault "Meta+H";
             KrohnkiteFocusNext = mkDefault [ ];
             KrohnkiteFocusPrev = mkDefault [ ];
-            KrohnkiteFocusRight = mkDefault "Meta+L";
-            KrohnkiteFocusUp = mkDefault "Meta+K";
-            KrohnkiteGrowHeight = mkDefault [ ];
-            KrohnkiteIncrease = mkDefault [ ];
-            KrohnkiteMonocleLayout = mkDefault "Meta+F";
+            KrohnkiteBTreeLayout = mkDefault [ ];
+            KrohnkiteColumnsLayout = mkDefault [ ];
             KrohnkiteNextLayout = mkDefault [ ];
             KrohnkitePreviousLayout = mkDefault [ ];
             KrohnkiteQuarterLayout = mkDefault [ ];
             KrohnkiteRotate = mkDefault [ ];
             KrohnkiteRotatePart = mkDefault [ ];
-            KrohnkiteSetMaster = mkDefault [ ];
-            KrohnkiteShiftDown = mkDefault "Meta+Shift+J";
-            KrohnkiteShiftLeft = mkDefault "Meta+Shift+H";
-            KrohnkiteShiftRight = mkDefault "Meta+Shift+L";
-            KrohnkiteShiftUp = mkDefault "Meta+Shift+K";
-            KrohnkiteShrinkHeight = mkDefault [ ];
-            KrohnkiteShrinkWidth = mkDefault [ ];
             KrohnkiteSpiralLayout = mkDefault [ ];
             KrohnkiteSpreadLayout = mkDefault [ ];
             KrohnkiteStackedLayout = mkDefault [ ];
             KrohnkiteStairLayout = mkDefault [ ];
-            KrohnkiteTileLayout = mkDefault [ "Meta+M" ];
-            KrohnkiteToggleFloat = mkDefault [ "Meta+P" ];
             KrohnkiteTreeColumnLayout = mkDefault [ ];
-            KrohnkitegrowWidth = mkDefault [ ];
             KrohnkitetoggleDock = mkDefault [ ];
           };
         };
