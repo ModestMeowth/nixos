@@ -1,19 +1,23 @@
 { den, ... }:
 {
   den.aspects.apps._.ventoy =
-    {pkgs, ...}:
+    let
+      ventoyVersion = "1.1.18";
+    in
     {
       includes = [
         (den._.unfree [
           "ventoy"
         ])
         (den._.insecure [
-          "ventoy-${pkgs.ventoy.version}"
+          "ventoy-${ventoyVersion}"
         ])
       ];
 
-      nixos = {
-        environment.systemPackages = with pkgs; [ ventoy-full ];  
-      };
+      nixos =
+      {pkgs, ...}:
+        {
+          environment.systemPackages = with pkgs; [ ventoy-full ];  
+        };
     };
 }

@@ -1,7 +1,9 @@
 { den, ... }:
 {
   den.aspects.desktop =
-    {pkgs, ...}:
+    let
+      ventoyVersion = "1.1.18";
+    in
     {
       includes = [
         (den._.unfree [
@@ -9,8 +11,8 @@
           "ventoy-qt"
         ])
         (den._.insecure [
-          "ventoy-gtk3-${pkgs.ventoy-gtk3.version}"
-          "ventoy-qt-${pkgs.ventoy-qt.version}"
+          "ventoy-gtk3-${ventoyVersion}"
+          "ventoy-qt-${ventoyVersion}"
         ])
       ];
 
