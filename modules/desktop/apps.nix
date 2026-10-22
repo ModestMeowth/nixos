@@ -27,11 +27,7 @@
         };
 
       homeManager =
-        {
-          config,
-          pkgs,
-          ...
-        }:
+        { pkgs, ... }:
         {
           home.packages = with pkgs; [
             gnome-calculator
@@ -63,13 +59,6 @@
             kdeconnect = {
               enable = true;
               indicator = true;
-            };
-
-            udiskie = {
-              enable = true;
-              settings.program_options = {
-                file_manager = "${config.programs.ghostty.package}/bin/ghostty -e ${config.programs.yazi.package}/bin/yazi";
-              };
             };
           };
         };
