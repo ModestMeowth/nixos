@@ -7,12 +7,13 @@
           enable = lib.mkDefault true;
           nssmdns4 = true;
           openFirewall = true;
-          publish = {
-            enable = true;
-            domain = true;
-            hinfo = true;
-            userServices = true;
-            workstation = true;
+          settings.publish = {
+            disable-publishing = false;
+            disable-user-service-publishing = false;
+
+            publish-domain = true;
+            publish-hinfo = true;
+            publish-workstation = true;
           };
         };
       };
