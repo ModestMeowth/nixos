@@ -8,6 +8,7 @@
     homeManager =
       { lib, pkgs, ... }:
       {
+        dconf.enable = false;
         stylix.icons.enable = lib.mkForce false;
         home.pointerCursor.enable = lib.mkForce false;
         home.packages = with pkgs; [
