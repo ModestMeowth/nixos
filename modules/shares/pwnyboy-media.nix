@@ -52,7 +52,7 @@
 
           type = "nfs";
 
-          what = "192.168.1.30:/persist/data/media";
+          what = "pwnyboy:/persist/data/media";
           where = cfg.mountpoint;
         }];
 
