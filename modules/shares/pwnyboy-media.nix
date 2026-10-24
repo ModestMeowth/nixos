@@ -1,8 +1,9 @@
 { lib, ... }:
 {
   den.default.nixos =
-    { config, pkgs, ... }:
+    { config, lib, ... }:
     let
+      inherit (lib) join;
       cfg = config.shares.pwnyboy-media;
     in
     {
@@ -44,16 +45,14 @@
           requires = [ "sys-subsystem-net-devices-tailscale0.device" ];
 
           mountConfig = {
-            Options = [
+            Options = join "," [
               "noauto"
-              "x-systemd.device-timeout=5s"
             ];
-            TimeoutSec = "5s";
           };
 
           type = "nfs";
 
-          what = "pwnyboy:/persist/data/media";
+          what = "192.168.1.30:/persist/data/media";
           where = cfg.mountpoint;
         }];
 
