@@ -143,7 +143,7 @@
           nfs.server = {
             enable = true;
             exports = ''
-              /persist/data/media 192.168.10.0/24(rw,subtree_check,root_squash)
+              /persist/data/media -rw,subtree_check,root_squash *.cat-alkaline.ts.net *.threefinger.farm
             '';
           };
 
