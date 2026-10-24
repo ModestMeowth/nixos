@@ -85,6 +85,7 @@
           firewall = {
             allowedTCPPorts = [
               443
+              2049
               8081
               8083
               8123
@@ -142,7 +143,7 @@
           nfs.server = {
             enable = true;
             exports = ''
-              /persist/data/media *.cat-alkaline.ts.net(rw,subtree_check,root_squash)
+              /persist/data/media 192.168.10.0/24(rw,subtree_check,root_squash)
             '';
           };
 
