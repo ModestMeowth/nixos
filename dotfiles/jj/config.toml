@@ -8,12 +8,71 @@ name = "Modest Meowth"
 auto-local-branch = true
 
 [aliases]
-tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
-rebase-all = ["rebase", "-s", "all:roots(trunk()..mutable())", "-d", "trunk()"]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
+rebase-all = ["rebase", "-s", "(::trunk())+ & mutable()", "-o", "trunk()"]
+sync = ["git", "fetch", "--all-remotes"]
+yeet = ["util", "exec", "--", "bash", "-c", '''
+set -euo pipefail
+
+usage() { echo "usage: jj yeet [--new] [-b bookmark] [-r revision]" >&2; exit 1; }
+
+new=""
+bookmark=""
+rev="@"
+while getopts "nb:r:-:" opt; do
+  case "$opt" in
+    n) new=1 ;;
+    b) bookmark="$OPTARG" ;;
+    r) rev="$OPTARG" ;;
+    -) case "$OPTARG" in
+         new) new=1 ;;
+         *) usage ;;
+       esac ;;
+    *) usage ;;
+  esac
+done
+shift $((OPTIND - 1))
+[ $# -eq 0 ] || usage
+
+if [ -n "$new" ]; then
+  [ -n "$bookmark" ] || { echo "jj yeet: --new requires -b <bookmark>" >&2; exit 1; }
+  jj bookmark create "$bookmark" -r "closest_pushable($rev)"
+  exec jj git push -b "$bookmark"
+fi
+
+if [ -n "$bookmark" ]; then
+  [ -n "$(jj bookmark list "exact:$bookmark" -T 'name' 2>/dev/null)" ] || {
+    echo "jj yeet: no such bookmark: $bookmark (use --new to create it)" >&2
+    exit 1
+  }
+  jj bookmark move "$bookmark" --to "closest_pushable($rev)"
+  exec jj git push -b "$bookmark"
+fi
+
+mapfile -t names < <(jj log --no-graph -r "closest_bookmark($rev)" \
+  -T 'local_bookmarks.map(|b| b.name()).join("\n") ++ "\n"')
+[ ${#names[@]} -gt 0 ] || { echo "jj yeet: no bookmark found in closest_bookmark($rev)" >&2; exit 1; }
+
+jj bookmark move --from "closest_bookmark($rev)" --to "closest_pushable($rev)"
+
+args=()
+for b in "${names[@]}"; do args+=(-b "$b"); done
+exec jj git push "${args[@]}"
+''', ""]
 
 [revset-aliases]
 "p(n)" = "p(@, n)"
 "p(r, n)" = "roots(r | ancestor(r-, n))"
+"closest_bookmark(to)" = "heads(::to & bookmarks())"
+"closest_pushable(to)" = "heads(::to & ~description(exact:'') & (~empty() | merges()))"
+orphans = "bookmarks().. ~ remote_bookmarks() ~ ..@"
+"slice()" = "slice(@)"
+"slice(from)" = "ancestors(reachable(from, muteable()), 2)"
+"why_immutable(r)" = "(r & immutable()) | roots(r:: & immutables_heads())"
+# `jj yeet [--new] [-b bookmark] [-r revision]` to tug and push in one go.
+# Defaults: revision = @, bookmark = closest_bookmark(revision), i.e. plain `jj yeet` == `jj tug` + push.
+# --new (-n) creates the bookmark at closest_pushable(revision) instead of moving it,
+# and fails if it already exists.
 
 [snapshot]
 max-new-file-size = 4194304
