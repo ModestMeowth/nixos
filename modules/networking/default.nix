@@ -1,3 +1,4 @@
+{lib, ...}:
 {
   den.aspects.networking = {
     nixos = {
@@ -17,7 +18,6 @@
     };
 
     _.wireless.nixos =
-      { lib, ... }:
       {
         systemd.network.enable = lib.mkForce false;
         networking.networkmanager = {

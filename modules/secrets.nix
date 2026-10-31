@@ -1,14 +1,11 @@
-{
-  inputs,
-  lib,
-  ...
-}:
+{inputs, lib, ...}:
 let
+  inherit (lib) mkDefault;
   sops_config = {
-    defaultSopsFile = inputs.self + /secrets.sops.yaml;
+    defaultSopsFile = inputs.self + /secrets/default.sops.yaml;
     age = {
       generateKey = true;
-      sshKeyPaths = lib.mkDefault [ "/persist/etc/sops/agekey" ];
+      sshKeyPaths = mkDefault [ "/persist/etc/sops/agekey" ];
     };
   };
 in
@@ -16,7 +13,6 @@ in
   den.default = {
     nixos = {
       imports = [ inputs.sops-nix.nixosModules.sops ];
-
       sops = sops_config;
     };
 
@@ -28,5 +24,5 @@ in
         home.packages = [ pkgs.sops ];
         sops = sops_config;
       };
-  };
+    };
 }

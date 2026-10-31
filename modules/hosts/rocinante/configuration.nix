@@ -1,4 +1,4 @@
-{ den, gaming, ... }:
+{ den, ... }:
 {
   den.hosts.x86_64-linux.rocinante = {
     users.mm = { };
@@ -10,11 +10,13 @@
 
       yubikey._.u2f
 
+      desktop._.gaming
       desktop._.plasma
 
       virt._.docker
-      gaming.default
       printing.default
+
+      apps._.ventoy
     ];
 
     nixos = {

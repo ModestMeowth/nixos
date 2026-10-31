@@ -1,4 +1,4 @@
-{ den, ... }:
+{den, ...}:
 {
   den.aspects.desktop._.wayland = {
     includes = [ den.aspects.desktop ];
@@ -19,12 +19,6 @@
             wl-clipboard
           ];
         };
-      };
-
-    homeManager =
-      { ... }:
-      {
-
       };
   };
 }

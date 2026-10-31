@@ -1,21 +1,15 @@
 {
   den.aspects.printing.default = {
     nixos =
-      {pkgs, ...}:
+      {lib, pkgs, ...}:
       {
         environment.systemPackages = [ pkgs.cups-pk-helper ];
+
+        hardware.sane.enable = lib.mkDefault true;
 
         services.printing = {
           enable = true;
         };
-
-        # security.polkt.extraConfig = ''
-        #   polkt.addRule(function(action, subject) {
-        #     if (action.id == "org.opensuse.cupspkhelper.mechanism.all-edit" && subject.isInGroup("wheel")) {
-        #       return polkit.Result.YES;
-        #     }
-        #   });
-        # '';
       };
   };
 }

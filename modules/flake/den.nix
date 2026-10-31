@@ -1,14 +1,9 @@
-{
-  den,
-  inputs,
-  lib,
-  ...
-}:
+{ den, inputs, ...}:
 {
   imports = [
     inputs.den.flakeModule
     inputs.treefmt-nix.flakeModule
   ];
 
-  systems = lib.attrNames den.hosts;
+  flake.den = den;
 }

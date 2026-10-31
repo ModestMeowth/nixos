@@ -3,6 +3,7 @@
     nixos =
       { config, lib, ... }:
       let
+        inherit (lib) mkIf mkDefault;
         secrets = config.sops.secrets;
         flags = [
           "--ssh"
@@ -12,11 +13,11 @@
       {
         services.tailscale = {
           enable = true;
-          authKeyFile = lib.mkIf (builtins.hasAttr "tskey" secrets) secrets."tskey".path;
-          extraUpFlags = lib.mkDefault (flags ++ [ "--reset" ]);
-          extraSetFlags = lib.mkDefault flags;
+          authKeyFile = mkIf (builtins.hasAttr "tskey" secrets) secrets."tskey".path;
+          extraUpFlags = mkDefault (flags ++ [ "--reset" ]);
+          extraSetFlags = mkDefault flags;
           openFirewall = true;
-          useRoutingFeatures = lib.mkDefault "client";
+          useRoutingFeatures = mkDefault "client";
         };
       };
   };
