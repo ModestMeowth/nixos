@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-rfkill unblock bluetooth
-exec launch-or-focus-tui bluetui

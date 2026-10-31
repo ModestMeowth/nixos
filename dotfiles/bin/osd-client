@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-exec swayosd-client --monitor "$(hyprland-focused-monitor)" "$@"

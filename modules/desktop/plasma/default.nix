@@ -18,10 +18,5 @@
           displayManager.plasma-login-manager.enable = lib.mkDefault true;
         };
       };
-
-    homeManager =
-      { ...}: {
-
-      };
   };
 }
