@@ -23,6 +23,16 @@ switch host=hostname *args:
 boot host=hostname *args:
   nh os boot -H {{hostname}} {{justfile_dir()}} {{args}}
 
+repl scope="" *args:
+  #!/usr/bin/env bash
+  set -euo pipefail
+  scope={{scope}}
+  if [ "$scope" = "" ]; then
+    nix repl . "$@"
+  else
+    nh ${scope} repl . "$@"
+  fi
+
 ci test="" *args:
   nix-unit --flake '.#tests.systems.{{system}}.system-agnostic.{{test}}' "$@"
 
