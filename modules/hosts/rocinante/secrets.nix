@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  sopsFile = inputs.self + /modules/hosts/rocinante/secrets.sops.yaml;
+  sopsFile = inputs.self + /secrets/rocinante.sops.yaml;
 in
 {
   den.aspects.rocinante = {

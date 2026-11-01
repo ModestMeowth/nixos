@@ -1,19 +1,21 @@
 { inputs, ... }:
+let
+  sopsFile = inputs.self + /secrets/pwnyboy.sops.yaml;
+in
 {
   den.aspects.pwnyboy = {
     nixos = {
-      imports = [ inputs.sops-nix.nixosModules.sops ];
       sops = {
         secrets."tskey" = {
           mode = "0440";
           group = "wheel";
-          sopsFile = ./secrets.sops.yaml;
+          sopsFile = sopsFile;
         };
 
         secrets."cache-priv-key" = {
           mode = "0440";
           group = "wheel";
-          sopsFile = ./secrets.sops.yaml;
+          sopsFile = sopsFile;
         };
 
         secrets."ha-nut-user" = {
