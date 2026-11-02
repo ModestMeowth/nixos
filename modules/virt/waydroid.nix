@@ -1,5 +1,5 @@
 {
-  den.aspects.virt._.waydroid = {
+  den.aspects.virt.waydroid = {
     nixos = {
       virtualisation.waydroid.enable = true;
     };

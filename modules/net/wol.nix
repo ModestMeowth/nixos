@@ -1,5 +1,5 @@
 {
-  den.aspects.net._.wol = {
+  den.aspects.net.wol = {
     nixos = {
       systemd.network.links."10-wol" = {
         matchConfig.Type = "ether";

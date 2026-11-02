@@ -1,7 +1,7 @@
 { den, ... }:
 {
   den.aspects.rocinante = {
-    includes = [ den.aspects.hw.fs._.zfs ];
+    includes = with den.aspects; [ hw.fs.zfs ];
 
     nixos = {
       fileSystems = {

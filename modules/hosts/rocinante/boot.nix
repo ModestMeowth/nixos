@@ -1,9 +1,8 @@
 { den, ... }: {
   den.aspects.rocinante = {
     includes = with den.aspects; [
-      boot._.secure
-      boot._.graphical
-      kmscon
+      boot._
+      svc.kmscon
     ];
 
     nixos = {

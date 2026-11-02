@@ -1,7 +1,7 @@
 { den, lib, ... }:
 {
-  den.aspects.ncps = {
-    includes = [ den.aspects.postgres ];
+  den.aspects.svc.ncps = {
+    includes = with den.aspects; [ svc.postgres ];
 
     nixos =
       { config, ... }:

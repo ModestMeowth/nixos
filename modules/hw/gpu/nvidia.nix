@@ -3,7 +3,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  den.aspects.hw.gpu._.nvidia =
+  den.aspects.hw.gpu.nvidia =
     {
     includes = [
       (den._.unfree [

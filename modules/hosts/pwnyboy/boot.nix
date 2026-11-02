@@ -2,8 +2,8 @@
 {
   den.aspects.pwnyboy = {
     includes = with den.aspects; [
-      boot._.secure
-      kmscon
+      boot.secure
+      svc.kmscon
     ];
 
     nixos = {

@@ -1,7 +1,7 @@
 { den, lib, ... }:
 let
+  inherit (lib) mkDefault;
   stateVersion = "26.11";
-
 in
 {
   den.default = {
@@ -32,9 +32,16 @@ in
         };
 
         services = {
+          fwupd.enable = true;
+
           logind.settings.Login = {
-            HandlePowerKey = lib.mkDefault "suspend";
+            HandlePowerKey = mkDefault "suspend";
             LidSwitchIgnoreInhibited = "no";
+          };
+
+          pipewire = {
+            enable = mkDefault true;
+            pulse.enable = mkDefault true;
           };
 
           power-profiles-daemon.enable = true;

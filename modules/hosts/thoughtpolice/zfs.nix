@@ -1,7 +1,7 @@
 { den, ... }:
 {
   den.aspects.thoughtpolice = {
-    includes = [ den.aspects.hw.fs._.zfs ];
+    includes = with den.aspects; [ hw.fs.zfs ];
 
     nixos = {
       boot.zfs.extraPools = [ "tank" ];

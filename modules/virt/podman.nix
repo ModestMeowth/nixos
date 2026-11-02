@@ -3,7 +3,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  den.aspects.virt._.podman = {
+  den.aspects.virt.podman = {
     nixos = {
       networking.firewall.trustedInterfaces = [ "podman0" ];
       virtualisation.podman = {

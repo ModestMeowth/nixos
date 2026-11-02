@@ -1,5 +1,5 @@
 {
-  den.aspects.printing.default = {
+  den.aspects.svc.printing = {
     nixos =
       {lib, pkgs, ...}:
       {

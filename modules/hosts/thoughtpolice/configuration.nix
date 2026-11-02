@@ -6,18 +6,15 @@
 
   den.aspects.thoughtpolice = {
       includes = with den.aspects; [
-        profiles.workstation
+        profile.workstation
+        hw.gpu.nvidia
+        hw.yubikey.u2f
+        wm.plasma
 
-        hw.gpu._.nvidia
-        yubikey._.u2f
-
-        desktop._.gaming
-        desktop._.plasma
-
-        apps._.ventoy
-
-        virt._.docker
-        printing.default
+        desktop.gaming
+        apps.ventoy
+        svc.printing
+        virt.docker
       ];
 
       nixos = {
@@ -45,7 +42,6 @@
         };
 
         services = {
-          fwupd.enable = true;
           kmscon.config = {
             mode = "[DP-1]3440x1440@75";
           };
@@ -55,6 +51,13 @@
           enable = true;
           mountpoint = "/persist/media";
         };
+
+        users.users.mm.extraGroups = [
+          "gamemode"
+          "lp"
+          "scanner"
+          "wireshark"
+        ];
       };
     };
 }

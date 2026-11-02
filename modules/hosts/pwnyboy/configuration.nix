@@ -6,12 +6,12 @@
 
   den.aspects.pwnyboy = {
     includes = with den.aspects; [
-      profiles.server
-      hw.gpu._.intel
+      profile.server
+      hw.gpu.intel
 
-      cockpit
-      ncps
-      virt._.docker
+      svc.cockpit
+      svc.ncps
+      virt.docker
     ];
 
     nixos =
@@ -126,7 +126,7 @@
             "https://pwnyboy.com"
           ];
 
-          fwupd.enable = true;
+          pipewire.enable = false;
 
           nfs.server = {
             enable = true;
@@ -147,6 +147,10 @@
             "docker/config".use_template = [ "default" ];
           };
         };
+
+        users.users.mm.extraGroups = [
+          "libvirtd"
+        ];
       };
   };
 }

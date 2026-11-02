@@ -1,6 +1,8 @@
-{ lib, ... }:
+{ den, lib, ... }:
 {
-  den.aspects.shell._.fish = {
+  den.aspects.shell.fish = {
+    includes = with den.aspects; [ shell ];
+
     nixos = {
       programs.fish.enable = true;
     };
@@ -8,8 +10,6 @@
     homeManager =
       { pkgs, ... }:
       {
-        # catppuccin.fish.enable = false;
-
         home.packages = with pkgs.fishPlugins; [
           fzf-fish
           puffer

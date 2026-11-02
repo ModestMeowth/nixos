@@ -1,5 +1,5 @@
 {
-  den.aspects.desktop._.gaming = {
+  den.aspects.desktop.gaming = {
     nixos = {
       boot.kernelModules = [ "ntsync" ];
 

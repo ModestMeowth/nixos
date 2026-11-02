@@ -1,7 +1,7 @@
 { den, ... }:
 {
-  den.aspects.boot._.secure = {
-    includes = [ den.aspects.boot ];
+  den.aspects.boot.secure = {
+    includes = with den.aspects; [ boot ];
 
     nixos =
       {lib, ...}:

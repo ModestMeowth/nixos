@@ -1,6 +1,8 @@
-{ inputs, ... }:
+{ den, inputs, ... }:
 {
-  den.aspects.dev._.helix = {
+  den.aspects.dev.helix = {
+    includes = with den.aspects; [ dev ];
+
     homeManager =
       { lib, pkgs, ... }:
       let

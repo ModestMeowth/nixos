@@ -1,10 +1,13 @@
+{den, ...}:
 {
-  den.aspects.yubikey = {
+  den.aspects.hw.yubikey = {
     nixos = {
       programs.yubikey-manager.enable = true;
     };
 
-    _.u2f = {
+    u2f = {
+      includes = with den.aspects; [ hw.yubikey ];
+
       nixos = {
         security.pam = {
           u2f = {

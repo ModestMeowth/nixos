@@ -1,5 +1,5 @@
 {
-  den.aspects.net._.wireless = {
+  den.aspects.net.wireless = {
     nixos =
       {lib, ...}:
       let

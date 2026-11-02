@@ -2,9 +2,8 @@
 {
   den.aspects.thoughtpolice = {
     includes = with den.aspects; [
-      boot._.secure
-      boot._.graphical
-      kmscon
+      boot._
+      svc.kmscon
     ];
 
     nixos = {

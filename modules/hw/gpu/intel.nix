@@ -3,7 +3,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  den.aspects.hw.gpu._.intel = {
+  den.aspects.hw.gpu.intel = {
     nixos =
       {pkgs, ...}:
       {

@@ -3,7 +3,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  den.aspects.virt._.docker = {
+  den.aspects.virt.docker = {
     nixos =
       { config, ... }:
       let

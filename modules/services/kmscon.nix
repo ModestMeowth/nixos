@@ -1,5 +1,5 @@
 {
-  den.aspects.kmscon = {
+  den.aspects.svc.kmscon = {
     nixos =
       {lib, pkgs, ...}:
       let

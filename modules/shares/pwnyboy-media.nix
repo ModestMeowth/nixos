@@ -1,17 +1,19 @@
 { lib, ... }:
+let
+  inherit (lib) join mkEnableOption mkOption types;
+in
 {
   den.default.nixos =
-    { config, lib, ... }:
+    { config, ... }:
     let
-      inherit (lib) join;
       cfg = config.shares.pwnyboy-media;
     in
     {
       options.shares.pwnyboy-media = {
-        enable = lib.mkEnableOption "pwnyboy-media";
+        enable = mkEnableOption "pwnyboy-media";
 
-        mountpoint = lib.mkOption {
-          type = lib.types.path;
+        mountpoint = mkOption {
+          type = types.path;
           default = "/media";
         };
       };

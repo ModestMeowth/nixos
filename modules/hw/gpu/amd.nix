@@ -3,7 +3,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  den.aspects.hw.gpu._.amd = {
+  den.aspects.hw.gpu.amd = {
     nixos = {
       nixpkgs.config.rocmSupport = mkDefault true;
 

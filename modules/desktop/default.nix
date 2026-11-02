@@ -13,13 +13,21 @@
       };
 
     homeManager =
-      { config, lib, osConfig, ... }:
+      { config, lib, pkgs, osConfig, ... }:
       let
         HOME = config.home.homeDirectory;
         gdm = osConfig.services.displayManager.gdm;
       in
       {
-        home.pointerCursor.enable = true;
+        home = {
+          pointerCursor.enable = true;
+
+          packages = with pkgs; [
+            pwvucontrol
+            wiremix
+          ];
+        };
+
         qt.enable = true;
         gtk.enable = true;
 

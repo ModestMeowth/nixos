@@ -1,5 +1,5 @@
 {
-  den.aspects.cockpit = {
+  den.aspects.svc.cockpit = {
     nixos =
       { lib, ... }:
       {

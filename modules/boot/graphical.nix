@@ -1,7 +1,7 @@
 { den, ... }:
 {
-  den.aspects.boot._.graphical = {
-    includes = [ den.aspects.boot ];
+  den.aspects.boot.graphical = {
+    includes = with den.aspects; [ boot ];
 
     nixos =
       {lib, pkgs, ...}:

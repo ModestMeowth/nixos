@@ -3,7 +3,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  den.aspects.virt._.incus = {
+  den.aspects.virt.incus = {
     nixos =
       {
         networking.firewall.trustedInterfaces = [ "incusbr0" ];

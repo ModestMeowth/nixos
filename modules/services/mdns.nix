@@ -1,5 +1,5 @@
 {
-  den.default = {
+  den.aspects.svc.mdns = {
     nixos =
       { lib, ... }:
       {

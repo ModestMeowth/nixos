@@ -6,18 +6,15 @@
 
   den.aspects.rocinante = {
     includes = with den.aspects; [
-      profiles.laptop
-      hw.gpu._.amd
+      profile.laptop
+      hw.gpu.amd
+      hw.yubikey.u2f
+      wm.plasma
 
-      yubikey._.u2f
-
-      desktop._.gaming
-      desktop._.plasma
-
-      virt._.docker
-      printing.default
-
-      apps._.ventoy
+      desktop.gaming
+      apps.ventoy
+      svc.printing
+      virt.docker
     ];
 
     nixos = {
@@ -36,7 +33,6 @@
       };
 
       services = {
-        fwupd.enable = true;
         xserver.videoDrivers = [ "amdgpu" ];
       };
 
@@ -44,6 +40,13 @@
         enable = true;
         mountpoint = "/persist/media";
       };
+
+      users.users.mm.extraGroups = [
+        "gamemode"
+        "lp"
+        "scanner"
+        "wireshark"
+      ];
     };
   };
 }

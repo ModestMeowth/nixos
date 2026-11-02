@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  den.aspects.hw.fs._.zfs = {
+  den.aspects.hw.fs.zfs = {
     nixos =
       { pkgs, ... }:
       {

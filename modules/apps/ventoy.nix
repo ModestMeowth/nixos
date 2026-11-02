@@ -1,10 +1,10 @@
 {den, ...}:
 {
-  den.aspects.apps._.ventoy =
+  den.aspects.apps.ventoy =
     {host, ...}:
     let
       desktop = host.hasAspect den.aspects.desktop;
-      plasma = host.hasAspect den.aspects.desktop._.plasma;
+      plasma = host.hasAspect den.aspects.wm.plasma;
 
       ventoyVersion = "1.1.18";
       ventoyPkg = if desktop then

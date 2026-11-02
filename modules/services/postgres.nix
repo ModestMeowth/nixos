@@ -1,5 +1,5 @@
 {
-  den.aspects.postgres = {
+  den.aspects.svc.postgres = {
     nixos =
       {
         config,

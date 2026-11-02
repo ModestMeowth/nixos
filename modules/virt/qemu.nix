@@ -3,7 +3,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  den.aspects.virt._.qemu = {
+  den.aspects.virt.qemu = {
     nixos =
       { pkgs, ... }:
       {
