@@ -1,18 +1,7 @@
 { lib, ... }:
 {
-  den.aspects.filesystems = {
+  den.aspects.hw.fs._.zfs = {
     nixos =
-      { pkgs, ... }:
-      {
-        environment.systemPackages = [ pkgs.smartmontools ];
-
-        services.smartd.enable = lib.mkDefault true;
-      };
-    _.ntfs.nixos = {
-      boot.supportedFilesystems = [ "ntfs" ];
-    };
-
-    _.zfs.nixos =
       { pkgs, ... }:
       {
         boot = {

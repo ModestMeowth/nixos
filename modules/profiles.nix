@@ -3,14 +3,14 @@
   den.aspects.profiles = {
     base = {
       includes = with den.aspects; [
-        filesystems
-        networking
+        hw.fs
+        net
       ];
     };
 
     laptop.includes = with den.aspects; [
       profiles.workstation
-      networking.wireless
+      net.wireless
     ];
 
     server.includes = with den.aspects; [

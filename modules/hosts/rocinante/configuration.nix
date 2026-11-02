@@ -7,6 +7,7 @@
   den.aspects.rocinante = {
     includes = with den.aspects; [
       profiles.laptop
+      hw.gpu._.amd
 
       yubikey._.u2f
 
@@ -20,11 +21,8 @@
     ];
 
     nixos = {
-      nixpkgs.config.rocmSupport = true;
-
       hardware = {
         facter.reportPath = ./facter.json;
-        amdgpu.initrd.enable = true;
       };
 
       programs = {

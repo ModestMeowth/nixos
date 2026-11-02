@@ -1,13 +1,17 @@
 {
   den.aspects.kmscon = {
     nixos =
-      {pkgs, ...}:
+      {lib, pkgs, ...}:
+      let
+        inherit (lib) mkDefault;
+      in
       {
         fonts.packages = [ pkgs.nerd-fonts._0xproto ];
         services.kmscon = {
           enable = true;
           config = {
-            hwaccel = true;
+            hwaccel = mkDefault true;
+            multi-monitor = mkDefault "largest";
           };
         };
       };

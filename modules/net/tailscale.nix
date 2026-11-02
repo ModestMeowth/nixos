@@ -1,5 +1,5 @@
 {
-  den.aspects.networking = {
+  den.aspects.net = {
     nixos =
       { config, lib, ... }:
       let

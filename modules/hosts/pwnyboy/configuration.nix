@@ -7,18 +7,18 @@
   den.aspects.pwnyboy = {
     includes = with den.aspects; [
       profiles.server
+      hw.gpu._.intel
 
       cockpit
       ncps
       virt._.docker
-
-      (den._.unfree [
-        "intel-ocl"
-      ])
     ];
 
     nixos =
-      { config, pkgs, ... }:
+      { config, ... }:
+      let
+        secrets = config.sops.secrets;
+      in
       {
         hardware.facter = {
           enable = true;
@@ -41,18 +41,6 @@
           ];
         };
 
-        environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD";
-
-        hardware = {
-          graphics.enable = true;
-          graphics.extraPackages = with pkgs; [
-            intel-vaapi-driver
-            intel-ocl
-            intel-media-driver
-            intel-compute-runtime
-            vpl-gpu-rt
-          ];
-        };
 
         networking = {
           hostName = "pwnyboy";
@@ -111,7 +99,7 @@
             { address = "::"; }
           ];
 
-          users."ha".passwordFile = config.sops.secrets."ha-nut-user".path;
+          users."ha".passwordFile = secrets."ha-nut-user".path;
 
           ups."network" = {
             driver = "usbhid-ups";
@@ -126,7 +114,7 @@
           upsmon.monitor."network" = {
             system = "network@192.168.1.30";
             user = "ha";
-            passwordFile = config.sops.secrets."ha-nut-user".path;
+            passwordFile = secrets."ha-nut-user".path;
           };
         };
 
@@ -146,41 +134,6 @@
               /persist/data/media -rw,subtree_check,root_squash *.cat-alkaline.ts.net *.threefinger.farm
             '';
           };
-
-          # samba = {
-          #   enable = true;
-          #   openFirewall = true;
-
-          #   settings.global = {
-          #     "workgroup" = "WORKGROUP";
-          #     "server string" = "pwnyboy";
-          #     "netbios name" = "pwnyboy";
-
-          #     "security" = "user";
-          #     "guest account" = "nobody";
-          #     "map to guest" = "bad user";
-
-          #     "mangled names" = "no";
-          #     "vfs objects" = "catia";
-          #     "catia:mappings" = "0x3a:0x5f";
-          #   };
-
-          #   settings.media = {
-          #     browsable = "yes";
-          #     comment = "media";
-          #     path = "/persist/data/media";
-
-          #     "read only" = "no";
-          #     "guest ok" = "no";
-          #     "create mask" = "0644";
-          #     "directory mask" = "0755";
-          #   };
-          # };
-
-          # samba-wsdd = {
-          #   enable = true;
-          #   openFirewall = true;
-          # };
 
           sanoid.datasets = {
             "zroot/persist/home/mm".use_template = [ "default" ];

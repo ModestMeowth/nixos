@@ -1,7 +1,4 @@
-{ den, inputs, ... }:
-  let
-    sopsFile = inputs.self + /secrets/thoughtpolice.sops.yaml;
-  in
+{ den, ... }:
 {
   den.hosts.x86_64-linux.thoughtpolice = {
     users.mm = { };
@@ -45,22 +42,18 @@
             dumpcap.enable = true;
             usbmon.enable = true;
           };
-
         };
 
         services = {
           fwupd.enable = true;
+          kmscon.config = {
+            mode = "[DP-1]3440x1440@75";
+          };
         };
 
         shares.pwnyboy-media = {
           enable = true;
           mountpoint = "/persist/media";
-        };
-
-        sops.secrets."tskey" = {
-          mode = "0440";
-          group = "wheel";
-          sopsFile = sopsFile;
         };
       };
     };

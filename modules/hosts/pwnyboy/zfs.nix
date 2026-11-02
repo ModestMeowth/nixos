@@ -1,7 +1,7 @@
 { den, ... }:
 {
   den.aspects.pwnyboy = {
-    includes = [ den.aspects.filesystems._.zfs ];
+    includes = [ den.aspects.hw.fs._.zfs ];
 
     nixos = {
       fileSystems = {

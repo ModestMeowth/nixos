@@ -18,6 +18,8 @@ in
         docker = config.virtualisation.docker;
       in
       {
+        nixpkgs.config.cudaSupport = mkDefault true;
+
         hardware = {
           nvidia = {
             open = mkDefault true;
@@ -29,7 +31,7 @@ in
         };
 
         environment.variables.LIBVA_DRIVER_NAME = "nvidia";
-        nixpkgs.config.cudaSupport = mkDefault true;
+
         services.xserver.videoDrivers = [ "nvidia" ];
       };
 
