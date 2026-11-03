@@ -27,7 +27,7 @@
             };
 
             kwinrc = {
-              WIndows.PerOutputVirtualDesktops = mkDefault true;
+              Windows.PerOutputVirtualDesktops = mkDefault true;
             };
 
             systemsettingsrc.systemsettings_sidebar_mode.HighlightNonDefaultSettings = mkDefault true;

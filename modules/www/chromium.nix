@@ -1,4 +1,4 @@
-{ den, ... }:
+{ den, inputs, ... }:
 {
   den.aspects.www.chromium = {
     includes = with den.aspects; [
@@ -24,6 +24,9 @@
             enableWideVine = true;
           };
         };
+
+        xdg.dataFile."applications/chromium-work.desktop".source = inputs.self + /dotfiles/applications/chromium-work.desktop;
       };
+
   };
 }

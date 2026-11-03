@@ -9,7 +9,8 @@ fmt:
   nix fmt
 
 update *args:
-  nix flake update
+  nix flake update {{args}}
+  jj split -m "chore: update flake.lock" flake.lock
 
 hm host=hostname user=username *args:
   nh home switch -c {{user}}@{{host}} --ask {{justfile_dir()}} {{args}}
