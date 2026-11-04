@@ -24,6 +24,8 @@
               screenGapBetween = mkDefault 10;
               soleWindowNoBorders = mkDefault true;
               soleWindowNoGaps = mkDefault true;
+
+              floatingClass = "[chrome-nngceckbapebfimnlniiiahkandclblb-]";
             };
           };
 
