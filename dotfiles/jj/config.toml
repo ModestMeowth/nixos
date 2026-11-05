@@ -11,6 +11,11 @@ auto-local-branch = true
 tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
 rebase-all = ["rebase", "-s", "(::trunk())+ & mutable()", "-o", "trunk()"]
 sync = ["git", "fetch", "--all-remotes"]
+
+# `jj yeet [--new] [-b bookmark] [-r revision]` to tug and push in one go.
+# Defaults: revision = @, bookmark = closest_bookmark(revision), i.e. plain `jj yeet` == `jj tug` + push.
+# --new (-n) creates the bookmark at closest_pushable(revision) instead of moving it,
+# and fails if it already exists.
 yeet = ["util", "exec", "--", "bash", "-c", '''
 set -euo pipefail
 
@@ -69,10 +74,6 @@ orphans = "bookmarks().. ~ remote_bookmarks() ~ ..@"
 "slice()" = "slice(@)"
 "slice(from)" = "ancestors(reachable(from, muteable()), 2)"
 "why_immutable(r)" = "(r & immutable()) | roots(r:: & immutables_heads())"
-# `jj yeet [--new] [-b bookmark] [-r revision]` to tug and push in one go.
-# Defaults: revision = @, bookmark = closest_bookmark(revision), i.e. plain `jj yeet` == `jj tug` + push.
-# --new (-n) creates the bookmark at closest_pushable(revision) instead of moving it,
-# and fails if it already exists.
 
 [snapshot]
 max-new-file-size = 4194304
