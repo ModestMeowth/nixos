@@ -8,7 +8,9 @@ name = "Modest Meowth"
 auto-local-branch = true
 
 [aliases]
+pull = ["util", "exec", "--", "bash", "-c", "jj git fetch && jj rebase -d main@origin"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
+tug- = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "closest_pushable(@-)"]
 rebase-all = ["rebase", "-s", "(::trunk())+ & mutable()", "-o", "trunk()"]
 sync = ["git", "fetch", "--all-remotes"]
 
