@@ -3,8 +3,7 @@ let
   inherit (lib) mkDefault;
 in
 {
-  den.aspects.hw.gpu.nvidia =
-    {
+  den.aspects.hw.gpu.nvidia = {
     includes = [
       (den._.unfree [
         "nvidia-x11"
@@ -30,7 +29,10 @@ in
           nvidia-container-toolkit.enable = mkDefault docker.enable;
         };
 
-        environment.variables.LIBVA_DRIVER_NAME = "nvidia";
+        environment.variables = {
+          LIBVA_DRIVER_NAME = "nvidia";
+          NVD_BACKEND = "direct";
+        };
 
         services.xserver.videoDrivers = [ "nvidia" ];
       };

@@ -4,6 +4,7 @@
 
   den.aspects.mm._.thoughtpolice = {
     includes = with den.aspects; [
+      hw.gpu.nvidia
       wm.plasma.plugins.krohnkite
 
       term.ghostty
