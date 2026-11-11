@@ -6,14 +6,18 @@
     homeManager =
       { lib, pkgs, ... }:
       let
-        inherit (lib) mkDefault;
+        inherit (lib) mkDefault mkForce;
       in
       {
         home.packages = [ pkgs.kdePackages.krohnkite ];
 
         programs.plasma = {
           configFile.kwinrc = {
-            Plugins.krohnkiteEnabled = true;
+            Plugins = {
+              krohnkiteEnabled = true;
+              squashEnabled = mkForce false; # https://codeberg.org/anametologin/Krohnkite/issues/29
+            };
+
             Script-krohnkite = {
               adjustLayout = mkDefault false;
               adjustLayoutLive = mkDefault false;
@@ -25,7 +29,10 @@
               soleWindowNoBorders = mkDefault true;
               soleWindowNoGaps = mkDefault true;
 
-              floatingClass = "[chrome-nngceckbapebfimnlniiiahkandclblb-]";
+              ignoreClass = lib.join "," [
+                "[chrome-nngceckbapebfimnlniiiahkandclblb-]"
+                "org.gnome.cal"
+              ];
             };
           };
 

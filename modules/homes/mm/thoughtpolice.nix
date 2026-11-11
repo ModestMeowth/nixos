@@ -16,6 +16,7 @@
       {pkgs, ...}:
       {
         home.packages = [ pkgs.filezilla ];
+        programs.plasma.kscreenlocker.timeout = 30;
       };
   };
 }

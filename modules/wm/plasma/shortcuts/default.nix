@@ -40,7 +40,10 @@
 
             "Window Operations Menu"             # Alt+F3
             "Window Restore"                     # Meta+Backspace
-          ];
+          ] // {
+            "Walk Through Windows of Current Application" = mkDefault [ "Meta+`" ];
+            "Walk Through Windows of Current Application (Reverse)" = mkDefault [ "Meta+~" ];
+          };
 
           plasmashell = mkEmptyDefault [
             "activate task manager entry 1"      # Meta+1

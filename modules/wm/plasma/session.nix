@@ -7,7 +7,12 @@
       in
       {
         programs.plasma = {
-          shortcuts.ksmserver."Lock Screen" = mkDefault [ "Meta+Shift+L" ]; # Meta+L
+          kscreenlocker = {
+            lockOnResume = mkDefault true;
+            timeout = mkDefault 15;
+          };
+
+          shortcuts.ksmserver."Lock Session" = mkDefault [ "Meta+Shift+Del" ]; # Meta+L
           session.sessionRestore.restoreOpenApplicationsOnLogin = mkDefault "whenSessionWasManuallySaved";
         };
       };

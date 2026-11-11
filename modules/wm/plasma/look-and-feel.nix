@@ -28,26 +28,19 @@ in
           splashScreen.theme = mkDefault "None";
         };
 
+        kscreenlocker.appearance.wallpaper = wallpaper;
+
         kwin = {
           effects = {
             translucency.enable = mkDefault true;
+            desktopSwitching.animation = "fade";
+            minimization.animation = "off";
           };
 
           nightLight = {
             enable = mkDefault true;
             mode = mkDefault "constant";
             temperature.night = mkDefault 3000;
-          };
-        };
-
-        kscreenlocker = {
-          lockOnResume = mkDefault true;
-          timeout = mkDefault 15;
-        };
-
-        configFile = {
-          kscreenlockerrc = {
-            "Greeter/Wallpaper/org.kde.image/General".Image = wallpaper;
           };
         };
       };
