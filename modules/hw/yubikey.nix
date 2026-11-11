@@ -1,4 +1,7 @@
-{den, ...}:
+{den, lib, ...}:
+let
+  inherit (lib) mkDefault;
+in
 {
   den.aspects.hw.yubikey = {
     nixos = {
@@ -11,10 +14,14 @@
       nixos = {
         security.pam = {
           u2f = {
-            enable = true;
-            settings.cue = true;
+            enable = mkDefault true;
+            settings.cue = mkDefault true;
           };
-          services.login.u2fAuth = false; # login with password to unlock keyring
+
+          services = {
+            login.u2fAuth = mkDefault false; # login with password to unlock keyring
+            kde.u2fAuth = mkDefault false; # prevents unlocking from yubikey
+          };
         };
 
         services.pcscd.enable = true;
