@@ -37,5 +37,10 @@ repl scope="" *args:
 ci test="" *args:
   nix-unit --flake '.#tests.systems.{{system}}.system-agnostic.{{test}}' "$@"
 
-rc2nix *args:
-  nix run github:nix-community/plasma-manager -- {{ args }}
+p6-up:
+  #!/usr/bin/env bash
+  rc2nix > ./plasma-current.nix
+
+p6-diff:
+  #!/usr/bin/env bash
+  diff --color=always ./plasma-current.nix <(rc2nix)
