@@ -12,9 +12,11 @@
         wm.plasma
 
         desktop.gaming
+        desktop.app-image
         apps.ventoy
         svc.printing
         virt.docker
+
       ];
 
       nixos = {
