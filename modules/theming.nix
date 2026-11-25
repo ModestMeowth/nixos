@@ -59,9 +59,7 @@ in
       in
       {
         imports = [ inputs.stylix.homeModules.stylix ];
-        stylix = scheme pkgs // {
-          targets.wayprompt.enable = false; # no longer in nixpkgs, manually disable until stylix removes this target
-        };
+        stylix = scheme pkgs // { };
       };
   };
 }
